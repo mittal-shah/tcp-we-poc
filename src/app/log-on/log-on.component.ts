@@ -15,8 +15,12 @@ export class LogOnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getInfo().subscribe((context) => {
-      this.context = context;
+    this.service.getInfo().subscribe((result) => {
+      if (result) {
+        // @ts-ignore
+        const [ObjCompanyConfig, ObjEmployeeLogOnConfig, ObjLogOnData] = result;
+        this.context = {ObjCompanyConfig, ObjEmployeeLogOnConfig, ObjLogOnData} as EmployeeLogOnContext;
+      }
     });
   }
 }

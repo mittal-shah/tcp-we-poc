@@ -3,26 +3,44 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable, ObservableInput, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
+import Util from './util/util';
 
 @Injectable({providedIn: 'root'})
 export abstract class AbstractService {
-  protected baseUrl = 'https://tcp70alpha.dmione.com/api/v0000/';
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
   protected constructor(
     private http: HttpClient) {
   }
 
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
-  };
-
   // tslint:disable-next-line:no-shadowed-variable
   protected get<T>(url: string): Observable<Observable<T> extends ObservableInput<infer T> ? T : never | T> {
-    return this.http.get<T>(`${this.baseUrl}${url}`)
+    return this.http.get<T>(`${this.getApiPrefix()}${url}`, this.httpOptions)
       .pipe(
         tap(_ => this.log(url)),
         catchError(this.handleError<T>(url, undefined))
       );
+  }
+
+  protected getAppPrefix(): string {
+    return Util.getAppPrefix();
+  }
+
+  protected getPartialApiPath(strPath: string): string {
+    // @ts-ignore
+    return Util.buildApiPath.apply(null, arguments);
+  }
+
+  protected getApiPrefix(): string {
+    return this.getAppPrefix() + '/api/v0000';
+  }
+
+  protected getApiPath(strPath: string): string {
+    // @ts-ignore
+    strPath = this.getPartialApiPath.apply(this, arguments);
+    return this.getApiPrefix() + strPath;
   }
 
   /**
