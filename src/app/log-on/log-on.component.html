@@ -1,8 +1,26 @@
-<mat-form-field appearance="fill" *ngIf="context?.ObjLogOnData?.ArrCompanies?.length">
-  <mat-label>Select Company</mat-label>
-  <mat-select (selectionChange)="selectChangeHandler($event)" *ngIf="context?.ObjLogOnData?.ArrCompanies?.length">
-    <mat-option *ngFor="let company of context?.ObjLogOnData?.ArrCompanies" [value]="company._IntCompanyId">
-      {{company._StrName}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<form class="logon-form" *ngIf="!!data">
+  <div>
+    <mat-form-field appearance="fill" *ngIf="data?.ArrCompanies?.length">
+      <mat-label>Select Company</mat-label>
+      <mat-select (selectionChange)="selectChangeHandler($event)" *ngIf="data?.ArrCompanies?.length">
+        <mat-option *ngFor="let company of data?.ArrCompanies" [value]="company._IntCompanyId">
+          {{company._StrName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill" *ngIf="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId">
+      <mat-label>{{data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.StrText}}</mat-label>
+      <input matInput [placeholder]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.StrText"
+             [value]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.StrValue">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill" *ngIf="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnPassword">
+      <mat-label>{{data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnPassword?.StrText}}</mat-label>
+      <input matInput [placeholder]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnPassword?.StrText"
+             [value]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnPassword?.StrValue">
+    </mat-form-field>
+  </div>
+</form>

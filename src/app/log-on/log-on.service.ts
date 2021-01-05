@@ -8,7 +8,7 @@ export class LogOnService extends AbstractService {
   getInfo() {
     const companyId = String(500);
     const applicationId = String(130);
-    const url = Util.stringFormat('/employeeLoginValues/{0}/GetInfo?companyNamespace={1}&applicationId={2}', companyId, '', applicationId);
+    const url = Util.stringFormat('/managerLoginValues/{0}/GetInfo?companyNamespace={1}&applicationId={2}', companyId, '', applicationId);
 
     return this.get(url)
       .pipe(
