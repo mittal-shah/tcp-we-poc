@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LogOnService} from './log-on.service';
 import {EmployeeLogOnContext} from '../declarations/global';
+import {MatSelectChange} from '@angular/material/select';
 
 @Component({
   selector: 'app-log-on',
@@ -22,5 +23,9 @@ export class LogOnComponent implements OnInit {
         this.context = {ObjCompanyConfig, ObjEmployeeLogOnConfig, ObjLogOnData} as EmployeeLogOnContext;
       }
     });
+  }
+
+  selectChangeHandler($event: MatSelectChange) {
+    console.log($event.value);
   }
 }

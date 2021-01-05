@@ -1,2 +1,8 @@
-LogOn
-{{context?.ObjLogOnData?.ArrCompanies?.length}}
+<mat-form-field appearance="fill" *ngIf="context?.ObjLogOnData?.ArrCompanies?.length">
+  <mat-label>Select Company</mat-label>
+  <mat-select (selectionChange)="selectChangeHandler($event)" *ngIf="context?.ObjLogOnData?.ArrCompanies?.length">
+    <mat-option *ngFor="let company of context?.ObjLogOnData?.ArrCompanies" [value]="company._IntCompanyId">
+      {{company._StrName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
