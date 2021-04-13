@@ -15,15 +15,15 @@ import {MatInputModule} from '@angular/material/input';
     AppComponent,
     LogOnComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

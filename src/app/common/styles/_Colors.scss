@@ -1,0 +1,123 @@
+@import "Variables";
+
+//region CORE COLORS - GRAY SCALE
+
+$black10PercentAlpha: rgba(0, 0, 0, 0.1);
+$black30PercentAlpha: rgba(0, 0, 0, 0.3);
+$black40PercentAlpha: rgba(0, 0, 0, 0.4);
+$black50PercentAlpha: rgba(0, 0, 0, 0.5);
+$dayHeaderForeground: #4D4D4D;
+$disabledBG: #EBEBE4;
+$dividerOutlineColor: #000000;
+$featureButtonBg: #E8EAE8;
+$featureButtonForeground: #484C45;
+$featureButtonShadow: #CCCCCC;
+$gray0: #F9F9F9;
+$gray1: #F2F2F2;
+$gray2: #E2E2E2;
+$gray3: #CDCCCC;
+$gray4: #484C45;
+$gray5: #4D4D4D;
+$gray6: #6A6A6A;
+$gray7: #B3B3b3;
+$groupHeaderBG: #FFFFFF;
+$lightBorderColor: #D3D3D3;
+$white: #FFFFFF;
+$white30PercentAlpha: rgba(255, 255, 255, 0.3);
+$white40PercentAlpha: rgba(255, 255, 255, 0.4);
+$white80PercentAlpha: rgba(255, 255, 255, 0.8);
+$white95PercentAlpha: rgba(255, 255, 255, 0.95);
+
+//endregion
+
+//region CORE COLORS - OTHER
+
+$error: #ff3300;
+$exportNewlineCharacter: #FFFFE0;
+$logoRed: #ff3300;
+$logoYellow: #ffc600;
+$onBreakKeyframeColor: #FFA500;
+$red10PercentLighter: lighten(#F00F00, 10);
+
+//endregion
+
+//region CORE COLORS - MISC
+
+$approvedStatus: #008000;
+$changedValueForeground: #4B0082;
+$deniedStatus: #F2765F;
+$hotpink: #FF69B4;
+$leaveJobCode: #652C90;
+$pendingStatus: $logoBlue;
+
+//endregion
+
+//region VARIABLES
+
+$buttonHoverMixPercent: 30%;
+$buttonHoverPressedDarkenPercent: 15%;
+
+//endregion
+
+//region COLOR1-DERIVED COLORS
+
+$error10PercentDarker: darken($error, 10%);
+$logoGreen10PercentDarker: darken($logoGreen, 10%);
+$logoGreen15PercentLighter: lighten($logoGreen, 15);
+$logoGreen43PercentLighter: lighten($logoGreen, 43);
+$logoGreen5PercentLighter: lighten($logoGreen, 5);
+$logoGreenHighlight: darken($logoGreen, 12);
+
+//endregion
+
+//region COLOR2-DERIVED COLORS
+
+$lightBlue: lighten($logoBlue, 25);
+$logoBlueHighlight: darken($logoBlue, 14);
+$logoBlue15PercentLighter: lighten($logoBlue, 15);
+$logoBlue43PercentLighter: lighten($logoBlue, 43);
+$logoBlue55PercentLighter: lighten($logoBlue, 55);
+$logoBlue10PercentDarker: darken($logoBlue, 10);
+$logoBlue80PercentLighter: lighten($logoBlue, 80);
+$logoBlue60PercentLighter: lighten($logoBlue, 60);
+$logoBlue65PercentLighter: lighten($logoBlue, 65);
+$logoBlue68PercentLighter: lighten($logoBlue, 68);
+$selectedGridRow: $logoBlue60PercentLighter;
+$selectedRootMenu: darken($logoBlue, 4);
+
+$calculatorChangeHoverPressed: saturate($logoBlue, $buttonHoverPressedDarkenPercent);
+$calculatorButtonBackground: mix($gray1, $logoBlue60PercentLighter, $buttonHoverMixPercent);
+$calculatorButtonPressed: saturate($calculatorButtonBackground, $buttonHoverPressedDarkenPercent);
+$calculatorNumberHover: mix($white, $logoBlue60PercentLighter, $buttonHoverMixPercent);
+$calculatorNumberHoverPressed: saturate($calculatorNumberHover, $buttonHoverPressedDarkenPercent);
+
+//endregion
+
+//region OTHER DERIVED COLORS
+
+$featureButtonBg2PercentLighter: lighten($featureButtonBg, 2);
+$gray03PercentLighter: lighten($gray0, 3);
+$gray05PercentDarker: darken($gray0, 5);
+$gray210PercentDarker: darken($gray2, 10);
+$gray215PercentLighter: lighten($gray2, 15);
+$gray220PercentDarker: darken($gray2, 20);
+$logoRed25PercentLighter: lighten($logoRed, 25);
+$logoRed40PercentLighter: lighten($logoRed, 40);
+$logoRed7PercentDarker: darken($logoRed, 7);
+$logoRed7PercentLighter: lighten($logoRed, 7);
+$logoRedHightlight: darken($logoRed, 7);
+$logoYellow2PercentLighter: lighten($logoYellow, 10);
+$logoYellow40PercentLighter: lighten($logoYellow, 40);
+$logoYellowDarker: darken($logoYellow, 20);
+
+//endregion
+
+//region ALIAS COLORS
+
+$defaultText: $gray5;
+$fullCoverage: $logoBlue;
+$logoBlueShadow: $logoBlueHighlight;
+$logoGreenShadow: $logoGreenHighlight;
+$offlineBg: $logoRed;
+
+//endregion

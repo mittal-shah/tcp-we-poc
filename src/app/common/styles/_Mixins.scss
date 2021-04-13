@@ -1,0 +1,188 @@
+@import "Functions";
+@import "Colors";
+
+//region Constants
+
+$tablet: 'tablet';
+
+//endregion
+
+@mixin animation($animation) {
+  animation: $animation;
+  -moz-animation: $animation;
+  -webkit-animation: $animation;
+  -o-animation: $animation;
+}
+
+@mixin applyEllipsis($width) {
+  text-overflow: ellipsis !important;
+  -o-text-overflow: ellipsis !important;
+  -ms-text-overflow: ellipsis !important;
+  max-width: $width;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+@mixin backgroundSize($x, $y) {
+  -webkit-background-size: $x $y;
+  -moz-background-size: $x $y;
+  -ms-background-size: $x $y;
+  background-size: $x $y;
+}
+
+@mixin boxSizing($sizing: content-box) {
+  -moz-box-sizing: $sizing;
+  box-sizing: $sizing;
+}
+
+@mixin boxShadow($offsetX, $offsetY, $blurRadius, $spreadRadius, $color) {
+  -moz-box-shadow: $offsetX $offsetY $blurRadius $spreadRadius $color;
+  -webkit-box-shadow: $offsetX $offsetY $blurRadius $spreadRadius $color;
+  box-shadow: $offsetX $offsetY $blurRadius $spreadRadius $color;
+}
+
+@mixin flexBasis($width) {
+  -webkit-flex-basis: $width;
+  flex-basis: $width;
+}
+
+@mixin keyFrames($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-o-keyframes #{$name} {
+    @content;
+  }
+
+}
+
+@mixin lightenWidgetIcon($color, $percent:5) {
+  background-color: lighten($color, $percent);
+  border-color: lighten($color, $percent);
+}
+
+@mixin linearGradient($direction, $color-stops...) {
+  background: linear-gradient($direction, $color-stops);
+  background: -webkit-linear-gradient($direction, $color-stops);
+  background: -o-linear-gradient($direction, $color-stops);
+  background: -moz-linear-gradient($direction, $color-stops);
+}
+
+@mixin opacity($opacity) {
+  filter: alpha(opacity=($opacity*100));
+  opacity: $opacity;
+}
+
+@mixin paddingBox() {
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+@mixin placeHolderFontStyle($fontStyle) {
+  &::-webkit-input-placeholder {
+    font-style: $fontStyle;
+  }
+
+  &:-moz-placeholder {
+    /* Firefox 18- */
+    font-style: $fontStyle;
+  }
+
+  &::-moz-placeholder {
+    /* Firefox 19+ */
+    font-style: $fontStyle;
+  }
+
+  &:-ms-input-placeholder {
+    font-style: $fontStyle;
+  }
+}
+
+@mixin removeTapHighlight() {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // Remove tap background effect for ios
+}
+
+@mixin roundTopLeftCorner($radius) {
+  border-top-left-radius: $radius !important;
+  @include paddingBox();
+}
+
+@mixin roundTopRightCorner($radius) {
+  border-top-right-radius: $radius !important;
+  @include paddingBox();
+}
+
+@mixin roundBottomLeftCorner($radius) {
+  border-bottom-left-radius: $radius !important;
+  @include paddingBox();
+}
+
+@mixin roundBottomRightCorner($radius) {
+  border-bottom-right-radius: $radius !important;
+  @include paddingBox();
+}
+
+@mixin roundCorners($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  @include paddingBox();
+}
+
+@mixin spriteBackground($url, $left, $top) {
+  background: url($url) no-repeat $left $top;
+  @include paddingBox();
+}
+
+@mixin touchDeviceContext($devices: ($tablet)) {
+  @each $device in $devices {
+    .Touch & {
+      @if ($device == $tablet) {
+        @media only screen and (max-device-width: 1024px), screen and (max-device-width: 1280px) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin transform($args) {
+  transform: $args;
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -ms-transform: $args;
+  -o-transform: $args;
+}
+
+@mixin transition($transitionProperty, $duration: 2s, $timingFunction: linear, $delay: 0s) {
+  -webkit-transition: $transitionProperty $duration $timingFunction $delay;
+  -moz-transition: $transitionProperty $duration $timingFunction $delay;
+  -ms-transition: $transitionProperty $duration $timingFunction $delay;
+  -o-transition: $transitionProperty $duration $timingFunction $delay;
+  transition: $transitionProperty $duration $timingFunction $delay
+}
+
+@mixin userSelect($arg) {
+  -webkit-touch-callout: $arg;
+  -webkit-user-select: $arg;
+  -khtml-user-select: $arg;
+  -moz-user-select: $arg;
+  -ms-user-select: $arg;
+  user-select: $arg;
+}
+
+@mixin bullet($cornerRadius: 3px, $diameter: 8px) {
+  @include roundCorners($cornerRadius);
+  border: 1px solid $white;
+  display: inline-block;
+  height: $diameter;
+  width: $diameter;
+}

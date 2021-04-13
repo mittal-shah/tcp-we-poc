@@ -1,0 +1,33 @@
+﻿@import "Variables";
+
+@function createCommonStyleUrl($fileName, $prefix: "/img") {
+  @return "#{$baseCommonPrefix}/assets#{$prefix}/#{$fileName}?v=#{$clientVersion}&ns=#{$namespace}&cid=#{$companyId}";
+}
+
+@function createBoldFontUrl() {
+  @return "#{$baseCommonPrefix}/assets/font/#{$fontBoldFileName}?v=#{$clientVersion}&ns=#{$namespace}&cid=#{$companyId}";
+}
+
+@function createRegularFontUrl() {
+  @return "#{$baseCommonPrefix}/assets/font/#{$fontRegularFileName}?v=#{$clientVersion}&ns=#{$namespace}&cid=#{$companyId}";
+}
+
+@function createFeatherFontUrl() {
+  @return "#{$baseCommonPrefix}/assets/font/#{$fontFeatherFileName}?v=#{$clientVersion}&ns=#{$namespace}&cid=#{$companyId}";
+}
+
+@function getMaxModalHeight() {
+  @return 470px;
+}
+
+@function getMaxModalWidth() {
+  @return 900px;
+}
+
+@function getMaxWizardModalHeight() {
+  @return 350px;
+}
+
+@function getMaxWizardModalWidth() {
+  @return 900px;
+}

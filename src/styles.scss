@@ -1,3 +1,7 @@
+@import "app/common/styles/_Colors";
+@import "app/common/styles/_Mixins";
+@import "app/common/styles/_KeyFrames";
+@import "app/common/styles/_Variables";
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -35,5 +39,84 @@ $tcp-we-poc-theme: mat-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*region Font rules*/
+
+@font-face {
+  font-family: $fontFamily;
+  font-style: normal;
+  font-weight: 400;
+  src: url(createRegularFontUrl());
+}
+
+@font-face {
+  font-family: "feather";
+  src: url(createFeatherFontUrl());
+}
+
+@font-face {
+  font-family: $fontFamily;
+  font-style: normal;
+  font-weight: 700;
+  src: url(createBoldFontUrl());
+}
+
+/*endregion*/
+
+/*region Tag specific rules */
+
+body, html, .tcp-theme {
+  height: 100%;
+  width: 100%;
+  font-size: 12px;
+  font-family: $fontFamily, sans-serif;
+  color: $defaultText;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+
+  &.css-loaded {
+    display: block !important;
+  }
+
+  &.hide-page-scroll {
+    overflow: hidden !important;
+
+    .LayoutWrapper .LayoutHeader .PageHeaderContainer .HeaderOptions, .LayoutBodyContainer {
+      margin-right: $pageMargin + $scrollbarWidth;
+    }
+  }
+}
+
+fieldset {
+  display: inline-block;
+  border: solid 1px $gray1;
+  padding: 15px;
+  margin: 5px;
+  vertical-align: top;
+  position: relative;
+  @include roundCorners(3px);
+
+  legend {
+    text-align: left;
+    white-space: nowrap;
+    padding: 0 5px 0 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: $defaultText;
+    display: inline-block;
+    position: absolute;
+    top: -10px;
+    background-color: $white;
+    left: 20px;
+  }
+}
+
+/*endregion*/
+
+.text-center {
+  text-align: center;
+}

@@ -17,8 +17,8 @@ export class LogOnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getInfo().subscribe((result) => {
-      if (result) {
+    this.service.getInfo().subscribe((result: any) => {
+      if (result && result.length === 2) {
         this.config = result[0] as LogOnConfig;
         this.data = result[1] as LogOnData;
       }
