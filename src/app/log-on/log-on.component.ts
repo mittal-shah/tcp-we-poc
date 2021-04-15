@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LogOnService} from './log-on.service';
 import {MatSelectChange} from '@angular/material/select';
-import {LogOnConfig, LogOnData} from '../declarations/global';
+import {CompanyConfig, EmployeeLogOnConfig, LogOnData} from '../declarations/global';
 
 @Component({
   selector: 'app-log-on',
@@ -10,7 +10,8 @@ import {LogOnConfig, LogOnData} from '../declarations/global';
 })
 
 export class LogOnComponent implements OnInit {
-  config: LogOnConfig | undefined = undefined;
+  config: EmployeeLogOnConfig | undefined = undefined;
+  companyConfig: CompanyConfig | undefined = undefined;
   data: LogOnData | undefined = undefined;
 
   constructor(private service: LogOnService) {
@@ -18,9 +19,10 @@ export class LogOnComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getInfo().subscribe((result: any) => {
-      if (result && result.length === 2) {
-        this.config = result[0] as LogOnConfig;
-        this.data = result[1] as LogOnData;
+      if (result && result.length === 3) {
+        this.config = result[0] as EmployeeLogOnConfig;
+        this.companyConfig = result[1] as CompanyConfig;
+        this.data = result[2] as LogOnData;
       }
     });
   }
