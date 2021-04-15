@@ -32,6 +32,16 @@ export class LogOnComponent implements OnInit {
     if (!this.data) {
       return;
     }
+
+    if (this.data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin &&
+      !this.data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin?.StrValue) {
+      this.data.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePin.StrValue = undefined;
+    }
+
+    if (this.data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePassword &&
+      !this.data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePassword?.StrValue) {
+      this.data.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePassword.StrValue = undefined;
+    }
     this.service.authenticate(this.data).subscribe((result: any) => this.handleAuthentication(result));
   }
 

@@ -17,7 +17,7 @@
       <mat-form-field appearance="fill" *ngIf="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId">
         <mat-label>{{data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.StrText}}</mat-label>
         <input matInput name="logOn"
-               [value]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.StrValue"
+               [(ngModel)]="data!.ObjSelectedCompany!.ObjCustomFieldControlModelLogOnId!.StrValue"
                [required]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.BlnIsRequired || false"
                [maxLength]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.IntMaxLength">
       </mat-form-field>
