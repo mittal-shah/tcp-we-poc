@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LogOnService} from './log-on.service';
 import {MatSelectChange} from '@angular/material/select';
-import {AppConfig, CompanyConfig, EmployeeLogOnConfig, LogOnData} from '../declarations/global';
+import {AppConfig, CompanyConfig, EmployeeLogOnConfig, EmployeeLogOnContext, LogOnData} from '../declarations/global';
 import {GlobalConstants} from '../common/constants/global.constants';
 
 @Component({
@@ -20,12 +20,16 @@ export class LogOnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getAppConfig().subscribe(this.handleAppConfig);
-    this.service.getInfo().subscribe((result: any) => this.handleInfo(result));
+    this.service.getAppConfig()
+      .subscribe((config: AppConfig) => this.handleAppConfig(config));
+
+    this.service.getInfo()
+      .subscribe((context: EmployeeLogOnContext) => this.handleInfo(context));
   }
 
   selectChangeHandler($event: MatSelectChange) {
-    this.service.getInfoForCompany($event.value).subscribe((result: any) => this.handleInfo(result));
+    this.service.getInfoForCompany($event.value)
+      .subscribe((context: EmployeeLogOnContext) => this.handleInfo(context));
   }
 
   authenticate() {
@@ -42,28 +46,26 @@ export class LogOnComponent implements OnInit {
       !this.data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePassword?.StrValue) {
       this.data.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePassword.StrValue = undefined;
     }
-    this.service.authenticate(this.data).subscribe((result: any) => this.handleAuthentication(result));
+
+    this.service.authenticate(this.data)
+      .subscribe((sessionId: string) => this.handleAuthentication(sessionId));
   }
 
-  private handleAppConfig(result: any) {
-    if (result && result.length === 1) {
-      this.appConfig = result[0] as AppConfig;
-      GlobalConstants.appConfig = this.appConfig;
-    }
+  private handleAppConfig(appConfig: AppConfig) {
+    this.appConfig = appConfig;
+    GlobalConstants.appConfig = this.appConfig;
   }
 
-  private handleAuthentication(result: any) {
-    GlobalConstants.sessionId = result;
+  private handleAuthentication(sessionId: string) {
+    GlobalConstants.sessionId = sessionId;
     console.log(GlobalConstants.sessionId);
   }
 
-  private handleInfo(result: any) {
-    if (result && result.length === 3) {
-      this.config = result[0] as EmployeeLogOnConfig;
-      this.companyConfig = result[1] as CompanyConfig;
-      this.data = result[2] as LogOnData;
+  private handleInfo(context: EmployeeLogOnContext) {
+    this.config = context.ObjEmployeeLogOnConfig;
+    this.companyConfig = context.ObjCompanyConfig;
+    this.data = context.ObjLogOnData;
 
-      GlobalConstants.companyConfig = this.companyConfig;
-    }
+    GlobalConstants.companyConfig = this.companyConfig;
   }
 }
