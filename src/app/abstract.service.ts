@@ -24,6 +24,15 @@ export abstract class AbstractService {
       );
   }
 
+  // tslint:disable-next-line:no-shadowed-variable
+  protected post<T>(url: string, data: any): Observable<Observable<T> extends ObservableInput<infer T> ? T : never | T> {
+    return this.http.post<T>(`${this.getApiPrefix()}${url}`, data, this.httpOptions)
+      .pipe(
+        tap(_ => this.log(url)),
+        catchError(this.handleError<T>(url, undefined))
+      );
+  }
+
   protected getAppPrefix(): string {
     return Util.getAppPrefix();
   }

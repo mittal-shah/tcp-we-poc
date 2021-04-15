@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {LogOnService} from './log-on.service';
 import {MatSelectChange} from '@angular/material/select';
-import {CompanyConfig, EmployeeLogOnConfig, LogOnData} from '../declarations/global';
+import {AppConfig, CompanyConfig, EmployeeLogOnConfig, LogOnData} from '../declarations/global';
+import {GlobalConstants} from '../common/constants/global.constants';
 
 @Component({
   selector: 'app-log-on',
@@ -10,6 +11,7 @@ import {CompanyConfig, EmployeeLogOnConfig, LogOnData} from '../declarations/glo
 })
 
 export class LogOnComponent implements OnInit {
+  appConfig: AppConfig | undefined = undefined;
   config: EmployeeLogOnConfig | undefined = undefined;
   companyConfig: CompanyConfig | undefined = undefined;
   data: LogOnData | undefined = undefined;
@@ -18,16 +20,40 @@ export class LogOnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getInfo().subscribe((result: any) => {
-      if (result && result.length === 3) {
-        this.config = result[0] as EmployeeLogOnConfig;
-        this.companyConfig = result[1] as CompanyConfig;
-        this.data = result[2] as LogOnData;
-      }
-    });
+    this.service.getAppConfig().subscribe(this.handleAppConfig);
+    this.service.getInfo().subscribe((result: any) => this.handleInfo(result));
   }
 
   selectChangeHandler($event: MatSelectChange) {
-    console.log($event.value);
+    this.service.getInfoForCompany($event.value).subscribe((result: any) => this.handleInfo(result));
+  }
+
+  authenticate() {
+    if (!this.data) {
+      return;
+    }
+    this.service.authenticate(this.data).subscribe((result: any) => this.handleAuthentication(result));
+  }
+
+  private handleAppConfig(result: any) {
+    if (result && result.length === 1) {
+      this.appConfig = result[0] as AppConfig;
+      GlobalConstants.appConfig = this.appConfig;
+    }
+  }
+
+  private handleAuthentication(result: any) {
+    GlobalConstants.sessionId = result;
+    console.log(GlobalConstants.sessionId);
+  }
+
+  private handleInfo(result: any) {
+    if (result && result.length === 3) {
+      this.config = result[0] as EmployeeLogOnConfig;
+      this.companyConfig = result[1] as CompanyConfig;
+      this.data = result[2] as LogOnData;
+
+      GlobalConstants.companyConfig = this.companyConfig;
+    }
   }
 }

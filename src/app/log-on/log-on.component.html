@@ -1,10 +1,12 @@
 <div class="text-center">
   <div class="logo"></div>
-  <form class="logon-form" *ngIf="!!data">
+  <mat-divider class="padding-bottom-20"></mat-divider>
+  <form class="logon-form" *ngIf="!!data && !!config">
     <div>
       <mat-form-field appearance="fill" *ngIf="data?.ArrCompanies?.length">
-        <mat-label>Select Company</mat-label>
-        <mat-select (selectionChange)="selectChangeHandler($event)" *ngIf="data?.ArrCompanies?.length">
+        <mat-label>{{config.StrSelectCompany}}</mat-label>
+        <mat-select (selectionChange)="selectChangeHandler($event)" *ngIf="data?.ArrCompanies?.length"
+                    [required]="!config?.BlnRequireUserToEnterCompanyId" [value]="data?.IntCompany">
           <mat-option *ngFor="let company of data?.ArrCompanies" [value]="company._IntCompanyId">
             {{company._StrName}}
           </mat-option>
@@ -14,10 +16,12 @@
     <div>
       <mat-form-field appearance="fill" *ngIf="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId">
         <mat-label>{{data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.StrText}}</mat-label>
-        <input matInput [value]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.StrValue"
-               [required]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.BlnIsRequired"
+        <input matInput name="logOn"
+               [value]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.StrValue"
+               [required]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.BlnIsRequired || false"
                [maxLength]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.IntMaxLength">
       </mat-form-field>
     </div>
+    <button mat-flat-button color="primary" (click)="authenticate()">{{config?.StrLogOn}}</button>
   </form>
 </div>

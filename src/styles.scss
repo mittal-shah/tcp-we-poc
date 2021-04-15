@@ -85,7 +85,7 @@ body {
   &.hide-page-scroll {
     overflow: hidden !important;
 
-    .LayoutWrapper .LayoutHeader .PageHeaderContainer .HeaderOptions, .LayoutBodyContainer {
+    .layout-wrapper .layout-header .page-header-container .header-options, .layout-body-container {
       margin-right: $pageMargin + $scrollbarWidth;
     }
   }
@@ -119,4 +119,12 @@ fieldset {
 
 .text-center {
   text-align: center;
+}
+
+.padding-bottom-20 {
+  padding-bottom: 20px;
+}
+
+.width-100 {
+  width: 100%;
 }
