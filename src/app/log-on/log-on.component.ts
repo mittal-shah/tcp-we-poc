@@ -1,8 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {LogOnService} from './log-on.service';
 import {MatSelectChange} from '@angular/material/select';
-import {AppConfig, CompanyConfig, EmployeeLogOnConfig, EmployeeLogOnContext, LogOnData} from '../declarations/global';
-import {GlobalConstants} from '../common/constants/global.constants';
+import {AppConfig, EmployeeLogOnContext} from '../declarations/global';
+import {GlobalConstant} from '../common/constant/global.constant';
+import AppConfigImpl from '../common/impl/config/app.config.impl';
+import CompanyConfigImpl from '../common/impl/config/company.config.impl';
+import EmployeeLogOnConfigImpl from './config/employee-log-on.config.impl';
+import LogOnDataImpl from './data/log-on-data.impl';
 
 @Component({
   selector: 'app-log-on',
@@ -11,17 +15,19 @@ import {GlobalConstants} from '../common/constants/global.constants';
 })
 
 export class LogOnComponent implements OnInit {
-  appConfig: AppConfig | undefined = undefined;
-  config: EmployeeLogOnConfig | undefined = undefined;
-  companyConfig: CompanyConfig | undefined = undefined;
-  data: LogOnData | undefined = undefined;
+  appConfig: AppConfigImpl | undefined = undefined;
+  config: EmployeeLogOnConfigImpl | undefined = undefined;
+  companyConfig: CompanyConfigImpl | undefined = undefined;
+  data: LogOnDataImpl | undefined = undefined;
 
   constructor(private service: LogOnService) {
   }
 
   ngOnInit(): void {
+    GlobalConstant.sessionId = '';
+
     this.service.getAppConfig()
-      .subscribe((config: AppConfig) => this.handleAppConfig(config));
+      .subscribe((config: AppConfigImpl) => this.handleAppConfig(config));
 
     this.service.getInfo()
       .subscribe((context: EmployeeLogOnContext) => this.handleInfo(context));
@@ -51,14 +57,14 @@ export class LogOnComponent implements OnInit {
       .subscribe((sessionId: string) => this.handleAuthentication(sessionId));
   }
 
-  private handleAppConfig(appConfig: AppConfig) {
+  private handleAppConfig(appConfig: AppConfigImpl) {
     this.appConfig = appConfig;
-    GlobalConstants.appConfig = this.appConfig;
+    GlobalConstant.appConfig = this.appConfig;
   }
 
   private handleAuthentication(sessionId: string) {
-    GlobalConstants.sessionId = sessionId;
-    console.log(GlobalConstants.sessionId);
+    GlobalConstant.sessionId = sessionId;
+    console.log(GlobalConstant.sessionId);
   }
 
   private handleInfo(context: EmployeeLogOnContext) {
@@ -66,6 +72,6 @@ export class LogOnComponent implements OnInit {
     this.companyConfig = context.ObjCompanyConfig;
     this.data = context.ObjLogOnData;
 
-    GlobalConstants.companyConfig = this.companyConfig;
+    GlobalConstant.companyConfig = this.companyConfig;
   }
 }

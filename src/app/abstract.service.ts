@@ -4,6 +4,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, ObservableInput, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import Util from './util/util';
+import AbstractImpl from './common/impl/abstract.impl';
+import {AnyType} from './declarations/types';
 
 @Injectable({providedIn: 'root'})
 export abstract class AbstractService {
@@ -26,7 +28,8 @@ export abstract class AbstractService {
 
   // tslint:disable-next-line:no-shadowed-variable
   protected post<T>(url: string, data: any): Observable<Observable<T> extends ObservableInput<infer T> ? T : never | T> {
-    return this.http.post<T>(`${this.getApiPrefix()}${url}`, data, this.httpOptions)
+    const adjustedData = this.getAdjustedData(data);
+    return this.http.post<T>(`${this.getApiPrefix()}${url}`, adjustedData, this.httpOptions)
       .pipe(
         tap(_ => this.log(url)),
         catchError(this.handleError<T>(url, undefined))
@@ -37,19 +40,8 @@ export abstract class AbstractService {
     return Util.getAppPrefix();
   }
 
-  protected getPartialApiPath(strPath: string): string {
-    // @ts-ignore
-    return Util.buildApiPath.apply(null, arguments);
-  }
-
   protected getApiPrefix(): string {
     return this.getAppPrefix() + '/api/v0000';
-  }
-
-  protected getApiPath(strPath: string): string {
-    // @ts-ignore
-    strPath = this.getPartialApiPath.apply(this, arguments);
-    return this.getApiPrefix() + strPath;
   }
 
   /**
@@ -75,5 +67,40 @@ export abstract class AbstractService {
   /** Log a HeroService message with the MessageService */
   protected log(message: string): void {
     console.log(message);
+  }
+
+  private getAdjustedData(data: AnyType) {
+    // guard-clause
+    if (!data || typeof data === 'string') {
+      return data;
+    }
+
+    if ('createSubmissionData' in data) {
+      data = data.createSubmissionData();
+    }
+
+    if (Array.isArray(data)) {
+      data.forEach((item, index) => {
+        if (item instanceof AbstractImpl) {
+          data[index] = this.getAdjustedData(item);
+        }
+      });
+    }
+
+    Object.keys(data).forEach((key) => {
+      if (data[key] instanceof AbstractImpl) {
+        data[key] = this.getAdjustedData(data[key]);
+      }
+
+      if (Array.isArray(data[key])) {
+        data[key].forEach((item: any, itemIndex: string | number) => {
+          if (item instanceof AbstractImpl) {
+            data[key][itemIndex] = this.getAdjustedData(item);
+          }
+        });
+      }
+    });
+
+    return data;
   }
 }

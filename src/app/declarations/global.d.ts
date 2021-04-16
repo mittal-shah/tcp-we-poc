@@ -7,6 +7,10 @@
 //----------------------
 // ReSharper disable InconsistentNaming
 
+import CompanyConfigImpl from '../common/impl/config/company.config.impl';
+import EmployeeLogOnConfigImpl from '../log-on/config/employee-log-on.config.impl';
+import LogOnDataImpl from '../log-on/data/log-on-data.impl';
+
 export interface AbstractPresentationBase {}
 
 export interface AbstractModel extends AbstractPresentationBase {}
@@ -4915,9 +4919,9 @@ export interface SelectCoveredEmployeeData extends AbstractModel {
 }
 
 export interface EmployeeLogOnContext {
-  ObjCompanyConfig?: CompanyConfig | undefined;
-  ObjEmployeeLogOnConfig?: EmployeeLogOnConfig | undefined;
-  ObjLogOnData?: LogOnData | undefined;
+  ObjCompanyConfig?: CompanyConfigImpl | undefined;
+  ObjEmployeeLogOnConfig?: EmployeeLogOnConfigImpl | undefined;
+  ObjLogOnData?: LogOnDataImpl | undefined;
 }
 
 export interface CompanyConfig extends AbstractModel {

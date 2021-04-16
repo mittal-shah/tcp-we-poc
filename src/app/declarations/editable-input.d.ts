@@ -1,4 +1,26 @@
 import {AppConfig, DecimalInputModel, HourMinuteInputModel, NumberInputModel, TextInputModel, TimeInputModel} from './global';
+import {AnyType} from './types';
+
+export type AutoCapitalizeOptions = 'none' | 'sentences' | 'words' | 'characters';
+
+export type AutoCompleteOptions =
+  | 'cc-csc'
+  | 'cc-exp'
+  | 'cc-exp-month'
+  | 'cc-exp-year'
+  | 'cc-number'
+  | 'email'
+  | 'name'
+  | 'password'
+  | 'postal-code'
+  | 'street-address'
+  | 'tel'
+  | 'username'
+  | 'off';
+
+export type InputSuffixIcon = 'calendar' | 'clock' | 'search' | 'chevron-down' | 'list' | undefined;
+
+export type KeyboardTypeOptions = 'default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad';
 
 export interface EditableInputModel {
   BlnIsDisabled?: boolean | undefined;
@@ -12,7 +34,7 @@ export interface EditableInputModel {
 
   isValidValue(appConfig?: AppConfig | undefined): boolean;
 
-  getValue(): string;
+  getValue(): AnyType;
 
   setValue(value: any): void;
 }
