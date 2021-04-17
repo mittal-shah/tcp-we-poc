@@ -20,8 +20,11 @@
                [(ngModel)]="data!.ObjSelectedCompany!.ObjCustomFieldControlModelLogOnId!.StrValue"
                [required]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.BlnIsRequired || false"
                [maxLength]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.IntMaxLength">
+        <mat-error>{{ data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.getErrorMessage(appConfig)}}</mat-error>
       </mat-form-field>
     </div>
-    <button mat-flat-button color="primary" (click)="authenticate()">{{config?.StrLogOn}}</button>
+    <div class="padding-bottom-20 padding-top-20">
+      <button mat-flat-button color="primary" (click)="authenticate()">{{config?.StrLogOn}}</button>
+    </div>
   </form>
 </div>

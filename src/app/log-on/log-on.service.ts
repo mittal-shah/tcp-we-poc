@@ -21,12 +21,13 @@ export class LogOnService extends AbstractService {
   getAppConfig(): Observable<AppConfigImpl> {
     const url = '/appConfig/0/WebClock';
     return this.get<AppConfig>(url).pipe(map((result: any) => {
-      return AbstractImpl.fromJSON(result[0], AppConfigImpl);
+      return AbstractImpl.fromJSON(result, AppConfigImpl);
     }));
   }
 
   getInfo(): Observable<EmployeeLogOnContext> {
     const url = '/employeeLoginValues/{0}/GetInfo?companyNamespace={1}&applicationId={2}';
+    // TODO:MSS - Read from cookie
     const formattedUrl = Util.stringFormat(url, '0', '', CommonConstants.applicationId.toString());
     return this.get(formattedUrl).pipe(map((result) => this.handleEmployeeLogOnContext(result)));
   }

@@ -1,7 +1,10 @@
 import * as moment from 'moment';
-import CommonConstants from '../constant/common.constant';
 import Util from '../../util/util';
-import {HourMin} from '../../declarations/types';
+
+export interface HourMin {
+  intHour: number;
+  intMin: number;
+}
 
 export const DateTimeConstants = {
   IsoDateFormat: moment.HTML5_FMT.DATE, // YYYY-MM-DD
@@ -19,7 +22,7 @@ export default class DateTimeFormatter {
       return undefined;
     }
 
-    return this.getDate(date, CommonConstants.IsoTimestamp);
+    return this.getDate(date, DateTimeConstants.IsoTimestamp);
   }
 
   static getCurrentTimeOffset(timestamp: string | number) {
@@ -36,7 +39,7 @@ export default class DateTimeFormatter {
     return DateTimeFormatter.getTimeDiffInMS(newDate, currentDateTime);
   }
 
-  static getDate(date: string, dateFormat: string = CommonConstants.IsoDateFormat): Date | undefined {
+  static getDate(date: string, dateFormat: string = DateTimeConstants.IsoDateFormat): Date | undefined {
     if (!date) {
       return undefined;
     }
@@ -46,22 +49,22 @@ export default class DateTimeFormatter {
     return momentDate.isValid() ? testMomentDate : undefined;
   }
 
-  static getTime(time: string, timeFormat: string = CommonConstants.IsoTimeFormat): Date | undefined {
+  static getTime(time: string, timeFormat: string = DateTimeConstants.IsoTimeFormat): Date | undefined {
     if (!time) {
       return undefined;
     }
 
     const dateTime = `2020-01-01 ${time}`;
-    const adjustedTimeFormat = `${CommonConstants.IsoDateFormat} ${timeFormat}`;
+    const adjustedTimeFormat = `${DateTimeConstants.IsoDateFormat} ${timeFormat}`;
     const momentDate = moment(dateTime, adjustedTimeFormat, true);
     return momentDate.isValid() ? momentDate.toDate() : undefined;
   }
 
-  static getAdjustedDateFormat(dateFormat: string = CommonConstants.IsoDateFormat): string {
+  static getAdjustedDateFormat(dateFormat: string = DateTimeConstants.IsoDateFormat): string {
     return dateFormat.toUpperCase();
   }
 
-  static getAdjustedTimeFormat(timeFormat: string = CommonConstants.IsoTimeFormat): string {
+  static getAdjustedTimeFormat(timeFormat: string = DateTimeConstants.IsoTimeFormat): string {
     return timeFormat.replace('tt', 'a');
   }
 
@@ -92,7 +95,7 @@ export default class DateTimeFormatter {
       return true;
     }
 
-    return moment(date, CommonConstants.IsoDateFormat).isValid();
+    return moment(date, DateTimeConstants.IsoDateFormat).isValid();
   }
 
   static isValidISOTimeString(time?: string) {
@@ -101,11 +104,11 @@ export default class DateTimeFormatter {
     }
 
     const dateTime = `2020-01-01 ${time}`;
-    const adjustedTime = `${CommonConstants.IsoDateFormat} ${CommonConstants.IsoTimeFormat}`;
+    const adjustedTime = `${DateTimeConstants.IsoDateFormat} ${DateTimeConstants.IsoTimeFormat}`;
     return moment(dateTime, adjustedTime, true).isValid();
   }
 
-  static toDateString(date?: Date | undefined, dateFormat: string = CommonConstants.IsoDateFormat): string | undefined {
+  static toDateString(date?: Date | undefined, dateFormat: string = DateTimeConstants.IsoDateFormat): string | undefined {
     if (!date) {
       return undefined;
     }
@@ -113,7 +116,7 @@ export default class DateTimeFormatter {
     return moment(date).format(DateTimeFormatter.getAdjustedDateFormat(dateFormat));
   }
 
-  static toDateTimeString(date?: Date, dateFormat: string = CommonConstants.IsoTimestamp): string | undefined {
+  static toDateTimeString(date?: Date, dateFormat: string = DateTimeConstants.IsoTimestamp): string | undefined {
     if (!date) {
       return undefined;
     }
@@ -121,7 +124,7 @@ export default class DateTimeFormatter {
     return moment(date).format(DateTimeFormatter.getAdjustedDateFormat(dateFormat));
   }
 
-  static toTimeString(date?: Date | number, timeFormat: string = CommonConstants.IsoTimeFormat): string | undefined {
+  static toTimeString(date?: Date | number, timeFormat: string = DateTimeConstants.IsoTimeFormat): string | undefined {
     if (!date) {
       return undefined;
     }

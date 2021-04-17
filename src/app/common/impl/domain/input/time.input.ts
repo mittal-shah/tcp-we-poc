@@ -1,11 +1,10 @@
 import {EditableTimeInputModel, InputSuffixIcon} from '../../../../declarations/editable-input';
 import AbstractEditableInput from './abstract-editable.input';
 import AppConfigImpl from '../../config/app.config.impl';
-import CommonConstants from '../../../constant/common.constant';
-import DateTimeFormatter from '../../../formatter/date-time.formatter';
+import DateTimeFormatter, {DateTimeConstants} from '../../../formatter/date-time.formatter';
 
 export default class TimeInput extends AbstractEditableInput implements EditableTimeInputModel {
-  StrFormat: string = CommonConstants.IsoTimeFormat;
+  StrFormat: string = DateTimeConstants.IsoTimeFormat;
 
   TimMaxValue?: string | undefined = '';
 

@@ -4,11 +4,6 @@ import SelectItemImpl from '../common/impl/domain/select-item.impl';
 
 type AnyType = any;
 
-export interface HourMin {
-  intHour: number;
-  intMin: number;
-}
-
 interface ListItemContext {
   listItems: SelectItemImpl[];
   selectedItems?: SelectItemImpl[];

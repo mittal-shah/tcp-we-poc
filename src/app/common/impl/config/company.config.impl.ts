@@ -1,12 +1,11 @@
-import {ClockResourceModel, CompanyConfig, ManagerStartInConfig} from '../../../declarations/global';
+import {CompanyConfig, ManagerStartInConfig} from '../../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 import BadgeSearchOrderConfigImpl from './badge-search-order.config.impl';
 import DateTimeFormatConfigImpl from './date-time-format.config.impl';
 import ApprovalStatusConfigImpl from './approval-status.config.impl';
 import DatePeriodImpl from '../domain/date-period.impl';
 import AppConfigImpl from './app.config.impl';
-import CommonConstants from '../../constant/common.constant';
-import DateTimeFormatter from '../../formatter/date-time.formatter';
+import DateTimeFormatter, {DateTimeConstants} from '../../formatter/date-time.formatter';
 import ClockResourceImpl from '../domain/clock-resource.impl';
 
 export default class CompanyConfigImpl extends AbstractImpl implements CompanyConfig {
@@ -311,7 +310,7 @@ export default class CompanyConfigImpl extends AbstractImpl implements CompanyCo
 
   getPartialDateFormat() {
     if (!this.StrMonthDayFormat) {
-      return CommonConstants.IsoDateFormat;
+      return DateTimeConstants.IsoDateFormat;
     }
 
     return DateTimeFormatter.getAdjustedDateFormat(this.StrMonthDayFormat);
@@ -319,7 +318,7 @@ export default class CompanyConfigImpl extends AbstractImpl implements CompanyCo
 
   getDateFormat() {
     if (!this.ObjDateTimeFormatConfig) {
-      return CommonConstants.IsoDateFormat;
+      return DateTimeConstants.IsoDateFormat;
     }
 
     return this.ObjDateTimeFormatConfig.getDateFormat();
@@ -327,7 +326,7 @@ export default class CompanyConfigImpl extends AbstractImpl implements CompanyCo
 
   getTimeFormat() {
     if (!this.ObjDateTimeFormatConfig) {
-      return CommonConstants.IsoTimeFormat;
+      return DateTimeConstants.IsoTimeFormat;
     }
 
     return this.ObjDateTimeFormatConfig.getTimeFormat();

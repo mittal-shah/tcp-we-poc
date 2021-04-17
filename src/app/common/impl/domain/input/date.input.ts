@@ -1,16 +1,15 @@
 import {EditableDateInputModel, InputSuffixIcon} from '../../../../declarations/editable-input';
 import AbstractEditableInput from './abstract-editable.input';
 import AppConfigImpl from '../../config/app.config.impl';
-import CommonConstants from '../../../constant/common.constant';
-import DateTimeFormatter from '../../../formatter/date-time.formatter';
+import DateTimeFormatter, {DateTimeConstants} from '../../../formatter/date-time.formatter';
 import Util from '../../../../util/util';
 
 export default class DateInput extends AbstractEditableInput implements EditableDateInputModel {
   IsPartial = false;
 
-  StrFormat: string = CommonConstants.IsoDateFormat;
+  StrFormat: string = DateTimeConstants.IsoDateFormat;
 
-  StrMonthDayFormat: string = CommonConstants.IsoDateFormat;
+  StrMonthDayFormat: string = DateTimeConstants.IsoDateFormat;
 
   DatDate?: string | undefined = '';
 

@@ -22,7 +22,7 @@ export abstract class AbstractService {
     return this.http.get<T>(`${this.getApiPrefix()}${url}`, this.httpOptions)
       .pipe(
         tap(_ => this.log(url)),
-        catchError(this.handleError<T>(url, undefined))
+        catchError(this.handleHttpError<T>(url, undefined))
       );
   }
 
@@ -32,7 +32,7 @@ export abstract class AbstractService {
     return this.http.post<T>(`${this.getApiPrefix()}${url}`, adjustedData, this.httpOptions)
       .pipe(
         tap(_ => this.log(url)),
-        catchError(this.handleError<T>(url, undefined))
+        catchError(this.handleHttpError<T>(url, undefined))
       );
   }
 
@@ -50,7 +50,7 @@ export abstract class AbstractService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  protected handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
+  protected handleHttpError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

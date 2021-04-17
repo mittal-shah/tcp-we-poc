@@ -136,6 +136,16 @@ export default class LogOnDataImpl extends AbstractImpl implements LogOnData {
 
     delete data.ArrCompanies;
 
+    if (this.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin &&
+      !this.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin?.StrValue) {
+      this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePin.StrValue = undefined;
+    }
+
+    if (this.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePassword &&
+      !this.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePassword?.StrValue) {
+      this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePassword.StrValue = undefined;
+    }
+
     return data;
   }
 }
