@@ -1,6 +1,6 @@
-import {ClockResourceModel, EmployeeLogOnConfig, LogOnConfig} from '../../declarations/global';
-import WebClockMenuCommandConfigImpl from '../../common/impl/config/web-clock-menu-command.config.impl';
-import AbstractImpl from '../../common/impl/abstract.impl';
+import {ClockResourceModel, EmployeeLogOnConfig, LogOnConfig} from '../../../declarations/global';
+import WebClockMenuCommandConfigImpl from '../../../common/impl/config/web-clock-menu-command.config.impl';
+import AbstractImpl from '../../../common/impl/abstract.impl';
 
 export default class LogOnConfigImpl extends AbstractImpl implements LogOnConfig {
   ArrCompanyNamespaces?: string[] | undefined = [];

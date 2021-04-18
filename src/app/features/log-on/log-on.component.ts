@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {LogOnService} from './log-on.service';
 import {MatSelectChange} from '@angular/material/select';
-import {EmployeeLogOnContext} from '../declarations/global';
-import {GlobalConstant} from '../common/constant/global.constant';
-import AppConfigImpl from '../common/impl/config/app.config.impl';
-import CompanyConfigImpl from '../common/impl/config/company.config.impl';
+import {EmployeeLogOnContext} from '../../declarations/global';
+import {GlobalConstant} from '../../common/constant/global.constant';
+import AppConfigImpl from '../../common/impl/config/app.config.impl';
+import CompanyConfigImpl from '../../common/impl/config/company.config.impl';
 import EmployeeLogOnConfigImpl from './config/employee-log-on.config.impl';
 import LogOnDataImpl from './data/log-on-data.impl';
 
@@ -44,7 +44,7 @@ export class LogOnComponent implements OnInit {
     }
 
     this.service.authenticate(this.data)
-      .subscribe((sessionId: string) => this.handleAuthentication(sessionId));
+      .subscribe((sessionId) => this.handleAuthentication(sessionId));
   }
 
   private handleAppConfig(appConfig: AppConfigImpl) {
@@ -52,7 +52,7 @@ export class LogOnComponent implements OnInit {
     GlobalConstant.appConfig = this.appConfig;
   }
 
-  private handleAuthentication(sessionId: string) {
+  private handleAuthentication(sessionId: string | undefined) {
     GlobalConstant.sessionId = sessionId;
     console.log(GlobalConstant.sessionId);
   }

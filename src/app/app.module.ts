@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {LogOnComponent} from './log-on/log-on.component';
+import {LogOnComponent} from './features/log-on/log-on.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -12,11 +12,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {FormsModule} from '@angular/forms';
+import { AlertDialogComponent } from './component/alert-dialog/alert-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogOnComponent
+    LogOnComponent,
+    AlertDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import {FormsModule} from '@angular/forms';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

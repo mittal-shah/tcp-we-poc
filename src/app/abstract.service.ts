@@ -1,106 +1,52 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-
-import {Observable, ObservableInput, of} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 import Util from './util/util';
-import AbstractImpl from './common/impl/abstract.impl';
-import {AnyType} from './declarations/types';
+import {MatDialog} from '@angular/material/dialog';
+import PostDataHandler from './handler/post-data.handler';
+import ExceptionHandler from './handler/exception.handler';
 
 @Injectable({providedIn: 'root'})
 export abstract class AbstractService {
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({'Content-Type': 'application/json'}),
+    observe: 'response' as const
   };
 
+  private exceptionHandler: ExceptionHandler;
+
   protected constructor(
-    private http: HttpClient) {
+    private http: HttpClient, private dialog: MatDialog) {
+    this.exceptionHandler = new ExceptionHandler(dialog);
   }
 
   // tslint:disable-next-line:no-shadowed-variable
-  protected get<T>(url: string): Observable<Observable<T> extends ObservableInput<infer T> ? T : never | T> {
+  protected get<T>(url: string) {
     return this.http.get<T>(`${this.getApiPrefix()}${url}`, this.httpOptions)
       .pipe(
+        map((response) => this.exceptionHandler.handleExceptionIfAny<T>(response)),
         tap(_ => this.log(url)),
-        catchError(this.handleHttpError<T>(url, undefined))
+        catchError(this.exceptionHandler.handleHttpError<T>(url, undefined))
       );
   }
 
   // tslint:disable-next-line:no-shadowed-variable
-  protected post<T>(url: string, data: any): Observable<Observable<T> extends ObservableInput<infer T> ? T : never | T> {
-    const adjustedData = this.getAdjustedData(data);
+  protected post<T>(url: string, data: any) {
+    const adjustedData = PostDataHandler.getAdjustedData(data);
     return this.http.post<T>(`${this.getApiPrefix()}${url}`, adjustedData, this.httpOptions)
       .pipe(
+        map((response) => this.exceptionHandler.handleExceptionIfAny<T>(response)),
         tap(_ => this.log(url)),
-        catchError(this.handleHttpError<T>(url, undefined))
+        catchError(this.exceptionHandler.handleHttpError<T>(url, undefined))
       );
   }
 
-  protected getAppPrefix(): string {
-    return Util.getAppPrefix();
+  private getApiPrefix(): string {
+    return Util.getAppPrefix() + '/api/v0000';
   }
 
-  protected getApiPrefix(): string {
-    return this.getAppPrefix() + '/api/v0000';
-  }
-
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  protected handleHttpError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-  /** Log a HeroService message with the MessageService */
-  protected log(message: string): void {
+  private log(message: string): void {
+    // TODO: MSS - Integrate with LoggerService
     console.log(message);
-  }
-
-  private getAdjustedData(data: AnyType) {
-    // guard-clause
-    if (!data || typeof data === 'string') {
-      return data;
-    }
-
-    if ('createSubmissionData' in data) {
-      data = data.createSubmissionData();
-    }
-
-    if (Array.isArray(data)) {
-      data.forEach((item, index) => {
-        if (item instanceof AbstractImpl) {
-          data[index] = this.getAdjustedData(item);
-        }
-      });
-    }
-
-    Object.keys(data).forEach((key) => {
-      if (data[key] instanceof AbstractImpl) {
-        data[key] = this.getAdjustedData(data[key]);
-      }
-
-      if (Array.isArray(data[key])) {
-        data[key].forEach((item: any, itemIndex: string | number) => {
-          if (item instanceof AbstractImpl) {
-            data[key][itemIndex] = this.getAdjustedData(item);
-          }
-        });
-      }
-    });
-
-    return data;
   }
 }

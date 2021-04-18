@@ -1,28 +1,26 @@
 import {Injectable} from '@angular/core';
-import {AbstractService} from '../abstract.service';
-import Util from '../util/util';
-import {AppConfig, EmployeeLogOnContext, LogOnData} from '../declarations/global';
+import {AbstractService} from '../../abstract.service';
+import Util from '../../util/util';
+import {AppConfig, EmployeeLogOnContext, LogOnData} from '../../declarations/global';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import AppConfigImpl from '../common/impl/config/app.config.impl';
-import AbstractImpl from '../common/impl/abstract.impl';
+import AppConfigImpl from '../../common/impl/config/app.config.impl';
+import AbstractImpl from '../../common/impl/abstract.impl';
 import EmployeeLogOnConfigImpl from './config/employee-log-on.config.impl';
-import CompanyConfigImpl from '../common/impl/config/company.config.impl';
+import CompanyConfigImpl from '../../common/impl/config/company.config.impl';
 import LogOnDataImpl from './data/log-on-data.impl';
-import CommonConstants from '../common/constant/common.constant';
+import CommonConstants from '../../common/constant/common.constant';
 
 @Injectable({providedIn: 'root'})
 export class LogOnService extends AbstractService {
-  authenticate(data: LogOnData): Observable<string> {
+  authenticate(data: LogOnData) {
     const url = '/employeeSessions/0/ApplicationLogOn';
-    return this.post<string>(url, data);
+    return this.post<string>(url, data).pipe(map((result) => result));
   }
 
   getAppConfig(): Observable<AppConfigImpl> {
     const url = '/appConfig/0/WebClock';
-    return this.get<AppConfig>(url).pipe(map((result: any) => {
-      return AbstractImpl.fromJSON(result, AppConfigImpl);
-    }));
+    return this.get<AppConfig>(url).pipe(map((result) => AbstractImpl.fromJSON(result, AppConfigImpl)));
   }
 
   getInfo(): Observable<EmployeeLogOnContext> {

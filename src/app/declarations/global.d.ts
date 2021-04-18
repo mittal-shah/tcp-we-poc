@@ -8,8 +8,8 @@
 // ReSharper disable InconsistentNaming
 
 import CompanyConfigImpl from '../common/impl/config/company.config.impl';
-import EmployeeLogOnConfigImpl from '../log-on/config/employee-log-on.config.impl';
-import LogOnDataImpl from '../log-on/data/log-on-data.impl';
+import EmployeeLogOnConfigImpl from '../features/log-on/config/employee-log-on.config.impl';
+import LogOnDataImpl from '../features/log-on/data/log-on-data.impl';
 
 export interface AbstractPresentationBase {}
 
