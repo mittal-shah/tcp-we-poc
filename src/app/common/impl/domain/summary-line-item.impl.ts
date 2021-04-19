@@ -1,4 +1,4 @@
-import {SummaryLineItemModel} from '../../../declarations/global';
+import {SummaryLineItemModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class SummaryLineItemImpl extends AbstractImpl implements SummaryLineItemModel {

@@ -1,4 +1,4 @@
-import {CoveredEmployeeModel} from '../../../declarations/global';
+import {CoveredEmployeeModel} from '../../declarations/global';
 import SelectItemImpl from './select-item.impl';
 
 export default class CoveredEmployeeImpl extends SelectItemImpl implements CoveredEmployeeModel {

@@ -1,5 +1,5 @@
 import AlertOption from '../domain/alert-option';
-import Util from '../../../util/util';
+import Util from '../../util/util';
 
 export default class AlertContext {
   public isCancelable = true;

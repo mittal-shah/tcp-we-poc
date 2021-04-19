@@ -1,4 +1,4 @@
-import {ExceptionOptionModel} from '../../../declarations/global';
+import {ExceptionOptionModel} from '../../declarations/global';
 import BooleanInputImpl from './input/boolean.input.impl';
 import AbstractImpl from '../abstract.impl';
 import HourMinuteInput from './input/hour-minute.input';

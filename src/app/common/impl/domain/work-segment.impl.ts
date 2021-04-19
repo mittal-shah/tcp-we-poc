@@ -1,4 +1,4 @@
-import {WorkSegmentModel} from '../../../declarations/global';
+import {WorkSegmentModel} from '../../declarations/global';
 import IntStringItemImpl from './int-string-item.impl';
 import ContractVarianceImpl from './contract-variance.impl';
 import AbstractImpl from '../abstract.impl';

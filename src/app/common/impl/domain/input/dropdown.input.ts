@@ -1,14 +1,14 @@
-import {EditableTextInputModel, InputSuffixIcon} from '../../../../declarations/editable-input';
+import {EditableTextInputModel, InputSuffixIcon} from '../../../declarations/editable-input';
 import AppConfigImpl from '../../config/app.config.impl';
 import IntStringItemImpl from '../int-string-item.impl';
 import CommonConstants from '../../../constant/common.constant';
 import AbstractEditableInput from './abstract-editable.input';
 import LongStringItemImpl from '../long-string-item.impl';
-import {ListItemContext} from '../../../../declarations/types';
+import {ListItemContext} from '../../../declarations/types';
 import SelectItemImpl from '../select-item.impl';
 import CustomFieldControlImpl from './custom-field-control.impl';
 import CoveredEmployeeImpl from '../covered-employee.impl';
-import Util from '../../../../util/util';
+import Util from '../../../util/util';
 
 export default class DropdownInput extends AbstractEditableInput implements EditableTextInputModel {
   BlnAllowNoneSelection?: boolean | undefined = true;

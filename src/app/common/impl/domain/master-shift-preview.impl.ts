@@ -1,4 +1,4 @@
-import {MasterShiftPreviewModel} from '../../../declarations/global';
+import {MasterShiftPreviewModel} from '../../declarations/global';
 import LegendItemImpl from './legend-item.impl';
 import AbstractImpl from '../abstract.impl';
 

@@ -1,5 +1,5 @@
 import FilterDataImpl from '../data/filter.data.impl';
-import {LaborStandardAssignmentContext} from '../../../declarations/global';
+import {LaborStandardAssignmentContext} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 import LaborStandardAssignmentImpl from '../domain/labor-standard-assignment.impl';
 

@@ -1,10 +1,10 @@
-import AbstractImpl from '../../../common/impl/abstract.impl';
-import CustomFieldControlImpl from '../../../common/impl/domain/input/custom-field-control.impl';
-import {LogOnData} from '../../../declarations/global';
+import AbstractImpl from '../../../../common/impl/abstract.impl';
+import CustomFieldControlImpl from '../../../../common/impl/domain/input/custom-field-control.impl';
+import {LogOnData} from '../../../../common/declarations/global';
 import CompanySelectItemImpl from '../domain/company-select.item.impl';
-import Util from '../../../util/util';
-import DeviceInfoImpl from '../../../common/impl/domain/device-info.impl';
-import VersionInfoImpl from '../../../common/impl/domain/version-info.impl';
+import Util from '../../../../common/util/util';
+import DeviceInfoImpl from '../../../../common/impl/domain/device-info.impl';
+import VersionInfoImpl from '../../../../common/impl/domain/version-info.impl';
 
 export default class LogOnDataImpl extends AbstractImpl implements LogOnData {
   ArrCompanies?: CompanySelectItemImpl[] | undefined = [];

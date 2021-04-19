@@ -1,5 +1,5 @@
 import MenuItemImpl from './menu-item.impl';
-import {MenuModel} from '../../../declarations/global';
+import {MenuModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class MenuImpl extends AbstractImpl implements MenuModel {

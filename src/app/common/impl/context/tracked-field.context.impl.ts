@@ -1,5 +1,5 @@
 import BooleanInputImpl from '../domain/input/boolean.input.impl';
-import {TrackedFieldContext} from '../../../declarations/global';
+import {TrackedFieldContext} from '../../declarations/global';
 import DecimalInput from '../domain/input/decimal.input';
 import TextInput from '../domain/input/text.input';
 import AbstractImpl from '../abstract.impl';

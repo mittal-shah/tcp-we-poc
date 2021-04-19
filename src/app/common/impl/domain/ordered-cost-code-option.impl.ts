@@ -1,4 +1,4 @@
-import {OrderedCostCodeOptionModel} from '../../../declarations/global';
+import {OrderedCostCodeOptionModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class OrderedCostCodeOptionImpl extends AbstractImpl implements OrderedCostCodeOptionModel {

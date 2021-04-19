@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import Util from '../../util/util';
+import Util from '../util/util';
 
 export interface HourMin {
   intHour: number;

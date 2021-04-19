@@ -1,7 +1,7 @@
 import FilterDataImpl from '../data/filter.data.impl';
 import ExceptionItemImpl from '../domain/exception-item.impl';
 import AbstractImpl from '../abstract.impl';
-import {ExceptionListContext} from '../../../declarations/global';
+import {ExceptionListContext} from '../../declarations/global';
 
 export default class ExceptionListContextImpl extends AbstractImpl implements ExceptionListContext {
   ArrExceptions?: ExceptionItemImpl[] | undefined = [];

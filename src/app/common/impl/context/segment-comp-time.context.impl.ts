@@ -1,7 +1,7 @@
 import IntStringItemImpl from '../domain/int-string-item.impl';
 import AbstractImpl from '../abstract.impl';
-import {SegmentCompTimeContext} from '../../../declarations/global';
-import Util from '../../../util/util';
+import {SegmentCompTimeContext} from '../../declarations/global';
+import Util from '../../util/util';
 
 export default class SegmentCompTimeContextImpl extends AbstractImpl implements SegmentCompTimeContext {
   BlnCanEdit?: boolean | undefined = false;

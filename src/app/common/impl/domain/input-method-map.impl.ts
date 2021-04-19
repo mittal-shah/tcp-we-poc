@@ -1,4 +1,4 @@
-import {InputMethodMapModel} from '../../../declarations/global';
+import {InputMethodMapModel} from '../../declarations/global';
 
 export default class InputMethodMapImpl implements InputMethodMapModel {
   IntComboEdit?: number | undefined = 0;

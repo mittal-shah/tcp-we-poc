@@ -4,11 +4,11 @@ import {
   EditableInputModel,
   InputSuffixIcon,
   KeyboardTypeOptions
-} from '../../../../declarations/editable-input';
+} from '../../../declarations/editable-input';
 import AppConfigImpl from '../../config/app.config.impl';
 import AbstractImpl from '../../abstract.impl';
-import {AnyType} from '../../../../declarations/types';
-import Util from '../../../../util/util';
+import {AnyType} from '../../../declarations/types';
+import Util from '../../../util/util';
 
 export default abstract class AbstractEditableInput extends AbstractImpl implements EditableInputModel {
   DefaultNumberOfLines = 1;

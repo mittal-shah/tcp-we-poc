@@ -1,4 +1,4 @@
-import {EditTimesheetSegmentConfig} from '../../../declarations/global';
+import {EditTimesheetSegmentConfig} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 import EditSegmentConfigImpl from './edit-segment.config.impl';
 

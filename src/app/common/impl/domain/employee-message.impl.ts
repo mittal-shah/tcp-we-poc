@@ -1,4 +1,4 @@
-import {EmployeeMessageModel} from '../../../declarations/global';
+import {EmployeeMessageModel} from '../../declarations/global';
 import BooleanInputImpl from './input/boolean.input.impl';
 import AbstractImpl from '../abstract.impl';
 

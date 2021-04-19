@@ -1,4 +1,4 @@
-import {WebClockMenuCommandConfig} from '../../../declarations/global';
+import {WebClockMenuCommandConfig} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class WebClockMenuCommandConfigImpl extends AbstractImpl implements WebClockMenuCommandConfig {

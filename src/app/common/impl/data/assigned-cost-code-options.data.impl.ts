@@ -1,5 +1,5 @@
 import FilterDataImpl from './filter.data.impl';
-import {AssignedCostCodeOptionsData} from '../../../declarations/global';
+import {AssignedCostCodeOptionsData} from '../../declarations/global';
 import OrderedCostCodeOptionImpl from '../domain/ordered-cost-code-option.impl';
 import AbstractImpl from '../abstract.impl';
 

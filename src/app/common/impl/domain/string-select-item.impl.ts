@@ -1,6 +1,6 @@
-import {StringSelectItemModel} from '../../../declarations/global';
+import {StringSelectItemModel} from '../../declarations/global';
 import SelectItemImpl from './select-item.impl';
-import Util from '../../../util/util';
+import Util from '../../util/util';
 
 export default class StringSelectItemImpl extends SelectItemImpl implements StringSelectItemModel {
   StrText?: string | undefined = '';

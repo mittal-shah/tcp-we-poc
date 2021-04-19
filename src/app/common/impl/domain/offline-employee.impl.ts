@@ -1,5 +1,5 @@
 import LongStringItemImpl from './long-string-item.impl';
-import {OfflineEmployeeJobCodeModel, OfflineEmployeeModel} from '../../../declarations/global';
+import {OfflineEmployeeJobCodeModel, OfflineEmployeeModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class OfflineEmployeeImpl extends AbstractImpl implements OfflineEmployeeModel {

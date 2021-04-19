@@ -1,4 +1,4 @@
-import {ContractVarianceModel} from '../../../declarations/global';
+import {ContractVarianceModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class ContractVarianceImpl extends AbstractImpl implements ContractVarianceModel {

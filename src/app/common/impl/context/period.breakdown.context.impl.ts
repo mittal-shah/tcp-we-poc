@@ -1,4 +1,4 @@
-import {PeriodBreakdownContext} from '../../../declarations/global';
+import {PeriodBreakdownContext} from '../../declarations/global';
 import PeriodSummaryImpl from '../domain/period-summary.impl';
 import AbstractImpl from '../abstract.impl';
 

@@ -1,6 +1,6 @@
 import FilterDataImpl from './filter.data.impl';
 import EmployeeMessageImpl from '../domain/employee-message.impl';
-import {ViewMessagesData} from '../../../declarations/global';
+import {ViewMessagesData} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class ViewMessagesDataImpl extends AbstractImpl implements ViewMessagesData {

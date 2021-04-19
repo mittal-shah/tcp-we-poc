@@ -1,12 +1,12 @@
 import {HttpResponse} from '@angular/common/http';
 import {MatDialog} from '@angular/material/dialog';
-import AbstractImpl from '../common/impl/abstract.impl';
-import PresentationExceptionImpl from '../common/impl/domain/presentation-exception.impl';
+import AbstractImpl from '../impl/abstract.impl';
+import PresentationExceptionImpl from '../impl/domain/presentation-exception.impl';
 import {AlertDialogComponent} from '../component/alert-dialog/alert-dialog.component';
-import AlertOption from '../common/ui-impl/domain/alert-option';
-import AlertContext from '../common/ui-impl/context/alert.context';
+import AlertOption from '../ui-impl/domain/alert-option';
+import AlertContext from '../ui-impl/context/alert.context';
 import {Observable, of} from 'rxjs';
-import ExceptionType from '../common/constant/exception-type.constant';
+import ExceptionType from '../constant/exception-type.constant';
 
 export default class ExceptionHandler {
   constructor(private dialog: MatDialog) {

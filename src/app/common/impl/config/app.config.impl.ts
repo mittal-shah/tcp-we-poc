@@ -1,6 +1,6 @@
-import {AppConfig, WebSocketMessageConfig} from '../../../declarations/global';
+import {AppConfig, WebSocketMessageConfig} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
-import Util from '../../../util/util';
+import Util from '../../util/util';
 import KeyTextItemImpl from '../domain/key-text-item.impl';
 import DataTypeMapImpl from '../domain/data-type-map.impl';
 import MenuImpl from '../domain/menu.impl';

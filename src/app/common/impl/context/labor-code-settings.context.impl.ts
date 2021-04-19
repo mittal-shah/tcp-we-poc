@@ -1,6 +1,6 @@
 import BooleanInputImpl from '../domain/input/boolean.input.impl';
 import IntStringItemImpl from '../domain/int-string-item.impl';
-import {LaborCodeSettingsContext} from '../../../declarations/global';
+import {LaborCodeSettingsContext} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class LaborCodeSettingsContextImpl extends AbstractImpl implements LaborCodeSettingsContext {

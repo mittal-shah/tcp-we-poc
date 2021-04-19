@@ -1,5 +1,5 @@
 import ExceptionType from '../../constant/exception-type.constant';
-import {PresentationExceptionModel} from '../../../declarations/global';
+import {PresentationExceptionModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class PresentationExceptionImpl extends AbstractImpl implements PresentationExceptionModel {

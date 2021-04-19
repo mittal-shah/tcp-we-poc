@@ -1,4 +1,4 @@
-import {CompanyLocationPreviewModel} from '../../../declarations/global';
+import {CompanyLocationPreviewModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 import GeopositionImpl from './geoposition.impl';
 

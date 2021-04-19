@@ -1,4 +1,4 @@
-import {DateTimeFormatConfig} from '../../../declarations/global';
+import {DateTimeFormatConfig} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 import DateTimeFormatter from '../../formatter/date-time.formatter';
 

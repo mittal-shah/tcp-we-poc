@@ -1,4 +1,4 @@
-import {WorkTimesheetSegmentModel} from '../../../declarations/global';
+import {WorkTimesheetSegmentModel} from '../../declarations/global';
 import LegendItemImpl from './legend-item.impl';
 import TextInput from './input/text.input';
 import AbstractImpl from '../abstract.impl';

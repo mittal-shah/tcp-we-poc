@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
-import Util from './util/util';
+import Util from '../util/util';
 import {MatDialog} from '@angular/material/dialog';
-import PostDataHandler from './handler/post-data.handler';
-import ExceptionHandler from './handler/exception.handler';
+import PostDataHandler from '../handler/post-data.handler';
+import ExceptionHandler from '../handler/exception.handler';
 
 @Injectable({providedIn: 'root'})
 export abstract class AbstractService {

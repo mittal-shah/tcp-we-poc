@@ -1,4 +1,4 @@
-import {CompanyConfig, ManagerStartInConfig} from '../../../declarations/global';
+import {CompanyConfig, ManagerStartInConfig} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 import BadgeSearchOrderConfigImpl from './badge-search-order.config.impl';
 import DateTimeFormatConfigImpl from './date-time-format.config.impl';

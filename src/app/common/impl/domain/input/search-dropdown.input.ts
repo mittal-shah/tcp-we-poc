@@ -1,5 +1,5 @@
 import FilterDataImpl from '../../data/filter.data.impl';
-import {InputSuffixIcon} from '../../../../declarations/editable-input';
+import {InputSuffixIcon} from '../../../declarations/editable-input';
 import DropdownInput from './dropdown.input';
 
 export default class SearchDropdownInput extends DropdownInput {

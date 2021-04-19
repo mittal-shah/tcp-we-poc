@@ -1,4 +1,4 @@
-import {CustomFieldSectionModel, SelectItemModel} from '../../../declarations/global';
+import {CustomFieldSectionModel, SelectItemModel} from '../../declarations/global';
 import SelectItemImpl from './select-item.impl';
 import CustomFieldControlImpl from './input/custom-field-control.impl';
 

@@ -1,4 +1,4 @@
-import {AnyType} from '../../../declarations/types';
+import {AnyType} from '../../declarations/types';
 
 export default class AlertOption {
   public isCancel = false;

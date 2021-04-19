@@ -1,7 +1,7 @@
 import AbstractEditableInput from './abstract-editable.input';
 import AppConfigImpl from '../../config/app.config.impl';
 import DecimalInput from './decimal.input';
-import {EditableTextInputModel} from '../../../../declarations/editable-input';
+import {EditableTextInputModel} from '../../../declarations/editable-input';
 
 export default class TextInput extends AbstractEditableInput implements EditableTextInputModel {
   BlnIsMaskedValue?: boolean | undefined = false;

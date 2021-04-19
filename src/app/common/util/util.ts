@@ -1,4 +1,4 @@
-import AbstractImpl from '../common/impl/abstract.impl';
+import AbstractImpl from '../impl/abstract.impl';
 import {AnyType} from '../declarations/types';
 
 export default class Util {
@@ -60,9 +60,9 @@ export default class Util {
     return /{(\d+)}/g.test(str);
   }
 
-  public static isNewLineOrTab = (str: string) => {
+  public static isNewLineOrTab(str: string) {
     return str === '\n' || str === '\t';
-  };
+  }
 
   public static isNullOrUndefined(value: AnyType) {
     return value === undefined || value === null;

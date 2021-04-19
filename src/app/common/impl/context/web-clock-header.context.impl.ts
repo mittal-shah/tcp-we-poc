@@ -1,6 +1,6 @@
 import WebClockHeaderConfigImpl from '../config/web-clock-header.config.impl';
 import CompanyConfigImpl from '../config/company.config.impl';
-import {WebClockHeaderContext} from '../../../declarations/global';
+import {WebClockHeaderContext} from '../../declarations/global';
 import WebClockHeaderDataImpl from '../data/web-clock-header.data.impl';
 import AbstractImpl from '../abstract.impl';
 

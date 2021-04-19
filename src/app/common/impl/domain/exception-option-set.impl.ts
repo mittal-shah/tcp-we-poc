@@ -1,5 +1,5 @@
 import ExceptionOptionContextImpl from '../context/exception-option.context.impl';
-import {ExceptionOptionSetModel} from '../../../declarations/global';
+import {ExceptionOptionSetModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class ExceptionOptionSetImpl extends AbstractImpl implements ExceptionOptionSetModel {

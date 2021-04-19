@@ -1,4 +1,4 @@
-import {FilterStatusModel} from '../../../declarations/global';
+import {FilterStatusModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class FilterStatusImpl extends AbstractImpl implements FilterStatusModel {

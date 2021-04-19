@@ -1,6 +1,6 @@
 import SelectItemImpl from './select-item.impl';
 import HeaderValueImpl from './header-value.impl';
-import {IntStringItemModel} from '../../../declarations/global';
+import {IntStringItemModel} from '../../declarations/global';
 
 export default class IntStringItemImpl extends SelectItemImpl implements IntStringItemModel {
   IntKey?: number | undefined = 0;

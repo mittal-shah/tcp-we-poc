@@ -1,4 +1,4 @@
-import {ApprovalStatusConfig} from '../../../declarations/global';
+import {ApprovalStatusConfig} from '../../declarations/global';
 import IntStringItemImpl from '../domain/int-string-item.impl';
 import AbstractImpl from '../abstract.impl';
 

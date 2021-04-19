@@ -1,4 +1,4 @@
-import {MenuItemModel} from '../../../declarations/global';
+import {MenuItemModel} from '../../declarations/global';
 import CommonConstants from '../../constant/common.constant';
 import AbstractImpl from '../abstract.impl';
 

@@ -1,4 +1,4 @@
-import {FilterData} from '../../../declarations/global';
+import {FilterData} from '../../declarations/global';
 import PagingDataImpl from './paging.data.impl';
 import AbstractImpl from '../abstract.impl';
 

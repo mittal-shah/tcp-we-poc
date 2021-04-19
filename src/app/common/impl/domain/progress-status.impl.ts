@@ -1,4 +1,4 @@
-import {ProgressStatusModel} from '../../../declarations/global';
+import {ProgressStatusModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class ProgressStatusImpl extends AbstractImpl implements ProgressStatusModel {

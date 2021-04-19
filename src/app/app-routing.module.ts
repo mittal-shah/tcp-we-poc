@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {LogOnComponent} from './features/log-on/log-on.component';
+import {LogOnComponent} from './webclock/features/log-on/log-on.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/logon', pathMatch: 'full'},

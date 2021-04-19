@@ -1,5 +1,5 @@
 import {AnyType} from '../declarations/types';
-import AbstractImpl from '../common/impl/abstract.impl';
+import AbstractImpl from '../impl/abstract.impl';
 
 export default class PostDataHandler {
   public static getAdjustedData(data: AnyType) {

@@ -1,4 +1,4 @@
-import {CostCodeModel, SelectItemModel} from '../../../declarations/global';
+import {CostCodeModel, SelectItemModel} from '../../declarations/global';
 import CustomFieldSectionImpl from './custom-field-section.impl';
 import LaborStandardAssignmentContextImpl from '../context/labor-standard-assignment.context.impl';
 import SelectItemImpl from './select-item.impl';

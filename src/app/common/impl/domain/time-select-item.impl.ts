@@ -1,4 +1,4 @@
-import {TimeSelectItemModel} from '../../../declarations/global';
+import {TimeSelectItemModel} from '../../declarations/global';
 import SelectItemImpl from './select-item.impl';
 
 export default class TimeSelectItemImpl extends SelectItemImpl implements TimeSelectItemModel {

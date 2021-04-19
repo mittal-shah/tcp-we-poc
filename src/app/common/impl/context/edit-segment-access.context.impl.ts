@@ -1,4 +1,4 @@
-import {EditSegmentAccessContext} from '../../../declarations/global';
+import {EditSegmentAccessContext} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class EditSegmentAccessContextImpl extends AbstractImpl implements EditSegmentAccessContext {

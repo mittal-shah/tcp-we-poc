@@ -1,8 +1,8 @@
 import AbstractEditableInput from './abstract-editable.input';
 import AppConfigImpl from '../../config/app.config.impl';
-import {EditableNumberInputModel, KeyboardTypeOptions} from '../../../../declarations/editable-input';
+import {EditableNumberInputModel, KeyboardTypeOptions} from '../../../declarations/editable-input';
 import RegExpValidator from '../../../constant/reg-exp-validators.constant';
-import Util from '../../../../util/util';
+import Util from '../../../util/util';
 
 export default class NumberInput extends AbstractEditableInput implements EditableNumberInputModel {
   BlnIsMaskedValue?: boolean | undefined = false;

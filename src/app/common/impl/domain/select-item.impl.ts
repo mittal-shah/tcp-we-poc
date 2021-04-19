@@ -1,7 +1,7 @@
-import {SelectItemModel} from '../../../declarations/global';
+import {SelectItemModel} from '../../declarations/global';
 import HeaderValueImpl from './header-value.impl';
 import AbstractImpl from '../abstract.impl';
-import {AnyType} from '../../../declarations/types';
+import {AnyType} from '../../declarations/types';
 
 export default class SelectItemImpl extends AbstractImpl implements SelectItemModel {
   BlnClearsSelection?: boolean | undefined;

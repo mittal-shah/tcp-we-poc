@@ -1,4 +1,4 @@
-import {VersionInfoModel} from '../../../declarations/global';
+import {VersionInfoModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class VersionInfoImpl extends AbstractImpl implements VersionInfoModel {

@@ -1,4 +1,4 @@
-import {EditableTimeInputModel, InputSuffixIcon} from '../../../../declarations/editable-input';
+import {EditableTimeInputModel, InputSuffixIcon} from '../../../declarations/editable-input';
 import AbstractEditableInput from './abstract-editable.input';
 import AppConfigImpl from '../../config/app.config.impl';
 import DateTimeFormatter, {DateTimeConstants} from '../../../formatter/date-time.formatter';

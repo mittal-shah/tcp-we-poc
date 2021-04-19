@@ -1,4 +1,4 @@
-import {SelectInputModel} from '../../../declarations/global';
+import {SelectInputModel} from '../../declarations/global';
 import StringSelectItemImpl from './string-select-item.impl';
 import SelectItemImpl from './select-item.impl';
 

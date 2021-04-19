@@ -1,5 +1,5 @@
 import AbstractImpl from '../abstract.impl';
-import {PagingData} from '../../../declarations/global';
+import {PagingData} from '../../declarations/global';
 
 export default class PagingDataImpl extends AbstractImpl implements PagingData {
   BlnDeselectAll?: boolean | undefined = false;

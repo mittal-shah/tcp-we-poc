@@ -1,4 +1,4 @@
-import {WorkDayModel} from '../../../declarations/global';
+import {WorkDayModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 import WorkTimesheetSegmentImpl from './work-timesheet-segment.impl';
 

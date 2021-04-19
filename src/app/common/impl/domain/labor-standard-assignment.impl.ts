@@ -1,4 +1,4 @@
-import {LaborStandardAssignmentModel} from '../../../declarations/global';
+import {LaborStandardAssignmentModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class LaborStandardAssignmentImpl extends AbstractImpl implements LaborStandardAssignmentModel {

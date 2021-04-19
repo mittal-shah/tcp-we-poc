@@ -1,5 +1,5 @@
 import AbstractImpl from '../abstract.impl';
-import {ExceptionItemModel} from '../../../declarations/global';
+import {ExceptionItemModel} from '../../declarations/global';
 
 export default class ExceptionItemImpl extends AbstractImpl implements ExceptionItemModel {
   IntType?: number | undefined = undefined;

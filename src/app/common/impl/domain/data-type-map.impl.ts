@@ -1,4 +1,4 @@
-import {DataTypeMapModel} from '../../../declarations/global';
+import {DataTypeMapModel} from '../../declarations/global';
 
 export default class DataTypeMapImpl implements DataTypeMapModel {
   IntAllowedCharacters?: number | undefined = 0;

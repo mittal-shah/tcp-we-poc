@@ -1,5 +1,5 @@
 import BooleanInputImpl from '../domain/input/boolean.input.impl';
-import {UnscheduledWorkExceptionContext} from '../../../declarations/global';
+import {UnscheduledWorkExceptionContext} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class UnscheduledWorkExceptionContextImpl

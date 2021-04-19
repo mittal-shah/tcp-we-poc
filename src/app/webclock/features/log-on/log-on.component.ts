@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {LogOnService} from './log-on.service';
 import {MatSelectChange} from '@angular/material/select';
-import {EmployeeLogOnContext} from '../../declarations/global';
-import {GlobalConstant} from '../../common/constant/global.constant';
-import AppConfigImpl from '../../common/impl/config/app.config.impl';
-import CompanyConfigImpl from '../../common/impl/config/company.config.impl';
+import {EmployeeLogOnContext} from '../../../common/declarations/global';
+import {GlobalConstant} from '../../../common/constant/global.constant';
+import AppConfigImpl from '../../../common/impl/config/app.config.impl';
+import CompanyConfigImpl from '../../../common/impl/config/company.config.impl';
 import EmployeeLogOnConfigImpl from './config/employee-log-on.config.impl';
 import LogOnDataImpl from './data/log-on-data.impl';
 

@@ -1,5 +1,5 @@
 import AbstractImpl from '../abstract.impl';
-import {EditSegmentConfig} from '../../../declarations/global';
+import {EditSegmentConfig} from '../../declarations/global';
 
 export default class EditSegmentConfigImpl extends AbstractImpl implements EditSegmentConfig {
   BlnCanEnableRate?: boolean | undefined = false;

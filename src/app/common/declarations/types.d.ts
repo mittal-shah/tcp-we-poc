@@ -1,5 +1,5 @@
-import AppConfigImpl from '../common/impl/config/app.config.impl';
-import SelectItemImpl from '../common/impl/domain/select-item.impl';
+import AppConfigImpl from '../impl/config/app.config.impl';
+import SelectItemImpl from '../impl/domain/select-item.impl';
 
 type AnyType = any;
 

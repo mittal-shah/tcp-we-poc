@@ -1,7 +1,7 @@
 import AbstractEditableInput from './abstract-editable.input';
 import AppConfigImpl from '../../config/app.config.impl';
 import DateTimeFormatter from '../../../formatter/date-time.formatter';
-import {EditableHourMinuteInputModel} from '../../../../declarations/editable-input';
+import {EditableHourMinuteInputModel} from '../../../declarations/editable-input';
 
 export default class HourMinuteInput extends AbstractEditableInput implements EditableHourMinuteInputModel {
   HrmValue?: string | undefined = '';

@@ -3,7 +3,7 @@ import BooleanInputImpl from './input/boolean.input.impl';
 import IntStringItemImpl from './int-string-item.impl';
 import LongStringItemImpl from './long-string-item.impl';
 import SegmentCompTimeContextImpl from '../context/segment-comp-time.context.impl';
-import {SegmentModel} from '../../../declarations/global';
+import {SegmentModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 import DateTimeFormatter from '../../formatter/date-time.formatter';
 import TrackedFieldContextImpl from '../context/tracked-field.context.impl';

@@ -1,4 +1,4 @@
-import {KeyTextItemModel} from '../../../declarations/global';
+import {KeyTextItemModel} from '../../declarations/global';
 import SelectItemImpl from './select-item.impl';
 
 export default class KeyTextItemImpl extends SelectItemImpl implements KeyTextItemModel {

@@ -1,9 +1,9 @@
 import FilterDataImpl from './filter.data.impl';
-import {SelectEmployeesData} from '../../../declarations/global';
+import {SelectEmployeesData} from '../../declarations/global';
 import SelectItemImpl from '../domain/select-item.impl';
 import EmployeeImpl from '../domain/employee.impl';
 import AbstractImpl from '../abstract.impl';
-import Util from '../../../util/util';
+import Util from '../../util/util';
 
 export default class SelectEmployeesDataImpl extends AbstractImpl implements SelectEmployeesData {
   ArrEmployeeIds?: number[] | undefined = undefined;

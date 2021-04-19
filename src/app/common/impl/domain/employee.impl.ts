@@ -59,7 +59,7 @@ import {
   SplitByPercentageEmployeeContext,
   SubSearchPlusStatusContext,
   WeightedOvertimeContext
-} from '../../../declarations/global';
+} from '../../declarations/global';
 import ExceptionOptionSetImpl from './exception-option-set.impl';
 import TextInput from './input/text.input';
 import AbstractImpl from '../abstract.impl';

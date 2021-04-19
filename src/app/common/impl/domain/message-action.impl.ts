@@ -1,5 +1,5 @@
 import AbstractImpl from '../abstract.impl';
-import {MessageActionModel} from '../../../declarations/global';
+import {MessageActionModel} from '../../declarations/global';
 
 export default class MessageActionImpl extends AbstractImpl implements MessageActionModel {
   IntApplicationId?: number | undefined = 0;

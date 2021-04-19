@@ -1,5 +1,5 @@
-import {BadgeParseSpecModel} from '../../../declarations/global';
-import AbstractImpl from '../../../common/impl/abstract.impl';
+import {BadgeParseSpecModel} from '../../../../common/declarations/global';
+import AbstractImpl from '../../../../common/impl/abstract.impl';
 
 export default class BadgeParseSpecImpl extends AbstractImpl implements BadgeParseSpecModel {
   IntBadgeParseInformationType?: number | undefined = 0;

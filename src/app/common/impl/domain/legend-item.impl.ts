@@ -1,4 +1,4 @@
-import {LegendItemModel} from '../../../declarations/global';
+import {LegendItemModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class LegendItemImpl extends AbstractImpl implements LegendItemModel {

@@ -1,4 +1,4 @@
-import {AnyType} from '../../declarations/types';
+import {AnyType} from '../declarations/types';
 
 export default abstract class AbstractImpl {
   static create<T>(type: new() => T): T {

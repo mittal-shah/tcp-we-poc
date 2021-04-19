@@ -1,5 +1,5 @@
 import AbstractImpl from '../abstract.impl';
-import {WorkflowStepModel} from '../../../declarations/global';
+import {WorkflowStepModel} from '../../declarations/global';
 
 export default class WorkflowStepImpl extends AbstractImpl implements WorkflowStepModel {
   BlnCanCancel?: boolean | undefined = false;

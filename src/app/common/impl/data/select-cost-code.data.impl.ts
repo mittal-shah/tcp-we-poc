@@ -1,8 +1,8 @@
 import CostCodeInputImpl from '../domain/cost-code-input.impl';
 import FilterDataImpl from './filter.data.impl';
 import AbstractImpl from '../abstract.impl';
-import {SelectCostCodeData} from '../../../declarations/global';
-import Util from '../../../util/util';
+import {SelectCostCodeData} from '../../declarations/global';
+import Util from '../../util/util';
 
 export type CostCodeSearchDropdownContext = {
   ObjFilterData?: FilterDataImpl;

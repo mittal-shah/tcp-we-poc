@@ -1,4 +1,4 @@
-import {BadgeSearchOrderConfig} from '../../../declarations/global';
+import {BadgeSearchOrderConfig} from '../../declarations/global';
 import OfflineEmployeeImpl from '../domain/offline-employee.impl';
 import AbstractImpl from '../abstract.impl';
 

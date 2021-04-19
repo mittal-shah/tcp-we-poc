@@ -1,7 +1,7 @@
 import StringSelectItemImpl from './string-select-item.impl';
 import AbstractImpl from '../abstract.impl';
-import {StringSelectInputModel} from '../../../declarations/global';
-import Util from '../../../util/util';
+import {StringSelectInputModel} from '../../declarations/global';
+import Util from '../../util/util';
 
 export default class StringSelectInputImpl extends AbstractImpl implements StringSelectInputModel {
   ArrStringSelectItemOptions?: StringSelectItemImpl[] | undefined = [];

@@ -1,4 +1,4 @@
-import {WebClockHeaderConfig} from '../../../declarations/global';
+import {WebClockHeaderConfig} from '../../declarations/global';
 import WebClockMenuCommandConfigImpl from './web-clock-menu-command.config.impl';
 import AbstractImpl from '../abstract.impl';
 

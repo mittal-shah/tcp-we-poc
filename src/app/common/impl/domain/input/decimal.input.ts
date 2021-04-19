@@ -1,9 +1,9 @@
 import AbstractEditableInput from './abstract-editable.input';
 import AppConfigImpl from '../../config/app.config.impl';
-import {EditableDecimalInputModel, KeyboardTypeOptions} from '../../../../declarations/editable-input';
+import {EditableDecimalInputModel, KeyboardTypeOptions} from '../../../declarations/editable-input';
 import DateTimeFormatter from '../../../formatter/date-time.formatter';
 import RegExpValidator from '../../../constant/reg-exp-validators.constant';
-import Util from '../../../../util/util';
+import Util from '../../../util/util';
 
 export default class DecimalInput extends AbstractEditableInput implements EditableDecimalInputModel {
   BlnShouldSkipFixedFormatting?: boolean | undefined = false;

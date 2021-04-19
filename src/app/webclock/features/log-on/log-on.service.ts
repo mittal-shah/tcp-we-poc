@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
-import {AbstractService} from '../../abstract.service';
-import Util from '../../util/util';
-import {AppConfig, EmployeeLogOnContext, LogOnData} from '../../declarations/global';
+import {AbstractService} from '../../../common/service/abstract.service';
+import Util from '../../../common/util/util';
+import {AppConfig, EmployeeLogOnContext, LogOnData} from '../../../common/declarations/global';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import AppConfigImpl from '../../common/impl/config/app.config.impl';
-import AbstractImpl from '../../common/impl/abstract.impl';
+import AppConfigImpl from '../../../common/impl/config/app.config.impl';
+import AbstractImpl from '../../../common/impl/abstract.impl';
 import EmployeeLogOnConfigImpl from './config/employee-log-on.config.impl';
-import CompanyConfigImpl from '../../common/impl/config/company.config.impl';
+import CompanyConfigImpl from '../../../common/impl/config/company.config.impl';
 import LogOnDataImpl from './data/log-on-data.impl';
-import CommonConstants from '../../common/constant/common.constant';
+import CommonConstants from '../../../common/constant/common.constant';
 
 @Injectable({providedIn: 'root'})
 export class LogOnService extends AbstractService {

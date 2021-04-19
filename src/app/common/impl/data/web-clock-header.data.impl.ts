@@ -4,8 +4,8 @@ import MenuImpl from '../domain/menu.impl';
 import CompanyConfigImpl from '../config/company.config.impl';
 import AbstractImpl from '../abstract.impl';
 import DateTimeFormatter from '../../formatter/date-time.formatter';
-import {WebClockHeaderData} from '../../../declarations/global';
-import Util from '../../../util/util';
+import {WebClockHeaderData} from '../../declarations/global';
+import Util from '../../util/util';
 
 export default class WebClockHeaderDataImpl extends AbstractImpl implements WebClockHeaderData {
   BlnHasAttestations?: boolean | undefined = false;

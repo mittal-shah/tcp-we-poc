@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import AlertContext from '../../common/ui-impl/context/alert.context';
+import AlertContext from '../../ui-impl/context/alert.context';
 
 @Component({
   selector: 'app-alert-dialog',

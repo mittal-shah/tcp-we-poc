@@ -1,4 +1,4 @@
-import {BooleanInputModel, RequestApprovalContext} from '../../../declarations/global';
+import {BooleanInputModel, RequestApprovalContext} from '../../declarations/global';
 import BooleanInputImpl from '../domain/input/boolean.input.impl';
 import AbstractImpl from '../abstract.impl';
 

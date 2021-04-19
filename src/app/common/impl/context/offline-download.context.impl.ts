@@ -1,4 +1,4 @@
-import {OfflineDownloadContext} from '../../../declarations/global';
+import {OfflineDownloadContext} from '../../declarations/global';
 
 export default class OfflineDownloadContextImpl implements OfflineDownloadContext {
   StrClientPlatformId?: string | undefined = '';

@@ -1,4 +1,4 @@
-import {DateSelectItemModel} from '../../../declarations/global';
+import {DateSelectItemModel} from '../../declarations/global';
 import SelectItemImpl from './select-item.impl';
 
 export default class DateSelectItemImpl extends SelectItemImpl implements DateSelectItemModel {

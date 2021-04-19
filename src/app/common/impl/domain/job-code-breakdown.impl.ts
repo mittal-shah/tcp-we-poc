@@ -1,5 +1,5 @@
 import AbstractImpl from '../abstract.impl';
-import {JobCodeBreakdownModel} from '../../../declarations/global';
+import {JobCodeBreakdownModel} from '../../declarations/global';
 
 export default class JobCodeBreakdownImpl extends AbstractImpl implements JobCodeBreakdownModel {
   BlnIsTotal?: boolean | undefined = false;

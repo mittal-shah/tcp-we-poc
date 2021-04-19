@@ -1,4 +1,4 @@
-import {PeriodSummaryModel} from '../../../declarations/global';
+import {PeriodSummaryModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class PeriodSummaryImpl extends AbstractImpl implements PeriodSummaryModel {

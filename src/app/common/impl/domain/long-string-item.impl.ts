@@ -1,4 +1,4 @@
-import {LongStringItemModel} from '../../../declarations/global';
+import {LongStringItemModel} from '../../declarations/global';
 import SelectItemImpl from './select-item.impl';
 import HeaderValueImpl from './header-value.impl';
 

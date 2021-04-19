@@ -1,5 +1,5 @@
 import SelectItemImpl from './select-item.impl';
-import {DatePeriodModel} from '../../../declarations/global';
+import {DatePeriodModel} from '../../declarations/global';
 
 export default class DatePeriodImpl extends SelectItemImpl implements DatePeriodModel {
   BlnIsHistory?: boolean | undefined = false;

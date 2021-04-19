@@ -1,4 +1,4 @@
-import {CostCodeInputModel, SelectItemModel} from '../../../declarations/global';
+import {CostCodeInputModel, SelectItemModel} from '../../declarations/global';
 import SelectItemImpl from './select-item.impl';
 import HeaderValueImpl from './header-value.impl';
 

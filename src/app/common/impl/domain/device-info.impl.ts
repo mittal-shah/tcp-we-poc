@@ -1,4 +1,4 @@
-import {DeviceInfoModel} from '../../../declarations/global';
+import {DeviceInfoModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class DeviceInfoImpl extends AbstractImpl implements DeviceInfoModel {

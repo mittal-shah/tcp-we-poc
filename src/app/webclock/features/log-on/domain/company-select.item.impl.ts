@@ -1,7 +1,7 @@
-import {ApplicationModel, CompanySelectItemModel} from '../../../declarations/global';
-import SelectItemImpl from '../../../common/impl/domain/select-item.impl';
-import CustomFieldControlImpl from '../../../common/impl/domain/input/custom-field-control.impl';
-import AbstractImpl from '../../../common/impl/abstract.impl';
+import {ApplicationModel, CompanySelectItemModel} from '../../../../common/declarations/global';
+import SelectItemImpl from '../../../../common/impl/domain/select-item.impl';
+import CustomFieldControlImpl from '../../../../common/impl/domain/input/custom-field-control.impl';
+import AbstractImpl from '../../../../common/impl/abstract.impl';
 import BadgeParseSpecImpl from './badge-parse-spec.impl';
 
 export default class CompanySelectItemImpl extends SelectItemImpl implements CompanySelectItemModel {

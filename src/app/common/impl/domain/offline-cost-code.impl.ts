@@ -1,4 +1,4 @@
-import {OfflineCostCodeModel} from '../../../declarations/global';
+import {OfflineCostCodeModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export default class OfflineCostCodeImpl extends AbstractImpl implements OfflineCostCodeModel {

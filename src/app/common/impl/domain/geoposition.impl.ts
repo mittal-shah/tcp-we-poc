@@ -1,4 +1,4 @@
-import {GeopositionModel} from '../../../declarations/global';
+import {GeopositionModel} from '../../declarations/global';
 import AbstractImpl from '../abstract.impl';
 
 export interface GeoCoordinates {

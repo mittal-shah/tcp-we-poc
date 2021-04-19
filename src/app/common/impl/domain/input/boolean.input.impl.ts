@@ -1,4 +1,4 @@
-import {BooleanInputModel} from '../../../../declarations/global';
+import {BooleanInputModel} from '../../../declarations/global';
 import AbstractImpl from '../../abstract.impl';
 
 export default class BooleanInputImpl extends AbstractImpl implements BooleanInputModel {
