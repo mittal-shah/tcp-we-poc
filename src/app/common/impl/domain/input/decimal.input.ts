@@ -1,6 +1,6 @@
 import AbstractEditableInput from './abstract-editable.input';
 import AppConfigImpl from '../../config/app.config.impl';
-import {EditableDecimalInputModel, KeyboardTypeOptions} from '../../../declarations/editable-input';
+import {EditableDecimalInputModel} from '../../../declarations/editable-input';
 import DateTimeFormatter from '../../../formatter/date-time.formatter';
 import RegExpValidator from '../../../constant/reg-exp-validators.constant';
 import Util from '../../../util/util';
@@ -14,18 +14,16 @@ export default class DecimalInput extends AbstractEditableInput implements Edita
 
   StrMinValue?: string | undefined = '';
 
-  StrRegExp?: string | undefined = '';
-
-  StrValue?: string | undefined = '';
+  getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
+    return this.StrMinValue || this.StrMaxValue ?
+      Number(this.StrMinValue) + ' - ' + Number(this.StrMaxValue) :
+      appConfig?.StrEnterValidDecimal;
+  }
 
   getModelValue() {
     return this.StrValue && this.StrValue.includes('.')
       ? this.getStandardHourMinuteValue(this.StrValue)
       : this.getParsedValue(this.StrValue);
-  }
-
-  getKeyboardType(): KeyboardTypeOptions {
-    return 'decimal-pad';
   }
 
   getValue() {
@@ -60,6 +58,10 @@ export default class DecimalInput extends AbstractEditableInput implements Edita
 
   getAdjustedNumberValue() {
     return this.StrValue ? this.getParsedValue(this.StrValue) : undefined;
+  }
+
+  getType() {
+    return 'number';
   }
 
   isValidRegEx() {

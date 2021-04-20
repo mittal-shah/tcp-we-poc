@@ -8,3 +8,10 @@
   height: 40px;
   background: url(createCommonStyleUrl($logoFileName)) no-repeat 0 0;
 }
+
+.logon-form {
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
+  margin: auto;
+}

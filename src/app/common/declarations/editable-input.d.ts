@@ -1,53 +1,108 @@
-import {AppConfig, DecimalInputModel, HourMinuteInputModel, NumberInputModel, TextInputModel, TimeInputModel} from './global';
+import {DecimalInputModel, HourMinuteInputModel, NumberInputModel, TextInputModel, TimeInputModel} from './global';
 import {AnyType} from './types';
+import AppConfigImpl from '../impl/config/app.config.impl';
 
-export type AutoCapitalizeOptions = 'none' | 'sentences' | 'words' | 'characters';
+export type AutoCapitalizeOptions = 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
 
 export type AutoCompleteOptions =
-  | 'cc-csc'
-  | 'cc-exp'
-  | 'cc-exp-month'
-  | 'cc-exp-year'
-  | 'cc-number'
-  | 'email'
-  | 'name'
-  | 'password'
-  | 'postal-code'
-  | 'street-address'
-  | 'tel'
-  | 'username'
+  | 'on'
   | 'off';
 
 export type InputSuffixIcon = 'calendar' | 'clock' | 'search' | 'chevron-down' | 'list' | undefined;
 
-export type KeyboardTypeOptions = 'default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad';
-
 export interface EditableInputModel {
+  DefaultNumberOfLines: number;
+
+  ShouldBlurOnSubmit: boolean | undefined;
+
+  BlnForceUppercase?: boolean | undefined;
+
   BlnIsDisabled?: boolean | undefined;
+
+  BlnIsEditable?: boolean | undefined;
+
   BlnIsRequired?: boolean | undefined;
+
   BlnIsVisible?: boolean | undefined;
+
   IntMaxLength?: number | undefined;
-  IntNumberOfLines?: number | undefined;
+
+  StrCustomFormat?: string | undefined;
+
   StrId?: string | undefined;
+
   StrSuffix?: string | undefined;
+
   StrText?: string | undefined;
 
-  isValidValue(appConfig?: AppConfig | undefined): boolean;
+  StrValue?: string | undefined;
+
+  StrRegExp?: string | undefined;
+
+  onChange?: (value: string | undefined) => void | undefined;
+
+  getAutoCapitalize(): AutoCapitalizeOptions;
+
+  getAutoCompleteType(): AutoCompleteOptions;
+
+  getFormattedValue(value: any): string | undefined;
+
+  getFormattedSubLabel(subString: string): string | undefined;
+
+  getInputSuffixIcon(): InputSuffixIcon;
+
+  getNumberOfLines(): number;
+
+  getType(): string;
+
+  initializeControl(): void;
+
+  isInputEditable(): boolean;
+
+  isInputAccessible(): boolean;
+
+  isMultiline(): boolean;
+
+  isSecuredField(): boolean;
+
+  isValidInput(): boolean;
+
+  isValidMaxLength(): boolean;
+
+  isValidRequired(): boolean;
+
+  getHintText(appConfig: AppConfigImpl | undefined): string | undefined;
+
+  getMaxLength(): number | undefined;
+
+  getPlaceholderText(): string;
+
+  getErrorMessage(appConfig: AppConfigImpl | undefined): string | undefined;
+
+  shouldAutoCorrect(): boolean;
+
+  getText(): string;
+
+  toString(): string;
+
+  getModelValue(): any;
+
+  setModelValue(value: AnyType): void;
+
+  isValidValue(appConfig?: AppConfigImpl | undefined): boolean;
 
   getValue(): AnyType;
 
-  setValue(value: any): void;
+  setValue(value: AnyType): AnyType;
 }
 
 export interface EditableTextInputModel extends EditableInputModel, TextInputModel {
-  StrValue?: string | undefined;
 }
 
 export interface EditableDecimalInputModel extends EditableInputModel, DecimalInputModel {
   IntPrecision?: number | undefined;
   StrMaxValue?: string | undefined;
   StrMinValue?: string | undefined;
-  StrValue?: string | undefined;
 }
 
 export interface EditableNumberInputModel extends EditableInputModel, NumberInputModel {

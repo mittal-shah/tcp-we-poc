@@ -1,10 +1,4 @@
-import {
-  AutoCapitalizeOptions,
-  AutoCompleteOptions,
-  EditableInputModel,
-  InputSuffixIcon,
-  KeyboardTypeOptions
-} from '../../../declarations/editable-input';
+import {AutoCapitalizeOptions, AutoCompleteOptions, EditableInputModel, InputSuffixIcon} from '../../../declarations/editable-input';
 import AppConfigImpl from '../../config/app.config.impl';
 import AbstractImpl from '../../abstract.impl';
 import {AnyType} from '../../../declarations/types';
@@ -29,11 +23,15 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
 
   StrCustomFormat?: string | undefined = '';
 
-  StrId?: string | undefined = '';
+  StrId = '';
+
+  StrRegExp?: string | undefined = '';
 
   StrSuffix?: string | undefined = '';
 
   StrText?: string | undefined = '';
+
+  StrValue?: string | undefined = '';
 
   onChange?: (value: string | undefined) => void | undefined = undefined;
 
@@ -49,7 +47,7 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return String(value);
   }
 
-  getFormattedSubLabel(subString: string) {
+  getFormattedSubLabel(subString: string): string | undefined {
     if (this.StrSuffix) {
       return ` ${this.StrSuffix}`;
     }
@@ -61,35 +59,41 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return undefined;
   }
 
-  getKeyboardType(): KeyboardTypeOptions {
-    return 'default';
+  initializeControl(): void {
+    if (!this.StrId) {
+      this.StrId = Util.getAdjustedComponentId(this.StrText) || 'editableInput';
+    }
   }
 
-  getNumberOfLines() {
+  getNumberOfLines(): number {
     return this.DefaultNumberOfLines;
   }
 
-  isInputEditable() {
-    return this.isInputAccessible() && this.BlnIsEditable;
+  getType(): string {
+    return this.isSecuredField() ? 'password' : 'text';
   }
 
-  isInputAccessible() {
-    return this.BlnIsVisible && !this.BlnIsDisabled;
+  isInputEditable(): boolean {
+    return Boolean(this.isInputAccessible() && this.BlnIsEditable);
   }
 
-  isMultiline() {
+  isInputAccessible(): boolean {
+    return Boolean(this.BlnIsVisible && !this.BlnIsDisabled);
+  }
+
+  isMultiline(): boolean {
     return !!this.getNumberOfLines() && this.getNumberOfLines() > this.DefaultNumberOfLines;
   }
 
-  isSecuredField() {
+  isSecuredField(): boolean {
     return false;
   }
 
-  isValidInput() {
+  isValidInput(): boolean {
     return this.isValidRequired() && this.isValidMaxLength() && this.isValidValue();
   }
 
-  isValidMaxLength() {
+  isValidMaxLength(): boolean {
     if (!this.isInputAccessible()) {
       return true;
     }
@@ -102,7 +106,7 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return this.toString().length <= maxLength;
   }
 
-  isValidRequired() {
+  isValidRequired(): boolean {
     if (!this.isInputAccessible()) {
       return true;
     }
@@ -114,11 +118,15 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return !Util.isEmptyOrSpaces(this.toString());
   }
 
-  getMaxLength() {
+  getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
+    return appConfig ? appConfig.StrEnterValidAlphaNumeric : undefined;
+  }
+
+  getMaxLength(): number | undefined {
     return this.IntMaxLength ? this.IntMaxLength : undefined;
   }
 
-  getPlaceholderText() {
+  getPlaceholderText(): string {
     if (this.StrCustomFormat) {
       return this.StrCustomFormat;
     }
@@ -126,7 +134,7 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return this.StrText || '';
   }
 
-  getErrorMessage(appConfig: AppConfigImpl | undefined) {
+  getErrorMessage(appConfig: AppConfigImpl | undefined): string | undefined {
     if (!this.isValidMaxLength()) {
       return appConfig && appConfig.StrTextExceedsMaxLength;
     }
@@ -142,23 +150,23 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return false;
   }
 
-  getText() {
-    return this.StrText;
+  getText(): string {
+    return this.StrText || '';
   }
 
-  toString() {
+  toString(): string {
     return this.getValue() || '';
   }
 
-  getModelValue() {
+  getModelValue(): any {
     return this.getValue();
   }
 
-  setModelValue(value: AnyType) {
+  setModelValue(value: AnyType): void {
     this.setValue(value);
   }
 
-  abstract isValidValue(appConfig?: AppConfigImpl | undefined): AnyType;
+  abstract isValidValue(appConfig?: AppConfigImpl | undefined): boolean;
 
   abstract getValue(): AnyType;
 

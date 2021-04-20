@@ -24,7 +24,7 @@ export abstract class AbstractService {
     return this.http.get<T>(`${this.getApiPrefix()}${url}`, this.httpOptions)
       .pipe(
         map((response) => this.exceptionHandler.handleExceptionIfAny<T>(response)),
-        catchError(this.exceptionHandler.handleHttpError<T>(url, undefined))
+        catchError(this.exceptionHandler.handleError<T>(url))
       );
   }
 
@@ -33,7 +33,7 @@ export abstract class AbstractService {
     return this.http.post<T>(`${this.getApiPrefix()}${url}`, adjustedData, this.httpOptions)
       .pipe(
         map((response) => this.exceptionHandler.handleExceptionIfAny<T>(response)),
-        catchError(this.exceptionHandler.handleHttpError<T>(url, undefined))
+        catchError(this.exceptionHandler.handleError<T>(url))
       );
   }
 

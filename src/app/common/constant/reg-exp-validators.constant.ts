@@ -1,6 +1,7 @@
 const RegExpValidator = {
   DECIMAL: new RegExp(/^(\d*\.)?\d+$/),
   NUMBER: new RegExp(/^$|^[0-9]*$/),
+  EMAIL: new RegExp(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/),
   SERVER_VERSION: new RegExp(/^[\d.]+[\d]$/),
   TEXT: new RegExp(/[-a-zA-Z0-9 ~`!@#$%^&*()_+={}|\[\];:'"<>?,./\\]*/),
   URL: new RegExp(

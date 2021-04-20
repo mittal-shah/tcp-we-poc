@@ -12,6 +12,12 @@ export default class TimeInput extends AbstractEditableInput implements Editable
 
   TimValue?: string | undefined = '';
 
+  getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
+    return this.TimMinValue && this.TimMaxValue ?
+      this.TimMinValue + ' - ' + this.TimMaxValue :
+      appConfig?.StrEnterValidTime;
+  }
+
   getInputSuffixIcon(): InputSuffixIcon {
     return 'clock';
   }
@@ -26,6 +32,10 @@ export default class TimeInput extends AbstractEditableInput implements Editable
 
   getMinTime() {
     return this.TimMinValue ? DateTimeFormatter.getTime(this.TimMinValue) : undefined;
+  }
+
+  getType() {
+    return 'time';
   }
 
   isValidMaxValue() {

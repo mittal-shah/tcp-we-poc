@@ -17,6 +17,12 @@ export default class DateInput extends AbstractEditableInput implements Editable
 
   DatMinDate?: string | undefined = '';
 
+  getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
+    return this.DatMinDate && this.DatMaxDate ?
+      this.DatMinDate + ' - ' + this.DatMaxDate :
+      appConfig?.StrEnterValidDate;
+  }
+
   getInputSuffixIcon(): InputSuffixIcon {
     return 'calendar';
   }
@@ -31,6 +37,10 @@ export default class DateInput extends AbstractEditableInput implements Editable
 
   getMinDate() {
     return this.DatMinDate ? DateTimeFormatter.getDate(this.DatMinDate) : undefined;
+  }
+
+  getType() {
+    return 'date';
   }
 
   isValidMaxValue() {

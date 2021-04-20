@@ -20,7 +20,7 @@ export class LogOnService extends AbstractService {
 
   getAppConfig(): Observable<AppConfigImpl> {
     const url = '/appConfig/0/WebClock';
-    return this.get<AppConfig>(url).pipe(map((result) => AbstractImpl.fromJSON(result, AppConfigImpl)));
+    return this.get<AppConfig>(url).pipe(map((result) => this.handleAppConfig(result)));
   }
 
   getInfo(): Observable<EmployeeLogOnContext> {
@@ -36,7 +36,18 @@ export class LogOnService extends AbstractService {
     return this.get(formattedUrl).pipe(map((result) => this.handleEmployeeLogOnContext(result)));
   }
 
+  private handleAppConfig(result: any) {
+    if (!result) {
+      throw result;
+    }
+    return AbstractImpl.fromJSON(result, AppConfigImpl);
+  }
+
   private handleEmployeeLogOnContext(result: any) {
+    if (result?.length !== 3) {
+      throw result;
+    }
+
     return {
       ObjEmployeeLogOnConfig: AbstractImpl.fromJSON(result[0], EmployeeLogOnConfigImpl),
       ObjCompanyConfig: AbstractImpl.fromJSON(result[1], CompanyConfigImpl),

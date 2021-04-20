@@ -5,7 +5,7 @@ import PresentationExceptionImpl from '../impl/domain/presentation-exception.imp
 import {AlertDialogComponent} from '../component/alert-dialog/alert-dialog.component';
 import AlertOption from '../ui-impl/domain/alert-option';
 import AlertContext from '../ui-impl/context/alert.context';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import ExceptionType from '../constant/exception-type.constant';
 
 export default class ExceptionHandler {
@@ -15,28 +15,26 @@ export default class ExceptionHandler {
   public handleExceptionIfAny<T>(response: HttpResponse<T>) {
     const exceptionTypeHeader = response.headers.get('exception_type');
     if (exceptionTypeHeader) {
-      const exception = AbstractImpl.fromJSON(response.body, PresentationExceptionImpl);
-      this.dialog.open(AlertDialogComponent, {data: this.buildAlertContext(exception)});
+      throw AbstractImpl.fromJSON(response.body, PresentationExceptionImpl);
     }
     return response.body as T;
   }
 
-  public handleHttpError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
+  public handleError<T>(operation = 'operation'): (error: any) => Observable<T> {
     return (error: any): Observable<T> => {
-
-      // TODO: MSS Integrate LoggerService
-      console.error(error); // log to console instead
-
-      // TODO: MSS Integrate LoggerService
       this.log(`${operation} failed: ${error.message}`);
 
-      const exception = new PresentationExceptionImpl();
-      exception.StrTitle = 'Unexpected Exception';
-      exception.IntType = ExceptionType.Unexpected;
-      exception.StrMessage = error.message;
+      let exception = new PresentationExceptionImpl();
+      if (!(error instanceof PresentationExceptionImpl) && error.message) {
+        exception.StrTitle = 'Unexpected Exception';
+        exception.IntType = ExceptionType.Unexpected;
+        exception.StrMessage = error.message;
+      } else {
+        exception = error;
+      }
       this.dialog.open(AlertDialogComponent, {data: this.buildAlertContext(exception)});
 
-      return of(result as T);
+      throw exception;
     };
   }
 

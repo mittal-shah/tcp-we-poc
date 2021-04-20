@@ -8,10 +8,6 @@ export default class TextInput extends AbstractEditableInput implements Editable
 
   IntNumberOfLines?: number | undefined = 0;
 
-  StrValue?: string | undefined = '';
-
-  StrRegExp?: string | undefined = '';
-
   StrMaxDecimalValue?: string | undefined = '';
 
   StrMinDecimalValue?: string | undefined = '';

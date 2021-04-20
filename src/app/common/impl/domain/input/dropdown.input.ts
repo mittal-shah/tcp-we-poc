@@ -152,21 +152,21 @@ export default class DropdownInput extends AbstractEditableInput implements Edit
     this.ObjListContext.selectedItem = item;
   }
 
-  getText() {
+  getText(): string {
     return this.ObjListContext && this.ObjListContext.selectedItem && this.ObjListContext.selectedItem.getText()
       ? String(this.ObjListContext.selectedItem.getText())
       : this.getNoneText();
   }
 
-  toString() {
+  toString(): string {
     return this.ObjListContext && this.ObjListContext.selectedItem && this.ObjListContext.selectedItem.getText()
-      ? this.ObjListContext.selectedItem.getText()
+      ? this.ObjListContext.selectedItem.getText() || ''
       : this.getNoneText();
   }
 
   protected getNoneText() {
     return this.ObjListContext && this.ObjListContext.appConfig && this.BlnAllowNoneSelection
-      ? this.ObjListContext.appConfig.StrNoneItem
+      ? this.ObjListContext.appConfig.StrNoneItem || ''
       : '';
   }
 }

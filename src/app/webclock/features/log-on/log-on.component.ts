@@ -28,9 +28,6 @@ export class LogOnComponent implements OnInit {
 
     this.service.getAppConfig()
       .subscribe((config: AppConfigImpl) => this.handleAppConfig(config));
-
-    this.service.getInfo()
-      .subscribe((context: EmployeeLogOnContext) => this.handleInfo(context));
   }
 
   selectChangeHandler($event: MatSelectChange) {
@@ -48,8 +45,11 @@ export class LogOnComponent implements OnInit {
   }
 
   private handleAppConfig(appConfig: AppConfigImpl) {
+    GlobalConstant.appConfig = appConfig;
     this.appConfig = appConfig;
-    GlobalConstant.appConfig = this.appConfig;
+
+    this.service.getInfo()
+      .subscribe((context: EmployeeLogOnContext) => this.handleInfo(context));
   }
 
   private handleAuthentication(sessionId: string | undefined) {
@@ -58,10 +58,10 @@ export class LogOnComponent implements OnInit {
   }
 
   private handleInfo(context: EmployeeLogOnContext) {
+    GlobalConstant.companyConfig = context.ObjCompanyConfig;
+
     this.config = context.ObjEmployeeLogOnConfig;
     this.companyConfig = context.ObjCompanyConfig;
     this.data = context.ObjLogOnData;
-
-    GlobalConstant.companyConfig = this.companyConfig;
   }
 }

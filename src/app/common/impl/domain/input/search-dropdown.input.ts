@@ -19,13 +19,13 @@ export default class SearchDropdownInput extends DropdownInput {
     return this.BlnIsMultiSelect ? 'list' : 'search';
   }
 
-  toString() {
+  toString(): string {
     if (!this.BlnIsMultiSelect) {
       return super.toString();
     }
 
     if (!this.ObjListContext) {
-      return this.initialMultiSelectValue;
+      return String(this.initialMultiSelectValue);
     }
 
     if (this.shouldBlockAutoMultiSelectTextUpdate) {

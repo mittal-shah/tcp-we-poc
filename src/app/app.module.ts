@@ -12,14 +12,16 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {FormsModule} from '@angular/forms';
-import { AlertDialogComponent } from './common/component/alert-dialog/alert-dialog.component';
+import {AlertDialogComponent} from './common/component/alert-dialog/alert-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {EditableInputComponent} from './common/component/editable-input/editable-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogOnComponent,
-    AlertDialogComponent
+    AlertDialogComponent,
+    EditableInputComponent
   ],
   imports: [
     BrowserModule,

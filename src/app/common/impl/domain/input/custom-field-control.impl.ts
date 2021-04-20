@@ -17,6 +17,8 @@ import Util from '../../../util/util';
 import CustomFieldDataType from '../../../constant/custom-field-data-type.constant';
 import CustomFieldInputMethod from '../../../constant/custom-field-input-method.constant';
 import {GlobalConstant} from '../../../constant/global.constant';
+import {EditableInputModel} from '../../../declarations/editable-input';
+import MaskedInputComponentBuilder from '../../../builder/masked-input-component.builder';
 
 export default class CustomFieldControlImpl extends AbstractEditableInput implements CustomFieldControlModel {
   ArrDateOptions?: DateSelectItemImpl[] | undefined = [];
@@ -49,9 +51,7 @@ export default class CustomFieldControlImpl extends AbstractEditableInput implem
 
   StrCustomFormat?: string | undefined = '';
 
-  StrValue?: string | undefined = '';
-
-  private inputControl?: AbstractEditableInput;
+  private inputControl?: EditableInputModel | undefined;
 
   private KeyTextItems?: KeyTextItemImpl[] | undefined = [];
 
@@ -76,7 +76,6 @@ export default class CustomFieldControlImpl extends AbstractEditableInput implem
     if (this.ArrStringOptions && this.ArrStringOptions.length) {
       this.KeyTextItems = this.ArrStringOptions.map((item) => new KeyTextItemImpl(item, item));
     }
-    this.inputControl = this.createComponent();
   }
 
   createSubmissionData() {
@@ -105,19 +104,23 @@ export default class CustomFieldControlImpl extends AbstractEditableInput implem
   }
 
   getValue() {
-    return this.inputControl && this.inputControl.getValue();
+    return this.inputControl && this.inputControl.getValue() || '';
   }
 
   getModelValue() {
     return this.inputControl && this.inputControl.getModelValue();
   }
 
-  isValidInput() {
-    return this.inputControl && this.inputControl.isValidInput();
+  getType(): string {
+    return this.inputControl ? this.inputControl.getType() : super.getType();
+  }
+
+  isValidInput(): boolean {
+    return Boolean(this.inputControl && this.inputControl.isValidInput());
   }
 
   isValidValue(appConfig?: AppConfigImpl | undefined) {
-    return this.inputControl && this.inputControl.isValidValue(appConfig);
+    return Boolean(this.inputControl && this.inputControl.isValidValue(appConfig));
   }
 
   setValue(value: AnyType) {
@@ -134,6 +137,10 @@ export default class CustomFieldControlImpl extends AbstractEditableInput implem
       const selectItem = this.inputControl.getModelValue();
       this.StrValue = selectItem ? selectItem.getValue() : '';
     }
+  }
+
+  initializeControl(): void {
+    this.inputControl = this.createComponent();
   }
 
   getComponent() {
@@ -174,14 +181,18 @@ export default class CustomFieldControlImpl extends AbstractEditableInput implem
         customInput.BlnIsEditable = false;
         customInput.IsPartial = dataType === CustomFieldDataType.PartialDate;
         customInput.DatDate = this.StrValue;
-        customInput.StrFormat = companyConfig.getDateFormat();
-        customInput.StrMonthDayFormat = companyConfig.getPartialDateFormat();
+        if (companyConfig) {
+          customInput.StrFormat = companyConfig.getDateFormat();
+          customInput.StrMonthDayFormat = companyConfig.getPartialDateFormat();
+        }
         break;
       case CustomFieldDataType.Time:
         customInput = AbstractImpl.fromJSON(this, TimeInput) as TimeInput;
         customInput.BlnIsEditable = false;
         customInput.TimValue = this.StrValue;
-        customInput.StrFormat = companyConfig.getTimeFormat();
+        if (companyConfig) {
+          customInput.StrFormat = companyConfig.getTimeFormat();
+        }
         break;
       case CustomFieldDataType.Numeric:
         if (isDecimal) {
@@ -201,8 +212,7 @@ export default class CustomFieldControlImpl extends AbstractEditableInput implem
 
     if (customInput.StrCustomFormat) {
       customInput.IntMaxLength = customInput.StrCustomFormat.length;
-      // TODO: MSS Integrate
-      // customInput.StrRegExp = MaskedInputComponentBuilder.getMaskFromCustomFormat(customInput.StrCustomFormat);
+      customInput.StrRegExp = MaskedInputComponentBuilder.getMaskFromCustomFormat(customInput.StrCustomFormat);
     }
 
     return customInput;

@@ -3,7 +3,7 @@
   <mat-divider class="padding-bottom-20"></mat-divider>
   <form class="logon-form" *ngIf="!!data && !!config">
     <div>
-      <mat-form-field appearance="fill" *ngIf="data?.ArrCompanies?.length">
+      <mat-form-field appearance="fill" *ngIf="data?.ArrCompanies?.length" class="width-100">
         <mat-label>{{config.StrSelectCompany}}</mat-label>
         <mat-select (selectionChange)="selectChangeHandler($event)" *ngIf="data?.ArrCompanies?.length"
                     [required]="!config?.BlnRequireUserToEnterCompanyId" [value]="data?.IntCompany">
@@ -13,15 +13,8 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div>
-      <mat-form-field appearance="fill" *ngIf="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId">
-        <mat-label>{{data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.StrText}}</mat-label>
-        <input matInput name="logOn"
-               [(ngModel)]="data!.ObjSelectedCompany!.ObjCustomFieldControlModelLogOnId!.StrValue"
-               [required]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.BlnIsRequired || false"
-               [maxLength]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.IntMaxLength">
-        <mat-error>{{ data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId?.getErrorMessage(appConfig)}}</mat-error>
-      </mat-form-field>
+    <div *ngIf="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId">
+      <app-editable-input [editableInput]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId"></app-editable-input>
     </div>
     <div class="padding-bottom-20 padding-top-20">
       <button mat-flat-button color="primary" (click)="authenticate()">{{config?.StrLogOn}}</button>
