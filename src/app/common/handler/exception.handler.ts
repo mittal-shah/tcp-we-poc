@@ -7,6 +7,7 @@ import AlertOption from '../ui-impl/domain/alert-option';
 import AlertContext from '../ui-impl/context/alert.context';
 import {Observable} from 'rxjs';
 import ExceptionType from '../constant/exception-type.constant';
+import {ApiOptions} from '../declarations/types';
 
 export default class ExceptionHandler {
   constructor(private dialog: MatDialog) {
@@ -20,20 +21,21 @@ export default class ExceptionHandler {
     return response.body as T;
   }
 
-  public handleError<T>(operation = 'operation'): (error: any) => Observable<T> {
+  public handleError<T>(operation = 'operation', options?: ApiOptions): (error: any) => Observable<T> {
     return (error: any): Observable<T> => {
-      this.log(`${operation} failed: ${error.message}`);
 
       let exception = new PresentationExceptionImpl();
-      if (!(error instanceof PresentationExceptionImpl) && error.message) {
-        exception.StrTitle = 'Unexpected Exception';
-        exception.IntType = ExceptionType.Unexpected;
-        exception.StrMessage = error.message;
-      } else {
+      if (error instanceof PresentationExceptionImpl) {
         exception = error;
+      } else {
+        exception.setUnexpectedError(error.message ? error.message : error);
       }
-      this.dialog.open(AlertDialogComponent, {data: this.buildAlertContext(exception)});
 
+      if (!(options?.manuallyHandleExceptions?.find(et => et === exception.IntType))) {
+        this.dialog.open(AlertDialogComponent, {data: this.buildAlertContext(exception)});
+      }
+
+      this.log(`operation: ${operation} failed: ${exception.IntType} - ${exception.StrMessage}`);
       throw exception;
     };
   }

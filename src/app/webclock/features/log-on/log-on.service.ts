@@ -10,12 +10,13 @@ import EmployeeLogOnConfigImpl from './config/employee-log-on.config.impl';
 import CompanyConfigImpl from '../../../common/impl/config/company.config.impl';
 import LogOnDataImpl from './data/log-on-data.impl';
 import CommonConstants from '../../../common/constant/common.constant';
+import {ApiOptions} from '../../../common/declarations/types';
 
 @Injectable({providedIn: 'root'})
 export class LogOnService extends AbstractService {
-  authenticate(data: LogOnData) {
+  authenticate(data: LogOnData, options?: ApiOptions) {
     const url = '/employeeSessions/0/ApplicationLogOn';
-    return this.post<string>(url, data).pipe(map((result) => result));
+    return this.post<string>(url, data, options).pipe(map((result) => result));
   }
 
   getAppConfig(): Observable<AppConfigImpl> {

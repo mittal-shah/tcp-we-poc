@@ -7,6 +7,7 @@ import AppConfigImpl from '../../../common/impl/config/app.config.impl';
 import CompanyConfigImpl from '../../../common/impl/config/company.config.impl';
 import EmployeeLogOnConfigImpl from './config/employee-log-on.config.impl';
 import LogOnDataImpl from './data/log-on-data.impl';
+import PresentationExceptionImpl from '../../../common/impl/domain/presentation-exception.impl';
 
 @Component({
   selector: 'app-log-on',
@@ -19,6 +20,7 @@ export class LogOnComponent implements OnInit {
   config: EmployeeLogOnConfigImpl | undefined = undefined;
   companyConfig: CompanyConfigImpl | undefined = undefined;
   data: LogOnDataImpl | undefined = undefined;
+  shouldShowPIN = false;
 
   constructor(private service: LogOnService) {
   }
@@ -40,8 +42,12 @@ export class LogOnComponent implements OnInit {
       return;
     }
 
-    this.service.authenticate(this.data)
-      .subscribe((sessionId) => this.handleAuthentication(sessionId));
+    this.service.authenticate(this.data, {manuallyHandleExceptions: PresentationExceptionImpl.getPasswordEntryExceptions()})
+      .subscribe((sessionId) => this.handleAuthentication(sessionId), (error) => {
+        if (error instanceof PresentationExceptionImpl && error.isPasswordEntryException()) {
+          this.shouldShowPIN = true;
+        }
+      });
   }
 
   private handleAppConfig(appConfig: AppConfigImpl) {

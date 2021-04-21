@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LogOnComponent} from './webclock/features/log-on/log-on.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
@@ -15,6 +15,7 @@ import {FormsModule} from '@angular/forms';
 import {AlertDialogComponent} from './common/component/alert-dialog/alert-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {EditableInputComponent} from './common/component/editable-input/editable-input.component';
+import {DEFAULT_TIMEOUT, TimeoutInterceptor} from './common/interceptor/http-timeout.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,10 @@ import {EditableInputComponent} from './common/component/editable-input/editable
     MatDividerModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [
+    [{provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true}],
+    [{provide: DEFAULT_TIMEOUT, useValue: 30000}]
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

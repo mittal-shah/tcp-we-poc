@@ -1,5 +1,6 @@
 import AppConfigImpl from '../impl/config/app.config.impl';
 import SelectItemImpl from '../impl/domain/select-item.impl';
+import ExceptionType from '../constant/exception-type.constant';
 
 type AnyType = any;
 
@@ -8,4 +9,9 @@ interface ListItemContext {
   selectedItems?: SelectItemImpl[];
   selectedItem?: SelectItemImpl;
   appConfig?: AppConfigImpl;
+}
+
+export interface ApiOptions {
+  manuallyHandleExceptions?: ExceptionType[];
+  timeout?: number;
 }
