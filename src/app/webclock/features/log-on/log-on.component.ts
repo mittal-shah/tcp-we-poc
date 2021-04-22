@@ -10,7 +10,7 @@ import LogOnDataImpl from './data/log-on-data.impl';
 import PresentationExceptionImpl from '../../../common/impl/domain/presentation-exception.impl';
 
 @Component({
-  selector: 'app-log-on',
+  selector: 'tcp-log-on',
   templateUrl: './log-on.component.html',
   styleUrls: ['./log-on.component.scss']
 })

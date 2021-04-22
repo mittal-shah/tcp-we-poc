@@ -3,7 +3,7 @@
   <mat-divider class="padding-bottom-20"></mat-divider>
   <form class="logon-form" *ngIf="!!data && !!config">
     <div>
-      <mat-form-field appearance="fill" *ngIf="data?.ArrCompanies?.length" class="width-100">
+      <mat-form-field appearance="outline" *ngIf="data?.ArrCompanies?.length" class="width-100">
         <mat-label>{{config.StrSelectCompany}}</mat-label>
         <mat-select (selectionChange)="selectChangeHandler($event)" *ngIf="data?.ArrCompanies?.length"
                     [required]="!config?.BlnRequireUserToEnterCompanyId" [value]="data?.IntCompany">
@@ -14,12 +14,12 @@
       </mat-form-field>
     </div>
     <div *ngIf="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId">
-      <app-editable-input
-        [editableInput]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId"></app-editable-input>
+      <tcp-editable-input
+        [editableInput]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId"></tcp-editable-input>
     </div>
     <div *ngIf="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin && shouldShowPIN">
-      <app-editable-input
-        [editableInput]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin"></app-editable-input>
+      <tcp-editable-input
+        [editableInput]="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin"></tcp-editable-input>
     </div>
     <div class="padding-bottom-20 padding-top-20">
       <button mat-flat-button color="primary" (click)="authenticate()">{{config?.StrLogOn}}</button>

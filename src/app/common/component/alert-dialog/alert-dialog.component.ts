@@ -3,7 +3,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import AlertContext from '../../ui-impl/context/alert.context';
 
 @Component({
-  selector: 'app-alert-dialog',
+  selector: 'tcp-alert-dialog',
   templateUrl: './alert-dialog.component.html',
   styleUrls: ['./alert-dialog.component.scss']
 })

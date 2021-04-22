@@ -5,7 +5,7 @@ import {EditableInputModel} from '../../declarations/editable-input';
 import {MatInput} from '@angular/material/input';
 
 @Component({
-  selector: 'app-editable-input',
+  selector: 'tcp-editable-input',
   templateUrl: './editable-input.component.html',
   styleUrls: ['./editable-input.component.scss']
 })
