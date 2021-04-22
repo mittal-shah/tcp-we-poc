@@ -16,13 +16,15 @@ import {AlertDialogComponent} from './common/component/alert-dialog/alert-dialog
 import {MatDialogModule} from '@angular/material/dialog';
 import {EditableInputComponent} from './common/component/editable-input/editable-input.component';
 import {DEFAULT_TIMEOUT, TimeoutInterceptor} from './common/interceptor/http-timeout.interceptor';
+import {DropdownInputComponent} from './common/component/dropdown-input/dropdown-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogOnComponent,
     AlertDialogComponent,
-    EditableInputComponent
+    EditableInputComponent,
+    DropdownInputComponent
   ],
   imports: [
     BrowserModule,

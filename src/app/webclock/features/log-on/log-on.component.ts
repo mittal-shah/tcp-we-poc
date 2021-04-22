@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {LogOnService} from './log-on.service';
-import {MatSelectChange} from '@angular/material/select';
 import {EmployeeLogOnContext} from '../../../common/declarations/global';
 import {GlobalConstant} from '../../../common/constant/global.constant';
 import AppConfigImpl from '../../../common/impl/config/app.config.impl';
@@ -32,8 +31,8 @@ export class LogOnComponent implements OnInit {
       .subscribe((config: AppConfigImpl) => this.handleAppConfig(config));
   }
 
-  selectChangeHandler($event: MatSelectChange) {
-    this.service.getInfoForCompany($event.value)
+  selectChangeHandler(value: any) {
+    this.service.getInfoForCompany(Number(value))
       .subscribe((context: EmployeeLogOnContext) => this.handleInfo(context));
   }
 

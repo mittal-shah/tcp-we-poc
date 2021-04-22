@@ -21,7 +21,7 @@ export default class DropdownInput extends AbstractEditableInput implements Edit
 
   ObjListContext?: ListItemContext | undefined = undefined;
 
-  handleOnSelectItem?: (item: SelectItemImpl) => void | undefined;
+  handleOnSelectItem?: (value: any) => void | undefined;
 
   onExplicitSave?: (item?: SelectItemImpl) => void;
 

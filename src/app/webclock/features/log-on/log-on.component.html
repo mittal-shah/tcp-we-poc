@@ -3,15 +3,8 @@
   <mat-divider class="padding-bottom-20"></mat-divider>
   <form class="logon-form" *ngIf="!!data && !!config">
     <div>
-      <mat-form-field appearance="outline" *ngIf="data?.ArrCompanies?.length" class="width-100">
-        <mat-label>{{config.StrSelectCompany}}</mat-label>
-        <mat-select (selectionChange)="selectChangeHandler($event)" *ngIf="data?.ArrCompanies?.length"
-                    [required]="!config?.BlnRequireUserToEnterCompanyId" [value]="data?.IntCompany">
-          <mat-option *ngFor="let company of data?.ArrCompanies" [value]="company._IntCompanyId">
-            {{company._StrName}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <tcp-dropdown-input
+        [dropdownInput]="data.createCompanyDropdownInput(config.StrSelectCompany, selectChangeHandler.bind(this))"></tcp-dropdown-input>
     </div>
     <div *ngIf="data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId">
       <tcp-editable-input

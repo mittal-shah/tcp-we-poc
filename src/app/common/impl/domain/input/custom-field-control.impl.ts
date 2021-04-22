@@ -1,4 +1,3 @@
-import FilterDataImpl from '../../data/filter.data.impl';
 import AppConfigImpl from '../../config/app.config.impl';
 import SearchDropdownInput from './search-dropdown.input';
 import DateSelectItemImpl from '../date-select-item.impl';
@@ -19,6 +18,7 @@ import CustomFieldInputMethod from '../../../constant/custom-field-input-method.
 import {GlobalConstant} from '../../../constant/global.constant';
 import {EditableInputModel} from '../../../declarations/editable-input';
 import MaskedInputComponentBuilder from '../../../builder/masked-input-component.builder';
+import DropdownInput from './dropdown.input';
 
 export default class CustomFieldControlImpl extends AbstractEditableInput implements CustomFieldControlModel {
   ArrDateOptions?: DateSelectItemImpl[] | undefined = [];
@@ -240,13 +240,11 @@ export default class CustomFieldControlImpl extends AbstractEditableInput implem
     if (this.isDropdown(this.IntInputMethod)) {
       const listItems = this.getListItems();
       const firstItem = listItems ? listItems[0] : undefined;
-      const customInput = AbstractImpl.fromJSON(this, SearchDropdownInput) as SearchDropdownInput;
+      const customInput = AbstractImpl.fromJSON(this, DropdownInput) as DropdownInput;
       customInput.addDropdownEntryInput = this.isDropdownEditable(this.IntInputMethod)
         ? new CustomFieldControlImpl()
         : undefined;
       customInput.BlnIsEditable = false;
-      customInput.ObjFilterData = new FilterDataImpl();
-      customInput.BlnUseInternalFilter = true;
       customInput.BlnIsDisabled = !(listItems && listItems.length > 0);
       customInput.ObjListContext = {
         listItems,

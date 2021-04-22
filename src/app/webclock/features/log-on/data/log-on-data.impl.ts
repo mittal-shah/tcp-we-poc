@@ -1,10 +1,12 @@
 import AbstractImpl from '../../../../common/impl/abstract.impl';
-import CustomFieldControlImpl from '../../../../common/impl/domain/input/custom-field-control.impl';
 import {LogOnData} from '../../../../common/declarations/global';
 import CompanySelectItemImpl from '../domain/company-select.item.impl';
 import Util from '../../../../common/util/util';
 import DeviceInfoImpl from '../../../../common/impl/domain/device-info.impl';
 import VersionInfoImpl from '../../../../common/impl/domain/version-info.impl';
+import DropdownInput from '../../../../common/impl/domain/input/dropdown.input';
+import {ListItemContext} from '../../../../common/declarations/types';
+import SelectItemImpl from '../../../../common/impl/domain/select-item.impl';
 
 export default class LogOnDataImpl extends AbstractImpl implements LogOnData {
   ArrCompanies?: CompanySelectItemImpl[] | undefined = [];
@@ -91,44 +93,21 @@ export default class LogOnDataImpl extends AbstractImpl implements LogOnData {
 
   }
 
-  setLogOnId(userId?: string) {
-    if (!this.ObjSelectedCompany || !userId) {
-      return;
+  createCompanyDropdownInput(label: string | undefined, onSelect: (selectItem: SelectItemImpl) => void) {
+    if (!this.ArrCompanies) {
+      return undefined;
     }
 
-    if (!this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnId) {
-      this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnId = new CustomFieldControlImpl();
-    }
+    const input = new DropdownInput();
 
-    this.StrLogOnId = userId;
-    this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnId.StrValue = userId;
-  }
+    input.handleOnSelectItem = onSelect;
+    input.StrText = label;
+    input.ObjListContext = {
+      listItems: this.ArrCompanies,
+      selectedItem: Util.findMatchingValue(this.ArrCompanies, String(this.IntCompany) || '') || this.ArrCompanies[0]
+    } as ListItemContext;
 
-  setEmployeePin(employeePin?: string) {
-    if (!this.ObjSelectedCompany || employeePin === undefined) {
-      return;
-    }
-
-    if (!this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePin) {
-      this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePin = new CustomFieldControlImpl();
-    }
-
-    this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePin.StrValue = employeePin;
-  }
-
-  setEmployeePassword(employeePassword?: string) {
-    if (!this.ObjSelectedCompany || !this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePassword) {
-      return;
-    }
-    this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePassword.StrValue = employeePassword;
-  }
-
-  setUserPassword(userPassword?: string) {
-    if (!this.ObjSelectedCompany || !this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnPassword) {
-      return;
-    }
-
-    this.ObjSelectedCompany.ObjCustomFieldControlModelLogOnPassword.StrValue = userPassword;
+    return input;
   }
 
   createSubmissionData() {
