@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill" *ngIf="!!editableInput" class="width-100">
   <mat-label>{{editableInput.StrText}}</mat-label>
-  <input matInput
+  <input matInput #inputElement="matInput"
          [name]="editableInput.StrId || 'editableInput'"
          [type]="editableInput.getType()"
          *ngIf="!editableInput.isMultiline()"
@@ -15,7 +15,7 @@
          [autocomplete]="editableInput.getAutoCompleteType()"
          [spellcheck]="editableInput.shouldAutoCorrect()"
   >
-  <textarea matInput
+  <textarea matInput #inputElement="matInput"
             [name]="editableInput.StrId || 'editableInput'"
             *ngIf="editableInput.isMultiline()"
             [(ngModel)]="editableInput.StrValue"

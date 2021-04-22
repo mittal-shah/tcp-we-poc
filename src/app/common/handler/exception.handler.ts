@@ -35,7 +35,7 @@ export default class ExceptionHandler {
         this.dialog.open(AlertDialogComponent, {data: this.buildAlertContext(exception)});
       }
 
-      this.log(`operation: ${operation} failed: ${exception.IntType} - ${exception.StrMessage}`);
+      this.log(`operation: ${operation} failed: ${ExceptionType[Number(exception.IntType)]} - ${exception.StrMessage}`);
       throw exception;
     };
   }

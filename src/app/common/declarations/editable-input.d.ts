@@ -15,6 +15,8 @@ export interface EditableInputModel {
 
   ShouldBlurOnSubmit: boolean | undefined;
 
+  ShouldFocus: boolean | undefined;
+
   BlnForceUppercase?: boolean | undefined;
 
   BlnIsDisabled?: boolean | undefined;

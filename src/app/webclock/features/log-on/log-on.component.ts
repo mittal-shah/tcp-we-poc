@@ -46,6 +46,9 @@ export class LogOnComponent implements OnInit {
       .subscribe((sessionId) => this.handleAuthentication(sessionId), (error) => {
         if (error instanceof PresentationExceptionImpl && error.isPasswordEntryException()) {
           this.shouldShowPIN = true;
+          if (this.data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin) {
+            this.data.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePin.ShouldFocus = true;
+          }
         }
       });
   }
@@ -69,5 +72,9 @@ export class LogOnComponent implements OnInit {
     this.config = context.ObjEmployeeLogOnConfig;
     this.companyConfig = context.ObjCompanyConfig;
     this.data = context.ObjLogOnData;
+
+    if (this.data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId) {
+      this.data.ObjSelectedCompany.ObjCustomFieldControlModelLogOnId.ShouldFocus = true;
+    }
   }
 }

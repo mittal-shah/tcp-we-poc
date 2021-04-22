@@ -9,6 +9,8 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
 
   ShouldBlurOnSubmit: boolean | undefined = false;
 
+  ShouldFocus: boolean | undefined = false;
+
   BlnForceUppercase?: boolean | undefined = false;
 
   BlnIsDisabled?: boolean | undefined = false;

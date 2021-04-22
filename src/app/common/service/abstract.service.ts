@@ -38,11 +38,10 @@ export abstract class AbstractService {
   }
 
   private buildHttpHeaders(options?: ApiOptions) {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    if (options?.timeout) {
-      headers.append('timeout', String(options.timeout));
-    }
-    return headers;
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      timeout: options?.timeout ? String(options?.timeout) : ''
+    });
   }
 
   private buildHttpOptions(options?: ApiOptions) {

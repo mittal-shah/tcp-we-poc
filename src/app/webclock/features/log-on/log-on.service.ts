@@ -21,7 +21,7 @@ export class LogOnService extends AbstractService {
 
   getAppConfig(): Observable<AppConfigImpl> {
     const url = '/appConfig/0/WebClock';
-    return this.get<AppConfig>(url).pipe(map((result) => this.handleAppConfig(result)));
+    return this.get<AppConfig>(url, {timeout: 10000}).pipe(map((result) => this.handleAppConfig(result)));
   }
 
   getInfo(): Observable<EmployeeLogOnContext> {
