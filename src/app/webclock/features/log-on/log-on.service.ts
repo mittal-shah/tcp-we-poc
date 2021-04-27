@@ -16,25 +16,29 @@ import {ApiOptions} from '../../../common/declarations/types';
 export class LogOnService extends AbstractService {
   authenticate(data: LogOnData, options?: ApiOptions) {
     const url = '/employeeSessions/0/ApplicationLogOn';
-    return this.post<string>(url, data, options).pipe(map((result) => result));
+    return this.post<string>(url, data, options)
+      .pipe(map((result) => result));
   }
 
   getAppConfig(): Observable<AppConfigImpl> {
     const url = '/appConfig/0/WebClock';
-    return this.get<AppConfig>(url, {timeout: 10000}).pipe(map((result) => this.handleAppConfig(result)));
+    return this.get<AppConfig>(url, {timeout: 10000})
+      .pipe(map((result) => this.handleAppConfig(result)));
   }
 
   getInfo(): Observable<EmployeeLogOnContext> {
     const url = '/employeeLoginValues/{0}/GetInfo?companyNamespace={1}&applicationId={2}';
     // TODO:MSS - Read from cookie
     const formattedUrl = Util.stringFormat(url, '0', '', CommonConstants.applicationId.toString());
-    return this.get(formattedUrl).pipe(map((result) => this.handleEmployeeLogOnContext(result)));
+    return this.get(formattedUrl)
+      .pipe(map((result) => this.handleEmployeeLogOnContext(result)));
   }
 
   getInfoForCompany(companyId: number, companyNamespace: string = ''): Observable<EmployeeLogOnContext> {
     const url = '/employeeLoginValues/{0}/GetInfoForCompany?companyNamespace={1}&applicationId={2}';
     const formattedUrl = Util.stringFormat(url, companyId.toString(), companyNamespace, CommonConstants.applicationId.toString());
-    return this.get(formattedUrl).pipe(map((result) => this.handleEmployeeLogOnContext(result)));
+    return this.get(formattedUrl)
+      .pipe(map((result) => this.handleEmployeeLogOnContext(result)));
   }
 
   private handleAppConfig(result: any) {

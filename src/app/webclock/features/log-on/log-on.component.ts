@@ -31,25 +31,27 @@ export class LogOnComponent implements OnInit {
       .subscribe((config: AppConfigImpl) => this.handleAppConfig(config));
   }
 
-  selectChangeHandler(value: any) {
-    this.service.getInfoForCompany(Number(value))
-      .subscribe((context: EmployeeLogOnContext) => this.handleInfo(context));
-  }
-
   authenticate() {
     if (!this.data) {
       return;
     }
 
     this.service.authenticate(this.data, {manuallyHandleExceptions: PresentationExceptionImpl.getPasswordEntryExceptions()})
-      .subscribe((sessionId) => this.handleAuthentication(sessionId), (error) => {
-        if (error instanceof PresentationExceptionImpl && error.isPasswordEntryException()) {
-          this.shouldShowPIN = true;
-          if (this.data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin) {
-            this.data.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePin.ShouldFocus = true;
-          }
-        }
-      });
+      .subscribe((sessionId: string) => this.handleAuthentication(sessionId), (error) => this.handleAuthenticationError(error));
+  }
+
+  selectChangeHandler(value: any) {
+    this.service.getInfoForCompany(Number(value))
+      .subscribe((context: EmployeeLogOnContext) => this.handleInfo(context));
+  }
+
+  private handleAuthenticationError(error: any) {
+    if (error instanceof PresentationExceptionImpl && error.isPasswordEntryException()) {
+      this.shouldShowPIN = true;
+      if (this.data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin) {
+        this.data.ObjSelectedCompany.ObjCustomFieldControlModelLogOnEmployeePin.ShouldFocus = true;
+      }
+    }
   }
 
   private handleAppConfig(appConfig: AppConfigImpl) {
@@ -76,4 +78,5 @@ export class LogOnComponent implements OnInit {
       this.data.ObjSelectedCompany.ObjCustomFieldControlModelLogOnId.ShouldFocus = true;
     }
   }
+
 }

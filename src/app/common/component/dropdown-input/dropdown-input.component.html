@@ -1,4 +1,4 @@
-<mat-form-field appearance="outline" *ngIf="!!dropdownInput && !!dropdownInput.ObjListContext" class="width-100">
+<mat-form-field *ngIf="!!dropdownInput && !!dropdownInput.ObjListContext" class="width-100">
   <mat-label>{{dropdownInput.StrText}}</mat-label>
   <mat-select
     [value]="dropdownInput.getModelValue()?.getValue()"

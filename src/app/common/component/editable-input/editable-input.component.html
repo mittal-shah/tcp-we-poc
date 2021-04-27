@@ -1,4 +1,4 @@
-<mat-form-field appearance="outline" *ngIf="!!editableInput" class="width-100">
+<mat-form-field *ngIf="!!editableInput" class="width-100">
   <mat-label>{{editableInput.StrText}}</mat-label>
   <input matInput #inputElement="matInput"
          *ngIf="!editableInput.isMultiline()"
