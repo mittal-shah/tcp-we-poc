@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import AppConfigImpl from '../../impl/config/app.config.impl';
 import {GlobalConstant} from '../../constant/global.constant';
 import {EditableInputModel} from '../../declarations/editable-input';
@@ -13,6 +13,7 @@ export class EditableInputComponent implements OnInit, AfterViewInit {
   @ViewChild('inputElement', {static: false}) inputElement: MatInput | undefined;
 
   @Input() editableInput: EditableInputModel | undefined;
+  @Output() inputModelChange = new EventEmitter<string>();
   appConfig: AppConfigImpl | undefined;
 
   constructor() {
@@ -32,5 +33,9 @@ export class EditableInputComponent implements OnInit, AfterViewInit {
 
   setValue(value: any): void {
     this.editableInput?.setValue(value);
+    this.inputModelChange.emit(value);
+    if (this.editableInput?.onChange) {
+      this.editableInput.onChange(value);
+    }
   }
 }

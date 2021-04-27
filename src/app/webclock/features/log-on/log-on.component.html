@@ -1,7 +1,7 @@
 <div class="text-center">
   <div class="logo"></div>
   <mat-divider class="padding-bottom-20"></mat-divider>
-  <form class="logon-form" *ngIf="!!data && !!config">
+  <form class="logon-form" *ngIf="!!data && !!config" #logonForm="ngForm">
     <div>
       <tcp-dropdown-input
         [dropdownInput]="data.createCompanyDropdownInput(config.StrSelectCompany, selectChangeHandler.bind(this))"></tcp-dropdown-input>
@@ -17,5 +17,6 @@
     <div class="padding-bottom-20 padding-top-20">
       <button mat-flat-button color="primary" (click)="authenticate()">{{config?.StrLogOn}}</button>
     </div>
+    isFormValid:  {{logonForm.form.valid}}
   </form>
 </div>

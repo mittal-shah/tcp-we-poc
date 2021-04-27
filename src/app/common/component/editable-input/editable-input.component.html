@@ -1,10 +1,10 @@
 <mat-form-field appearance="outline" *ngIf="!!editableInput" class="width-100">
   <mat-label>{{editableInput.StrText}}</mat-label>
   <input matInput #inputElement="matInput"
-         [name]="editableInput.StrId || 'editableInput'"
-         [type]="editableInput.getType()"
          *ngIf="!editableInput.isMultiline()"
+         [name]="editableInput.StrId || 'editableInput'"
          [(ngModel)]="editableInput.StrValue"
+         [type]="editableInput.getType()"
          (ngModelChange)="setValue($event)"
          [required]="!!editableInput.BlnIsRequired"
          [maxLength]="editableInput.IntMaxLength"
@@ -16,11 +16,11 @@
          [spellcheck]="editableInput.shouldAutoCorrect()"
   >
   <textarea matInput #inputElement="matInput"
-            [name]="editableInput.StrId || 'editableInput'"
             *ngIf="editableInput.isMultiline()"
+            [name]="editableInput.StrId || 'editableInput'"
             [(ngModel)]="editableInput.StrValue"
-            (change)="editableInput.onChange"
             (ngModelChange)="setValue($event)"
+            (change)="editableInput.onChange"
             [required]="!!editableInput.BlnIsRequired"
             [readonly]="!!editableInput.BlnIsEditable"
             [maxLength]="editableInput.IntMaxLength"
