@@ -2,7 +2,7 @@ import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { timeout } from 'rxjs/operators';
-import { AnyType } from '../../../../../../../libs/tcp-models/src/declarations/types';
+import { AnyType } from '../../../../tcp-models/src/declarations/types';
 
 export const DEFAULT_TIMEOUT = new InjectionToken<number>('defaultTimeout');
 

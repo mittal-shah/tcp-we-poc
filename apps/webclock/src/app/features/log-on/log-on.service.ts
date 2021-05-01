@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AbstractService } from '../../common/service/abstract.service';
+import { AbstractService } from '../../../../../../libs/tcp-ui/src/service/abstract.service';
 import Util from '../../../../../../libs/tcp-util/src/util';
 import { AppConfig, EmployeeLogOnContext, LogOnData } from '../../../../../../libs/tcp-models/src/declarations/global';
 import { Observable } from 'rxjs';

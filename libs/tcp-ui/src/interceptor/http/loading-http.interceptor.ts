@@ -3,7 +3,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { LoadingService } from '../../service/loading.service';
-import { AnyType } from '../../../../../../../libs/tcp-models/src/declarations/types';
+import { AnyType } from '../../../../tcp-models/src/declarations/types';
 
 @Injectable()
 export class LoadingHttpInterceptor implements HttpInterceptor {

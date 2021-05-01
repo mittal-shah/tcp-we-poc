@@ -1,5 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core'
-import { LoadingService } from '../../service/loading.service'
+import { Component, HostListener, OnInit } from '@angular/core';
+import { LoadingService } from '../../service/loading.service';
 
 @Component({
   selector: 'tcp-request-loading',
@@ -7,20 +7,20 @@ import { LoadingService } from '../../service/loading.service'
   styleUrls: ['./request-loading.component.scss'],
 })
 export class RequestLoadingComponent implements OnInit {
-  isLoading = false
+  isLoading = false;
 
   constructor(private loadingService: LoadingService) {}
 
   ngOnInit() {
-    this.loadingService.loading$.subscribe((isLoading) => (this.isLoading = isLoading))
+    this.loadingService.loading$.subscribe((isLoading) => (this.isLoading = isLoading));
   }
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (!this.isLoading) {
-      return
+      return;
     }
-    event.returnValue = false
-    event.preventDefault()
+    event.returnValue = false;
+    event.preventDefault();
   }
 }

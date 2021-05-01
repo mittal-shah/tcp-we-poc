@@ -1,5 +1,5 @@
 import AlertOption from '../domain/alert-option';
-import Util from '../../../../../../../libs/tcp-util/src/util';
+import Util from '../../../../tcp-util/src/util';
 
 export default class AlertContext {
   public isCancelable = true;

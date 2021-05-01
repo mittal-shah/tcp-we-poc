@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import AppConfigImpl from '../../../../../../../libs/tcp-models/src/impl/config/app.config.impl';
-import { GlobalConstant } from '../../../../../../../libs/tcp-core/src/constants/global.constant';
+import AppConfigImpl from '../../../../tcp-models/src/impl/config/app.config.impl';
+import { GlobalConstant } from '../../../../tcp-core/src/constants/global.constant';
 import { MatSelect } from '@angular/material/select';
-import DropdownInput from '../../../../../../../libs/tcp-models/src/impl/domain/input/dropdown.input';
-import { AnyType } from '../../../../../../../libs/tcp-models/src/declarations/types';
+import DropdownInput from '../../../../tcp-models/src/impl/domain/input/dropdown.input';
+import { AnyType } from '../../../../tcp-models/src/declarations/types';
 
 @Component({
   selector: 'tcp-dropdown-input',

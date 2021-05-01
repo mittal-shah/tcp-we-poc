@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core'
-import { MAT_DIALOG_DATA } from '@angular/material/dialog'
-import AlertContext from '../../ui-impl/context/alert.context'
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import AlertContext from '../../ui-impl/context/alert.context';
 
 @Component({
   selector: 'tcp-alert-dialog',

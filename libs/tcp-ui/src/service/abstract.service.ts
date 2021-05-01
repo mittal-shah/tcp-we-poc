@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import Util from '../../../../../../libs/tcp-util/src/util';
+import Util from '../../../tcp-util/src/util';
 import { MatDialog } from '@angular/material/dialog';
 import PostDataHandler from '../handler/post-data.handler';
 import ExceptionHandler from '../handler/exception.handler';
-import { AnyType, ApiOptions } from '../../../../../../libs/tcp-models/src/declarations/types';
+import { AnyType, ApiOptions } from '../../../tcp-models/src/declarations/types';
 
 @Injectable({ providedIn: 'root' })
 export abstract class AbstractService {
