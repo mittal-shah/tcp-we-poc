@@ -1,0 +1,46 @@
+{
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "tcp-we-poc",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "N2I3MTk0NjYtZmZiYS00NTg1LTgyMTktYzY5MjE0YzJjZjQ2fHJlYWQtd3JpdGU=",
+        "canTrackAnalytics": false,
+        "showUsageWarnings": true
+      }
+    }
+  },
+  "projects": {
+    "webclock": {
+      "tags": []
+    },
+    "webclock-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "webclock"
+      ]
+    },
+    "tcp-ui": {
+      "tags": []
+    },
+    "tcp-models": {
+      "tags": []
+    }
+  }
+}

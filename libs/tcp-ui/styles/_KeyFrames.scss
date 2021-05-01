@@ -1,0 +1,96 @@
+@import "Colors";
+@import "Mixins";
+
+// Key Frames
+@include keyFrames(animateClockIn) {
+  from {
+    color: $white;
+    background-color: $logoGreen5PercentLighter;
+  }
+  to {
+    color: $gray3;
+    background-color: transparent;
+  }
+}
+
+@include keyFrames(animateExceptions) {
+  0% {
+    background-color: $logoYellow;
+  }
+  33% {
+    background-color: $gray1;
+  }
+
+  66% {
+    background-color: $logoYellow;
+  }
+  100% {
+    background-color: $gray1;
+  }
+}
+
+@include keyFrames(animateOnBreak) {
+  from {
+    color: $white;
+    background-color: $onBreakKeyframeColor;
+  }
+  to {
+    color: $gray3;
+    background-color: transparent;
+  }
+}
+
+@include keyFrames(animateClockedOut) {
+  from {
+    color: $white;
+    background-color: $red10PercentLighter;
+  }
+  to {
+    color: $gray3;
+    background-color: transparent;
+  }
+}
+
+@include keyFrames(animateMenuOpen) {
+  0% {
+    opacity: 0;
+    top: -1000px;
+  }
+  100% {
+    display: block;
+    opacity: 0;
+    top: -1000px;
+  }
+}
+
+@include keyFrames(animateVisible) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@include keyFrames(spinClockWise) {
+  0% {
+    @include transform(rotate(0deg));
+  }
+  50% {
+
+    @include transform(rotate(360deg));
+  }
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
+
+@include keyFrames(inProcessIndicator) {
+  0% {
+    background-position: left bottom;
+  }
+
+  100% {
+    background-position: right bottom;
+  }
+}
