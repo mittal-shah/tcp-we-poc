@@ -23,6 +23,9 @@
       ],
       "@tcp/tcp-models": [
         "libs/tcp-models/src/index.ts"
+      ],
+      "@tcp-we-poc/tcp-core": [
+        "libs/tcp-core/src/index.ts"
       ]
     }
   },

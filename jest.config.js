@@ -1,3 +1,8 @@
 module.exports = {
-  projects: ['<rootDir>/apps/webclock', '<rootDir>/libs/tcp-ui', '<rootDir>/libs/tcp-models'],
-}
+  projects: [
+    '<rootDir>/apps/webclock',
+    '<rootDir>/libs/tcp-ui',
+    '<rootDir>/libs/tcp-models',
+    '<rootDir>/libs/tcp-core',
+  ],
+};

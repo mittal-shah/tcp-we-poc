@@ -204,6 +204,31 @@
           }
         }
       }
+    },
+    "tcp-core": {
+      "root": "libs/tcp-core",
+      "sourceRoot": "libs/tcp-core/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tcp-core/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/tcp-core"
+          ],
+          "options": {
+            "jestConfig": "libs/tcp-core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

@@ -41,6 +41,9 @@
     },
     "tcp-models": {
       "tags": []
+    },
+    "tcp-core": {
+      "tags": []
     }
   }
 }
