@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/libs/tcp-ui',
     '<rootDir>/libs/tcp-models',
     '<rootDir>/libs/tcp-core',
+    '<rootDir>/libs/tcp-util',
   ],
 };

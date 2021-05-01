@@ -1,72 +1,76 @@
-import { ClockResourceModel, EmployeeLogOnConfig, LogOnConfig } from '../../../common/declarations/global'
-import WebClockMenuCommandConfigImpl from '../../../common/impl/config/web-clock-menu-command.config.impl'
-import AbstractImpl from '../../../common/impl/abstract.impl'
+import {
+  ClockResourceModel,
+  EmployeeLogOnConfig,
+  LogOnConfig,
+} from '../../../../../../../libs/tcp-models/src/declarations/global';
+import WebClockMenuCommandConfigImpl from '../../../../../../../libs/tcp-models/src/impl/config/web-clock-menu-command.config.impl';
+import AbstractImpl from '../../../../../../../libs/tcp-models/src/impl/abstract.impl';
 
 export default class LogOnConfigImpl extends AbstractImpl implements LogOnConfig {
-  ArrCompanyNamespaces?: string[] | undefined = []
+  ArrCompanyNamespaces?: string[] | undefined = [];
 
-  BlnRequireUserToEnterCompanyId?: boolean | undefined = false
+  BlnRequireUserToEnterCompanyId?: boolean | undefined = false;
 
-  BlnShowCompanyNamespaces?: boolean | undefined = false
+  BlnShowCompanyNamespaces?: boolean | undefined = false;
 
-  IntMaxCompanyId?: number | undefined = 0
+  IntMaxCompanyId?: number | undefined = 0;
 
-  IntMaxLengthCompanyNamespace?: number | undefined = 0
+  IntMaxLengthCompanyNamespace?: number | undefined = 0;
 
-  IntMaxLengthEmployeeId?: number | undefined = 0
+  IntMaxLengthEmployeeId?: number | undefined = 0;
 
-  IntMinCompanyId?: number | undefined = 0
+  IntMinCompanyId?: number | undefined = 0;
 
-  ObjClockResources?: ClockResourceModel | undefined
+  ObjClockResources?: ClockResourceModel | undefined;
 
-  ObjMenuCommandConfig?: WebClockMenuCommandConfigImpl | undefined
+  ObjMenuCommandConfig?: WebClockMenuCommandConfigImpl | undefined;
 
-  StrBypassLdap?: string | undefined = ''
+  StrBypassLdap?: string | undefined = '';
 
-  StrCompanyHelpText?: string | undefined = ''
+  StrCompanyHelpText?: string | undefined = '';
 
-  StrCompanyNamespace?: string | undefined = ''
+  StrCompanyNamespace?: string | undefined = '';
 
-  StrCompanyNamespaceHelpText?: string | undefined = ''
+  StrCompanyNamespaceHelpText?: string | undefined = '';
 
-  StrCompanyNamespaceSubText?: string | undefined = ''
+  StrCompanyNamespaceSubText?: string | undefined = '';
 
-  StrCopyright?: string | undefined = ''
+  StrCopyright?: string | undefined = '';
 
-  StrCustomLogoImagePath?: string | undefined = ''
+  StrCustomLogoImagePath?: string | undefined = '';
 
-  StrDeviceMode?: string | undefined = ''
+  StrDeviceMode?: string | undefined = '';
 
-  StrDeviceModeHelpText?: string | undefined = ''
+  StrDeviceModeHelpText?: string | undefined = '';
 
-  StrEmployeeIdHelpText?: string | undefined = ''
+  StrEmployeeIdHelpText?: string | undefined = '';
 
-  StrEnterId?: string | undefined = ''
+  StrEnterId?: string | undefined = '';
 
-  StrLogOn?: string | undefined = ''
+  StrLogOn?: string | undefined = '';
 
-  StrLogOnToDashboard?: string | undefined = ''
+  StrLogOnToDashboard?: string | undefined = '';
 
-  StrManualQuickPunch?: string | undefined = ''
+  StrManualQuickPunch?: string | undefined = '';
 
-  StrPersonalMode?: string | undefined = ''
+  StrPersonalMode?: string | undefined = '';
 
-  StrPinEntry?: string | undefined = ''
+  StrPinEntry?: string | undefined = '';
 
-  StrSelectCompany?: string | undefined = ''
+  StrSelectCompany?: string | undefined = '';
 
-  StrSelectCompanyNamespace?: string | undefined = ''
+  StrSelectCompanyNamespace?: string | undefined = '';
 
-  StrUseLdapAuthentication?: string | undefined = ''
+  StrUseLdapAuthentication?: string | undefined = '';
 
   init(data?: EmployeeLogOnConfig) {
     if (!data) {
-      return
+      return;
     }
 
     this.ObjMenuCommandConfig =
       this.ObjMenuCommandConfig !== undefined
         ? AbstractImpl.fromJSON(data.ObjMenuCommandConfig, WebClockMenuCommandConfigImpl)
-        : undefined
+        : undefined;
   }
 }

@@ -1,39 +1,39 @@
-import { AnyType } from '../declarations/types'
-import AbstractImpl from '../impl/abstract.impl'
+import { AnyType } from '../../../../../../libs/tcp-models/src/declarations/types';
+import AbstractImpl from '../../../../../../libs/tcp-models/src/impl/abstract.impl';
 
 export default class PostDataHandler {
   public static getAdjustedData(data: AnyType) {
     // guard-clause
     if (!data || typeof data === 'string') {
-      return data
+      return data;
     }
 
     if ('createSubmissionData' in data) {
-      data = data.createSubmissionData()
+      data = data.createSubmissionData();
     }
 
     if (Array.isArray(data)) {
       data.forEach((item, index) => {
         if (item instanceof AbstractImpl) {
-          data[index] = this.getAdjustedData(item)
+          data[index] = this.getAdjustedData(item);
         }
-      })
+      });
     }
 
     Object.keys(data).forEach((key) => {
       if (data[key] instanceof AbstractImpl) {
-        data[key] = this.getAdjustedData(data[key])
+        data[key] = this.getAdjustedData(data[key]);
       }
 
       if (Array.isArray(data[key])) {
         data[key].forEach((item: AnyType, itemIndex: string | number) => {
           if (item instanceof AbstractImpl) {
-            data[key][itemIndex] = this.getAdjustedData(item)
+            data[key][itemIndex] = this.getAdjustedData(item);
           }
-        })
+        });
       }
-    })
+    });
 
-    return data
+    return data;
   }
 }

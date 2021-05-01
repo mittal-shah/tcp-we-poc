@@ -1,18 +1,18 @@
-import AlertOption from '../domain/alert-option'
-import Util from '../../util/util'
+import AlertOption from '../domain/alert-option';
+import Util from '../../../../../../../libs/tcp-util/src/util';
 
 export default class AlertContext {
-  public isCancelable = true
+  public isCancelable = true;
 
-  public message = ''
+  public message = '';
 
-  public options: AlertOption[]
+  public options: AlertOption[];
 
-  public title?: string
+  public title?: string;
 
   constructor(message: string, options: AlertOption[], title?: string) {
-    this.message = Util.stringFormat(message)
-    this.options = options
-    this.title = title
+    this.message = Util.stringFormat(message);
+    this.options = options;
+    this.title = title;
   }
 }

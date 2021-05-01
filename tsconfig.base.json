@@ -26,6 +26,9 @@
       ],
       "@tcp-we-poc/tcp-core": [
         "libs/tcp-core/src/index.ts"
+      ],
+      "@tcp-we-poc/tcp-util": [
+        "libs/tcp-util/src/index.ts"
       ]
     }
   },

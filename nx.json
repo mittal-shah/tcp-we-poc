@@ -44,6 +44,9 @@
     },
     "tcp-core": {
       "tags": []
+    },
+    "tcp-util": {
+      "tags": []
     }
   }
 }

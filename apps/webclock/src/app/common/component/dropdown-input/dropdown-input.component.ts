@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core'
-import AppConfigImpl from '../../impl/config/app.config.impl'
-import { GlobalConstant } from '../../constant/global.constant'
-import { MatSelect } from '@angular/material/select'
-import DropdownInput from '../../impl/domain/input/dropdown.input'
-import { AnyType } from '../../declarations/types'
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import AppConfigImpl from '../../../../../../../libs/tcp-models/src/impl/config/app.config.impl';
+import { GlobalConstant } from '../../../../../../../libs/tcp-core/src/constants/global.constant';
+import { MatSelect } from '@angular/material/select';
+import DropdownInput from '../../../../../../../libs/tcp-models/src/impl/domain/input/dropdown.input';
+import { AnyType } from '../../../../../../../libs/tcp-models/src/declarations/types';
 
 @Component({
   selector: 'tcp-dropdown-input',
@@ -11,30 +11,30 @@ import { AnyType } from '../../declarations/types'
   styleUrls: ['./dropdown-input.component.scss'],
 })
 export class DropdownInputComponent implements OnInit, AfterViewInit {
-  @ViewChild('inputElement', { static: false }) inputElement: MatSelect | undefined
+  @ViewChild('inputElement', { static: false }) inputElement: MatSelect | undefined;
 
-  @Input() dropdownInput: DropdownInput | undefined
-  appConfig: AppConfigImpl | undefined
+  @Input() dropdownInput: DropdownInput | undefined;
+  appConfig: AppConfigImpl | undefined;
 
   ngOnInit(): void {
-    this.appConfig = GlobalConstant.appConfig
-    this.dropdownInput?.initializeControl()
+    this.appConfig = GlobalConstant.appConfig;
+    this.dropdownInput?.initializeControl();
   }
 
   ngAfterViewInit() {
     if (!this.dropdownInput?.ShouldFocus) {
-      return
+      return;
     }
-    setTimeout(() => this.inputElement?.focus(), 0)
+    setTimeout(() => this.inputElement?.focus(), 0);
   }
 
   onSelect(value: AnyType) {
     if (this.dropdownInput?.handleOnSelectItem) {
-      this.dropdownInput.handleOnSelectItem(value)
+      this.dropdownInput.handleOnSelectItem(value);
     }
   }
 
   setValue(value: AnyType): void {
-    this.dropdownInput?.setValue(value)
+    this.dropdownInput?.setValue(value);
   }
 }

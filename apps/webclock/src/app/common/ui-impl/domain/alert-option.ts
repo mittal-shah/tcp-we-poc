@@ -1,27 +1,27 @@
-import { AnyType } from '../../declarations/types'
+import { AnyType } from '../../../../../../../libs/tcp-models/src/declarations/types';
 
 export default class AlertOption {
-  public isCancel = false
+  public isCancel = false;
 
-  public isDestructive = false
+  public isDestructive = false;
 
-  public onPress?: (data?: AnyType) => void = undefined
+  public onPress?: (data?: AnyType) => void = undefined;
 
-  public text = ''
+  public text = '';
 
   constructor(text: string, onPress?: (data?: AnyType) => void, isCancel?: boolean) {
-    this.isCancel = isCancel || false
-    this.onPress = onPress
-    this.text = text
+    this.isCancel = isCancel || false;
+    this.onPress = onPress;
+    this.text = text;
   }
 
   getStyle() {
     if (this.isCancel) {
-      return 'cancel'
+      return 'cancel';
     }
     if (this.isDestructive) {
-      return 'destructive'
+      return 'destructive';
     }
-    return 'default'
+    return 'default';
   }
 }

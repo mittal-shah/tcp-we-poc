@@ -229,6 +229,31 @@
           }
         }
       }
+    },
+    "tcp-util": {
+      "root": "libs/tcp-util",
+      "sourceRoot": "libs/tcp-util/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tcp-util/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/tcp-util"
+          ],
+          "options": {
+            "jestConfig": "libs/tcp-util/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
