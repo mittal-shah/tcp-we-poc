@@ -1,16 +1,16 @@
-import * as moment from 'moment'
-import Util from '../util/util'
+import * as moment from 'moment';
+import Util from '../util/util';
 
 export interface HourMin {
-  intHour: number
-  intMin: number
+  intHour: number;
+  intMin: number;
 }
 
 export const DateTimeConstants = {
   IsoDateFormat: moment.HTML5_FMT.DATE, // YYYY-MM-DD
   IsoTimeFormat: moment.HTML5_FMT.TIME, // HH:mm
   IsoTimestamp: `${moment.HTML5_FMT.DATE} ${moment.HTML5_FMT.TIME_SECONDS}`, // YYYY-MM-DD HH:mm:ss
-}
+};
 
 export default class DateTimeFormatter {
   static createAdjustedDate(timeOffset = 0): Date {
@@ -108,7 +108,10 @@ export default class DateTimeFormatter {
     return moment(dateTime, adjustedTime, true).isValid();
   }
 
-  static toDateString(date?: Date | undefined, dateFormat: string = DateTimeConstants.IsoDateFormat): string | undefined {
+  static toDateString(
+    date?: Date | undefined,
+    dateFormat: string = DateTimeConstants.IsoDateFormat,
+  ): string | undefined {
     if (!date) {
       return undefined;
     }
@@ -162,9 +165,9 @@ export default class DateTimeFormatter {
     const formattedDateComponents = formattedDate.split(/\.|:/);
     const formattedDateString = isDecimal
       ? DateTimeFormatter.formatHourMin(
-        parseInt(formattedDateComponents[0], 10) || 0,
-        parseInt(formattedDateComponents[1], 10) || 0
-      )
+          parseInt(formattedDateComponents[0], 10) || 0,
+          parseInt(formattedDateComponents[1], 10) || 0,
+        )
       : DateTimeFormatter.toTimeStringFromHundredths(formattedDate, true);
     return DateTimeFormatter.getMinutesFromComponents(formattedDateString.split(/\.|:/));
   }
@@ -315,7 +318,7 @@ export default class DateTimeFormatter {
 
     return {
       intHour,
-      intMin
+      intMin,
     } as HourMin;
   }
 }
