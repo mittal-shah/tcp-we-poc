@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core'
+import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component'
-import { LogOnComponent } from './features/log-on/log-on.component'
-import { TcpCommonModule } from './common/tcp-common.module'
+import { AppComponent } from './app.component';
+import { LogOnComponent } from './features/log-on/log-on.component';
+import { TcpCommonModule } from '../../../../libs/tcp-ui/src/tcp-common.module';
 
 @NgModule({
   declarations: [AppComponent, LogOnComponent],
