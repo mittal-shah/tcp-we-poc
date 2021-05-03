@@ -3,7 +3,7 @@ export enum LogLevel {
   Error = 'ERROR',
   Info = 'INFO',
   Warn = 'WARN',
-  Trace = 'TRACE'
+  Trace = 'TRACE',
 }
 
 export default class LogImpl {
