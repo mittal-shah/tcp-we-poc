@@ -4,7 +4,7 @@ import { HttpRequest } from '@angular/common/http';
 import { AnyType } from '@tcp/tcp-models';
 
 @Injectable()
-export class LoadingService {
+export class RequestLoadingService {
   loading$: BehaviorSubject<boolean>;
   private requests: Array<HttpRequest<AnyType>>;
 

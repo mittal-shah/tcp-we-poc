@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { LoadingService } from '../../service';
+import { RequestLoadingService } from './request-loading.service';
 
 @Component({
   selector: 'tcp-request-loading',
@@ -9,7 +9,7 @@ import { LoadingService } from '../../service';
 export class RequestLoadingComponent implements OnInit {
   isLoading = false;
 
-  constructor(private loadingService: LoadingService) {}
+  constructor(private loadingService: RequestLoadingService) {}
 
   ngOnInit() {
     this.loadingService.loading$.subscribe((isLoading) => (this.isLoading = isLoading));

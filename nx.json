@@ -9,7 +9,7 @@
   "affected": {
     "defaultBase": "master"
   },
-  "npmScope": "tcp-we-poc",
+  "npmScope": "tcp",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",

@@ -20,8 +20,8 @@ import {
   DropdownInputComponent,
   EditableInputComponent,
   LoadingHttpInterceptor,
-  LoadingService,
   RequestLoadingComponent,
+  RequestLoadingService,
   TimeoutHttpInterceptor,
 } from '@tcp/tcp-ui';
 import { AppRoutingModule } from './app-routing.module';
@@ -50,7 +50,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatProgressSpinnerModule,
   ],
   providers: [
-    LoadingService,
+    RequestLoadingService,
     { provide: HTTP_INTERCEPTORS, useClass: TimeoutHttpInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingHttpInterceptor, multi: true },
     { provide: DEFAULT_TIMEOUT, useValue: 30000 },
