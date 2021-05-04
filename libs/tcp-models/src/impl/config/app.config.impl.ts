@@ -1,7 +1,7 @@
 import { AppConfig, WebSocketMessageConfig } from '../../declaration';
 import { DataTypeMapImpl, InputMethodMapImpl, KeyTextItemImpl, MenuImpl } from '../domain';
-import { CommonUtil } from '../../util';
 import { AbstractImpl } from '../abstract.impl';
+import { CommonUtil } from '@tcp/tcp-util';
 
 export class AppConfigImpl extends AbstractImpl implements AppConfig {
   BlnEnableSameSiteSecureFlag: boolean | undefined = false;

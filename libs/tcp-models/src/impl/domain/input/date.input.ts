@@ -1,8 +1,8 @@
 import { EditableDateInputModel, InputSuffixIcon } from '../../../declaration';
 import AbstractEditableInput from './abstract-editable.input';
-import { CommonUtil } from '../../../util';
 import { AppConfigImpl } from '../../config';
 import { DateTimeConstants, DateTimeFormatter } from '../../../formatter';
+import { CommonUtil } from '@tcp/tcp-util';
 
 export class DateInput extends AbstractEditableInput implements EditableDateInputModel {
   IsPartial = false;

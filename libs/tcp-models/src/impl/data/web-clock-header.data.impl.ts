@@ -1,9 +1,9 @@
 import { AbstractImpl } from '../abstract.impl';
 import { WebClockHeaderData } from '../../declaration';
 import { MenuImpl, MenuItemImpl } from '../domain';
-import { CommonUtil } from '../../util';
 import { CompanyConfigImpl, WebClockMenuCommandConfigImpl } from '../config';
 import { DateTimeFormatter } from '../../formatter';
+import { CommonUtil } from '@tcp/tcp-util';
 
 export class WebClockHeaderDataImpl extends AbstractImpl implements WebClockHeaderData {
   BlnHasAttestations: boolean | undefined = false;

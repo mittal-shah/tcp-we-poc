@@ -4,7 +4,8 @@ import { catchError, map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import PostDataHandler from '../handler/post-data.handler';
 import ExceptionHandler from '../handler/exception.handler';
-import { AnyType, ApiOptions, CommonUtil } from '@tcp/tcp-models';
+import { CommonUtil } from '@tcp/tcp-util';
+import { AnyType, ApiOptions } from '@tcp/tcp-models';
 
 @Injectable({ providedIn: 'root' })
 export abstract class AbstractService {

@@ -1,8 +1,8 @@
 import AbstractEditableInput from './abstract-editable.input';
 import RegExpValidator from '../../../constants/reg-exp-validators.constant';
 import { EditableNumberInputModel } from '../../../declaration';
-import { CommonUtil } from '../../../util';
 import { AppConfigImpl } from '../../config';
+import { CommonUtil } from '@tcp/tcp-util';
 
 export class NumberInput extends AbstractEditableInput implements EditableNumberInputModel {
   BlnIsMaskedValue: boolean | undefined = false;

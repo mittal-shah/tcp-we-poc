@@ -5,9 +5,9 @@ import {
   EditableInputModel,
   InputSuffixIcon,
 } from '../../../declaration';
-import { CommonUtil } from '../../../util';
 import { AppConfigImpl } from '../../config';
 import { AbstractImpl } from '../../abstract.impl';
+import { CommonUtil } from '@tcp/tcp-util';
 
 export default abstract class AbstractEditableInput extends AbstractImpl implements EditableInputModel {
   DefaultNumberOfLines = 1;

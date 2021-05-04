@@ -1,6 +1,5 @@
 import {
   AbstractImpl,
-  CommonUtil,
   DeviceInfoImpl,
   DropdownInput,
   ListItemContext,
@@ -10,6 +9,7 @@ import {
   VersionInfoImpl,
 } from '@tcp/tcp-models';
 import CompanySelectItemImpl from '../domain/company-select.item.impl';
+import { CommonUtil } from '@tcp/tcp-util';
 
 export default class LogOnDataImpl extends AbstractImpl implements LogOnData {
   ArrCompanies: CompanySelectItemImpl[] | undefined = [];

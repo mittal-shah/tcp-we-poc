@@ -1,8 +1,8 @@
 import { SelectEmployeesData } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { CommonUtil } from '../../util';
 import { FilterDataImpl } from './filter.data.impl';
 import { EmployeeImpl, SelectItemImpl } from '../domain';
+import { CommonUtil } from '@tcp/tcp-util';
 
 export class SelectEmployeesDataImpl extends AbstractImpl implements SelectEmployeesData {
   ArrEmployeeIds: number[] | undefined = undefined;

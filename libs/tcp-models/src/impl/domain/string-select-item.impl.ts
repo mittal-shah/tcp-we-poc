@@ -1,6 +1,6 @@
 import { AnyType, StringSelectItemModel } from '../../declaration';
-import { CommonUtil } from '../../util';
 import { SelectItemImpl } from './select-item.impl';
+import { CommonUtil } from '@tcp/tcp-util';
 
 export class StringSelectItemImpl extends SelectItemImpl implements StringSelectItemModel {
   StrText: string | undefined = '';

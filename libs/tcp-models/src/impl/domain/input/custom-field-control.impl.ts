@@ -17,7 +17,8 @@ import {
   TextInput,
   TimeInput,
 } from '../..';
-import { CommonUtil, MaskedInputComponentBuilder } from '@tcp/tcp-models';
+import { MaskedInputComponentBuilder } from '@tcp/tcp-models';
+import { CommonUtil } from '@tcp/tcp-util';
 
 export class CustomFieldControlImpl extends AbstractEditableInput implements CustomFieldControlModel {
   ArrDateOptions: DateSelectItemImpl[] | undefined = [];

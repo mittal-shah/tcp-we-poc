@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { CommonUtil } from '../util';
+import { CommonUtil } from '@tcp/tcp-util';
 
 export interface HourMin {
   intHour: number;

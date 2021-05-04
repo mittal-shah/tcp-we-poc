@@ -4,4 +4,3 @@ export * from './constants';
 export * from './declaration';
 export * from './formatter';
 export * from './impl';
-export * from './util';
