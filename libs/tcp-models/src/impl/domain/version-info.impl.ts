@@ -1,12 +1,14 @@
-import { VersionInfoModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { VersionInfoModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class VersionInfoImpl extends AbstractImpl implements VersionInfoModel {
-  StrApplication?: string | undefined = '';
+export class VersionInfoImpl extends AbstractImpl implements VersionInfoModel {
+  StrApplication: string | undefined = '';
 
-  StrClient?: string | undefined = '';
+  StrClient: string | undefined = '';
 
-  StrRevision?: string | undefined = '';
+  StrRevision: string | undefined = '';
 
-  StrServer?: string | undefined = '';
+  StrServer: string | undefined = '';
+
+  StrCodePushVersion: string | undefined = '';
 }

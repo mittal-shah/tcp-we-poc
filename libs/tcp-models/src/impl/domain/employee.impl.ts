@@ -12,7 +12,7 @@ import {
   EmployeeContractPeriodContext,
   EmployeeContractsData,
   EmployeeCostCodeGroupAssignmentData,
-  EmployeeDocumentContext,
+  EmployeeCurrencyFormatChangeHistoryData,
   EmployeeFMLASuspensionPeriodContext,
   EmployeeHolidaysContext,
   EmployeeHourCalculationPriorityGroupContext,
@@ -48,277 +48,288 @@ import {
   FloatingPayPeriodContext,
   ForcedOvertimeContext,
   IncludeOvertimeInRegularContext,
+  MobileAppAccessContext,
   MobileClientPlatformContext,
   OccurrenceRuleExpirationContext,
   OccurrencesData,
   OvertimeAdvancedContext,
   PaidBreakLimitContext,
   RequestNoticeContext,
+  RequestRestrictContext,
   RequestTemplateData,
   SalariedNonExemptContext,
   SplitByPercentageEmployeeContext,
   SubSearchPlusStatusContext,
+  ViewDocumentsData,
   WeightedOvertimeContext,
-} from '../../declarations/global';
-import ExceptionOptionSetImpl from './exception-option-set.impl';
-import TextInput from './input/text.input';
-import AbstractImpl from '../abstract.impl';
-import CompanyLocationPreviewImpl from './company-location-preview.impl';
-import LegendItemImpl from './legend-item.impl';
-import SelectItemImpl from './select-item.impl';
-import StringSelectInputImpl from './string-select-input.impl';
-import JobCodeBreakdownImpl from './job-code-breakdown.impl';
-import CustomFieldSectionImpl from './custom-field-section.impl';
-import LongStringItemImpl from './long-string-item.impl';
-import RequestApprovalContextImpl from '../context/request-approval-context.impl';
-import ViewMessagesDataImpl from '../data/view-messages-data.impl';
+} from '../../declaration';
+import { CompanyLocationPreviewImpl } from './company-location-preview.impl';
+import { CustomFieldSectionImpl } from './custom-field-section.impl';
+import { JobCodeBreakdownImpl } from './job-code-breakdown.impl';
+import { RequestApprovalContextImpl } from '../context';
+import { LongStringItemImpl } from './long-string-item.impl';
+import { StringSelectInputImpl } from './string-select-input.impl';
+import { SelectItemImpl } from './select-item.impl';
+import { ExceptionOptionSetImpl } from './exception-option-set.impl';
+import { LegendItemImpl } from './legend-item.impl';
+import { TextInput } from './input';
+import { ViewMessagesDataImpl } from '../data';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class EmployeeImpl extends SelectItemImpl implements EmployeeModel {
-  ArrCustomFieldSections?: CustomFieldSectionImpl[] | undefined = undefined;
+export class EmployeeImpl extends SelectItemImpl implements EmployeeModel {
+  ArrCustomFieldSections: CustomFieldSectionImpl[] | undefined = undefined;
 
-  ArrDepartments?: string[] | undefined = undefined;
+  ArrDepartments: string[] | undefined = undefined;
 
-  ArrJobCodeBreakdowns?: JobCodeBreakdownImpl[] | undefined = undefined;
+  ArrJobCodeBreakdowns: JobCodeBreakdownImpl[] | undefined = undefined;
 
-  ArrScheduleGroups?: string[] | undefined = undefined;
+  ArrScheduleGroups: string[] | undefined = undefined;
 
-  BlnIsActive?: boolean | undefined = false;
+  BlnIsActive: boolean | undefined = false;
 
-  BlnIsSuspended?: boolean | undefined = false;
+  BlnIsSuspended: boolean | undefined = false;
 
-  BlnIsTerminated?: boolean | undefined = false;
+  BlnIsTerminated: boolean | undefined = false;
 
-  BlnOverrideAutomaticBreak?: boolean | undefined = false;
+  BlnOverrideAutomaticBreak: boolean | undefined = false;
 
-  BlnOverrideEmployeeCompany?: boolean | undefined = false;
+  BlnOverrideEmployeeCompany: boolean | undefined = false;
 
-  BlnOverrideJobCodeDefault?: boolean | undefined = false;
+  BlnOverrideJobCodeDefault: boolean | undefined = false;
 
-  BlnOverrideManager?: boolean | undefined = false;
+  BlnOverrideManager: boolean | undefined = false;
 
-  BlnUseDefaultCostCode?: boolean | undefined = false;
+  BlnUseDefaultCostCode: boolean | undefined = false;
 
-  BlnUseDefaultJobCode?: boolean | undefined = false;
+  BlnUseDefaultJobCode: boolean | undefined = false;
 
-  DatDateOfBirth?: string | undefined = '';
+  DatDateOfBirth: string | undefined = '';
 
-  DatHireDate?: string | undefined = '';
+  DatHireDate: string | undefined = '';
 
-  DatTerminationDate?: string | undefined = '';
+  DatTerminationDate: string | undefined = '';
 
-  IntClass?: number | undefined = 0;
+  DatSeniorityDate: string | undefined = '';
 
-  IntGender?: number | undefined = 0;
+  IntClass: number | undefined = 0;
 
-  LngDefaultJobCodeId?: number | undefined = 0;
+  IntGender: number | undefined = 0;
 
-  LngEmployeeId?: number | undefined = 0;
+  LngDefaultJobCodeId: number | undefined = 0;
 
-  LngRecordId?: number | undefined = 0;
+  LngEmployeeId: number | undefined = 0;
 
-  ObjAttestationPreviewData?: AttestationPreviewData | undefined = undefined;
+  LngRecordId: number | undefined = 0;
 
-  ObjCompanyLocationPreview?: CompanyLocationPreviewImpl | undefined = undefined;
+  ObjEmployeeCurrencyFormatChangeHistoryData: EmployeeCurrencyFormatChangeHistoryData | undefined;
 
-  ObjContractsFirstContext?: ContractsFirstContext | undefined = undefined;
+  ObjMobileAppAccessContext: MobileAppAccessContext | undefined = undefined;
 
-  ObjDailyOvertimeExemptContext?: DailyOvertimeExemptContext | undefined = undefined;
+  ObjRequestRestrictContext: RequestRestrictContext | undefined = undefined;
 
-  ObjEmployeeAccrualBankData?: EmployeeAccrualBankData | undefined = undefined;
+  ObjViewDocumentsData: ViewDocumentsData | undefined = undefined;
 
-  ObjEmployeeAdvancedSchedulerContext?: EmployeeAdvancedSchedulerContext | undefined = undefined;
+  ObjAttestationPreviewData: AttestationPreviewData | undefined = undefined;
 
-  ObjEmployeeAutomaticBreakData?: EmployeeAutomaticBreakData | undefined = undefined;
+  ObjCompanyLocationPreview: CompanyLocationPreviewImpl | undefined = undefined;
 
-  ObjEmployeeBenefitStatusData?: EmployeeBenefitStatusData | undefined = undefined;
+  ObjContractsFirstContext: ContractsFirstContext | undefined = undefined;
 
-  ObjEmployeeClockConfigurationData?: EmployeeClockConfigurationData | undefined = undefined;
+  ObjDailyOvertimeExemptContext: DailyOvertimeExemptContext | undefined = undefined;
 
-  ObjEmployeeCompTimeContext?: EmployeeCompTimeContext | undefined = undefined;
+  ObjEmployeeAccrualBankData: EmployeeAccrualBankData | undefined = undefined;
 
-  ObjEmployeeCompanyContext?: EmployeeCompanyContext | undefined = undefined;
+  ObjEmployeeAdvancedSchedulerContext: EmployeeAdvancedSchedulerContext | undefined = undefined;
 
-  ObjEmployeeContractPeriodContext?: EmployeeContractPeriodContext | undefined = undefined;
+  ObjEmployeeAutomaticBreakData: EmployeeAutomaticBreakData | undefined = undefined;
 
-  ObjEmployeeContractsData?: EmployeeContractsData | undefined = undefined;
+  ObjEmployeeBenefitStatusData: EmployeeBenefitStatusData | undefined = undefined;
 
-  ObjEmployeeCostCodeGroupAssignmentData?: EmployeeCostCodeGroupAssignmentData | undefined = undefined;
+  ObjEmployeeClockConfigurationData: EmployeeClockConfigurationData | undefined = undefined;
 
-  ObjEmployeeDocumentContext?: EmployeeDocumentContext | undefined = undefined;
+  ObjEmployeeCompTimeContext: EmployeeCompTimeContext | undefined = undefined;
 
-  ObjEmployeeFMLASuspensionPeriodContext?: EmployeeFMLASuspensionPeriodContext | undefined = undefined;
+  ObjEmployeeCompanyContext: EmployeeCompanyContext | undefined = undefined;
 
-  ObjEmployeeHolidaysContext?: EmployeeHolidaysContext | undefined = undefined;
+  ObjEmployeeContractPeriodContext: EmployeeContractPeriodContext | undefined = undefined;
 
-  ObjEmployeeHourCalculationPriorityGroupContext?: EmployeeHourCalculationPriorityGroupContext | undefined = undefined;
+  ObjEmployeeContractsData: EmployeeContractsData | undefined = undefined;
 
-  ObjEmployeeJobCodeData?: EmployeeJobCodeData | undefined = undefined;
+  ObjEmployeeCostCodeGroupAssignmentData: EmployeeCostCodeGroupAssignmentData | undefined = undefined;
 
-  ObjEmployeeLeaveCalendarsContext?: EmployeeLeaveCalendarsContext | undefined = undefined;
+  ObjEmployeeFMLASuspensionPeriodContext: EmployeeFMLASuspensionPeriodContext | undefined = undefined;
 
-  ObjEmployeeLeaveGroupsContext?: EmployeeLeaveGroupsContext | undefined = undefined;
+  ObjEmployeeHolidaysContext: EmployeeHolidaysContext | undefined = undefined;
 
-  ObjEmployeeLocationsContext?: EmployeeLocationsContext | undefined = undefined;
+  ObjEmployeeHourCalculationPriorityGroupContext: EmployeeHourCalculationPriorityGroupContext | undefined = undefined;
 
-  ObjEmployeeLockedPeriodContext?: EmployeeLockedPeriodContext | undefined = undefined;
+  ObjEmployeeJobCodeData: EmployeeJobCodeData | undefined = undefined;
 
-  ObjEmployeeNotesData?: EmployeeNotesData | undefined = undefined;
+  ObjEmployeeLeaveCalendarsContext: EmployeeLeaveCalendarsContext | undefined = undefined;
 
-  ObjEmployeeOccurrenceNotificationThresholdContext?:
+  ObjEmployeeLeaveGroupsContext: EmployeeLeaveGroupsContext | undefined = undefined;
+
+  ObjEmployeeLocationsContext: EmployeeLocationsContext | undefined = undefined;
+
+  ObjEmployeeLockedPeriodContext: EmployeeLockedPeriodContext | undefined = undefined;
+
+  ObjEmployeeNotesData: EmployeeNotesData | undefined = undefined;
+
+  ObjEmployeeOccurrenceNotificationThresholdContext:
     | EmployeeOccurrenceNotificationThresholdContext
     | undefined = undefined;
 
-  ObjEmployeeOccurrenceRuleContext?: EmployeeOccurrenceRuleContext | undefined = undefined;
+  ObjEmployeeOccurrenceRuleContext: EmployeeOccurrenceRuleContext | undefined = undefined;
 
-  ObjEmployeeOvertimeRulesData?: EmployeeOvertimeRulesData | undefined = undefined;
+  ObjEmployeeOvertimeRulesData: EmployeeOvertimeRulesData | undefined = undefined;
 
-  ObjEmployeePINContext?: EmployeePINContext | undefined = undefined;
+  ObjEmployeePINContext: EmployeePINContext | undefined = undefined;
 
-  ObjEmployeePasswordContext?: EmployeePasswordContext | undefined = undefined;
+  ObjEmployeePasswordContext: EmployeePasswordContext | undefined = undefined;
 
-  ObjEmployeePayProgressionContext?: EmployeePayProgressionContext | undefined = undefined;
+  ObjEmployeePayProgressionContext: EmployeePayProgressionContext | undefined = undefined;
 
-  ObjEmployeeProvisionContext?: EmployeeProvisionContext | undefined = undefined;
+  ObjEmployeeProvisionContext: EmployeeProvisionContext | undefined = undefined;
 
-  ObjEmployeeQualificationContext?: EmployeeQualificationContext | undefined = undefined;
+  ObjEmployeeQualificationContext: EmployeeQualificationContext | undefined = undefined;
 
-  ObjEmployeeRateChangeHistoryData?: EmployeeRateChangeHistoryData | undefined = undefined;
+  ObjEmployeeRateChangeHistoryData: EmployeeRateChangeHistoryData | undefined = undefined;
 
-  ObjEmployeeRecurringScheduleData?: EmployeeRecurringScheduleData | undefined = undefined;
+  ObjEmployeeRecurringScheduleData: EmployeeRecurringScheduleData | undefined = undefined;
 
-  ObjEmployeeReviewsData?: EmployeeReviewsData | undefined = undefined;
+  ObjEmployeeReviewsData: EmployeeReviewsData | undefined = undefined;
 
-  ObjEmployeeRoundingData?: EmployeeRoundingData | undefined = undefined;
+  ObjEmployeeRoundingData: EmployeeRoundingData | undefined = undefined;
 
-  ObjEmployeeShiftDifferentialContext?: EmployeeShiftDifferentialContext | undefined = undefined;
+  ObjEmployeeShiftDifferentialContext: EmployeeShiftDifferentialContext | undefined = undefined;
 
-  ObjEmployeeSingleSignOnContext?: EmployeeSingleSignOnContext | undefined = undefined;
+  ObjEmployeeSingleSignOnContext: EmployeeSingleSignOnContext | undefined = undefined;
 
-  ObjEmployeeSubAssignmentTemplatesContext?: EmployeeSubAssignmentTemplatesContext | undefined = undefined;
+  ObjEmployeeSubAssignmentTemplatesContext: EmployeeSubAssignmentTemplatesContext | undefined = undefined;
 
-  ObjEmployeeSwapLimitsContext?: EmployeeSwapLimitsContext | undefined = undefined;
+  ObjEmployeeSwapLimitsContext: EmployeeSwapLimitsContext | undefined = undefined;
 
-  ObjEmployeeTimeZoneContext?: EmployeeTimeZoneContext | undefined = undefined;
+  ObjEmployeeTimeZoneContext: EmployeeTimeZoneContext | undefined = undefined;
 
-  ObjEmployeeUsersData?: EmployeeUsersData | undefined = undefined;
+  ObjEmployeeUsersData: EmployeeUsersData | undefined = undefined;
 
-  ObjEmployeeWorkDayAdjustmentContext?: EmployeeWorkDayAdjustmentContext | undefined = undefined;
+  ObjEmployeeWorkDayAdjustmentContext: EmployeeWorkDayAdjustmentContext | undefined = undefined;
 
-  ObjEmployeeWorkWeekSettingsContext?: EmployeeWorkWeekSettingsContext | undefined = undefined;
+  ObjEmployeeWorkWeekSettingsContext: EmployeeWorkWeekSettingsContext | undefined = undefined;
 
-  ObjEmployeeWorkweekFinalizerContext?: EmployeeWorkweekFinalizerContext | undefined = undefined;
+  ObjEmployeeWorkweekFinalizerContext: EmployeeWorkweekFinalizerContext | undefined = undefined;
 
-  ObjExceptionOptionSet?: ExceptionOptionSetImpl | undefined = undefined;
+  ObjExceptionOptionSet: ExceptionOptionSetImpl | undefined = undefined;
 
-  ObjFeatureProvisionContext?: FeatureProvisionContext | undefined = undefined;
+  ObjFeatureProvisionContext: FeatureProvisionContext | undefined = undefined;
 
-  ObjFloatingPayPeriodContext?: FloatingPayPeriodContext | undefined = undefined;
+  ObjFloatingPayPeriodContext: FloatingPayPeriodContext | undefined = undefined;
 
-  ObjForcedOvertimeContext?: ForcedOvertimeContext | undefined = undefined;
+  ObjForcedOvertimeContext: ForcedOvertimeContext | undefined = undefined;
 
-  ObjIncludeOvertimeInRegularContext?: IncludeOvertimeInRegularContext | undefined = undefined;
+  ObjIncludeOvertimeInRegularContext: IncludeOvertimeInRegularContext | undefined = undefined;
 
-  ObjLegendItem?: LegendItemImpl | undefined = undefined;
+  ObjLegendItem: LegendItemImpl | undefined = undefined;
 
-  ObjLongStringItemDefaultCostCode?: LongStringItemImpl | undefined = undefined;
+  ObjLongStringItemDefaultCostCode: LongStringItemImpl | undefined = undefined;
 
-  ObjLongStringItemLocation?: LongStringItemImpl | undefined = undefined;
+  ObjLongStringItemLocation: LongStringItemImpl | undefined = undefined;
 
-  ObjMobileClientPlatformContext?: MobileClientPlatformContext | undefined = undefined;
+  ObjMobileClientPlatformContext: MobileClientPlatformContext | undefined = undefined;
 
-  ObjOccurrenceRuleExpirationContext?: OccurrenceRuleExpirationContext | undefined = undefined;
+  ObjOccurrenceRuleExpirationContext: OccurrenceRuleExpirationContext | undefined = undefined;
 
-  ObjOccurrencesData?: OccurrencesData | undefined = undefined;
+  ObjOccurrencesData: OccurrencesData | undefined = undefined;
 
-  ObjOvertimeAdvancedContext?: OvertimeAdvancedContext | undefined = undefined;
+  ObjOvertimeAdvancedContext: OvertimeAdvancedContext | undefined = undefined;
 
-  ObjPaidBreakLimitContext?: PaidBreakLimitContext | undefined = undefined;
+  ObjPaidBreakLimitContext: PaidBreakLimitContext | undefined = undefined;
 
-  ObjRequestApprovalContext?: RequestApprovalContextImpl | undefined = undefined;
+  ObjRequestApprovalContext: RequestApprovalContextImpl | undefined = undefined;
 
-  ObjRequestNoticeContext?: RequestNoticeContext | undefined = undefined;
+  ObjRequestNoticeContext: RequestNoticeContext | undefined = undefined;
 
-  ObjRequestTemplateData?: RequestTemplateData | undefined = undefined;
+  ObjRequestTemplateData: RequestTemplateData | undefined = undefined;
 
-  ObjSalariedNonExemptContext?: SalariedNonExemptContext | undefined = undefined;
+  ObjSalariedNonExemptContext: SalariedNonExemptContext | undefined = undefined;
 
-  ObjSplitByPercentageEmployeeContext?: SplitByPercentageEmployeeContext | undefined = undefined;
+  ObjSplitByPercentageEmployeeContext: SplitByPercentageEmployeeContext | undefined = undefined;
 
-  ObjStringSelectInputLanguageOptions?: StringSelectInputImpl | undefined = undefined;
+  ObjStringSelectInputLanguageOptions: StringSelectInputImpl | undefined = undefined;
 
-  ObjSubSearchPlusStatusContext?: SubSearchPlusStatusContext | undefined = undefined;
+  ObjSubSearchPlusStatusContext: SubSearchPlusStatusContext | undefined = undefined;
 
-  ObjTextInputLdapLogInId?: TextInput | undefined = undefined;
+  ObjTextInputLdapLogInId: TextInput | undefined = undefined;
 
-  ObjViewMessagesData?: ViewMessagesDataImpl | undefined = undefined;
+  ObjViewMessagesData: ViewMessagesDataImpl | undefined = undefined;
 
-  ObjWeightedOvertimeContext?: WeightedOvertimeContext | undefined = undefined;
+  ObjWeightedOvertimeContext: WeightedOvertimeContext | undefined = undefined;
 
-  StrAddress1?: string | undefined = '';
+  StrAddress1: string | undefined = '';
 
-  StrAddress2?: string | undefined = '';
+  StrAddress2: string | undefined = '';
 
-  StrAssignedConfiguration?: string | undefined = '';
+  StrAssignedConfiguration: string | undefined = '';
 
-  StrBadge?: string | undefined = '';
+  StrBadge: string | undefined = '';
 
-  StrCellPhone?: string | undefined = '';
+  StrCellPhone: string | undefined = '';
 
-  StrCity?: string | undefined = '';
+  StrCity: string | undefined = '';
 
-  StrCostCodeSearchQuery?: string | undefined = '';
+  StrCostCodeSearchQuery: string | undefined = '';
 
-  StrDefaultJobCodeDescription?: string | undefined = '';
+  StrDefaultJobCodeDescription: string | undefined = '';
 
-  StrDelete?: string | undefined = '';
+  StrDelete: string | undefined = '';
 
-  StrDepartment?: string | undefined = '';
+  StrDepartment: string | undefined = '';
 
-  StrEmailAddress?: string | undefined = '';
+  StrEmailAddress: string | undefined = '';
 
-  StrExportCode?: string | undefined = '';
+  StrExportCode: string | undefined = '';
 
-  StrFirstName?: string | undefined = '';
+  StrFirstName: string | undefined = '';
 
-  StrFullName?: string | undefined = '';
+  StrFullName: string | undefined = '';
 
-  StrHomePhone?: string | undefined = '';
+  StrHomePhone: string | undefined = '';
 
-  StrLastName?: string | undefined = '';
+  StrLastName: string | undefined = '';
 
-  StrLocation?: string | undefined = '';
+  StrLocation: string | undefined = '';
 
-  StrManagerName?: string | undefined = '';
+  StrManagerName: string | undefined = '';
 
-  StrNetworkId?: string | undefined = '';
+  StrNetworkId: string | undefined = '';
 
-  StrNoJobCodesSelected?: string | undefined = '';
+  StrNoJobCodesSelected: string | undefined = '';
 
-  StrOfficePhone?: string | undefined = '';
+  StrOfficePhone: string | undefined = '';
 
-  StrPIN?: string | undefined = '';
+  StrPIN: string | undefined = '';
 
-  StrPhoneExtension?: string | undefined = '';
+  StrPhoneExtension: string | undefined = '';
 
-  StrRate?: string | undefined = '';
+  StrRate: string | undefined = '';
 
-  StrRoleId?: string | undefined = '';
+  StrRoleId: string | undefined = '';
 
-  StrSSN?: string | undefined = '';
+  StrSSN: string | undefined = '';
 
-  StrScheduleGroup?: string | undefined = '';
+  StrScheduleGroup: string | undefined = '';
 
-  StrSmsAddress?: string | undefined = '';
+  StrSmsAddress: string | undefined = '';
 
-  StrState?: string | undefined = '';
+  StrState: string | undefined = '';
 
-  StrStatus?: string | undefined = '';
+  StrStatus: string | undefined = '';
 
-  StrZip?: string | undefined = '';
+  StrZip: string | undefined = '';
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  init(data?: EmployeeModel) {
+  init(data: EmployeeModel) {
     if (!data) {
       return;
     }

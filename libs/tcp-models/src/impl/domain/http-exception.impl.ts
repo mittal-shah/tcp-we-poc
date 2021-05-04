@@ -1,6 +1,6 @@
-import { AnyType } from '../../declarations/types';
+import { AnyType } from '../../declaration';
 
-export default class HttpExceptionImpl {
+export class HttpExceptionImpl {
   InnerException: AnyType = null;
 
   Type = 'Unknown';

@@ -1,24 +1,24 @@
-import AbstractImpl from '../abstract.impl';
-import { EditSegmentConfig } from '../../declarations/global';
+import { EditSegmentConfig } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class EditSegmentConfigImpl extends AbstractImpl implements EditSegmentConfig {
-  BlnCanEnableRate?: boolean | undefined = false;
+export class EditSegmentConfigImpl extends AbstractImpl implements EditSegmentConfig {
+  BlnCanEnableRate: boolean | undefined = false;
 
-  DatMaxDate?: string | undefined = undefined;
+  DatMaxDate: string | undefined = undefined;
 
-  DatMaxDateOut?: string | undefined = undefined;
+  DatMaxDateOut: string | undefined = undefined;
 
-  DatMinDate?: string | undefined = undefined;
+  DatMinDate: string | undefined = undefined;
 
-  IntMaxTimesheetMinutes?: number | undefined = 0;
+  IntMaxTimesheetMinutes: number | undefined = 0;
 
-  IntMinTimesheetMinutes?: number | undefined = 0;
+  IntMinTimesheetMinutes: number | undefined = 0;
 
-  IntNoteMaxLength?: number | undefined = 0;
+  IntNoteMaxLength: number | undefined = 0;
 
-  StrClockedIn?: string | undefined = '';
+  StrClockedIn: string | undefined = '';
 
-  StrNoteLabel?: string | undefined = '';
+  StrNoteLabel: string | undefined = '';
 
   getMaxDateOut() {
     return this.DatMaxDateOut || this.DatMaxDate;

@@ -1,33 +1,33 @@
-import { MenuItemModel } from '../../declarations/global';
-import CommonConstants from '../../../../tcp-core/src/constants/common.constant';
-import AbstractImpl from '../abstract.impl';
+import { MenuItemModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import ModelConstant from '../../constants/model.constant';
 
-export default class MenuItemImpl extends AbstractImpl implements MenuItemModel {
-  ArrMenuItems?: MenuItemImpl[] | undefined = [];
+export class MenuItemImpl extends AbstractImpl implements MenuItemModel {
+  ArrMenuItems: MenuItemImpl[] | undefined = [];
 
-  BlnHideMenuItem?: boolean | undefined = false;
+  BlnHideMenuItem: boolean | undefined = false;
 
-  BlnIsDisabled?: boolean | undefined = false;
+  BlnIsDisabled: boolean | undefined = false;
 
-  BlnIsSeparator?: boolean | undefined = false;
+  BlnIsSeparator: boolean | undefined = false;
 
-  BlnPreventSelection?: boolean | undefined = false;
+  BlnPreventSelection: boolean | undefined = false;
 
-  StrMenuCommand?: string | undefined = '';
+  StrMenuCommand: string | undefined = '';
 
-  StrMenuIcon?: string | undefined = undefined;
+  StrMenuIcon: string | undefined = undefined;
 
-  StrMenuText?: string | undefined = '';
+  StrMenuText: string | undefined = '';
 
-  StrRootMenuCommand?: string | undefined = '';
+  StrRootMenuCommand: string | undefined = '';
 
-  constructor(text?: string | undefined, command?: string | undefined) {
+  constructor(text: string | undefined, command: string | undefined) {
     super();
     this.StrMenuText = text || '';
     this.StrMenuCommand = command || '';
   }
 
-  init(data?: MenuItemModel) {
+  init(data: MenuItemModel) {
     if (!data) {
       return;
     }
@@ -94,7 +94,7 @@ export default class MenuItemImpl extends AbstractImpl implements MenuItemModel 
     if (!routePath) {
       return false;
     }
-    const routeSplit = routePath.split(CommonConstants.routeSeparator);
+    const routeSplit = routePath.split(ModelConstant.routeSeparator);
     if (routeSplit.length <= 1) {
       return this.findMenuItem(routePath) !== undefined;
     }

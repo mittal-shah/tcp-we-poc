@@ -1,19 +1,19 @@
-import SelectItemImpl from './select-item.impl';
-import HeaderValueImpl from './header-value.impl';
-import { IntStringItemModel } from '../../declarations/global';
+import { IntStringItemModel } from '../../declaration';
+import { SelectItemImpl } from './select-item.impl';
+import { HeaderValueImpl } from './header-value.impl';
 
-export default class IntStringItemImpl extends SelectItemImpl implements IntStringItemModel {
-  IntKey?: number | undefined = 0;
+export class IntStringItemImpl extends SelectItemImpl implements IntStringItemModel {
+  IntKey: number | undefined = 0;
 
-  StrHelp?: string | undefined = '';
+  StrHelp: string | undefined = '';
 
-  StrId?: string | undefined = '';
+  StrId: string | undefined = '';
 
-  StrText?: string | undefined = '';
+  StrText: string | undefined = '';
 
-  _ArrColumnValues?: string[] | undefined = [];
+  _ArrColumnValues: string[] | undefined = [];
 
-  _ArrHeaderValues?: HeaderValueImpl[] | undefined = [];
+  _ArrHeaderValues: HeaderValueImpl[] | undefined = [];
 
   constructor(itemKey?: number, itemText?: string) {
     super();
@@ -22,7 +22,7 @@ export default class IntStringItemImpl extends SelectItemImpl implements IntStri
     this.setText(itemText);
   }
 
-  init(data?: IntStringItemImpl) {
+  init(data: IntStringItemImpl) {
     if (!data) {
       return;
     }
@@ -36,6 +36,10 @@ export default class IntStringItemImpl extends SelectItemImpl implements IntStri
 
   setText(text: string | undefined) {
     this.StrText = text;
+  }
+
+  getKey() {
+    return this.IntKey;
   }
 
   getValue() {

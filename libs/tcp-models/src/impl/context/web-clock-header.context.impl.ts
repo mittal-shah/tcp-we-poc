@@ -1,17 +1,16 @@
-import WebClockHeaderConfigImpl from '../config/web-clock-header.config.impl';
-import CompanyConfigImpl from '../config/company.config.impl';
-import { WebClockHeaderContext } from '../../declarations/global';
-import WebClockHeaderDataImpl from '../data/web-clock-header.data.impl';
-import AbstractImpl from '../abstract.impl';
+import { WebClockHeaderContext } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { CompanyConfigImpl, WebClockHeaderConfigImpl } from '../config';
+import { WebClockHeaderDataImpl } from '../data';
 
-export default class WebClockHeaderContextImpl extends AbstractImpl implements WebClockHeaderContext {
-  ObjCompanyConfig?: CompanyConfigImpl | undefined;
+export class WebClockHeaderContextImpl extends AbstractImpl implements WebClockHeaderContext {
+  ObjCompanyConfig: CompanyConfigImpl | undefined;
 
-  ObjWebClockHeaderConfig?: WebClockHeaderConfigImpl | undefined;
+  ObjWebClockHeaderConfig: WebClockHeaderConfigImpl | undefined;
 
-  ObjWebClockHeaderData?: WebClockHeaderDataImpl | undefined;
+  ObjWebClockHeaderData: WebClockHeaderDataImpl | undefined;
 
-  init(data?: WebClockHeaderContext) {
+  init(data: WebClockHeaderContext) {
     if (!data) {
       return;
     }

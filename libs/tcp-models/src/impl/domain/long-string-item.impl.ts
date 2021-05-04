@@ -1,19 +1,19 @@
-import { LongStringItemModel } from '../../declarations/global';
-import SelectItemImpl from './select-item.impl';
-import HeaderValueImpl from './header-value.impl';
+import { LongStringItemModel } from '../../declaration';
+import { SelectItemImpl } from './select-item.impl';
+import { HeaderValueImpl } from './header-value.impl';
 
-export default class LongStringItemImpl extends SelectItemImpl implements LongStringItemModel {
-  LngKey?: number | undefined = 0;
+export class LongStringItemImpl extends SelectItemImpl implements LongStringItemModel {
+  LngKey: number | undefined = 0;
 
-  StrHelp?: string | undefined = '';
+  StrHelp: string | undefined = '';
 
-  StrId?: string | undefined = '';
+  StrId: string | undefined = '';
 
-  StrText?: string | undefined = '';
+  StrText: string | undefined = '';
 
-  _ArrColumnValues?: string[] | undefined = [];
+  _ArrColumnValues: string[] | undefined = [];
 
-  _ArrHeaderValues?: HeaderValueImpl[] | undefined = [];
+  _ArrHeaderValues: HeaderValueImpl[] | undefined = [];
 
   constructor(value?: number | undefined, text?: string | undefined) {
     super();
@@ -21,7 +21,7 @@ export default class LongStringItemImpl extends SelectItemImpl implements LongSt
     this.setText(text);
   }
 
-  init(data?: LongStringItemModel) {
+  init(data: LongStringItemModel) {
     if (!data) {
       return;
     }

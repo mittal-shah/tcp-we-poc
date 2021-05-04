@@ -1,30 +1,34 @@
-import MenuItemImpl from '../domain/menu-item.impl';
-import WebClockMenuCommandConfigImpl from '../config/web-clock-menu-command.config.impl';
-import MenuImpl from '../domain/menu.impl';
-import CompanyConfigImpl from '../config/company.config.impl';
-import AbstractImpl from '../abstract.impl';
-import DateTimeFormatter from '../../../../tcp-core/src/formatter/date-time.formatter';
-import { WebClockHeaderData } from '../../declarations/global';
-import Util from '../../../../tcp-util/src/util';
+import { AbstractImpl } from '../abstract.impl';
+import { WebClockHeaderData } from '../../declaration';
+import { MenuImpl, MenuItemImpl } from '../domain';
+import { CommonUtil } from '../../util';
+import { CompanyConfigImpl, WebClockMenuCommandConfigImpl } from '../config';
+import { DateTimeFormatter } from '../../formatter';
 
-export default class WebClockHeaderDataImpl extends AbstractImpl implements WebClockHeaderData {
-  BlnHasAttestations?: boolean | undefined = false;
+export class WebClockHeaderDataImpl extends AbstractImpl implements WebClockHeaderData {
+  BlnHasAttestations: boolean | undefined = false;
 
-  BlnHasMissedBiometricAttestation?: boolean | undefined = false;
+  BlnHasMissedBiometricAttestation: boolean | undefined = false;
 
-  BlnIsOnBreak?: boolean | undefined = false;
+  BlnIsOnBreak: boolean | undefined = false;
 
-  IntBreakLengthSeconds?: number | undefined = 0;
+  DblShiftTotalMilliseconds: number | undefined = 0;
 
-  LngEmployeeId?: number | undefined = 0;
+  HrmLongBreakMins: string | undefined = '';
 
-  ObjHeaderMenu?: MenuImpl | undefined;
+  HrmShortBreakMins: string | undefined = '';
 
-  StrBreakStartDateTime?: string | undefined = '';
+  IntBreakLengthSeconds: number | undefined = 0;
 
-  StrClockStatus?: string | undefined = '';
+  LngEmployeeId: number | undefined = 0;
 
-  init(data?: WebClockHeaderData) {
+  ObjHeaderMenu: MenuImpl | undefined;
+
+  StrBreakStartDateTime: string | undefined = '';
+
+  StrClockStatus: string | undefined = '';
+
+  init(data: WebClockHeaderData) {
     if (!data) {
       return;
     }
@@ -42,23 +46,23 @@ export default class WebClockHeaderDataImpl extends AbstractImpl implements WebC
     return this.ObjHeaderMenu.flattenMenuItems();
   }
 
-  getClockStatusMessage(companyConfig?: CompanyConfigImpl) {
+  getClockStatusMessage(companyConfig: CompanyConfigImpl) {
     if (!this.StrClockStatus) {
       return '';
     }
 
-    if (!companyConfig || !this.StrBreakStartDateTime || !Util.containsParam(this.StrClockStatus)) {
+    if (!companyConfig || !this.StrBreakStartDateTime || !CommonUtil.containsParam(this.StrClockStatus)) {
       return this.StrClockStatus;
     }
 
-    return Util.stringFormat(this.StrClockStatus, String(this.getBreakMinutes()));
+    return CommonUtil.stringFormat(this.StrClockStatus, String(this.getBreakMinutes()));
   }
 
   getBreakMinutes() {
     return DateTimeFormatter.getMinutesFromSeconds(this.IntBreakLengthSeconds);
   }
 
-  getHeaderMenuItem(menuCommand?: string) {
+  getHeaderMenuItem(menuCommand: string) {
     if (!this.ObjHeaderMenu || !menuCommand) {
       return undefined;
     }

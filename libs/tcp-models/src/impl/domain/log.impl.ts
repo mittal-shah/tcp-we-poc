@@ -6,7 +6,7 @@ export enum LogLevel {
   Trace = 'TRACE',
 }
 
-export default class LogImpl {
+export class LogImpl {
   public level: LogLevel | LogLevel.Error = LogLevel.Info;
 
   public time: Date | undefined;

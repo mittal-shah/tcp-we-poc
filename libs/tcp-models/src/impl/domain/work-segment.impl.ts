@@ -1,186 +1,200 @@
-import { WorkSegmentModel } from '../../declarations/global';
-import IntStringItemImpl from './int-string-item.impl';
-import ContractVarianceImpl from './contract-variance.impl';
-import AbstractImpl from '../abstract.impl';
+import { HourApprovalItemModel, WorkSegmentModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { IntStringItemImpl } from './int-string-item.impl';
+import { ContractVarianceImpl } from './contract-variance.impl';
 
-export default class WorkSegmentImpl extends AbstractImpl implements WorkSegmentModel {
-  ArrContractVariances?: ContractVarianceImpl[] | undefined = [];
+export class WorkSegmentImpl extends AbstractImpl implements WorkSegmentModel {
+  ArrContractVariances: ContractVarianceImpl[] | undefined = [];
 
-  ArrIntStringItemOccurrencePoints?: IntStringItemImpl[] | undefined = [];
+  ArrHourApprovalItems: HourApprovalItemModel[] | undefined;
 
-  BlnCanAddBreak?: boolean | undefined = false;
+  ArrIntStringItemOccurrencePoints: IntStringItemImpl[] | undefined = [];
 
-  BlnCanApproveEmployee?: boolean | undefined = false;
+  BlnCanAddBreak: boolean | undefined = false;
 
-  BlnCanApproveManager?: boolean | undefined = false;
+  BlnCanApproveEmployee: boolean | undefined = false;
 
-  BlnCanApproveOther?: boolean | undefined = false;
+  BlnCanApproveManager: boolean | undefined = false;
 
-  BlnCanConvert?: boolean | undefined = false;
+  BlnCanApproveOther: boolean | undefined = false;
 
-  BlnCanDeleteSegment?: boolean | undefined = false;
+  BlnCanConvert: boolean | undefined = false;
 
-  BlnCanEditMissedBreakProcessing?: boolean | undefined = false;
+  BlnCanDeleteSegment: boolean | undefined = false;
 
-  BlnCanEditOccurrence?: boolean | undefined = false;
+  BlnCanEditMissedBreakProcessing: boolean | undefined = false;
 
-  BlnCanEditSegment?: boolean | undefined = false;
+  BlnCanEditOccurrence: boolean | undefined = false;
 
-  BlnCanProcessShiftDifferential?: boolean | undefined = false;
+  BlnCanEditSegment: boolean | undefined = false;
 
-  BlnCanSplitSegment?: boolean | undefined = false;
+  BlnCanProcessShiftDifferential: boolean | undefined = false;
 
-  BlnCanToggleBreak?: boolean | undefined = false;
+  BlnCanSplitSegment: boolean | undefined = false;
 
-  BlnCanToggleCompTime?: boolean | undefined = false;
+  BlnCanToggleBreak: boolean | undefined = false;
 
-  BlnCanViewEmployeeApproval?: boolean | undefined = false;
+  BlnCanToggleCompTime: boolean | undefined = false;
 
-  BlnCanViewEmployeeCompTime?: boolean | undefined = false;
+  BlnCanViewEmployeeApproval: boolean | undefined = false;
 
-  BlnCanViewManagerApproval?: boolean | undefined = false;
+  BlnCanViewEmployeeCompTime: boolean | undefined = false;
 
-  BlnCanViewNote?: boolean | undefined = false;
+  BlnCanViewManagerApproval: boolean | undefined = false;
 
-  BlnCanViewOtherApproval?: boolean | undefined = false;
+  BlnCanViewNote: boolean | undefined = false;
 
-  BlnHasDayLightAdjustments?: boolean | undefined = false;
+  BlnCanViewOtherApproval: boolean | undefined = false;
 
-  BlnHasNote?: boolean | undefined = false;
+  BlnHasDayLightAdjustments: boolean | undefined = false;
 
-  BlnHasPhotos?: boolean | undefined = false;
+  BlnHasNote: boolean | undefined = false;
 
-  BlnHasPremium?: boolean | undefined = false;
+  BlnHasPhotos: boolean | undefined = false;
 
-  BlnIsAbsentSegment?: boolean | undefined = false;
+  BlnHasPremium: boolean | undefined = false;
 
-  BlnIsApprovedByEmployee?: boolean | undefined = false;
+  BlnIsAbsentSegment: boolean | undefined = false;
 
-  BlnIsApprovedByManager?: boolean | undefined = false;
+  BlnIsApprovedByEmployee: boolean | undefined = false;
 
-  BlnIsApprovedByOther?: boolean | undefined = false;
+  BlnIsApprovedByManager: boolean | undefined = false;
 
-  BlnIsApprovedMissedIn?: boolean | undefined = false;
+  BlnIsApprovedByOther: boolean | undefined = false;
 
-  BlnIsApprovedMissedOut?: boolean | undefined = false;
+  BlnIsApprovedMissedIn: boolean | undefined = false;
 
-  BlnIsCompTimeToggledByEmployee?: boolean | undefined = false;
+  BlnIsApprovedMissedOut: boolean | undefined = false;
 
-  BlnIsConflictingShift?: boolean | undefined = false;
+  BlnIsCompTimeToggledByEmployee: boolean | undefined = false;
 
-  BlnIsEdited?: boolean | undefined = false;
+  BlnIsConflictingShift: boolean | undefined = false;
 
-  BlnIsEndOfWeek?: boolean | undefined = false;
+  BlnIsEdited: boolean | undefined = false;
 
-  BlnIsFirstSegmentInShift?: boolean | undefined = false;
+  BlnIsEndOfWeek: boolean | undefined = false;
 
-  BlnIsHistory?: boolean | undefined = false;
+  BlnIsFirstSegmentInShift: boolean | undefined = false;
 
-  BlnIsLastSegmentInShift?: boolean | undefined = false;
+  BlnIsHistory: boolean | undefined = false;
 
-  BlnIsMiddleSegmentInShift?: boolean | undefined = false;
+  BlnIsLastSegmentInShift: boolean | undefined = false;
 
-  BlnIsMissedBreakProcessingDisabled?: boolean | undefined = false;
+  BlnIsMiddleSegmentInShift: boolean | undefined = false;
 
-  BlnIsMissedIn?: boolean | undefined = false;
+  BlnIsMissedBreakProcessingDisabled: boolean | undefined = false;
 
-  BlnIsMissedOut?: boolean | undefined = false;
+  BlnIsMissedIn: boolean | undefined = false;
 
-  BlnIsTimeInSameAsActual?: boolean | undefined = false;
+  BlnIsMissedOut: boolean | undefined = false;
 
-  BlnIsTimeOutSameAsActual?: boolean | undefined = false;
+  BlnIsTimeInSameAsActual: boolean | undefined = false;
 
-  DatAnchorDate?: string | undefined = '';
+  BlnIsTimeOutSameAsActual: boolean | undefined = false;
 
-  IntApprovableExceptionTypes?: number | undefined = 0;
+  DatAnchorDate: string | undefined = '';
 
-  IntApprovedExceptionType?: number | undefined = 0;
+  IntApprovableExceptionTypes: number | undefined = 0;
 
-  IntExceptionStatus?: number | undefined = 0;
+  IntApprovedExceptionType: number | undefined = 0;
 
-  IntMenuExceptionType?: number | undefined = 0;
+  IntExceptionStatus: number | undefined = 0;
 
-  IntRequireApprovalExceptionType?: number | undefined = 0;
+  IntMenuExceptionType: number | undefined = 0;
 
-  IntShiftNumber?: number | undefined = 0;
+  IntRequireApprovalExceptionType: number | undefined = 0;
 
-  IntToolTipExceptionType?: number | undefined = 0;
+  IntShiftNumber: number | undefined = 0;
 
-  LngEmployeeRecordId?: number | undefined = 0;
+  IntToolTipExceptionType: number | undefined = 0;
 
-  LngJobCodeRecordId?: number | undefined = 0;
+  LngApprovableExceptionTypes: number | undefined = 0;
 
-  LngRecordId?: number | undefined = 0;
+  LngApprovedExceptionType: number | undefined = 0;
 
-  LngRecurringScheduleSegmentRecordId?: number | undefined = 0;
+  LngMenuExceptionType: number | undefined = 0;
 
-  LngSegmentAssignmentRecordId?: number | undefined = 0;
+  LngRequireApprovalExceptionType: number | undefined = 0;
 
-  StrApprovedByEmployeeId?: string | undefined = '';
+  LngToolTipExceptionType: number | undefined = 0;
 
-  StrApprovedByManagerId?: string | undefined = '';
+  LngEmployeeRecordId: number | undefined = 0;
 
-  StrApprovedByOtherId?: string | undefined = '';
+  LngJobCodeRecordId: number | undefined = 0;
 
-  StrColor?: string | undefined = '';
+  LngRecordId: number | undefined = 0;
 
-  StrCostCodeDescription?: string | undefined = '';
+  LngRecurringScheduleSegmentRecordId: number | undefined = 0;
 
-  StrDayLightSavingsValue?: string | undefined = '';
+  LngSegmentAssignmentRecordId: number | undefined = 0;
 
-  StrEmployeeName?: string | undefined = '';
+  StrFormattedBreakDesc: string | undefined = '';
 
-  StrEvenRowShadingColor?: string | undefined = '';
+  StrApprovedByEmployeeId: string | undefined = '';
 
-  StrFormattedActualDateTimeIn?: string | undefined = '';
+  StrApprovedByManagerId: string | undefined = '';
 
-  StrFormattedActualDateTimeOut?: string | undefined = '';
+  StrApprovedByOtherId: string | undefined = '';
 
-  StrFormattedBreakLength?: string | undefined = '';
+  StrColor: string | undefined = '';
 
-  StrFormattedBreakLengthDesc?: string | undefined = '';
+  StrCostCodeDescription: string | undefined = '';
 
-  StrFormattedCoveredEmployeeName?: string | undefined = '';
+  StrDayLightSavingsValue: string | undefined = '';
 
-  StrFormattedDateTimeIn?: string | undefined = '';
+  StrEmployeeName: string | undefined = '';
 
-  StrFormattedDateTimeOut?: string | undefined = '';
+  StrEvenRowShadingColor: string | undefined = '';
 
-  StrFormattedDayTotal?: string | undefined = '';
+  StrFormattedActualDateTimeIn: string | undefined = '';
 
-  StrFormattedRate?: string | undefined = '';
+  StrFormattedActualDateTimeOut: string | undefined = '';
 
-  StrFormattedSegmentTotal?: string | undefined = '';
+  StrFormattedBreakLength: string | undefined = '';
 
-  StrFormattedShiftTotal?: string | undefined = '';
+  StrFormattedBreakLengthDesc: string | undefined = '';
 
-  StrFormattedTimeSheetMinutes?: string | undefined = '';
+  StrFormattedCoveredEmployeeName: string | undefined = '';
 
-  StrFormattedWeekTotal?: string | undefined = '';
+  StrFormattedDateTimeIn: string | undefined = '';
 
-  StrGroupHeading?: string | undefined = '';
+  StrFormattedDateTimeOut: string | undefined = '';
 
-  StrGroupId?: string | undefined = '';
+  StrFormattedDayTotal: string | undefined = '';
 
-  StrJobCodeDescription?: string | undefined = '';
+  StrFormattedRate: string | undefined = '';
 
-  StrLaborCodeCount?: string | undefined = '';
+  StrFormattedSegmentTotal: string | undefined = '';
 
-  StrTimeInColor?: string | undefined = '';
+  StrFormattedShiftTotal: string | undefined = '';
 
-  StrTimeOutColor?: string | undefined = '';
+  StrFormattedTimeSheetMinutes: string | undefined = '';
 
-  StrTrack1Value?: string | undefined = '';
+  StrFormattedWeekTotal: string | undefined = '';
 
-  StrTrack2Value?: string | undefined = '';
+  StrGroupHeading: string | undefined = '';
 
-  StrTrack3Value?: string | undefined = '';
+  StrGroupId: string | undefined = '';
 
-  StrUnformattedRateBreakDown?: string | undefined = '';
+  StrJobCodeDescription: string | undefined = '';
 
-  StrWeekTotalDisclaimer?: string | undefined = '';
+  StrLaborCodeCount: string | undefined = '';
 
-  init(data?: WorkSegmentImpl) {
+  StrTimeInColor: string | undefined = '';
+
+  StrTimeOutColor: string | undefined = '';
+
+  StrTrack1Value: string | undefined = '';
+
+  StrTrack2Value: string | undefined = '';
+
+  StrTrack3Value: string | undefined = '';
+
+  StrUnformattedRateBreakDown: string | undefined = '';
+
+  StrWeekTotalDisclaimer: string | undefined = '';
+
+  init(data: WorkSegmentImpl) {
     if (!data) {
       return;
     }

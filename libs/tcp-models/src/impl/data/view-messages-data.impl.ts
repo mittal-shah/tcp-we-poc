@@ -1,12 +1,12 @@
-import FilterDataImpl from './filter.data.impl';
-import EmployeeMessageImpl from '../domain/employee-message.impl';
-import { ViewMessagesData } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { ViewMessagesData } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { FilterDataImpl } from './filter.data.impl';
+import { EmployeeMessageImpl } from '../domain';
 
-export default class ViewMessagesDataImpl extends AbstractImpl implements ViewMessagesData {
-  ArrEmployeeMessages?: EmployeeMessageImpl[] | undefined = [];
+export class ViewMessagesDataImpl extends AbstractImpl implements ViewMessagesData {
+  ArrEmployeeMessages: EmployeeMessageImpl[] | undefined = [];
 
-  ObjFilterData?: FilterDataImpl | undefined;
+  ObjFilterData: FilterDataImpl | undefined;
 
   getMessages() {
     return this.ArrEmployeeMessages ? this.ArrEmployeeMessages : [];
@@ -42,7 +42,7 @@ export default class ViewMessagesDataImpl extends AbstractImpl implements ViewMe
     return this.getMarkAsReadMessages().filter((message) => message.BlnIsRead);
   }
 
-  init(data?: ViewMessagesData) {
+  init(data: ViewMessagesData) {
     if (!data) {
       return;
     }

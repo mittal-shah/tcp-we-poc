@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { LoadingService } from '../../service/loading.service';
-import { AnyType } from '../../../../tcp-models/src/declarations/types';
+import { LoadingService } from '../../service';
+import { AnyType } from '@tcp/tcp-models';
 
 @Injectable()
 export class LoadingHttpInterceptor implements HttpInterceptor {

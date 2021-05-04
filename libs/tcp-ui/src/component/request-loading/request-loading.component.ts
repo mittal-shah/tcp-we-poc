@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { LoadingService } from '../../service/loading.service';
+import { LoadingService } from '../../service';
 
 @Component({
   selector: 'tcp-request-loading',

@@ -1,18 +1,18 @@
-import FilterDataImpl from './filter.data.impl';
-import { AssignedCostCodeOptionsData } from '../../declarations/global';
-import OrderedCostCodeOptionImpl from '../domain/ordered-cost-code-option.impl';
-import AbstractImpl from '../abstract.impl';
+import { FilterDataImpl } from './filter.data.impl';
+import { AssignedCostCodeOptionsData } from '../../declaration';
+import { OrderedCostCodeOptionImpl } from '../domain';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class AssignedCostCodeOptionsDataImpl extends AbstractImpl implements AssignedCostCodeOptionsData {
-  ArrOrderedCostCodeOptions?: OrderedCostCodeOptionImpl[] | undefined = [];
+export class AssignedCostCodeOptionsDataImpl extends AbstractImpl implements AssignedCostCodeOptionsData {
+  ArrOrderedCostCodeOptions: OrderedCostCodeOptionImpl[] | undefined = [];
 
-  BlnCanAdd?: boolean | undefined = false;
+  BlnCanAdd: boolean | undefined = false;
 
-  IntMaxPosition?: number | undefined = 0;
+  IntMaxPosition: number | undefined = 0;
 
-  ObjFilterData?: FilterDataImpl | undefined;
+  ObjFilterData: FilterDataImpl | undefined;
 
-  init(data?: AssignedCostCodeOptionsData) {
+  init(data: AssignedCostCodeOptionsData) {
     if (!data) {
       return;
     }

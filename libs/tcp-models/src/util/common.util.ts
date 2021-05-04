@@ -1,7 +1,4 @@
-import AbstractImpl from '../../tcp-models/src/impl/abstract.impl';
-import { AnyType } from '../../tcp-models/src/declarations/types';
-
-export default class Util {
+export class CommonUtil {
   public static getAppPrefix(): string {
     // guard clause - no window location
     if (!window || !window.location) {
@@ -36,24 +33,8 @@ export default class Util {
     return str;
   }
 
-  public static getObjectFromClass(implementationClass?: AbstractImpl) {
-    if (!implementationClass) {
-      return {};
-    }
-
-    return JSON.parse(JSON.stringify(implementationClass));
-  }
-
-  public static cloneClassInstance<T>(classData: AbstractImpl, type?: AnyType) {
-    if (!type) {
-      return Util.getObjectFromClass(classData) as T;
-    }
-
-    return AbstractImpl.fromJSON(Util.getObjectFromClass(classData), type) as T;
-  }
-
-  public static findMatchingKey<T = AnyType>(items: any, value: any) {
-    return items ? (items.find((item: any) => item.getKey() === value) as T) : undefined;
+  public static findMatchingKey<T>(items, value) {
+    return items && items ? (items.find((item) => item.getKey() === value) as T) : undefined;
   }
 
   public static containsParam(str: string) {
@@ -64,23 +45,23 @@ export default class Util {
     return str === '\n' || str === '\t';
   }
 
-  public static isNullOrUndefined(value: AnyType) {
+  public static isNullOrUndefined(value) {
     return value === undefined || value === null;
   }
 
   public static isDefinedOrExist(value: string | undefined | number) {
-    return !Util.isNullOrUndefined(value) && value !== '';
+    return !CommonUtil.isNullOrUndefined(value) && value !== '';
   }
 
   public static isEmptyOrSpaces(str: string | undefined) {
-    if (!Util.isDefinedOrExist(str)) {
+    if (!CommonUtil.isDefinedOrExist(str)) {
       return true;
     }
 
     return !!str && str.trim().length === 0 && !this.isNewLineOrTab(str);
   }
 
-  public static findMatchingValue<T = AnyType>(items: AnyType[] | undefined, value: string) {
+  public static findMatchingValue<T>(items, value: string) {
     return items ? (items.find((item) => item.getValue() === value) as T) : undefined;
   }
 

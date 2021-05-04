@@ -1,37 +1,37 @@
-import LongStringItemImpl from './long-string-item.impl';
-import { OfflineEmployeeJobCodeModel, OfflineEmployeeModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { OfflineEmployeeJobCodeModel, OfflineEmployeeModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { LongStringItemImpl } from './long-string-item.impl';
 
-export default class OfflineEmployeeImpl extends AbstractImpl implements OfflineEmployeeModel {
-  BlnHasNoCostCodes?: boolean | undefined = false;
+export class OfflineEmployeeImpl extends AbstractImpl implements OfflineEmployeeModel {
+  BlnHasNoCostCodes: boolean | undefined = false;
 
-  BlnHasNoJobCodes?: boolean | undefined = false;
+  BlnHasNoJobCodes: boolean | undefined = false;
 
-  BlnUseDefaultCostCode?: boolean | undefined = false;
+  BlnUseDefaultCostCode: boolean | undefined = false;
 
-  BlnUseDefaultJobCode?: boolean | undefined = false;
+  BlnUseDefaultJobCode: boolean | undefined = false;
 
-  IntCompanyId?: number | undefined = 0;
+  IntCompanyId: number | undefined = 0;
 
-  LngDefaultJobCodeRecordId?: number | undefined = 0;
+  LngDefaultJobCodeRecordId: number | undefined = 0;
 
-  LngEmployeeId?: number | undefined = 0;
+  LngEmployeeId: number | undefined = 0;
 
-  LngRecordId?: number | undefined = 0;
+  LngRecordId: number | undefined = 0;
 
-  ObjLongStringItemDefaultCostCode?: LongStringItemImpl | undefined = undefined;
+  ObjLongStringItemDefaultCostCode: LongStringItemImpl | undefined = undefined;
 
-  StrBadge?: string | undefined = '';
+  StrBadge: string | undefined = '';
 
-  StrExportCode?: string | undefined = '';
+  StrExportCode: string | undefined = '';
 
-  StrFullName?: string | undefined = '';
+  StrFullName: string | undefined = '';
 
-  StrPIN?: string | undefined = '';
+  StrPIN: string | undefined = '';
 
-  _ArrOfflineEmployeeJobCodes?: OfflineEmployeeJobCodeModel[] | undefined = undefined;
+  _ArrOfflineEmployeeJobCodes: OfflineEmployeeJobCodeModel[] | undefined = undefined;
 
-  init(data?: OfflineEmployeeModel) {
+  init(data: OfflineEmployeeModel) {
     if (!data) {
       return;
     }
@@ -89,13 +89,13 @@ export default class OfflineEmployeeImpl extends AbstractImpl implements Offline
     return this._ArrOfflineEmployeeJobCodes || [];
   }
 
-  getJobCodesMatchingBadge(employeeBadge?: string) {
+  getJobCodesMatchingBadge(employeeBadge: string) {
     return this._ArrOfflineEmployeeJobCodes
       ? this._ArrOfflineEmployeeJobCodes.filter((employeeJobCode) => employeeJobCode.StrBadge === employeeBadge)
       : [];
   }
 
-  hasJobCodesMatchingBadge(employeeBadge?: string) {
+  hasJobCodesMatchingBadge(employeeBadge: string) {
     return this.getJobCodesMatchingBadge(employeeBadge).length > 0;
   }
 }

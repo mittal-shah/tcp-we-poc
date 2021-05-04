@@ -1,14 +1,14 @@
-import { LegendItemModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { LegendItemModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class LegendItemImpl extends AbstractImpl implements LegendItemModel {
-  StrColor?: string | undefined = '';
+export class LegendItemImpl extends AbstractImpl implements LegendItemModel {
+  StrColor: string | undefined = '';
 
-  StrText?: string | undefined = '';
+  StrText: string | undefined = '';
 
-  StrTextColor?: string | undefined = '';
+  StrTextColor: string | undefined = '';
 
-  init(data?: LegendItemModel) {
+  init(data: LegendItemModel) {
     if (!data) {
       return;
     }

@@ -1,9 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import AppConfigImpl from '../../../../tcp-models/src/impl/config/app.config.impl';
-import { GlobalConstant } from '../../../../tcp-core/src/constants/global.constant';
-import { EditableInputModel } from '../../../../tcp-models/src/declarations/editable-input';
 import { MatInput } from '@angular/material/input';
-import { AnyType } from '../../../../tcp-models/src/declarations/types';
+import { AnyType, AppConfigImpl, EditableInputModel, GlobalConstant } from '@tcp/tcp-models';
 
 @Component({
   selector: 'tcp-editable-input',

@@ -1,4 +1,4 @@
-import { AnyType } from '../../../../tcp-models/src/declarations/types';
+import { AnyType } from '@tcp/tcp-models';
 
 export default class AlertOption {
   public isCancel = false;

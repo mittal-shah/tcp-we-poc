@@ -1,33 +1,33 @@
-import { FilterData } from '../../declarations/global';
-import PagingDataImpl from './paging.data.impl';
-import AbstractImpl from '../abstract.impl';
+import { FilterData } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { PagingDataImpl } from './paging.data.impl';
 
-export default class FilterDataImpl extends AbstractImpl implements FilterData {
-  BlnActiveOnly?: boolean | undefined = false;
+export class FilterDataImpl extends AbstractImpl implements FilterData {
+  BlnActiveOnly: boolean | undefined = false;
 
-  BlnSortDescending?: boolean | undefined = false;
+  BlnSortDescending: boolean | undefined = false;
 
-  BlnSortSecondaryDescending?: boolean | undefined = false;
+  BlnSortSecondaryDescending: boolean | undefined = false;
 
-  BlnUseSecondarySortByField?: boolean | undefined = false;
+  BlnUseSecondarySortByField: boolean | undefined = false;
 
-  IntFilterByType?: number | undefined = 0;
+  IntFilterByType: number | undefined = 0;
 
-  IntGroupBy?: number | undefined = 0;
+  IntGroupBy: number | undefined = 0;
 
-  ObjPagingData?: PagingDataImpl | undefined;
+  ObjPagingData: PagingDataImpl | undefined;
 
-  StrInGridTitle?: string | undefined = '';
+  StrInGridTitle: string | undefined = '';
 
-  StrJumpToPageWithItemMatchingQuery?: string | undefined = '';
+  StrJumpToPageWithItemMatchingQuery: string | undefined = '';
 
-  StrQuery?: string | undefined = '';
+  StrQuery: string | undefined = '';
 
-  StrSortByField?: string | undefined = '';
+  StrSortByField: string | undefined = '';
 
-  StrSortByFieldSecondary?: string | undefined = '';
+  StrSortByFieldSecondary: string | undefined = '';
 
-  init(data?: FilterDataImpl) {
+  init(data: FilterDataImpl) {
     if (!data) {
       return;
     }

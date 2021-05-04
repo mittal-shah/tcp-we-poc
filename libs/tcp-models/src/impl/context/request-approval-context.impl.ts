@@ -1,17 +1,17 @@
-import { BooleanInputModel, RequestApprovalContext } from '../../declarations/global';
-import BooleanInputImpl from '../domain/input/boolean.input.impl';
-import AbstractImpl from '../abstract.impl';
+import { BooleanInputModel, RequestApprovalContext } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { BooleanInputImpl } from '../domain';
 
-export default class RequestApprovalContextImpl extends AbstractImpl implements RequestApprovalContext {
-  ArrBooleanInputApprovalLevels?: BooleanInputModel[] | undefined = [];
+export class RequestApprovalContextImpl extends AbstractImpl implements RequestApprovalContext {
+  ArrBooleanInputApprovalLevels: BooleanInputModel[] | undefined = [];
 
-  ObjBooleanInputOverrideEmployeeSettings?: BooleanInputModel | undefined;
+  ObjBooleanInputOverrideEmployeeSettings: BooleanInputModel | undefined;
 
-  ObjBooleanInputOverrideRole?: BooleanInputModel | undefined;
+  ObjBooleanInputOverrideRole: BooleanInputModel | undefined;
 
-  StrApprovalLevels?: string | undefined = '';
+  StrApprovalLevels: string | undefined = '';
 
-  init(data?: RequestApprovalContext) {
+  init(data: RequestApprovalContext) {
     if (!data) {
       return;
     }

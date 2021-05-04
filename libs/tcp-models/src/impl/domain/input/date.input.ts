@@ -1,21 +1,21 @@
-import { EditableDateInputModel, InputSuffixIcon } from '../../../declarations/editable-input';
+import { EditableDateInputModel, InputSuffixIcon } from '../../../declaration';
 import AbstractEditableInput from './abstract-editable.input';
-import AppConfigImpl from '../../config/app.config.impl';
-import DateTimeFormatter, { DateTimeConstants } from '../../../../../tcp-core/src/formatter/date-time.formatter';
-import Util from '../../../../../tcp-util/src/util';
+import { CommonUtil } from '../../../util';
+import { AppConfigImpl } from '../../config';
+import { DateTimeConstants, DateTimeFormatter } from '../../../formatter';
 
-export default class DateInput extends AbstractEditableInput implements EditableDateInputModel {
+export class DateInput extends AbstractEditableInput implements EditableDateInputModel {
   IsPartial = false;
 
   StrFormat: string = DateTimeConstants.IsoDateFormat;
 
   StrMonthDayFormat: string = DateTimeConstants.IsoDateFormat;
 
-  DatDate?: string | undefined = '';
+  DatDate: string | undefined = '';
 
-  DatMaxDate?: string | undefined = '';
+  DatMaxDate: string | undefined = '';
 
-  DatMinDate?: string | undefined = '';
+  DatMinDate: string | undefined = '';
 
   getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
     return this.DatMinDate && this.DatMaxDate
@@ -115,12 +115,12 @@ export default class DateInput extends AbstractEditableInput implements Editable
 
       if (!this.isValidMinValue()) {
         const message = appConfig && appConfig.StrDateUnderMinMessage;
-        return Util.stringFormat(message, this.toString(), this.DatMinDate || '');
+        return CommonUtil.stringFormat(message, this.toString(), this.DatMinDate || '');
       }
 
       if (!this.isValidMaxValue()) {
         const message = appConfig && appConfig.StrDateOverMaxMessage;
-        return Util.stringFormat(message, this.toString(), this.DatMaxDate || '');
+        return CommonUtil.stringFormat(message, this.toString(), this.DatMaxDate || '');
       }
 
       return appConfig && appConfig.StrEnterValidDate;

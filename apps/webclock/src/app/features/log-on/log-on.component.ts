@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LogOnService } from './log-on.service';
-import { EmployeeLogOnContext } from '../../../../../../libs/tcp-models/src/declarations/global';
-import { GlobalConstant } from '../../../../../../libs/tcp-core/src/constants/global.constant';
-import AppConfigImpl from '../../../../../../libs/tcp-models/src/impl/config/app.config.impl';
-import CompanyConfigImpl from '../../../../../../libs/tcp-models/src/impl/config/company.config.impl';
 import EmployeeLogOnConfigImpl from './config/employee-log-on.config.impl';
 import LogOnDataImpl from './data/log-on-data.impl';
-import PresentationExceptionImpl from '../../../../../../libs/tcp-models/src/impl/domain/presentation-exception.impl';
-import { AnyType } from '../../../../../../libs/tcp-models/src/declarations/types';
+import { AnyType, AppConfigImpl, CompanyConfigImpl, GlobalConstant, PresentationExceptionImpl } from '@tcp/tcp-models';
+import EmployeeLogOnContextImpl from './context/employee-log-on-context.impl';
 
 @Component({
   selector: 'tcp-log-on',
@@ -45,7 +41,7 @@ export class LogOnComponent implements OnInit {
   selectChangeHandler(value: AnyType) {
     this.service
       .getInfoForCompany(Number(value))
-      .subscribe((context: EmployeeLogOnContext) => this.handleInfo(context));
+      .subscribe((context: EmployeeLogOnContextImpl) => this.handleInfo(context));
   }
 
   private handleAuthenticationError(error: AnyType) {
@@ -61,7 +57,7 @@ export class LogOnComponent implements OnInit {
     GlobalConstant.appConfig = appConfig;
     this.appConfig = appConfig;
 
-    this.service.getInfo().subscribe((context: EmployeeLogOnContext) => this.handleInfo(context));
+    this.service.getInfo().subscribe((context: EmployeeLogOnContextImpl) => this.handleInfo(context));
   }
 
   private handleAuthentication(sessionId: string | undefined) {
@@ -69,7 +65,7 @@ export class LogOnComponent implements OnInit {
     console.log(GlobalConstant.sessionId);
   }
 
-  private handleInfo(context: EmployeeLogOnContext) {
+  private handleInfo(context: EmployeeLogOnContextImpl) {
     GlobalConstant.companyConfig = context.ObjCompanyConfig;
 
     this.config = context.ObjEmployeeLogOnConfig;

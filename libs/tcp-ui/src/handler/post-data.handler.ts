@@ -1,5 +1,4 @@
-import { AnyType } from '../../../tcp-models/src/declarations/types';
-import AbstractImpl from '../../../tcp-models/src/impl/abstract.impl';
+import { AbstractImpl, AnyType } from '@tcp/tcp-models';
 
 export default class PostDataHandler {
   public static getAdjustedData(data: AnyType) {

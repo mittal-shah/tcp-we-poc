@@ -1,11 +1,11 @@
-import { OfflineDownloadContext } from '../../declarations/global';
+import { OfflineDownloadContext } from '../../declaration';
 
-export default class OfflineDownloadContextImpl implements OfflineDownloadContext {
-  StrClientPlatformId?: string | undefined = '';
+export class OfflineDownloadContextImpl implements OfflineDownloadContext {
+  StrClientPlatformId: string | undefined = '';
 
-  StrCompanyNamespace?: string | undefined = '';
+  StrCompanyNamespace: string | undefined = '';
 
-  StrConfirmationValue?: string | undefined = '';
+  StrConfirmationValue: string | undefined = '';
 
-  StrKioskID?: string | undefined = '';
+  StrKioskID: string | undefined = '';
 }

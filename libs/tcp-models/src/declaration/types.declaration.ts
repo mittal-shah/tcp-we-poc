@@ -1,11 +1,10 @@
-import AppConfigImpl from '../impl/config/app.config.impl';
-import SelectItemImpl from '../impl/domain/select-item.impl';
-import ExceptionType from '../../../tcp-core/src/constants/exception-type.constant';
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyType = any;
+import { ExceptionType } from '../constants';
+import { AppConfigImpl, SelectItemImpl } from '../impl';
 
-interface ListItemContext {
+export type AnyType = any;
+
+export interface ListItemContext {
   listItems: SelectItemImpl[];
   selectedItems?: SelectItemImpl[];
   selectedItem?: SelectItemImpl;

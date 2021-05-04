@@ -1,43 +1,43 @@
-import { CompanyLocationPreviewModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
-import GeopositionImpl from './geoposition.impl';
+import { CompanyLocationPreviewModel } from '../../declaration';
+import { GeopositionImpl } from './geoposition.impl';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class CompanyLocationPreviewImpl extends AbstractImpl implements CompanyLocationPreviewModel {
-  BlnCanView?: boolean | undefined = false;
+export class CompanyLocationPreviewImpl extends AbstractImpl implements CompanyLocationPreviewModel {
+  BlnCanView: boolean | undefined = false;
 
-  LngRecordId?: number | undefined = undefined;
+  LngRecordId: number | undefined = undefined;
 
-  ObjGeoposition?: GeopositionImpl | undefined = undefined;
+  ObjGeoposition: GeopositionImpl | undefined = undefined;
 
-  StrAddress1?: string | undefined = '';
+  StrAddress1: string | undefined = '';
 
-  StrAddress2?: string | undefined = '';
+  StrAddress2: string | undefined = '';
 
-  StrCell?: string | undefined = '';
+  StrCell: string | undefined = '';
 
-  StrCellLabel?: string | undefined = '';
+  StrCellLabel: string | undefined = '';
 
-  StrCity?: string | undefined = '';
+  StrCity: string | undefined = '';
 
-  StrEmail?: string | undefined = '';
+  StrEmail: string | undefined = '';
 
-  StrEmailLabel?: string | undefined = '';
+  StrEmailLabel: string | undefined = '';
 
-  StrName?: string | undefined = '';
+  StrName: string | undefined = '';
 
-  StrOfficeExt?: string | undefined = '';
+  StrOfficeExt: string | undefined = '';
 
-  StrOfficeExtLabel?: string | undefined = '';
+  StrOfficeExtLabel: string | undefined = '';
 
-  StrOfficePhone?: string | undefined = '';
+  StrOfficePhone: string | undefined = '';
 
-  StrOfficePhoneLabel?: string | undefined = '';
+  StrOfficePhoneLabel: string | undefined = '';
 
-  StrState?: string | undefined = '';
+  StrState: string | undefined = '';
 
-  StrZip?: string | undefined = '';
+  StrZip: string | undefined = '';
 
-  init(data?: CompanyLocationPreviewModel) {
+  init(data: CompanyLocationPreviewModel) {
     if (!data) {
       return;
     }

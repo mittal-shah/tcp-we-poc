@@ -1,18 +1,18 @@
-import { DateSelectItemModel } from '../../declarations/global';
-import SelectItemImpl from './select-item.impl';
+import { DateSelectItemModel } from '../../declaration';
+import { SelectItemImpl } from './select-item.impl';
 
-export default class DateSelectItemImpl extends SelectItemImpl implements DateSelectItemModel {
-  BlnClearsSelection?: boolean | undefined = false;
+export class DateSelectItemImpl extends SelectItemImpl implements DateSelectItemModel {
+  BlnClearsSelection: boolean | undefined = false;
 
-  StrCategory?: string | undefined = '';
+  StrCategory: string | undefined = '';
 
-  StrHighlightColor?: string | undefined = '';
+  StrHighlightColor: string | undefined = '';
 
-  _DatDate?: string | undefined = '';
+  _DatDate: string | undefined = '';
 
-  _StrFormattedDate?: string | undefined = '';
+  _StrFormattedDate: string | undefined = '';
 
-  init(data?: DateSelectItemModel) {
+  init(data: DateSelectItemModel) {
     super.init(data);
   }
 

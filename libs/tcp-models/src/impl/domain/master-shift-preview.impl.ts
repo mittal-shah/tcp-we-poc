@@ -1,39 +1,39 @@
-import { MasterShiftPreviewModel } from '../../declarations/global';
-import LegendItemImpl from './legend-item.impl';
-import AbstractImpl from '../abstract.impl';
+import { MasterShiftPreviewModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { LegendItemImpl } from './legend-item.impl';
 
-export default class MasterShiftPreviewImpl extends AbstractImpl implements MasterShiftPreviewModel {
-  BlnIsActive?: boolean | undefined = false;
+export class MasterShiftPreviewImpl extends AbstractImpl implements MasterShiftPreviewModel {
+  BlnIsActive: boolean | undefined = false;
 
-  BlnIsFirst?: boolean | undefined = false;
+  BlnIsFirst: boolean | undefined = false;
 
-  BlnIsLast?: boolean | undefined = false;
+  BlnIsLast: boolean | undefined = false;
 
-  BlnIsUnspecified?: boolean | undefined = false;
+  BlnIsUnspecified: boolean | undefined = false;
 
-  IntMasterShiftResourceRequirements?: number | undefined = undefined;
+  IntMasterShiftResourceRequirements: number | undefined = undefined;
 
-  IntOrder?: number | undefined = undefined;
+  IntOrder: number | undefined = undefined;
 
-  LngRecordId?: number | undefined = undefined;
+  LngRecordId: number | undefined = undefined;
 
-  ObjLegendItem?: LegendItemImpl | undefined = undefined;
+  ObjLegendItem: LegendItemImpl | undefined = undefined;
 
-  StrBackgroundColor?: string | undefined = undefined;
+  StrBackgroundColor: string | undefined = undefined;
 
-  StrBorderColor?: string | undefined = undefined;
+  StrBorderColor: string | undefined = undefined;
 
-  StrDescription?: string | undefined = '';
+  StrDescription: string | undefined = '';
 
-  StrForegroundColor?: string | undefined = undefined;
+  StrForegroundColor: string | undefined = undefined;
 
-  StrFormattedHours?: string | undefined = '';
+  StrFormattedHours: string | undefined = '';
 
-  StrFormattedTime?: string | undefined = '';
+  StrFormattedTime: string | undefined = '';
 
-  StrName?: string | undefined = '';
+  StrName: string | undefined = '';
 
-  init(data?: MasterShiftPreviewModel) {
+  init(data: MasterShiftPreviewModel) {
     if (!data) {
       return;
     }

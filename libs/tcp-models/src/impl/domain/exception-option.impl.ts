@@ -1,28 +1,27 @@
-import { ExceptionOptionModel } from '../../declarations/global';
-import BooleanInputImpl from './input/boolean.input.impl';
-import AbstractImpl from '../abstract.impl';
-import HourMinuteInput from './input/hour-minute.input';
+import { ExceptionOptionModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { BooleanInputImpl, HourMinuteInput } from './input';
 
-export default class ExceptionOptionImpl extends AbstractImpl implements ExceptionOptionModel {
-  ArrBooleanInputExceptionSettings?: BooleanInputImpl[] | undefined = [];
+export class ExceptionOptionImpl extends AbstractImpl implements ExceptionOptionModel {
+  ArrBooleanInputExceptionSettings: BooleanInputImpl[] | undefined = [];
 
-  BlnIsVisible?: boolean | undefined = false;
+  BlnIsVisible: boolean | undefined = false;
 
-  BlnShouldTrack?: boolean | undefined = false;
+  BlnShouldTrack: boolean | undefined = false;
 
-  IntId?: number | undefined = 0;
+  LngId: number | undefined = 0;
 
-  ObjHourMinuteInput1?: HourMinuteInput | undefined;
+  ObjHourMinuteInput1: HourMinuteInput | undefined;
 
-  ObjHourMinuteInput2?: HourMinuteInput | undefined;
+  ObjHourMinuteInput2: HourMinuteInput | undefined;
 
-  ObjHourMinuteInput3?: HourMinuteInput | undefined;
+  ObjHourMinuteInput3: HourMinuteInput | undefined;
 
-  ObjHourMinuteInput4?: HourMinuteInput | undefined;
+  ObjHourMinuteInput4: HourMinuteInput | undefined;
 
-  StrText?: string | undefined = '';
+  StrText: string | undefined = '';
 
-  init(data?: ExceptionOptionModel) {
+  init(data: ExceptionOptionModel) {
     if (!data) {
       return;
     }

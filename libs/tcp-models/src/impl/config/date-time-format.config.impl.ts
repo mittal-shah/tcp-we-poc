@@ -1,15 +1,15 @@
-import { DateTimeFormatConfig } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
-import DateTimeFormatter from '../../../../tcp-core/src/formatter/date-time.formatter';
+import { DateTimeFormatConfig } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { DateTimeFormatter } from '../../formatter';
 
-export default class DateTimeFormatConfigImpl extends AbstractImpl implements DateTimeFormatConfig {
-  BlnFormatHoursAsDecimals?: boolean | undefined = false;
+export class DateTimeFormatConfigImpl extends AbstractImpl implements DateTimeFormatConfig {
+  BlnFormatHoursAsDecimals: boolean | undefined = false;
 
-  IntHourFormatPrecision?: number | undefined = 0;
+  IntHourFormatPrecision: number | undefined = 0;
 
-  StrDateFormat?: string | undefined = '';
+  StrDateFormat: string | undefined = '';
 
-  _StrTimeFormat?: string | undefined = '';
+  _StrTimeFormat: string | undefined = '';
 
   getDateFormat() {
     return DateTimeFormatter.getAdjustedDateFormat(this.StrDateFormat);

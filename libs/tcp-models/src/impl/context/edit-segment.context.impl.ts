@@ -1,16 +1,16 @@
-import EditSegmentDataImpl from '../data/edit-segment.data.impl';
-import AbstractImpl from '../abstract.impl';
-import EditTimesheetSegmentConfigImpl from '../config/edit-timesheet-segment.config.impl';
+import { AbstractImpl } from '../abstract.impl';
+import { EditTimesheetSegmentConfigImpl } from '../config';
+import { EditSegmentDataImpl } from '../data';
 
 export interface EditSegmentContext {
-  editTimesheetSegmentConfig?: EditTimesheetSegmentConfigImpl | undefined;
-  editSegmentData?: EditSegmentDataImpl | undefined;
+  editTimesheetSegmentConfig: EditTimesheetSegmentConfigImpl | undefined;
+  editSegmentData: EditSegmentDataImpl | undefined;
 }
 
-export default class EditSegmentContextImpl extends AbstractImpl implements EditSegmentContext {
-  editSegmentData?: EditSegmentDataImpl | undefined = undefined;
+export class EditSegmentContextImpl extends AbstractImpl implements EditSegmentContext {
+  editSegmentData: EditSegmentDataImpl | undefined = undefined;
 
-  editTimesheetSegmentConfig?: EditTimesheetSegmentConfigImpl | undefined = undefined;
+  editTimesheetSegmentConfig: EditTimesheetSegmentConfigImpl | undefined = undefined;
 
   init(data: EditSegmentContextImpl) {
     if (!data) {

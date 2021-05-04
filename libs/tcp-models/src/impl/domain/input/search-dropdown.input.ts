@@ -1,15 +1,15 @@
-import FilterDataImpl from '../../data/filter.data.impl';
-import { InputSuffixIcon } from '../../../declarations/editable-input';
-import DropdownInput from './dropdown.input';
+import { FilterDataImpl } from '../../data';
+import { InputSuffixIcon } from '../../../declaration';
+import { DropdownInput } from './dropdown.input';
 
-export default class SearchDropdownInput extends DropdownInput {
+export class SearchDropdownInput extends DropdownInput {
   BlnUseInternalFilter: boolean | undefined = false;
 
-  ObjFilterData?: FilterDataImpl | undefined = undefined;
+  ObjFilterData: FilterDataImpl | undefined = undefined;
 
-  updateFilterFunction?: (filterData: FilterDataImpl) => void;
+  updateFilterFunction: (filterData: FilterDataImpl) => void;
 
-  loadInfoFunction?: () => void;
+  loadInfoFunction: () => void;
 
   initialMultiSelectValue: string | undefined = '';
 

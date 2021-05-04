@@ -1,17 +1,17 @@
-import { ApprovalStatusConfig } from '../../declarations/global';
-import IntStringItemImpl from '../domain/int-string-item.impl';
-import AbstractImpl from '../abstract.impl';
+import { ApprovalStatusConfig } from '../../declaration';
+import { IntStringItemImpl } from '../domain';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class ApprovalStatusConfigImpl extends AbstractImpl implements ApprovalStatusConfig {
-  ObjIntStringItemApproved?: IntStringItemImpl | undefined = undefined;
+export class ApprovalStatusConfigImpl extends AbstractImpl implements ApprovalStatusConfig {
+  ObjIntStringItemApproved: IntStringItemImpl | undefined = undefined;
 
-  ObjIntStringItemDenied?: IntStringItemImpl | undefined = undefined;
+  ObjIntStringItemDenied: IntStringItemImpl | undefined = undefined;
 
-  ObjIntStringItemPending?: IntStringItemImpl | undefined = undefined;
+  ObjIntStringItemPending: IntStringItemImpl | undefined = undefined;
 
-  _StatusItems?: (IntStringItemImpl | undefined)[] | undefined = [];
+  _StatusItems: (IntStringItemImpl | undefined)[] | undefined = [];
 
-  init(data?: ApprovalStatusConfig) {
+  init(data: ApprovalStatusConfig) {
     if (!data) {
       return;
     }

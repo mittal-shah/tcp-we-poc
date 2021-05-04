@@ -1,88 +1,105 @@
-import CoveredEmployeeImpl from './covered-employee.impl';
-import BooleanInputImpl from './input/boolean.input.impl';
-import IntStringItemImpl from './int-string-item.impl';
-import LongStringItemImpl from './long-string-item.impl';
-import SegmentCompTimeContextImpl from '../context/segment-comp-time.context.impl';
-import { SegmentModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
-import DateTimeFormatter from '../../../../tcp-core/src/formatter/date-time.formatter';
-import TrackedFieldContextImpl from '../context/tracked-field.context.impl';
+import { SegmentModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { BooleanInputImpl } from './input';
+import { SegmentCompTimeContextImpl, TrackedFieldContextImpl } from '../context';
+import { CoveredEmployeeImpl } from './covered-employee.impl';
+import { IntStringItemImpl } from './int-string-item.impl';
+import { LongStringItemImpl } from './long-string-item.impl';
+import { DateTimeFormatter } from '../../formatter';
 
-export default class SegmentImpl extends AbstractImpl implements SegmentModel {
-  BlnDisableAutoDeduct?: boolean | undefined = false;
+export class SegmentImpl extends AbstractImpl implements SegmentModel {
+  BlnDisableAutoDeduct: boolean | undefined = false;
 
-  BlnDisableSegmentMinimum?: boolean | undefined = false;
+  BlnDisableSegmentMinimum: boolean | undefined = false;
 
-  BlnEditActualTime?: boolean | undefined = false;
+  BlnEditActualTime: boolean | undefined = false;
 
-  BlnIsClockedIn?: boolean | undefined = false;
+  BlnIsClockedIn: boolean | undefined = false;
 
-  BlnIsMissedIn?: boolean | undefined = false;
+  BlnIsMissedIn: boolean | undefined = false;
 
-  BlnIsMissedOut?: boolean | undefined = false;
+  BlnIsMissedOut: boolean | undefined = false;
 
-  BlnIsTimesheet?: boolean | undefined = false;
+  BlnIsTimesheet: boolean | undefined = false;
 
-  DatActualDateIn?: string | undefined = '';
+  DatActualDateIn: string | undefined = '';
 
-  DatActualDateOut?: string | undefined = '';
+  DatActualDateOut: string | undefined = '';
 
-  DatDateIn?: string | undefined = '';
+  DatDateIn: string | undefined = '';
 
-  DatDateOut?: string | undefined = '';
+  DatDateOut: string | undefined = '';
 
-  HrmTimeSheetMinutes?: string | undefined = '';
+  HrmTimeSheetMinutes: string | undefined = '';
 
-  IntBreakType?: number | undefined = 0;
+  IntBreakType: number | undefined = 0;
 
-  IntForceOvertime?: number | undefined = 0;
+  IntForceOvertime: number | undefined = 0;
 
-  IntLaborCodeCount?: number | undefined = 0;
+  IntLaborCodeCount: number | undefined = 0;
 
-  LngJobCodeRecordId?: number | undefined = 0;
+  LngJobCodeRecordId: number | undefined = 0;
 
-  LngRecordId?: number | undefined = 0;
+  LngRecordId: number | undefined = 0;
 
-  ObjBooleanInputCountsTowardFMLA?: BooleanInputImpl | undefined;
+  ObjBooleanInputCountsTowardFMLA: BooleanInputImpl | undefined;
 
-  ObjBooleanInputDisableMissedBreakProcessing?: BooleanInputImpl | undefined;
+  ObjBooleanInputDisableMissedBreakProcessing: BooleanInputImpl | undefined;
 
-  ObjCoveredEmployee?: CoveredEmployeeImpl | undefined;
+  ObjCoveredEmployee: CoveredEmployeeImpl | undefined;
 
-  ObjIntStringItemBreakType?: IntStringItemImpl | undefined;
+  ObjIntStringItemBreakType: IntStringItemImpl | undefined;
 
-  ObjLongStringItemCostCode?: LongStringItemImpl | undefined;
+  ObjLongStringItemCostCode: LongStringItemImpl | undefined;
 
-  ObjLongStringItemFMLACase?: LongStringItemImpl | undefined;
+  ObjLongStringItemFMLACase: LongStringItemImpl | undefined;
 
-  ObjLongStringItemJobCode?: LongStringItemImpl | undefined;
+  ObjLongStringItemJobCode: LongStringItemImpl | undefined;
 
-  ObjSegmentCompTimeContext?: SegmentCompTimeContextImpl | undefined;
+  ObjSegmentCompTimeContext: SegmentCompTimeContextImpl | undefined;
 
-  ObjTrackedFieldContext?: TrackedFieldContextImpl | undefined;
+  ObjTrackedFieldContext: TrackedFieldContextImpl | undefined;
 
-  StrCostCodeSearchQuery?: string | undefined = '';
+  ObjBooleanInputResetDisableShiftDifferential: BooleanInputImpl | undefined;
 
-  StrCoveredEmployeeNoneItem?: string | undefined = '';
+  ObjLongStringItemFmlaCase: LongStringItemImpl | undefined;
 
-  StrFullCostCode?: string | undefined = '';
+  StrEmployeeTemperatureIn: string | undefined = '';
 
-  StrNote?: string | undefined = '';
+  StrEmployeeTemperatureOut: string | undefined = '';
 
-  StrRate?: string | undefined = '';
+  StrCostCodeSearchQuery: string | undefined = '';
 
-  TimActualTimeIn?: string | undefined = '';
+  StrCoveredEmployeeNoneItem: string | undefined = '';
 
-  TimActualTimeOut?: string | undefined = '';
+  StrFullCostCode: string | undefined = '';
 
-  TimTimeIn?: string | undefined = '';
+  StrNote: string | undefined = '';
 
-  TimTimeOut?: string | undefined = '';
+  StrRate: string | undefined = '';
+
+  TimActualTimeIn: string | undefined = '';
+
+  TimActualTimeOut: string | undefined = '';
+
+  TimTimeIn: string | undefined = '';
+
+  TimTimeOut: string | undefined = '';
 
   init(data: SegmentImpl) {
     if (!data) {
       return;
     }
+
+    this.ObjBooleanInputResetDisableShiftDifferential =
+      this.ObjBooleanInputResetDisableShiftDifferential !== undefined
+        ? AbstractImpl.fromJSON(data.ObjBooleanInputResetDisableShiftDifferential, BooleanInputImpl)
+        : undefined;
+
+    this.ObjLongStringItemFmlaCase =
+      this.ObjLongStringItemFmlaCase !== undefined
+        ? AbstractImpl.fromJSON(data.ObjLongStringItemFmlaCase, BooleanInputImpl)
+        : undefined;
 
     this.ObjBooleanInputCountsTowardFMLA =
       this.ObjBooleanInputCountsTowardFMLA !== undefined

@@ -1,27 +1,27 @@
-import { CostCodeInputModel } from '../../declarations/global';
-import SelectItemImpl from './select-item.impl';
-import HeaderValueImpl from './header-value.impl';
+import { CostCodeInputModel } from '../../declaration';
+import { SelectItemImpl } from './select-item.impl';
+import { HeaderValueImpl } from './header-value.impl';
 
-export default class CostCodeInputImpl extends SelectItemImpl implements CostCodeInputModel {
-  BlnIsDisabled?: boolean | undefined = false;
+export class CostCodeInputImpl extends SelectItemImpl implements CostCodeInputModel {
+  BlnIsDisabled: boolean | undefined = false;
 
-  BlnIsHidden?: boolean | undefined = false;
+  BlnIsHidden: boolean | undefined = false;
 
-  BlnIsInvalid?: boolean | undefined = false;
+  BlnIsInvalid: boolean | undefined = false;
 
-  BlnIsRequired?: boolean | undefined = false;
+  BlnIsRequired: boolean | undefined = false;
 
-  LngRecordId?: number | undefined = 0;
+  LngRecordId: number | undefined = 0;
 
-  StrFullCode?: string | undefined = '';
+  StrFullCode: string | undefined = '';
 
-  StrId?: string | undefined = '';
+  StrId: string | undefined = '';
 
-  _ArrColumnValues?: string[] | undefined = [];
+  _ArrColumnValues: string[] | undefined = [];
 
-  _ArrHeaderValues?: HeaderValueImpl[] | undefined = [];
+  _ArrHeaderValues: HeaderValueImpl[] | undefined = [];
 
-  init(data?: CostCodeInputModel) {
+  init(data: CostCodeInputModel) {
     if (!data) {
       return;
     }

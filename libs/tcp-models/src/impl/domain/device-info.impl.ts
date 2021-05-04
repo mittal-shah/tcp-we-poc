@@ -1,14 +1,14 @@
-import { DeviceInfoModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { DeviceInfoModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class DeviceInfoImpl extends AbstractImpl implements DeviceInfoModel {
-  StrDeviceModel?: string | undefined = '';
+export class DeviceInfoImpl extends AbstractImpl implements DeviceInfoModel {
+  StrDeviceModel: string | undefined = '';
 
-  StrDeviceName?: string | undefined = '';
+  StrDeviceName: string | undefined = '';
 
-  StrDevicePlatform?: string | undefined = '';
+  StrDevicePlatform: string | undefined = '';
 
-  StrDeviceUuid?: string | undefined = '';
+  StrDeviceUuid: string | undefined = '';
 
-  StrDeviceVersion?: string | undefined = '';
+  StrDeviceVersion: string | undefined = '';
 }

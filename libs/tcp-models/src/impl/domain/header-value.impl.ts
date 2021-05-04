@@ -1,8 +1,8 @@
-import { HeaderValueModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { HeaderValueModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class HeaderValueImpl extends AbstractImpl implements HeaderValueModel {
-  StrSortByField?: string | undefined = '';
+export class HeaderValueImpl extends AbstractImpl implements HeaderValueModel {
+  StrSortByField: string | undefined = '';
 
-  StrValue?: string | undefined = '';
+  StrValue: string | undefined = '';
 }

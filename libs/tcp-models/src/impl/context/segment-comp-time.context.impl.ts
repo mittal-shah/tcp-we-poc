@@ -1,22 +1,21 @@
-import IntStringItemImpl from '../domain/int-string-item.impl';
-import AbstractImpl from '../abstract.impl';
-import { SegmentCompTimeContext } from '../../declarations/global';
-import Util from '../../../../tcp-util/src/util';
+import { AbstractImpl } from '../abstract.impl';
+import { SegmentCompTimeContext } from '../../declaration';
+import { IntStringItemImpl } from '../domain';
 
-export default class SegmentCompTimeContextImpl extends AbstractImpl implements SegmentCompTimeContext {
-  BlnCanEdit?: boolean | undefined = false;
+export class SegmentCompTimeContextImpl extends AbstractImpl implements SegmentCompTimeContext {
+  BlnCanEdit: boolean | undefined = false;
 
-  IntCompTimeConsideration?: number | undefined = undefined;
+  IntCompTimeConsideration: number | undefined = undefined;
 
-  ObjIntStringItemBankTime?: IntStringItemImpl | undefined = undefined;
+  ObjIntStringItemBankTime: IntStringItemImpl | undefined = undefined;
 
-  ObjIntStringItemForceCompTime?: IntStringItemImpl | undefined = undefined;
+  ObjIntStringItemForceCompTime: IntStringItemImpl | undefined = undefined;
 
-  ObjIntStringItemPayTime?: IntStringItemImpl | undefined = undefined;
+  ObjIntStringItemPayTime: IntStringItemImpl | undefined = undefined;
 
-  StrTitle?: string | undefined = '';
+  StrTitle: string | undefined = '';
 
-  init(data?: SegmentCompTimeContext) {
+  init(data: SegmentCompTimeContext) {
     if (!data) {
       return;
     }
@@ -38,7 +37,7 @@ export default class SegmentCompTimeContextImpl extends AbstractImpl implements 
   }
 
   createSubmissionData() {
-    const data = Util.cloneClassInstance<SegmentCompTimeContextImpl>(this, SegmentCompTimeContextImpl);
+    const data = AbstractImpl.clone<SegmentCompTimeContextImpl>(this, SegmentCompTimeContextImpl);
 
     delete data.ObjIntStringItemBankTime;
     delete data.ObjIntStringItemForceCompTime;

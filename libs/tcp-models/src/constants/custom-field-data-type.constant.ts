@@ -7,6 +7,6 @@ const CustomFieldDataType = {
   Time: 6,
   CustomFormat: 7,
   AllowedCharacters: 8,
-  AlphaNumericWithSymbols: 9
+  AlphaNumericWithSymbols: 9,
 };
 export default CustomFieldDataType;

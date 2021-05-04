@@ -1,20 +1,19 @@
-import BooleanInputImpl from '../domain/input/boolean.input.impl';
-import IntStringItemImpl from '../domain/int-string-item.impl';
-import { LaborCodeSettingsContext } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { LaborCodeSettingsContext } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { BooleanInputImpl, IntStringItemImpl } from '../domain';
 
-export default class LaborCodeSettingsContextImpl extends AbstractImpl implements LaborCodeSettingsContext {
-  BlnCanEdit?: boolean | undefined = false;
+export class LaborCodeSettingsContextImpl extends AbstractImpl implements LaborCodeSettingsContext {
+  BlnCanEdit: boolean | undefined = false;
 
-  IntSelectedOption?: number | undefined = 0;
+  IntSelectedOption: number | undefined = 0;
 
-  ObjBooleanInputAskLaborCode?: BooleanInputImpl | undefined;
+  ObjBooleanInputAskLaborCode: BooleanInputImpl | undefined;
 
-  ObjIntStringItemApplyFullSegmentTime?: IntStringItemImpl | undefined;
+  ObjIntStringItemApplyFullSegmentTime: IntStringItemImpl | undefined;
 
-  ObjIntStringItemDistributeSegmentTime?: IntStringItemImpl | undefined;
+  ObjIntStringItemDistributeSegmentTime: IntStringItemImpl | undefined;
 
-  init(data?: LaborCodeSettingsContext) {
+  init(data: LaborCodeSettingsContext) {
     if (!data) {
       return;
     }

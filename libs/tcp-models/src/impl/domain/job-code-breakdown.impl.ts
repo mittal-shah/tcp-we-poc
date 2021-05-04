@@ -1,16 +1,16 @@
-import AbstractImpl from '../abstract.impl';
-import { JobCodeBreakdownModel } from '../../declarations/global';
+import { AbstractImpl } from '../abstract.impl';
+import { JobCodeBreakdownModel } from '../../declaration';
 
-export default class JobCodeBreakdownImpl extends AbstractImpl implements JobCodeBreakdownModel {
-  BlnIsTotal?: boolean | undefined = false;
+export class JobCodeBreakdownImpl extends AbstractImpl implements JobCodeBreakdownModel {
+  BlnIsTotal: boolean | undefined = false;
 
-  StrDescription?: string | undefined = '';
+  StrDescription: string | undefined = '';
 
-  StrOvertime1?: string | undefined = '';
+  StrOvertime1: string | undefined = '';
 
-  StrOvertime2?: string | undefined = '';
+  StrOvertime2: string | undefined = '';
 
-  StrRegular?: string | undefined = '';
+  StrRegular: string | undefined = '';
 
-  StrTotal?: string | undefined = '';
+  StrTotal: string | undefined = '';
 }

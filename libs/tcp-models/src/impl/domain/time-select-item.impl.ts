@@ -1,18 +1,18 @@
-import { TimeSelectItemModel } from '../../declarations/global';
-import SelectItemImpl from './select-item.impl';
+import { TimeSelectItemModel } from '../../declaration';
+import { SelectItemImpl } from './select-item.impl';
 
-export default class TimeSelectItemImpl extends SelectItemImpl implements TimeSelectItemModel {
-  BlnClearsSelection?: boolean | undefined = false;
+export class TimeSelectItemImpl extends SelectItemImpl implements TimeSelectItemModel {
+  BlnClearsSelection: boolean | undefined = false;
 
-  StrCategory?: string | undefined = '';
+  StrCategory: string | undefined = '';
 
-  StrHighlightColor?: string | undefined = '';
+  StrHighlightColor: string | undefined = '';
 
-  _StrFormattedTime?: string | undefined = '';
+  _StrFormattedTime: string | undefined = '';
 
-  _TimTime?: string | undefined = '';
+  _TimTime: string | undefined = '';
 
-  init(data?: TimeSelectItemModel) {
+  init(data: TimeSelectItemModel) {
     super.init(data);
   }
 

@@ -1,68 +1,68 @@
-import { CostCodeModel } from '../../declarations/global';
-import CustomFieldSectionImpl from './custom-field-section.impl';
-import LaborStandardAssignmentContextImpl from '../context/labor-standard-assignment.context.impl';
-import SelectItemImpl from './select-item.impl';
-import AbstractImpl from '../abstract.impl';
-import AssignedCostCodeOptionsDataImpl from '../data/assigned-cost-code-options.data.impl';
+import { CostCodeModel } from '../../declaration';
+import { CustomFieldSectionImpl } from './custom-field-section.impl';
+import { LaborStandardAssignmentContextImpl } from '../context';
+import { SelectItemImpl } from './select-item.impl';
+import { AbstractImpl } from '../abstract.impl';
+import { AssignedCostCodeOptionsDataImpl } from '../data';
 
-export default class CostCodeImpl extends SelectItemImpl implements CostCodeModel {
-  ArrCustomFieldSections?: CustomFieldSectionImpl[] | undefined = [];
+export class CostCodeImpl extends SelectItemImpl implements CostCodeModel {
+  ArrCustomFieldSections: CustomFieldSectionImpl[] | undefined = [];
 
-  BlnCanEdit?: boolean | undefined = false;
+  BlnCanEdit: boolean | undefined = false;
 
-  BlnCanManageBranch?: boolean | undefined = false;
+  BlnCanManageBranch: boolean | undefined = false;
 
-  BlnIsActive?: boolean | undefined = false;
+  BlnIsActive: boolean | undefined = false;
 
-  BlnIsBillable?: boolean | undefined = false;
+  BlnIsBillable: boolean | undefined = false;
 
-  BlnIsUser1?: boolean | undefined = false;
+  BlnIsUser1: boolean | undefined = false;
 
-  BlnIsUser2?: boolean | undefined = false;
+  BlnIsUser2: boolean | undefined = false;
 
-  BlnIsUser3?: boolean | undefined = false;
+  BlnIsUser3: boolean | undefined = false;
 
-  BlnIsUser4?: boolean | undefined = false;
+  BlnIsUser4: boolean | undefined = false;
 
-  DatExpirationDate?: string | undefined = '';
+  DatExpirationDate: string | undefined = '';
 
-  HrmHours?: string | undefined = '';
+  HrmHours: string | undefined = '';
 
-  IntExpirationOption?: number | undefined = 0;
+  IntExpirationOption: number | undefined = 0;
 
-  IntNumericAlias?: number | undefined = 0;
+  IntNumericAlias: number | undefined = 0;
 
-  LngRecordId?: number | undefined = 0;
+  LngRecordId: number | undefined = 0;
 
-  ObjAssignedCostCodeOptionsData?: AssignedCostCodeOptionsDataImpl | undefined;
+  ObjAssignedCostCodeOptionsData: AssignedCostCodeOptionsDataImpl | undefined;
 
-  ObjLaborStandardAssignmentContext?: LaborStandardAssignmentContextImpl | undefined;
+  ObjLaborStandardAssignmentContext: LaborStandardAssignmentContextImpl | undefined;
 
-  StrBudgetDollars?: string | undefined = '';
+  StrBudgetDollars: string | undefined = '';
 
-  StrDateAdded?: string | undefined = '';
+  StrDateAdded: string | undefined = '';
 
-  StrDescription?: string | undefined = '';
+  StrDescription: string | undefined = '';
 
-  StrFullCode?: string | undefined = '';
+  StrFullCode: string | undefined = '';
 
-  StrLevel1?: string | undefined = '';
+  StrLevel1: string | undefined = '';
 
-  StrLevel2?: string | undefined = '';
+  StrLevel2: string | undefined = '';
 
-  StrLevel3?: string | undefined = '';
+  StrLevel3: string | undefined = '';
 
-  StrLevel4?: string | undefined = '';
+  StrLevel4: string | undefined = '';
 
-  StrLevel5?: string | undefined = '';
+  StrLevel5: string | undefined = '';
 
-  StrNotes?: string | undefined = '';
+  StrNotes: string | undefined = '';
 
-  StrStatus?: string | undefined = '';
+  StrStatus: string | undefined = '';
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  init(data?: CostCodeModel) {
+  init(data: CostCodeModel) {
     if (!data) {
       return;
     }

@@ -1,19 +1,17 @@
-import BooleanInputImpl from '../domain/input/boolean.input.impl';
-import { UnscheduledWorkExceptionContext } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { UnscheduledWorkExceptionContext } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { BooleanInputImpl } from '../domain';
 
-export default class UnscheduledWorkExceptionContextImpl
-  extends AbstractImpl
-  implements UnscheduledWorkExceptionContext {
-  ArrBooleanInputDisallowedWorkDays?: BooleanInputImpl[] | undefined = [];
+export class UnscheduledWorkExceptionContextImpl extends AbstractImpl implements UnscheduledWorkExceptionContext {
+  ArrBooleanInputDisallowedWorkDays: BooleanInputImpl[] | undefined = [];
 
-  ObjBooleanInputRestrictToEmployeeSchedule?: BooleanInputImpl | undefined;
+  ObjBooleanInputRestrictToEmployeeSchedule: BooleanInputImpl | undefined;
 
-  StrDisallowedWorkDays?: string | undefined = '';
+  StrDisallowedWorkDays: string | undefined = '';
 
-  StrUnscheduledWorkExceptions?: string | undefined = '';
+  StrUnscheduledWorkExceptions: string | undefined = '';
 
-  init(data?: UnscheduledWorkExceptionContext) {
+  init(data: UnscheduledWorkExceptionContext) {
     if (!data) {
       return;
     }

@@ -1,13 +1,13 @@
 import {
+  AnyType,
   AutoCapitalizeOptions,
   AutoCompleteOptions,
   EditableInputModel,
   InputSuffixIcon,
-} from '../../../declarations/editable-input';
-import AppConfigImpl from '../../config/app.config.impl';
-import AbstractImpl from '../../abstract.impl';
-import { AnyType } from '../../../declarations/types';
-import Util from '../../../../../tcp-util/src/util';
+} from '../../../declaration';
+import { CommonUtil } from '../../../util';
+import { AppConfigImpl } from '../../config';
+import { AbstractImpl } from '../../abstract.impl';
 
 export default abstract class AbstractEditableInput extends AbstractImpl implements EditableInputModel {
   DefaultNumberOfLines = 1;
@@ -16,31 +16,31 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
 
   ShouldFocus: boolean | undefined = false;
 
-  BlnForceUppercase?: boolean | undefined = false;
+  BlnForceUppercase: boolean | undefined = false;
 
-  BlnIsDisabled?: boolean | undefined = false;
+  BlnIsDisabled: boolean | undefined = false;
 
-  BlnIsEditable?: boolean | undefined = true;
+  BlnIsEditable: boolean | undefined = true;
 
-  BlnIsRequired?: boolean | undefined = false;
+  BlnIsRequired: boolean | undefined = false;
 
-  BlnIsVisible?: boolean | undefined = false;
+  BlnIsVisible: boolean | undefined = false;
 
-  IntMaxLength?: number | undefined;
+  IntMaxLength: number | undefined;
 
-  StrCustomFormat?: string | undefined = '';
+  StrCustomFormat: string | undefined = '';
 
   StrId = '';
 
-  StrRegExp?: string | undefined = '';
+  StrRegExp: string | undefined = '';
 
-  StrSuffix?: string | undefined = '';
+  StrSuffix: string | undefined = '';
 
-  StrText?: string | undefined = '';
+  StrText: string | undefined = '';
 
-  StrValue?: string | undefined = '';
+  StrValue: string | undefined = '';
 
-  onChange?: (value: string | undefined) => void | undefined = undefined;
+  onChange: (value: string | undefined) => void | undefined = undefined;
 
   getAutoCapitalize(): AutoCapitalizeOptions {
     return this.BlnForceUppercase ? 'characters' : 'none';
@@ -68,7 +68,7 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
 
   initializeControl(): void {
     if (!this.StrId) {
-      this.StrId = Util.getAdjustedComponentId(this.StrText) || 'editableInput';
+      this.StrId = CommonUtil.getAdjustedComponentId(this.StrText) || 'editableInput';
     }
   }
 
@@ -122,7 +122,7 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
       return true;
     }
 
-    return !Util.isEmptyOrSpaces(this.toString());
+    return !CommonUtil.isEmptyOrSpaces(this.toString());
   }
 
   getHintText(appConfig: AppConfigImpl | undefined): string | undefined {

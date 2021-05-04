@@ -1,16 +1,18 @@
-import AbstractImpl from '../abstract.impl';
-import { ExceptionItemModel } from '../../declarations/global';
+import { AbstractImpl } from '../abstract.impl';
+import { ExceptionItemModel } from '../../declaration';
 
-export default class ExceptionItemImpl extends AbstractImpl implements ExceptionItemModel {
-  IntType?: number | undefined = undefined;
+export class ExceptionItemImpl extends AbstractImpl implements ExceptionItemModel {
+  IntType: number | undefined = undefined;
 
-  StrDescription?: string | undefined = '';
+  StrDescription: string | undefined = '';
 
-  StrException?: string | undefined = '';
+  StrException: string | undefined = '';
 
-  StrGroup?: string | undefined = '';
+  StrGroup: string | undefined = '';
 
-  StrId?: string | undefined = '';
+  StrId: string | undefined = '';
+
+  ArrValues: string[] | undefined = [];
 
   getKey(): string | number | undefined {
     return this.StrId;

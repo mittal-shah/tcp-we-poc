@@ -1,132 +1,140 @@
-import { FilterStatusModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { FilterStatusModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class FilterStatusImpl extends AbstractImpl implements FilterStatusModel {
-  BlnAdvancedFilterApplied?: boolean | undefined = false;
+export class FilterStatusImpl extends AbstractImpl implements FilterStatusModel {
+  BlnCanAccessLocationFilter: boolean | undefined = false;
 
-  BlnAvailabilityFilterApplied?: boolean | undefined = false;
+  BlnLocationFilterApplied: boolean | undefined = false;
 
-  BlnCanAccessAdvancedFilter?: boolean | undefined = false;
+  BlnAdvancedFilterApplied: boolean | undefined = false;
 
-  BlnCanAccessAvailabilityFilter?: boolean | undefined = false;
+  BlnAvailabilityFilterApplied: boolean | undefined = false;
 
-  BlnCanAccessCostCodeFilter?: boolean | undefined = false;
+  BlnCanAccessAdvancedFilter: boolean | undefined = false;
 
-  BlnCanAccessCoveredEmployeeFilter?: boolean | undefined = false;
+  BlnCanAccessAvailabilityFilter: boolean | undefined = false;
 
-  BlnCanAccessCustomFieldFilter?: boolean | undefined = false;
+  BlnCanAccessCostCodeFilter: boolean | undefined = false;
 
-  BlnCanAccessEmployeeFilter?: boolean | undefined = false;
+  BlnCanAccessCoveredEmployeeFilter: boolean | undefined = false;
 
-  BlnCanAccessExceptionFilter?: boolean | undefined = false;
+  BlnCanAccessCustomFieldFilter: boolean | undefined = false;
 
-  BlnCanAccessJobClassFilter?: boolean | undefined = false;
+  BlnCanAccessEmployeeFilter: boolean | undefined = false;
 
-  BlnCanAccessJobCodeFilter?: boolean | undefined = false;
+  BlnCanAccessExceptionFilter: boolean | undefined = false;
 
-  BlnCanAccessLaborStandardFilter?: boolean | undefined = false;
+  BlnCanAccessJobClassFilter: boolean | undefined = false;
 
-  BlnCanAccessLeaveCalendarFilter?: boolean | undefined = false;
+  BlnCanAccessJobCodeFilter: boolean | undefined = false;
 
-  BlnCanAccessMasterScheduleFilter?: boolean | undefined = false;
+  BlnCanAccessLaborStandardFilter: boolean | undefined = false;
 
-  BlnCanAccessMasterShiftFilter?: boolean | undefined = false;
+  BlnCanAccessLeaveCalendarFilter: boolean | undefined = false;
 
-  BlnCanAccessScheduleSegmentFilter?: boolean | undefined = false;
+  BlnCanAccessMasterScheduleFilter: boolean | undefined = false;
 
-  BlnCanAccessSortKeySettings?: boolean | undefined = false;
+  BlnCanAccessMasterShiftFilter: boolean | undefined = false;
 
-  BlnCanAccessSubstituteEmployeeFilter?: boolean | undefined = false;
+  BlnCanAccessScheduleSegmentFilter: boolean | undefined = false;
 
-  BlnCanAccessTerminalFilter?: boolean | undefined = false;
+  BlnCanAccessSortKeySettings: boolean | undefined = false;
 
-  BlnCanAccessUserFilter?: boolean | undefined = false;
+  BlnCanAccessSubstituteEmployeeFilter: boolean | undefined = false;
 
-  BlnCostCodeFilterApplied?: boolean | undefined = false;
+  BlnCanAccessTerminalFilter: boolean | undefined = false;
 
-  BlnCoveredEmployeeFilterApplied?: boolean | undefined = false;
+  BlnCanAccessUserFilter: boolean | undefined = false;
 
-  BlnCustomFieldFilterApplied?: boolean | undefined = false;
+  BlnCostCodeFilterApplied: boolean | undefined = false;
 
-  BlnEmployeeFilterApplied?: boolean | undefined = false;
+  BlnCoveredEmployeeFilterApplied: boolean | undefined = false;
 
-  BlnExceptionFilterApplied?: boolean | undefined = false;
+  BlnCustomFieldFilterApplied: boolean | undefined = false;
 
-  BlnJobClassFilterApplied?: boolean | undefined = false;
+  BlnEmployeeFilterApplied: boolean | undefined = false;
 
-  BlnJobCodeFilterApplied?: boolean | undefined = false;
+  BlnExceptionFilterApplied: boolean | undefined = false;
 
-  BlnLaborStandardFilterApplied?: boolean | undefined = false;
+  BlnJobClassFilterApplied: boolean | undefined = false;
 
-  BlnLeaveCalendarFilterApplied?: boolean | undefined = false;
+  BlnJobCodeFilterApplied: boolean | undefined = false;
 
-  BlnMasterScheduleFilterApplied?: boolean | undefined = false;
+  BlnLaborStandardFilterApplied: boolean | undefined = false;
 
-  BlnMasterShiftFilterApplied?: boolean | undefined = false;
+  BlnLeaveCalendarFilterApplied: boolean | undefined = false;
 
-  BlnScheduleSegmentFilterApplied?: boolean | undefined = false;
+  BlnMasterScheduleFilterApplied: boolean | undefined = false;
 
-  BlnSubstituteEmployeeFilterApplied?: boolean | undefined = false;
+  BlnMasterShiftFilterApplied: boolean | undefined = false;
 
-  BlnTerminalFilterApplied?: boolean | undefined = false;
+  BlnScheduleSegmentFilterApplied: boolean | undefined = false;
 
-  BlnUserFilterApplied?: boolean | undefined = false;
+  BlnSubstituteEmployeeFilterApplied: boolean | undefined = false;
 
-  IntCoveredEmployeeFilterKey?: number | undefined = 0;
+  BlnTerminalFilterApplied: boolean | undefined = false;
 
-  IntEmployeeCount?: number | undefined = 0;
+  BlnUserFilterApplied: boolean | undefined = false;
 
-  IntEmployeeFilterKey?: number | undefined = 0;
+  IntCoveredEmployeeFilterKey: number | undefined = 0;
 
-  IntKey?: number | undefined = 0;
+  IntEmployeeCount: number | undefined = 0;
 
-  IntSubstituteEmployeeFilterKey?: number | undefined = 0;
+  IntEmployeeFilterKey: number | undefined = 0;
 
-  StrAdvancedFilterTitle?: string | undefined = '';
+  IntKey: number | undefined = 0;
 
-  StrAvailablityFilterTitle?: string | undefined = '';
+  IntSubstituteEmployeeFilterKey: number | undefined = 0;
 
-  StrCostCodeFilterTitle?: string | undefined = '';
+  StrAdvancedFilterTitle: string | undefined = '';
 
-  StrCoveredEmployeeFilterHelp?: string | undefined = '';
+  StrAvailablityFilterTitle: string | undefined = '';
 
-  StrCoveredEmployeeFilterTitle?: string | undefined = '';
+  StrCostCodeFilterTitle: string | undefined = '';
 
-  StrCustomFieldFilterTitle?: string | undefined = '';
+  StrCoveredEmployeeFilterHelp: string | undefined = '';
 
-  StrEmployeeFilterHelp?: string | undefined = '';
+  StrCoveredEmployeeFilterTitle: string | undefined = '';
 
-  StrEmployeeFilterTitle?: string | undefined = '';
+  StrCustomFieldFilterTitle: string | undefined = '';
 
-  StrExceptionFilterTitle?: string | undefined = '';
+  StrEmployeeFilterHelp: string | undefined = '';
 
-  StrJobClassFilterTitle?: string | undefined = '';
+  StrEmployeeFilterTitle: string | undefined = '';
 
-  StrJobCodeFilterTitle?: string | undefined = '';
+  StrExceptionFilterTitle: string | undefined = '';
 
-  StrLaborStandardFilterHelp?: string | undefined = '';
+  StrJobClassFilterTitle: string | undefined = '';
 
-  StrLaborStandardFilterTitle?: string | undefined = '';
+  StrJobCodeFilterTitle: string | undefined = '';
 
-  StrLeaveCalendarFilterTitle?: string | undefined = '';
+  StrLaborStandardFilterHelp: string | undefined = '';
 
-  StrMasterScheduleFilterHelp?: string | undefined = '';
+  StrLaborStandardFilterTitle: string | undefined = '';
 
-  StrMasterScheduleFilterTitle?: string | undefined = '';
+  StrLeaveCalendarFilterTitle: string | undefined = '';
 
-  StrMasterShiftFilterHelp?: string | undefined = '';
+  StrMasterScheduleFilterHelp: string | undefined = '';
 
-  StrMasterShiftFilterTitle?: string | undefined = '';
+  StrMasterScheduleFilterTitle: string | undefined = '';
 
-  StrScheduleSegmentFilterTitle?: string | undefined = '';
+  StrMasterShiftFilterHelp: string | undefined = '';
 
-  StrSortKeysTitle?: string | undefined = '';
+  StrMasterShiftFilterTitle: string | undefined = '';
 
-  StrSubstituteEmployeeFilterHelp?: string | undefined = '';
+  StrScheduleSegmentFilterTitle: string | undefined = '';
 
-  StrSubstituteEmployeeFilterTitle?: string | undefined = '';
+  StrSortKeysTitle: string | undefined = '';
 
-  StrTerminalFilterTitle?: string | undefined = '';
+  StrSubstituteEmployeeFilterHelp: string | undefined = '';
 
-  StrUserFilterTitle?: string | undefined = '';
+  StrSubstituteEmployeeFilterTitle: string | undefined = '';
+
+  StrTerminalFilterTitle: string | undefined = '';
+
+  StrUserFilterTitle: string | undefined = '';
+
+  StrLocationFilterHelp: string | undefined = '';
+
+  StrLocationFilterTitle: string | undefined = '';
 }

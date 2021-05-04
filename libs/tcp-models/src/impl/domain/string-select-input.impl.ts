@@ -1,24 +1,23 @@
-import StringSelectItemImpl from './string-select-item.impl';
-import AbstractImpl from '../abstract.impl';
-import { StringSelectInputModel } from '../../declarations/global';
-import Util from '../../../../tcp-util/src/util';
+import { AbstractImpl } from '../abstract.impl';
+import { StringSelectInputModel } from '../../declaration';
+import { StringSelectItemImpl } from './string-select-item.impl';
 
-export default class StringSelectInputImpl extends AbstractImpl implements StringSelectInputModel {
-  ArrStringSelectItemOptions?: StringSelectItemImpl[] | undefined = [];
+export class StringSelectInputImpl extends AbstractImpl implements StringSelectInputModel {
+  ArrStringSelectItemOptions: StringSelectItemImpl[] | undefined = [];
 
-  BlnIsDisabled?: boolean | undefined = false;
+  BlnIsDisabled: boolean | undefined = false;
 
-  IntMaxLength?: number | undefined = undefined;
+  IntMaxLength: number | undefined = undefined;
 
-  StrId?: string | undefined = '';
+  StrId: string | undefined = '';
 
-  StrLabel?: string | undefined = '';
+  StrLabel: string | undefined = '';
 
-  StrSuffix?: string | undefined = '';
+  StrSuffix: string | undefined = '';
 
-  StrValue?: string | undefined = '';
+  StrValue: string | undefined = '';
 
-  init(data?: StringSelectInputModel) {
+  init(data: StringSelectInputModel) {
     if (!data) {
       return;
     }
@@ -34,7 +33,7 @@ export default class StringSelectInputImpl extends AbstractImpl implements Strin
   }
 
   createSubmissionData() {
-    const data = Util.cloneClassInstance<StringSelectInputImpl>(this, StringSelectInputImpl);
+    const data = AbstractImpl.clone<StringSelectInputImpl>(this, StringSelectInputImpl);
 
     delete data.ArrStringSelectItemOptions;
 

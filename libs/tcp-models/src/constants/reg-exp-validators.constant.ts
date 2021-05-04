@@ -7,6 +7,6 @@ const RegExpValidator = {
   URL: new RegExp(
     /^$|^((\w+\.)?\w+\.\w+|((2[0-5]{2}|1[0-9]{2}|[0-9]{1,2})\.){3}(2[0-5]{2}|1[0-9]{2}|[0-9]{1,2}))(\/)?$/,
   ),
-}
+};
 
-export default RegExpValidator
+export default RegExpValidator;

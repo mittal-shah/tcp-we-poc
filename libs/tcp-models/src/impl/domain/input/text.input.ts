@@ -1,16 +1,22 @@
 import AbstractEditableInput from './abstract-editable.input';
-import AppConfigImpl from '../../config/app.config.impl';
-import DecimalInput from './decimal.input';
-import { EditableTextInputModel } from '../../../declarations/editable-input';
+import { EditableTextInputModel } from '../../../declaration';
+import { DecimalInput } from './decimal.input';
+import { AppConfigImpl } from '../../config';
 
-export default class TextInput extends AbstractEditableInput implements EditableTextInputModel {
-  BlnIsMaskedValue?: boolean | undefined = false;
+export class TextInput extends AbstractEditableInput implements EditableTextInputModel {
+  BlnIsMaskedValue: boolean | undefined = false;
 
-  IntNumberOfLines?: number | undefined = 0;
+  IntNumberOfLines: number | undefined = 0;
 
-  StrMaxDecimalValue?: string | undefined = '';
+  IntMaxValue: number | undefined = 0;
 
-  StrMinDecimalValue?: string | undefined = '';
+  IntMinValue: number | undefined = 0;
+
+  IntValue: number | undefined = 0;
+
+  StrMaxDecimalValue: string | undefined = '';
+
+  StrMinDecimalValue: string | undefined = '';
 
   isSecuredField() {
     return !!this.BlnIsMaskedValue;

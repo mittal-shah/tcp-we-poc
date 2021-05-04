@@ -1,13 +1,13 @@
-import { EditTimesheetSegmentConfig } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
-import EditSegmentConfigImpl from './edit-segment.config.impl';
+import { EditTimesheetSegmentConfig } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { EditSegmentConfigImpl } from './edit-segment.config.impl';
 
-export default class EditTimesheetSegmentConfigImpl extends AbstractImpl implements EditTimesheetSegmentConfig {
-  ObjEditSegmentConfig?: EditSegmentConfigImpl | undefined = undefined;
+export class EditTimesheetSegmentConfigImpl extends AbstractImpl implements EditTimesheetSegmentConfig {
+  ObjEditSegmentConfig: EditSegmentConfigImpl | undefined = undefined;
 
-  StrLeaveCode?: string | undefined = '';
+  StrLeaveCode: string | undefined = '';
 
-  StrTitle?: string | undefined = '';
+  StrTitle: string | undefined = '';
 
   init(data: EditTimesheetSegmentConfigImpl) {
     if (!data) {

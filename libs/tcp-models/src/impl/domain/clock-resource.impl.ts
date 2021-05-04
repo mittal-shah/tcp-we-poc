@@ -1,4 +1,4 @@
-import { ClockResourceModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { ClockResourceModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class ClockResourceImpl extends AbstractImpl implements ClockResourceModel {}
+export class ClockResourceImpl extends AbstractImpl implements ClockResourceModel {}

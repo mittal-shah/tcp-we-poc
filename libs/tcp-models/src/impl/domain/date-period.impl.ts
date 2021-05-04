@@ -1,20 +1,20 @@
-import SelectItemImpl from './select-item.impl';
-import { DatePeriodModel } from '../../declarations/global';
+import { DatePeriodModel } from '../../declaration';
+import { SelectItemImpl } from './select-item.impl';
 
-export default class DatePeriodImpl extends SelectItemImpl implements DatePeriodModel {
-  BlnIsHistory?: boolean | undefined = false;
+export class DatePeriodImpl extends SelectItemImpl implements DatePeriodModel {
+  BlnIsHistory: boolean | undefined = false;
 
-  BlnUseTime?: boolean | undefined = false;
+  BlnUseTime: boolean | undefined = false;
 
-  DatEndDate?: string | undefined = '';
+  DatEndDate: string | undefined = '';
 
-  DatStartDate?: string | undefined = '';
+  DatStartDate: string | undefined = '';
 
-  IntPeriod?: number | undefined = 0;
+  IntPeriod: number | undefined = 0;
 
-  StrDescription?: string | undefined = '';
+  StrDescription: string | undefined = '';
 
-  TimEndTime?: string | undefined = '';
+  TimEndTime: string | undefined = '';
 
-  TimStartTime?: string | undefined = '';
+  TimStartTime: string | undefined = '';
 }

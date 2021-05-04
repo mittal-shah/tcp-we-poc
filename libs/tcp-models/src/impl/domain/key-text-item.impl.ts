@@ -1,12 +1,12 @@
-import { KeyTextItemModel } from '../../declarations/global';
-import SelectItemImpl from './select-item.impl';
+import { KeyTextItemModel } from '../../declaration';
+import { SelectItemImpl } from './select-item.impl';
 
-export default class KeyTextItemImpl extends SelectItemImpl implements KeyTextItemModel {
-  StrKey?: string | undefined = '';
+export class KeyTextItemImpl extends SelectItemImpl implements KeyTextItemModel {
+  StrKey: string | undefined = '';
 
-  StrText?: string | undefined = '';
+  StrText: string | undefined = '';
 
-  constructor(key?: string | undefined, text?: string | undefined) {
+  constructor(key: string | undefined, text: string | undefined) {
     super();
     this.setKey(key);
     this.setText(text);

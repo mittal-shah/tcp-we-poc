@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import Util from '../../../tcp-util/src/util';
+import { CommonUtil } from '../util';
 
 export interface HourMin {
   intHour: number;
@@ -12,7 +12,7 @@ export const DateTimeConstants = {
   IsoTimestamp: `${moment.HTML5_FMT.DATE} ${moment.HTML5_FMT.TIME_SECONDS}`, // YYYY-MM-DD HH:mm:ss
 };
 
-export default class DateTimeFormatter {
+export class DateTimeFormatter {
   static createAdjustedDate(timeOffset = 0): Date {
     return new Date(+Date.now() + timeOffset);
   }
@@ -272,7 +272,7 @@ export default class DateTimeFormatter {
     minutes %= 60;
     seconds %= 60;
 
-    return `${minutes}:${Util.padNumber(seconds, 2)}`;
+    return `${minutes}:${CommonUtil.padNumber(seconds, 2)}`;
   }
 
   static getCalculatedTimeDifference(dateStart: string, dateEnd: string) {
@@ -295,7 +295,7 @@ export default class DateTimeFormatter {
     }
 
     const formatModel = keepHundredths ? '{0}.{1}' : '{0}:{1}';
-    return Util.stringFormat(formatModel, Util.padNumber(intHour, 2), Util.padNumber(intMin, 2));
+    return CommonUtil.stringFormat(formatModel, CommonUtil.padNumber(intHour, 2), CommonUtil.padNumber(intMin, 2));
   }
 
   private static getHourMin(strValue: string | undefined) {

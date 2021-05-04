@@ -1,20 +1,20 @@
-import { BooleanInputModel } from '../../../declarations/global';
-import AbstractImpl from '../../abstract.impl';
+import { BooleanInputModel } from '../../../declaration';
+import { AbstractImpl } from '../../abstract.impl';
 
-export default class BooleanInputImpl extends AbstractImpl implements BooleanInputModel {
-  BlnIsDisabled?: boolean | undefined = false;
+export class BooleanInputImpl extends AbstractImpl implements BooleanInputModel {
+  BlnIsDisabled: boolean | undefined = false;
 
-  BlnIsVisible?: boolean | undefined = false;
+  BlnIsVisible: boolean | undefined = false;
 
-  BlnValue?: boolean | undefined = false;
+  BlnValue: boolean | undefined = false;
 
-  StrHelp?: string | undefined = '';
+  StrHelp: string | undefined = '';
 
-  StrId?: string | undefined = '';
+  StrId: string | undefined = '';
 
-  StrText?: string | undefined = '';
+  StrText: string | undefined = '';
 
-  constructor(id?: string, text?: string) {
+  constructor(id: string, text: string) {
     super();
     this.StrId = id;
     this.StrText = text;

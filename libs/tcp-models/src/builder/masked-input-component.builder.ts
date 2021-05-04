@@ -1,4 +1,4 @@
-export default class MaskedInputComponentBuilder {
+export class MaskedInputComponentBuilder {
   public static getMaskFromCustomFormat(customFormat?: string) {
     if (!customFormat) {
       return '';

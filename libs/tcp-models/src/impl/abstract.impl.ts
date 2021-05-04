@@ -1,6 +1,6 @@
-import { AnyType } from '../declarations/types';
+import { AnyType } from '../declaration';
 
-export default abstract class AbstractImpl {
+export abstract class AbstractImpl {
   static create<T>(type: new () => T): T {
     // eslint-disable-next-line new-cap
     return new type();
@@ -17,6 +17,22 @@ export default abstract class AbstractImpl {
       result.init(safeData);
     }
     return result;
+  }
+
+  static clone<T>(classData, type?) {
+    if (!type) {
+      return AbstractImpl.getObjectFromClass(classData) as T;
+    }
+
+    return AbstractImpl.fromJSON(AbstractImpl.getObjectFromClass(classData), type) as T;
+  }
+
+  private static getObjectFromClass(implementationClass?) {
+    if (!implementationClass) {
+      return {};
+    }
+
+    return JSON.parse(JSON.stringify(implementationClass));
   }
 
   protected copyTypedArray(data: AnyType | undefined, property: string, type: AnyType) {

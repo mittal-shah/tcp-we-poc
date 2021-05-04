@@ -1,21 +1,20 @@
-import CostCodeInputImpl from '../domain/cost-code-input.impl';
-import FilterDataImpl from './filter.data.impl';
-import AbstractImpl from '../abstract.impl';
-import { SelectCostCodeData } from '../../declarations/global';
-import Util from '../../../../tcp-util/src/util';
+import { AbstractImpl } from '../abstract.impl';
+import { SelectCostCodeData } from '../../declaration';
+import { CostCodeInputImpl } from '../domain';
+import { FilterDataImpl } from './filter.data.impl';
 
 export type CostCodeSearchDropdownContext = {
-  ObjFilterData?: FilterDataImpl;
+  ObjFilterData: FilterDataImpl;
 
-  ArrCostCodeInputs?: CostCodeInputImpl[];
+  ArrCostCodeInputs: CostCodeInputImpl[];
 };
 
-export default class SelectCostCodeDataImpl extends AbstractImpl implements SelectCostCodeData {
-  ArrCostCodeInputs?: CostCodeInputImpl[] | undefined = [];
+export class SelectCostCodeDataImpl extends AbstractImpl implements SelectCostCodeData {
+  ArrCostCodeInputs: CostCodeInputImpl[] | undefined = [];
 
-  LngJobCodeRecordId?: number | undefined = 0;
+  LngJobCodeRecordId: number | undefined = 0;
 
-  ObjFilterData?: FilterDataImpl | undefined = undefined;
+  ObjFilterData: FilterDataImpl | undefined = undefined;
 
   init(data: SelectCostCodeDataImpl) {
     if (!data) {
@@ -43,7 +42,7 @@ export default class SelectCostCodeDataImpl extends AbstractImpl implements Sele
   }
 
   createSubmissionData() {
-    const data = Util.cloneClassInstance<SelectCostCodeDataImpl>(this, SelectCostCodeDataImpl);
+    const data = AbstractImpl.clone<SelectCostCodeDataImpl>(this, SelectCostCodeDataImpl);
 
     delete data.ArrCostCodeInputs;
 

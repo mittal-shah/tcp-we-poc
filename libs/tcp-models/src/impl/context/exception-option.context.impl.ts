@@ -1,15 +1,15 @@
-import ExceptionOptionImpl from '../domain/exception-option.impl';
-import { ExceptionOptionContext } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { ExceptionOptionContext } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { ExceptionOptionImpl } from '../domain';
 
-export default class ExceptionOptionContextImpl extends AbstractImpl implements ExceptionOptionContext {
-  ArrExceptionOptions?: ExceptionOptionImpl[] | undefined = [];
+export class ExceptionOptionContextImpl extends AbstractImpl implements ExceptionOptionContext {
+  ArrExceptionOptions: ExceptionOptionImpl[] | undefined = [];
 
-  BlnIsOverridden?: boolean | undefined = false;
+  BlnIsOverridden: boolean | undefined = false;
 
-  StrOverride?: string | undefined = '';
+  StrOverride: string | undefined = '';
 
-  init(data?: ExceptionOptionContext) {
+  init(data: ExceptionOptionContext) {
     if (!data) {
       return;
     }

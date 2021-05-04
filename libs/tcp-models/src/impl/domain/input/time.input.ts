@@ -1,16 +1,16 @@
-import { EditableTimeInputModel, InputSuffixIcon } from '../../../declarations/editable-input';
+import { EditableTimeInputModel, InputSuffixIcon } from '../../../declaration';
 import AbstractEditableInput from './abstract-editable.input';
-import AppConfigImpl from '../../config/app.config.impl';
-import DateTimeFormatter, { DateTimeConstants } from '../../../../../tcp-core/src/formatter/date-time.formatter';
+import { DateTimeConstants, DateTimeFormatter } from '../../../formatter';
+import { AppConfigImpl } from '../../config';
 
-export default class TimeInput extends AbstractEditableInput implements EditableTimeInputModel {
+export class TimeInput extends AbstractEditableInput implements EditableTimeInputModel {
   StrFormat: string = DateTimeConstants.IsoTimeFormat;
 
-  TimMaxValue?: string | undefined = '';
+  TimMaxValue: string | undefined = '';
 
-  TimMinValue?: string | undefined = '';
+  TimMinValue: string | undefined = '';
 
-  TimValue?: string | undefined = '';
+  TimValue: string | undefined = '';
 
   getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
     return this.TimMinValue && this.TimMaxValue

@@ -1,31 +1,27 @@
-import CostCodeInputImpl from '../domain/cost-code-input.impl';
-import EditSegmentAccessContextImpl from '../context/edit-segment-access.context.impl';
-import { EditSegmentData } from '../../declarations/global';
-import SegmentImpl from '../domain/segment.impl';
-import SelectCostCodeDataImpl from './select-cost-code.data.impl';
-import LongStringItemImpl from '../domain/long-string-item.impl';
-import SelectItemImpl from '../domain/select-item.impl';
-import AbstractImpl from '../abstract.impl';
-import Util from '../../../../tcp-util/src/util';
+import { CostCodeInputImpl, LongStringItemImpl, SegmentImpl, SelectItemImpl } from '../domain';
+import { EditSegmentAccessContextImpl } from '../context';
+import { SelectCostCodeDataImpl } from './select-cost-code.data.impl';
+import { EditSegmentData } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class EditSegmentDataImpl extends AbstractImpl implements EditSegmentData {
-  ArrSelectItemBreakTypes?: SelectItemImpl[] | undefined = [];
+export class EditSegmentDataImpl extends AbstractImpl implements EditSegmentData {
+  ArrSelectItemBreakTypes: SelectItemImpl[] | undefined = [];
 
-  ArrSelectItemJobCodes?: SelectItemImpl[] | undefined = [];
+  ArrSelectItemJobCodes: SelectItemImpl[] | undefined = [];
 
-  BlnEnableRate?: boolean | undefined = false;
+  BlnEnableRate: boolean | undefined = false;
 
-  BlnIsSegmentTypeAccessible?: boolean | undefined = false;
+  BlnIsSegmentTypeAccessible: boolean | undefined = false;
 
-  IntRepeatDays?: number | undefined = 0;
+  IntRepeatDays: number | undefined = 0;
 
-  ObjEditSegmentAccessContext?: EditSegmentAccessContextImpl | undefined = undefined;
+  ObjEditSegmentAccessContext: EditSegmentAccessContextImpl | undefined = undefined;
 
-  ObjSegment?: SegmentImpl | undefined = undefined;
+  ObjSegment: SegmentImpl | undefined = undefined;
 
-  ObjSelectCostCodeData?: SelectCostCodeDataImpl | undefined = undefined;
+  ObjSelectCostCodeData: SelectCostCodeDataImpl | undefined = undefined;
 
-  init(data?: EditSegmentDataImpl) {
+  init(data: EditSegmentDataImpl) {
     if (!data) {
       return;
     }
@@ -44,7 +40,7 @@ export default class EditSegmentDataImpl extends AbstractImpl implements EditSeg
       : undefined;
   }
 
-  copySelectedCostCodeInput(costCode?: LongStringItemImpl) {
+  copySelectedCostCodeInput(costCode: LongStringItemImpl) {
     if (!costCode) {
       return undefined;
     }
@@ -58,7 +54,7 @@ export default class EditSegmentDataImpl extends AbstractImpl implements EditSeg
   }
 
   createSubmissionData() {
-    const data = Util.cloneClassInstance<EditSegmentDataImpl>(this, EditSegmentDataImpl);
+    const data = AbstractImpl.clone<EditSegmentDataImpl>(this, EditSegmentDataImpl);
 
     delete data.ArrSelectItemBreakTypes;
     delete data.ArrSelectItemJobCodes;

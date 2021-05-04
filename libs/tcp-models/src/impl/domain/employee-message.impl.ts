@@ -1,53 +1,53 @@
-import { EmployeeMessageModel } from '../../declarations/global';
-import BooleanInputImpl from './input/boolean.input.impl';
-import AbstractImpl from '../abstract.impl';
+import { EmployeeMessageModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { BooleanInputImpl } from './input';
 
-export default class EmployeeMessageImpl extends AbstractImpl implements EmployeeMessageModel {
-  BlnCanDeleteMessage?: boolean | undefined = false;
+export class EmployeeMessageImpl extends AbstractImpl implements EmployeeMessageModel {
+  BlnCanDeleteMessage: boolean | undefined = false;
 
-  BlnCanEditMessage?: boolean | undefined = false;
+  BlnCanEditMessage: boolean | undefined = false;
 
-  BlnCanMarkAsRead?: boolean | undefined = false;
+  BlnCanMarkAsRead: boolean | undefined = false;
 
-  BlnIsRead?: boolean | undefined = false;
+  BlnIsRead: boolean | undefined = false;
 
-  BlnStartMessage?: boolean | undefined = false;
+  BlnStartMessage: boolean | undefined = false;
 
-  BlnStopMessage?: boolean | undefined = false;
+  BlnStopMessage: boolean | undefined = false;
 
-  DatDateSent?: string | undefined = '';
+  DatDateSent: string | undefined = '';
 
-  DatMessageStart?: string | undefined = '';
+  DatMessageStart: string | undefined = '';
 
-  DatMessageStop?: string | undefined = '';
+  DatMessageStop: string | undefined = '';
 
-  IntMessageType?: number | undefined = 0;
+  IntMessageType: number | undefined = 0;
 
-  LngRecordId?: number | undefined = 0;
+  LngRecordId: number | undefined = 0;
 
-  ObjBooleanInputSendEmail?: BooleanInputImpl | undefined;
+  ObjBooleanInputSendEmail: BooleanInputImpl | undefined;
 
-  ObjBooleanInputSendSMS?: BooleanInputImpl | undefined;
+  ObjBooleanInputSendSMS: BooleanInputImpl | undefined;
 
-  ObjBooleanInputSendTCP?: BooleanInputImpl | undefined;
+  ObjBooleanInputSendTCP: BooleanInputImpl | undefined;
 
-  StrFormattedMessageReadDateTime?: string | undefined = '';
+  StrFormattedMessageReadDateTime: string | undefined = '';
 
-  StrFormattedMessageSentDate?: string | undefined = '';
+  StrFormattedMessageSentDate: string | undefined = '';
 
-  StrFormattedMessageStartDateTime?: string | undefined = '';
+  StrFormattedMessageStartDateTime: string | undefined = '';
 
-  StrFormattedMessageStopDateTime?: string | undefined = '';
+  StrFormattedMessageStopDateTime: string | undefined = '';
 
-  StrMessage?: string | undefined = '';
+  StrMessage: string | undefined = '';
 
-  StrRecipientsInformation?: string | undefined = '';
+  StrRecipientsInformation: string | undefined = '';
 
-  StrSentByUserId?: string | undefined = '';
+  StrSentByUserId: string | undefined = '';
 
-  TimMessageStart?: string | undefined = '';
+  TimMessageStart: string | undefined = '';
 
-  TimMessageStop?: string | undefined = '';
+  TimMessageStop: string | undefined = '';
 
   getKey() {
     return this.LngRecordId;
@@ -57,7 +57,7 @@ export default class EmployeeMessageImpl extends AbstractImpl implements Employe
     this.BlnIsRead = !this.BlnIsRead;
   }
 
-  init(data?: EmployeeMessageModel) {
+  init(data: EmployeeMessageModel) {
     if (!data) {
       return;
     }

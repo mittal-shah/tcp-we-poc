@@ -1,35 +1,33 @@
-import BooleanInputImpl from '../domain/input/boolean.input.impl';
-import IntStringItemImpl from '../domain/int-string-item.impl';
-import { CompTimeConsiderationContext } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
-import Util from '../../../../tcp-util/src/util';
+import { BooleanInputImpl, IntStringItemImpl } from '../domain';
+import { AbstractImpl } from '../abstract.impl';
+import { CompTimeConsiderationContext } from '../../declaration';
 
-export default class CompTimeConsiderationContextImpl extends AbstractImpl implements CompTimeConsiderationContext {
-  BlnCanEdit?: boolean | undefined = false;
+export class CompTimeConsiderationContextImpl extends AbstractImpl implements CompTimeConsiderationContext {
+  BlnCanEdit: boolean | undefined = false;
 
-  IntCompPayoutType?: number | undefined = 0;
+  IntCompPayoutType: number | undefined = 0;
 
-  IntCompTimeConsideration?: number | undefined = 0;
+  IntCompTimeConsideration: number | undefined = 0;
 
-  ObjBooleanInputAllowToggle?: BooleanInputImpl | undefined;
+  ObjBooleanInputAllowToggle: BooleanInputImpl | undefined;
 
-  ObjBooleanInputForceCompTime?: BooleanInputImpl | undefined;
+  ObjBooleanInputForceCompTime: BooleanInputImpl | undefined;
 
-  ObjIntStringItemBankTime?: IntStringItemImpl | undefined;
+  ObjIntStringItemBankTime: IntStringItemImpl | undefined;
 
-  ObjIntStringItemCounts?: IntStringItemImpl | undefined;
+  ObjIntStringItemCounts: IntStringItemImpl | undefined;
 
-  ObjIntStringItemEligible?: IntStringItemImpl | undefined;
+  ObjIntStringItemEligible: IntStringItemImpl | undefined;
 
-  ObjIntStringItemNoComp?: IntStringItemImpl | undefined;
+  ObjIntStringItemNoComp: IntStringItemImpl | undefined;
 
-  ObjIntStringItemPayTime?: IntStringItemImpl | undefined;
+  ObjIntStringItemPayTime: IntStringItemImpl | undefined;
 
-  StrCompTimeToggleHelp?: string | undefined = '';
+  StrCompTimeToggleHelp: string | undefined = '';
 
-  StrTitle?: string | undefined = '';
+  StrTitle: string | undefined = '';
 
-  init(data?: CompTimeConsiderationContext) {
+  init(data: CompTimeConsiderationContext) {
     if (!data) {
       return;
     }
@@ -71,7 +69,7 @@ export default class CompTimeConsiderationContextImpl extends AbstractImpl imple
   }
 
   createSubmissionData() {
-    const data = Util.cloneClassInstance<CompTimeConsiderationContextImpl>(this, CompTimeConsiderationContextImpl);
+    const data = AbstractImpl.clone<CompTimeConsiderationContextImpl>(this, CompTimeConsiderationContextImpl);
 
     delete data.BlnCanEdit;
     delete data.ObjIntStringItemBankTime;

@@ -1,4 +1,4 @@
-enum ExceptionType {
+export enum ExceptionType {
   Presentation = 0,
   Confirmation = 20,
   ConfirmationDeactivate = 21,
@@ -20,7 +20,7 @@ enum ExceptionType {
   ConfirmNegativeAccrualBalance = 101,
   EmployeePassword = 102,
   EmployeePasswordAndPin = 103,
-  DefaultGlobalException = -1
+  DefaultGlobalException = -1,
 }
 
 export default ExceptionType;

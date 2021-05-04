@@ -1,271 +1,245 @@
-import { CompanyConfig, ManagerStartInConfig } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
-import BadgeSearchOrderConfigImpl from './badge-search-order.config.impl';
-import DateTimeFormatConfigImpl from './date-time-format.config.impl';
-import ApprovalStatusConfigImpl from './approval-status.config.impl';
-import DatePeriodImpl from '../domain/date-period.impl';
-import AppConfigImpl from './app.config.impl';
-import DateTimeFormatter, { DateTimeConstants } from '../../../../tcp-core/src/formatter/date-time.formatter';
-import ClockResourceImpl from '../domain/clock-resource.impl';
+import { CompanyConfig, ManagerStartInConfig } from '../../declaration';
+import { BadgeSearchOrderConfigImpl } from './badge-search-order.config.impl';
+import { DateTimeFormatConfigImpl } from './date-time-format.config.impl';
+import { ApprovalStatusConfigImpl } from './approval-status.config.impl';
+import { ClockResourceImpl, DatePeriodImpl } from '../domain';
+import { AppConfigImpl } from './app.config.impl';
+import { DateTimeConstants, DateTimeFormatter } from '../../formatter';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class CompanyConfigImpl extends AbstractImpl implements CompanyConfig {
-  BlnCanAccessFeedback?: boolean | undefined = false;
+export class CompanyConfigImpl extends AbstractImpl implements CompanyConfig {
+  BlnCanAccessFeedback: boolean | undefined = false;
 
-  BlnCanAccessGeolocation?: boolean | undefined = false;
+  BlnCanAccessGeolocation: boolean | undefined = false;
 
-  BlnCanAccessOptions?: boolean | undefined = false;
+  BlnCanAccessOptions: boolean | undefined = false;
 
-  BlnCanAccessRatesAndWages?: boolean | undefined = false;
+  BlnCanAccessRatesAndWages: boolean | undefined = false;
 
-  BlnCanAccessShiftDifferential?: boolean | undefined = false;
+  BlnCanAccessShiftDifferential: boolean | undefined = false;
 
-  BlnCanAddCompanyLocation?: boolean | undefined = false;
+  BlnCanAddCompanyLocation: boolean | undefined = false;
 
-  BlnCanComposeMessage?: boolean | undefined = false;
+  BlnCanComposeMessage: boolean | undefined = false;
 
-  BlnCanResumeSession?: boolean | undefined = false;
+  BlnCanResumeSession: boolean | undefined = false;
 
-  BlnCanViewReleaseNotes?: boolean | undefined = false;
+  BlnCanViewReleaseNotes: boolean | undefined = false;
 
-  BlnCompTimeEnabled?: boolean | undefined = false;
+  BlnCompTimeEnabled: boolean | undefined = false;
 
-  BlnEnableExternalLogoutEmployeeURL?: boolean | undefined = false;
+  BlnEnableExternalLogoutEmployeeURL: boolean | undefined = false;
 
-  BlnEnableExternalLogoutUserURL?: boolean | undefined = false;
+  BlnEnableExternalLogoutUserURL: boolean | undefined = false;
 
-  BlnEnableTrackedFields?: boolean | undefined = false;
+  BlnEnableTrackedFields: boolean | undefined = false;
 
-  BlnFirstTimeLogIn?: boolean | undefined = false;
+  BlnFirstTimeLogIn: boolean | undefined = false;
 
-  BlnJobCostingEnabled?: boolean | undefined = false;
+  BlnJobCostingEnabled: boolean | undefined = false;
 
-  BlnRequiresTouchIDAuthentication?: boolean | undefined = false;
+  BlnRequiresTouchIDAuthentication: boolean | undefined = false;
 
-  BlnShouldExitOnMotion?: boolean | undefined = false;
+  BlnShouldExitOnMotion: boolean | undefined = false;
 
-  BlnShouldUseAccessibilityMode?: boolean | undefined = false;
+  BlnShouldUseAccessibilityMode: boolean | undefined = false;
 
-  BlnShowSchedulerMergeMessage?: boolean | undefined = false;
+  BlnShowSchedulerMergeMessage: boolean | undefined = false;
 
-  BlnShowSystemWideSearch?: boolean | undefined = false;
+  BlnShowSystemWideSearch: boolean | undefined = false;
 
-  BlnShowTutorial?: boolean | undefined = false;
+  BlnShowTutorial: boolean | undefined = false;
 
-  BlnTimeIsHundredths?: boolean | undefined = false;
+  BlnTimeIsHundredths: boolean | undefined = false;
 
-  BlnUpdatePassword?: boolean | undefined = false;
+  BlnUpdatePassword: boolean | undefined = false;
 
-  BlnUseVirtualKeyboard?: boolean | undefined = false;
+  BlnUseVirtualKeyboard: boolean | undefined = false;
 
-  DatCurrentWeek?: string | undefined = '';
+  DatCurrentWeek: string | undefined = '';
 
-  DblRateMaxValue?: number | undefined = 0;
+  DblRateMaxValue: number | undefined = 0;
 
-  DblRateMinValue?: number | undefined = 0;
+  DblRateMinValue: number | undefined = 0;
 
-  DblUtcOffsetMinutes?: number | undefined = 0;
+  DblUtcOffsetMinutes: number | undefined = 0;
 
-  IntApplicationStartIn?: number | undefined = 0;
+  IntApplicationStartIn: number | undefined = 0;
 
-  IntCompanyId?: number | undefined = 0;
+  IntCompanyId: number | undefined = 0;
 
-  IntDepartmentMaxLength?: number | undefined = 0;
+  IntDepartmentMaxLength: number | undefined = 0;
 
-  IntJobCodeMaxLength?: number | undefined = 0;
+  IntJobCodeMaxLength: number | undefined = 0;
 
-  IntKioskStatusOfflineTimeoutMilliseconds?: number | undefined = 30000;
+  IntKioskStatusOfflineTimeoutMilliseconds: number | undefined = 30000;
 
-  IntKioskStatusOnlineTimeoutMilliseconds?: number | undefined = 300000;
+  IntKioskStatusOnlineTimeoutMilliseconds: number | undefined = 300000;
 
-  IntLocationMaxLength?: number | undefined = 0;
+  IntLocationMaxLength: number | undefined = 0;
 
-  IntManualPeriod?: number | undefined = 0;
+  IntManualPeriod: number | undefined = 0;
 
-  IntRatePrecision?: number | undefined = 0;
+  IntRatePrecision: number | undefined = 0;
 
-  IntScheduleGroupMaxLength?: number | undefined = 0;
+  IntScheduleGroupMaxLength: number | undefined = 0;
 
-  IntSessionTimeoutMilliseconds?: number | undefined = 0;
+  IntSessionTimeoutMilliseconds: number | undefined = 0;
 
-  IntSessionTimeoutWarningMilliseconds?: number | undefined = 0;
+  IntSessionTimeoutWarningMilliseconds: number | undefined = 0;
 
-  LngEmployeeIdMaxValue?: number | undefined = 0;
+  LngEmployeeIdMaxValue: number | undefined = 0;
 
-  LngEmployeeIdMinValue?: number | undefined = 0;
+  LngEmployeeIdMinValue: number | undefined = 0;
 
-  LngJobCodeIdMaxValue?: number | undefined = 0;
+  LngJobCodeIdMaxValue: number | undefined = 0;
 
-  LngJobCodeIdMinValue?: number | undefined = 0;
+  LngJobCodeIdMinValue: number | undefined = 0;
 
-  ObjAppConfig?: AppConfigImpl | undefined;
+  ObjAppConfig: AppConfigImpl | undefined;
 
-  ObjApprovalStatusConfig?: ApprovalStatusConfigImpl | undefined;
+  ObjApprovalStatusConfig: ApprovalStatusConfigImpl | undefined;
 
-  ObjBadgeSearchOrderConfig?: BadgeSearchOrderConfigImpl | undefined;
+  ObjBadgeSearchOrderConfig: BadgeSearchOrderConfigImpl | undefined;
 
-  ObjClockResources?: ClockResourceImpl | undefined;
+  ObjClockResources: ClockResourceImpl | undefined;
 
-  ObjDateTimeFormatConfig?: DateTimeFormatConfigImpl | undefined;
+  ObjDateTimeFormatConfig: DateTimeFormatConfigImpl | undefined;
 
-  ObjManagerStartInConfig?: ManagerStartInConfig | undefined;
+  ObjManagerStartInConfig: ManagerStartInConfig | undefined;
 
-  StrAddressNotFound?: string | undefined = '';
+  StrAddressNotFound: string | undefined = '';
 
-  StrBiometricVerificationLabel?: string | undefined = '';
+  StrBiometricVerificationLabel: string | undefined = '';
 
-  StrCT?: string | undefined = '';
+  StrCT: string | undefined = '';
 
-  StrClickHere?: string | undefined = '';
+  StrClickHere: string | undefined = '';
 
-  StrCompanyDisplayValue?: string | undefined = '';
+  StrCompanyDisplayValue: string | undefined = '';
 
-  StrCompanyNamespace?: string | undefined = '';
+  StrCompanyNamespace: string | undefined = '';
 
-  StrCompanyTimestamp?: string | undefined = '';
+  StrCompanyTimestamp: string | undefined = '';
 
-  StrCostCode?: string | undefined = '';
+  StrCostCode: string | undefined = '';
 
-  StrCostCodeFilter?: string | undefined = '';
+  StrCostCodeFilter: string | undefined = '';
 
-  StrCostCodeGroup?: string | undefined = '';
+  StrCostCodeGroup: string | undefined = '';
 
-  StrCostCodes?: string | undefined = '';
+  StrCostCodes: string | undefined = '';
 
-  StrCover?: string | undefined = '';
+  StrCover: string | undefined = '';
 
-  StrCoverFor?: string | undefined = '';
+  StrCoverFor: string | undefined = '';
 
-  StrCoveredEmployeeFilter?: string | undefined = '';
+  StrCoveredEmployeeFilter: string | undefined = '';
 
-  StrCurrencySymbol?: string | undefined = '';
+  StrCurrencySymbol: string | undefined = '';
 
-  StrCurrentWeekTimestamp?: string | undefined = '';
+  StrCurrentWeekTimestamp: string | undefined = '';
 
-  StrDefaultCostCode?: string | undefined = '';
+  StrDefaultCostCode: string | undefined = '';
 
-  StrDefaultJobCode?: string | undefined = '';
+  StrDefaultJobCode: string | undefined = '';
 
-  StrEmployee?: string | undefined = '';
+  StrEmployee: string | undefined = '';
 
-  StrEmployeeFilter?: string | undefined = '';
+  StrEmployeeFilter: string | undefined = '';
 
-  StrEmployeeId?: string | undefined = '';
+  StrEmployeeId: string | undefined = '';
 
-  StrEmployeeTypeFilter?: string | undefined = '';
+  StrEmployeeTypeFilter: string | undefined = '';
 
-  StrEmployees?: string | undefined = '';
+  StrEmployees: string | undefined = '';
 
-  StrExceptionFilter?: string | undefined = '';
+  StrExceptionFilter: string | undefined = '';
 
-  StrExternalLogoutEmployeeURL?: string | undefined = '';
+  StrExternalLogoutEmployeeURL: string | undefined = '';
 
-  StrExternalLogoutUserURL?: string | undefined = '';
+  StrExternalLogoutUserURL: string | undefined = '';
 
-  StrFormattedCurrentWeekDate?: string | undefined = '';
+  StrFormattedCurrentWeekDate: string | undefined = '';
 
-  StrFormattedMessageCount?: string | undefined = '';
+  StrFormattedMessageCount: string | undefined = '';
 
-  StrInvalidCostCode?: string | undefined = '';
+  StrInvalidCostCode: string | undefined = '';
 
-  StrJobClassFilter?: string | undefined = '';
+  StrJobClassFilter: string | undefined = '';
 
-  StrJobCode?: string | undefined = '';
+  StrJobCode: string | undefined = '';
 
-  StrJobCodeFilter?: string | undefined = '';
+  StrJobCodeFilter: string | undefined = '';
 
-  StrJobCodeGroup?: string | undefined = '';
+  StrJobCodeGroup: string | undefined = '';
 
-  StrJobCodes?: string | undefined = '';
+  StrJobCodes: string | undefined = '';
 
-  StrLaborCode?: string | undefined = '';
+  StrLaborCode: string | undefined = '';
 
-  StrLaborCodes?: string | undefined = '';
+  StrLaborCodes: string | undefined = '';
 
-  StrLaborStandard?: string | undefined = '';
+  StrLaborStandard: string | undefined = '';
 
-  StrLaborStandardFilter?: string | undefined = '';
+  StrLaborStandardFilter: string | undefined = '';
 
-  StrLeaveCalendarFilter?: string | undefined = '';
+  StrLeaveCalendarFilter: string | undefined = '';
 
-  StrMasterSchedule?: string | undefined = '';
+  StrMasterSchedule: string | undefined = '';
 
-  StrMasterScheduleFilter?: string | undefined = '';
+  StrMasterScheduleFilter: string | undefined = '';
 
-  StrMasterShift?: string | undefined = '';
+  StrMasterShift: string | undefined = '';
 
-  StrMasterShiftFilter?: string | undefined = '';
+  StrMasterShiftFilter: string | undefined = '';
 
-  StrMonthDayFormat?: string | undefined = '';
+  StrMonthDayFormat: string | undefined = '';
 
-  StrPrimarySortKey?: string | undefined = '';
+  StrPrimarySortKey: string | undefined = '';
 
-  StrReleaseNotes?: string | undefined = '';
+  StrReleaseNotes: string | undefined = '';
 
-  StrResourceRequirements?: string | undefined = '';
+  StrResourceRequirements: string | undefined = '';
 
-  StrScheduleGroup?: string | undefined = '';
+  StrScheduleGroup: string | undefined = '';
 
-  StrScheduleGroupSentenceCase?: string | undefined = '';
+  StrScheduleGroupSentenceCase: string | undefined = '';
 
-  StrSchedulerMergeMessage?: string | undefined = '';
+  StrSchedulerMergeMessage: string | undefined = '';
 
-  StrSecondarySortKey?: string | undefined = '';
+  StrSecondarySortKey: string | undefined = '';
 
-  StrShiftBidStatus?: string | undefined = '';
+  StrShiftBidStatus: string | undefined = '';
 
-  StrSortKeys?: string | undefined = '';
+  StrSortKeys: string | undefined = '';
 
-  StrStartInErrorMessage?: string | undefined = '';
+  StrStartInErrorMessage: string | undefined = '';
 
-  StrSubstituteEmployeeFilter?: string | undefined = '';
+  StrSubstituteEmployeeFilter: string | undefined = '';
 
-  StrSuspendSwapHelpText?: string | undefined = '';
+  StrSuspendSwapHelpText: string | undefined = '';
 
-  StrTouchIDFailedErrorMessage?: string | undefined = '';
+  StrTouchIDFailedErrorMessage: string | undefined = '';
 
-  StrTouchIDVerificationMessage?: string | undefined = '';
+  StrTouchIDVerificationMessage: string | undefined = '';
 
-  StrTrack1?: string | undefined = '';
+  StrTrack1: string | undefined = '';
 
-  StrTrack1MaxValue?: string | undefined = '';
+  StrTrack1MaxValue: string | undefined = '';
 
-  StrTrack2?: string | undefined = '';
+  StrTrack2: string | undefined = '';
 
-  StrTrack2MaxValue?: string | undefined = '';
+  StrTrack2MaxValue: string | undefined = '';
 
-  StrTrack3?: string | undefined = '';
+  StrTrack3: string | undefined = '';
 
-  StrTrack3MaxValue?: string | undefined = '';
+  StrTrack3MaxValue: string | undefined = '';
 
-  _ArrDatePeriods?: DatePeriodImpl[] | undefined = [];
+  _ArrDatePeriods: DatePeriodImpl[] | undefined = [];
 
-  _StrTickerTimeFormat?: string | undefined = '';
-
-  init(data?: CompanyConfig) {
-    if (!data) {
-      return;
-    }
-
-    this.copyTypedArray(data, '_ArrDatePeriods', DatePeriodImpl);
-
-    this.ObjAppConfig =
-      this.ObjAppConfig !== undefined ? AbstractImpl.fromJSON(data.ObjAppConfig, AppConfigImpl) : undefined;
-
-    this.ObjApprovalStatusConfig =
-      this.ObjApprovalStatusConfig !== undefined
-        ? AbstractImpl.fromJSON(data.ObjApprovalStatusConfig, ApprovalStatusConfigImpl)
-        : undefined;
-
-    this.ObjBadgeSearchOrderConfig =
-      this.ObjBadgeSearchOrderConfig !== undefined
-        ? AbstractImpl.fromJSON(data.ObjBadgeSearchOrderConfig, BadgeSearchOrderConfigImpl)
-        : undefined;
-
-    this.ObjDateTimeFormatConfig =
-      this.ObjDateTimeFormatConfig !== undefined
-        ? AbstractImpl.fromJSON(data.ObjDateTimeFormatConfig, DateTimeFormatConfigImpl)
-        : undefined;
-  }
+  _StrTickerTimeFormat: string | undefined = '';
+  BlnIgnoreCapitalTextTransformation: boolean | undefined;
 
   getCompanyTimestamp() {
     return this.StrCompanyTimestamp || '';
@@ -344,16 +318,8 @@ export default class CompanyConfigImpl extends AbstractImpl implements CompanyCo
     return DateTimeFormatter.toDateString(currentDate, this.getDateFormat());
   }
 
-  getFormattedTime(timestamp: number | Date | undefined, timeFormat?: string) {
-    if (!this.ObjDateTimeFormatConfig || !timestamp) {
-      return '';
-    }
-    return DateTimeFormatter.toTimeString(timestamp, timeFormat || this.getTimeFormat());
-  }
-
-  getFormattedTimeTicker(timestamp?: number) {
-    return `${this.getFormattedDate(timestamp)} ${this.getFormattedTime(timestamp, this.getTimeTickerFormat())}`;
-  }
+  StrDatePickerLocale: string | undefined;
+  StrDemand: string | undefined;
 
   is24HourTimeFormat() {
     return !this.BlnTimeIsHundredths && DateTimeFormatter.is24HourTimeFormat(this.getTimeFormat());
@@ -374,7 +340,44 @@ export default class CompanyConfigImpl extends AbstractImpl implements CompanyCo
     return this.ObjDateTimeFormatConfig.getHourFormatPrecision();
   }
 
-  getAdjustedCompanyTimestamp(offsetTimeMS?: number): number | undefined {
+  init(data: CompanyConfig) {
+    if (!data) {
+      return;
+    }
+
+    this.copyTypedArray(data, '_ArrDatePeriods', DatePeriodImpl);
+
+    this.ObjAppConfig =
+      this.ObjAppConfig !== undefined ? AbstractImpl.fromJSON(data.ObjAppConfig, AppConfigImpl) : undefined;
+
+    this.ObjApprovalStatusConfig =
+      this.ObjApprovalStatusConfig !== undefined
+        ? AbstractImpl.fromJSON(data.ObjApprovalStatusConfig, ApprovalStatusConfigImpl)
+        : undefined;
+
+    this.ObjBadgeSearchOrderConfig =
+      this.ObjBadgeSearchOrderConfig !== undefined
+        ? AbstractImpl.fromJSON(data.ObjBadgeSearchOrderConfig, BadgeSearchOrderConfigImpl)
+        : undefined;
+
+    this.ObjDateTimeFormatConfig =
+      this.ObjDateTimeFormatConfig !== undefined
+        ? AbstractImpl.fromJSON(data.ObjDateTimeFormatConfig, DateTimeFormatConfigImpl)
+        : undefined;
+  }
+
+  getFormattedTime(timestamp: number | Date | undefined, timeFormat: string) {
+    if (!this.ObjDateTimeFormatConfig || !timestamp) {
+      return '';
+    }
+    return DateTimeFormatter.toTimeString(timestamp, timeFormat || this.getTimeFormat());
+  }
+
+  getFormattedTimeTicker(timestamp: number) {
+    return `${this.getFormattedDate(timestamp)} ${this.getFormattedTime(timestamp, this.getTimeTickerFormat())}`;
+  }
+
+  getAdjustedCompanyTimestamp(offsetTimeMS: number): number | undefined {
     if (offsetTimeMS === undefined) {
       return undefined;
     }

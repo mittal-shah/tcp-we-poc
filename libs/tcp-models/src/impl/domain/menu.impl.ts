@@ -1,13 +1,13 @@
-import MenuItemImpl from './menu-item.impl';
-import { MenuModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { MenuModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { MenuItemImpl } from './menu-item.impl';
 
-export default class MenuImpl extends AbstractImpl implements MenuModel {
-  ArrMenuItemFavorites?: MenuItemImpl[] | undefined = [];
+export class MenuImpl extends AbstractImpl implements MenuModel {
+  ArrMenuItemFavorites: MenuItemImpl[] | undefined = [];
 
-  ArrMenuItems?: MenuItemImpl[] | undefined = [];
+  ArrMenuItems: MenuItemImpl[] | undefined = [];
 
-  init(data?: MenuModel) {
+  init(data: MenuModel) {
     if (!data) {
       return;
     }
@@ -47,7 +47,7 @@ export default class MenuImpl extends AbstractImpl implements MenuModel {
     });
   }
 
-  findMenuItem(menuCommand?: string): MenuItemImpl | undefined {
+  findMenuItem(menuCommand: string): MenuItemImpl | undefined {
     if (!menuCommand || !this.ArrMenuItems || !this.ArrMenuItems.length) {
       return undefined;
     }

@@ -1,69 +1,95 @@
 import {
+  AbstractImpl,
   ClockResourceModel,
   EmployeeLogOnConfig,
   LogOnConfig,
-} from '../../../../../../../libs/tcp-models/src/declarations/global';
-import WebClockMenuCommandConfigImpl from '../../../../../../../libs/tcp-models/src/impl/config/web-clock-menu-command.config.impl';
-import AbstractImpl from '../../../../../../../libs/tcp-models/src/impl/abstract.impl';
+  WebClockMenuCommandConfigImpl,
+} from '@tcp/tcp-models';
 
 export default class LogOnConfigImpl extends AbstractImpl implements LogOnConfig {
-  ArrCompanyNamespaces?: string[] | undefined = [];
+  ArrCompanyNamespaces: string[] | undefined = [];
 
-  BlnRequireUserToEnterCompanyId?: boolean | undefined = false;
+  BlnRequireUserToEnterCompanyId: boolean | undefined = false;
 
-  BlnShowCompanyNamespaces?: boolean | undefined = false;
+  BlnShowCompanyNamespaces: boolean | undefined = false;
 
-  IntMaxCompanyId?: number | undefined = 0;
+  BlnCanSetupTerminalHub: boolean | undefined = false;
 
-  IntMaxLengthCompanyNamespace?: number | undefined = 0;
+  BlnCanSetupWorkstationHub: boolean | undefined = false;
 
-  IntMaxLengthEmployeeId?: number | undefined = 0;
+  BlnShouldShowTerminalHubSetup: boolean | undefined = false;
 
-  IntMinCompanyId?: number | undefined = 0;
+  BlnShouldShowWorkstationHubSetup: boolean | undefined = false;
 
-  ObjClockResources?: ClockResourceModel | undefined;
+  BlnShowPassword: boolean | undefined = false;
 
-  ObjMenuCommandConfig?: WebClockMenuCommandConfigImpl | undefined;
+  IntMaxLengthLogOnId: number | undefined = 0;
 
-  StrBypassLdap?: string | undefined = '';
+  IntMaxCompanyId: number | undefined = 0;
 
-  StrCompanyHelpText?: string | undefined = '';
+  IntMaxLengthCompanyNamespace: number | undefined = 0;
 
-  StrCompanyNamespace?: string | undefined = '';
+  IntMaxLengthEmployeeId: number | undefined = 0;
 
-  StrCompanyNamespaceHelpText?: string | undefined = '';
+  IntMinCompanyId: number | undefined = 0;
 
-  StrCompanyNamespaceSubText?: string | undefined = '';
+  ObjClockResources: ClockResourceModel | undefined;
 
-  StrCopyright?: string | undefined = '';
+  ObjMenuCommandConfig: WebClockMenuCommandConfigImpl | undefined;
 
-  StrCustomLogoImagePath?: string | undefined = '';
+  StrAppServerApiBaseUrl: string | undefined = '';
 
-  StrDeviceMode?: string | undefined = '';
+  StrApplicationName: string | undefined = '';
 
-  StrDeviceModeHelpText?: string | undefined = '';
+  StrDefaultLogOnId: string | undefined = '';
 
-  StrEmployeeIdHelpText?: string | undefined = '';
+  StrForgotPassword: string | undefined = '';
 
-  StrEnterId?: string | undefined = '';
+  StrKeepMeLoggedIn: string | undefined = '';
 
-  StrLogOn?: string | undefined = '';
+  StrSetupTerminalHub: string | undefined = '';
 
-  StrLogOnToDashboard?: string | undefined = '';
+  StrSetupWorkstationHub: string | undefined = '';
 
-  StrManualQuickPunch?: string | undefined = '';
+  StrBypassLdap: string | undefined = '';
 
-  StrPersonalMode?: string | undefined = '';
+  StrCompanyHelpText: string | undefined = '';
 
-  StrPinEntry?: string | undefined = '';
+  StrCompanyNamespace: string | undefined = '';
 
-  StrSelectCompany?: string | undefined = '';
+  StrCompanyNamespaceHelpText: string | undefined = '';
 
-  StrSelectCompanyNamespace?: string | undefined = '';
+  StrCompanyNamespaceSubText: string | undefined = '';
 
-  StrUseLdapAuthentication?: string | undefined = '';
+  StrCopyright: string | undefined = '';
 
-  init(data?: EmployeeLogOnConfig) {
+  StrCustomLogoImagePath: string | undefined = '';
+
+  StrDeviceMode: string | undefined = '';
+
+  StrDeviceModeHelpText: string | undefined = '';
+
+  StrEmployeeIdHelpText: string | undefined = '';
+
+  StrEnterId: string | undefined = '';
+
+  StrLogOn: string | undefined = '';
+
+  StrLogOnToDashboard: string | undefined = '';
+
+  StrManualQuickPunch: string | undefined = '';
+
+  StrPersonalMode: string | undefined = '';
+
+  StrPinEntry: string | undefined = '';
+
+  StrSelectCompany: string | undefined = '';
+
+  StrSelectCompanyNamespace: string | undefined = '';
+
+  StrUseLdapAuthentication: string | undefined = '';
+
+  init(data: EmployeeLogOnConfig) {
     if (!data) {
       return;
     }

@@ -1,16 +1,16 @@
-import { LaborStandardAssignmentModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { LaborStandardAssignmentModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class LaborStandardAssignmentImpl extends AbstractImpl implements LaborStandardAssignmentModel {
-  BlnCanEdit?: boolean | undefined = false;
+export class LaborStandardAssignmentImpl extends AbstractImpl implements LaborStandardAssignmentModel {
+  BlnCanEdit: boolean | undefined = false;
 
-  BlnCanUnassign?: boolean | undefined = false;
+  BlnCanUnassign: boolean | undefined = false;
 
-  LngRecordId?: number | undefined = 0;
+  LngRecordId: number | undefined = 0;
 
-  StrExpectedAmount?: string | undefined = '';
+  StrExpectedAmount: string | undefined = '';
 
-  StrInheritedFrom?: string | undefined = '';
+  StrInheritedFrom: string | undefined = '';
 
-  StrName?: string | undefined = '';
+  StrName: string | undefined = '';
 }

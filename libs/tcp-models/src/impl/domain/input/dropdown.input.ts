@@ -1,35 +1,44 @@
-import { EditableTextInputModel, InputSuffixIcon } from '../../../declarations/editable-input';
-import AppConfigImpl from '../../config/app.config.impl';
-import IntStringItemImpl from '../int-string-item.impl';
-import CommonConstants from '../../../../../tcp-core/src/constants/common.constant';
+import { AnyType, EditableTextInputModel, InputSuffixIcon, ListItemContext } from '../../../declaration';
+import ModelConstant from '../../../constants/model.constant';
+import { CommonUtil } from '../../../util';
+import { CoveredEmployeeImpl } from '../covered-employee.impl';
 import AbstractEditableInput from './abstract-editable.input';
-import LongStringItemImpl from '../long-string-item.impl';
-import { AnyType, ListItemContext } from '../../../declarations/types';
-import SelectItemImpl from '../select-item.impl';
-import CustomFieldControlImpl from './custom-field-control.impl';
-import CoveredEmployeeImpl from '../covered-employee.impl';
-import Util from '../../../../../tcp-util/src/util';
+import { AppConfigImpl } from '../../config';
+import { IntStringItemImpl } from '../int-string-item.impl';
+import { LongStringItemImpl } from '../long-string-item.impl';
+import { SelectItemImpl } from '../select-item.impl';
+import { CustomFieldControlImpl } from './custom-field-control.impl';
 
-export default class DropdownInput extends AbstractEditableInput implements EditableTextInputModel {
-  BlnAllowNoneSelection?: boolean | undefined = true;
+export class DropdownInput extends AbstractEditableInput implements EditableTextInputModel {
+  BlnAllowNoneSelection: boolean | undefined = true;
 
-  BlnIsMultiSelect?: boolean | undefined = false;
+  BlnIsMultiSelect: boolean | undefined = false;
 
-  BlnIsEditable?: boolean | undefined = false;
+  BlnIsEditable: boolean | undefined = false;
 
-  BlnIsExplicitSave?: boolean | undefined = false;
+  BlnIsExplicitSave: boolean | undefined = false;
 
-  ObjListContext?: ListItemContext | undefined = undefined;
+  IntMaxValue: number | undefined = 0;
 
-  handleOnSelectItem?: (value: AnyType) => void | undefined;
+  IntMinValue: number | undefined = 0;
 
-  onExplicitSave?: (item?: SelectItemImpl) => void;
+  IntValue: number | undefined = 0;
 
-  onMultiSelectSave?: (items?: SelectItemImpl[]) => void;
+  ObjListContext: ListItemContext | undefined = undefined;
 
-  onCancel?: () => void;
+  StrMaxDecimalValue: string | undefined = '';
 
-  addDropdownEntryInput?: CustomFieldControlImpl | undefined = undefined;
+  StrMinDecimalValue: string | undefined = '';
+
+  handleOnSelectItem: (value: AnyType) => void | undefined;
+
+  onExplicitSave: (item: SelectItemImpl) => void;
+
+  onMultiSelectSave: (items: SelectItemImpl[]) => void;
+
+  onCancel: () => void;
+
+  addDropdownEntryInput: CustomFieldControlImpl | undefined = undefined;
 
   getInputSuffixIcon(): InputSuffixIcon {
     return 'chevron-down';
@@ -45,7 +54,7 @@ export default class DropdownInput extends AbstractEditableInput implements Edit
     }
 
     const key = this.ObjListContext.selectedItem.getKey();
-    const isNoneItem = appConfig ? appConfig.isNoneItem(key) : CommonConstants.intNoneItemValue === key;
+    const isNoneItem = appConfig ? appConfig.isNoneItem(key) : ModelConstant.intNoneItemValue === key;
     if (this.BlnIsRequired && isNoneItem) {
       return false;
     }
@@ -118,7 +127,7 @@ export default class DropdownInput extends AbstractEditableInput implements Edit
     }
   }
 
-  getModelValue() {
+  getModelValue(): SelectItemImpl | undefined {
     return this.ObjListContext ? this.ObjListContext.selectedItem : undefined;
   }
 
@@ -141,7 +150,7 @@ export default class DropdownInput extends AbstractEditableInput implements Edit
       return this.getNoneText();
     }
 
-    return Util.stringFormat(appConfig?.StrSelectedEntityMessage, String(selectedItemsLength));
+    return CommonUtil.stringFormat(appConfig?.StrSelectedEntityMessage, String(selectedItemsLength));
   }
 
   setModelValue(item: SelectItemImpl | undefined) {

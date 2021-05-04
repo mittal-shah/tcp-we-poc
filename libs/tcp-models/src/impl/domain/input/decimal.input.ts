@@ -1,18 +1,18 @@
 import AbstractEditableInput from './abstract-editable.input';
-import AppConfigImpl from '../../config/app.config.impl';
-import { EditableDecimalInputModel } from '../../../declarations/editable-input';
-import DateTimeFormatter from '../../../../../tcp-core/src/formatter/date-time.formatter';
-import RegExpValidator from '../../../../../tcp-core/src/constants/reg-exp-validators.constant';
-import Util from '../../../../../tcp-util/src/util';
+import { EditableDecimalInputModel } from '../../../declaration';
+import RegExpValidator from '../../../constants/reg-exp-validators.constant';
+import { CommonUtil } from '../../../util';
+import { AppConfigImpl } from '../../config';
+import { DateTimeFormatter } from '../../../formatter';
 
-export default class DecimalInput extends AbstractEditableInput implements EditableDecimalInputModel {
-  BlnShouldSkipFixedFormatting?: boolean | undefined = false;
+export class DecimalInput extends AbstractEditableInput implements EditableDecimalInputModel {
+  BlnShouldSkipFixedFormatting: boolean | undefined = false;
 
-  IntPrecision?: number | undefined = 0;
+  IntPrecision: number | undefined = 0;
 
-  StrMaxValue?: string | undefined = '';
+  StrMaxValue: string | undefined = '';
 
-  StrMinValue?: string | undefined = '';
+  StrMinValue: string | undefined = '';
 
   getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
     return this.StrMinValue || this.StrMaxValue
@@ -145,7 +145,7 @@ export default class DecimalInput extends AbstractEditableInput implements Edita
   }
 
   private getParsedValue(value: string | number | undefined) {
-    if (!Util.isDefinedOrExist(value) || isNaN(Number(value))) {
+    if (!CommonUtil.isDefinedOrExist(value) || isNaN(Number(value))) {
       return String(value);
     }
     const isValidRegEx = RegExpValidator.DECIMAL.test(String(value));

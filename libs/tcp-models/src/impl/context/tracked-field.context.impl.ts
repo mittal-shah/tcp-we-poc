@@ -1,27 +1,25 @@
-import BooleanInputImpl from '../domain/input/boolean.input.impl';
-import { TrackedFieldContext } from '../../declarations/global';
-import DecimalInput from '../domain/input/decimal.input';
-import TextInput from '../domain/input/text.input';
-import AbstractImpl from '../abstract.impl';
+import { TrackedFieldContext } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { BooleanInputImpl, DecimalInput, TextInput } from '../domain';
 
 export type TrackInputsContext = {
-  track1Input?: DecimalInput;
-  track2Input?: DecimalInput;
-  track3Input?: DecimalInput;
+  track1Input: DecimalInput;
+  track2Input: DecimalInput;
+  track3Input: DecimalInput;
 };
 
-export default class TrackedFieldContextImpl extends AbstractImpl implements TrackedFieldContext {
-  ObjTextInputTrack1?: TextInput | undefined;
+export class TrackedFieldContextImpl extends AbstractImpl implements TrackedFieldContext {
+  ObjTextInputTrack1: TextInput | undefined;
 
-  ObjTextInputTrack2?: TextInput | undefined;
+  ObjTextInputTrack2: TextInput | undefined;
 
-  ObjTextInputTrack3?: TextInput | undefined;
+  ObjTextInputTrack3: TextInput | undefined;
 
-  StrTitle?: string | undefined = '';
+  StrTitle: string | undefined = '';
 
-  IsClockIn?: boolean | undefined = false; // Offline specific property
+  IsClockIn: boolean | undefined = false; // Offline specific property
 
-  init(data?: TrackedFieldContext) {
+  init(data: TrackedFieldContext) {
     if (!data) {
       return;
     }
@@ -38,7 +36,7 @@ export default class TrackedFieldContextImpl extends AbstractImpl implements Tra
       this.ObjTextInputTrack3 !== undefined ? AbstractImpl.fromJSON(data.ObjTextInputTrack3, TextInput) : undefined;
   }
 
-  copyDataFromInputs(addEditTimesheetInputs?: TrackInputsContext) {
+  copyDataFromInputs(addEditTimesheetInputs: TrackInputsContext) {
     if (!addEditTimesheetInputs) {
       return;
     }
@@ -73,7 +71,11 @@ export default class TrackedFieldContextImpl extends AbstractImpl implements Tra
   }
 
   createInputControls() {
-    const trackedFields: TrackInputsContext = {};
+    const trackedFields: TrackInputsContext = {
+      track1Input: undefined,
+      track2Input: undefined,
+      track3Input: undefined,
+    };
 
     if (this.ObjTextInputTrack1) {
       trackedFields.track1Input = this.copyTextInputToDecimal(this.ObjTextInputTrack1);

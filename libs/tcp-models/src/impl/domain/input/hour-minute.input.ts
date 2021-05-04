@@ -1,18 +1,18 @@
 import AbstractEditableInput from './abstract-editable.input';
-import AppConfigImpl from '../../config/app.config.impl';
-import DateTimeFormatter from '../../../../../tcp-core/src/formatter/date-time.formatter';
-import { EditableHourMinuteInputModel } from '../../../declarations/editable-input';
+import { EditableHourMinuteInputModel } from '../../../declaration';
+import { DateTimeFormatter } from '../../../formatter';
+import { AppConfigImpl } from '../../config';
 
-export default class HourMinuteInput extends AbstractEditableInput implements EditableHourMinuteInputModel {
-  HrmValue?: string | undefined = '';
+export class HourMinuteInput extends AbstractEditableInput implements EditableHourMinuteInputModel {
+  HrmValue: string | undefined = '';
 
-  IntMaxMinutes?: number | undefined = 0;
+  IntMaxMinutes: number | undefined = 0;
 
-  IntMinMinutes?: number | undefined = 0;
+  IntMinMinutes: number | undefined = 0;
 
-  StrHelp?: string | undefined = '';
+  StrHelp: string | undefined = '';
 
-  isDecimal?: boolean | undefined = false;
+  isDecimal: boolean | undefined = false;
 
   getMinuteDifferenceFromMaxValue() {
     const minuteValue = this.getMinutes() > 0 ? this.getMinutes() : 0;

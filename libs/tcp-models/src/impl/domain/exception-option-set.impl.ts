@@ -1,17 +1,17 @@
-import ExceptionOptionContextImpl from '../context/exception-option.context.impl';
-import { ExceptionOptionSetModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { ExceptionOptionSetModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { ExceptionOptionContextImpl } from '../context';
 
-export default class ExceptionOptionSetImpl extends AbstractImpl implements ExceptionOptionSetModel {
-  ObjApprovalExceptionOptionContext?: ExceptionOptionContextImpl | undefined;
+export class ExceptionOptionSetImpl extends AbstractImpl implements ExceptionOptionSetModel {
+  ObjApprovalExceptionOptionContext: ExceptionOptionContextImpl | undefined;
 
-  ObjScheduleExceptionOptionContext?: ExceptionOptionContextImpl | undefined;
+  ObjScheduleExceptionOptionContext: ExceptionOptionContextImpl | undefined;
 
-  ObjShiftExceptionOptionContext?: ExceptionOptionContextImpl | undefined;
+  ObjShiftExceptionOptionContext: ExceptionOptionContextImpl | undefined;
 
-  ObjSubstituteExceptionOptionContext?: ExceptionOptionContextImpl | undefined;
+  ObjSubstituteExceptionOptionContext: ExceptionOptionContextImpl | undefined;
 
-  init(data?: ExceptionOptionSetModel) {
+  init(data: ExceptionOptionSetModel) {
     if (!data) {
       return;
     }

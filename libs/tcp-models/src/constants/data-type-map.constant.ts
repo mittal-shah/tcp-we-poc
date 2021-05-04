@@ -7,7 +7,7 @@ const DataTypeMap = {
   IntFullDate: 4,
   IntNumeric: 3,
   IntPartialDate: 5,
-  IntTime: 6
+  IntTime: 6,
 };
 
 export default DataTypeMap;

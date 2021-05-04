@@ -1,50 +1,52 @@
-import FilterDataImpl from '../data/filter.data.impl';
-import ExceptionItemImpl from '../domain/exception-item.impl';
-import AbstractImpl from '../abstract.impl';
-import { ExceptionListContext } from '../../declarations/global';
+import { AbstractImpl } from '../abstract.impl';
+import { ExceptionListContext } from '../../declaration';
+import { FilterDataImpl } from '../data';
+import { ExceptionItemImpl } from '../domain';
 
-export default class ExceptionListContextImpl extends AbstractImpl implements ExceptionListContext {
-  ArrExceptions?: ExceptionItemImpl[] | undefined = [];
+export class ExceptionListContextImpl extends AbstractImpl implements ExceptionListContext {
+  ArrExceptions: ExceptionItemImpl[] | undefined = [];
 
-  ArrGlobalExceptions?: ExceptionItemImpl[] | undefined = [];
+  ArrHeaders: string[] | undefined = [];
 
-  BlnCanDownload?: boolean | undefined = false;
+  ArrGlobalExceptions: ExceptionItemImpl[] | undefined = [];
 
-  BlnShowDescForExceptions?: boolean | undefined = false;
+  BlnCanDownload: boolean | undefined = false;
 
-  BlnShowDescForGlobalExceptions?: boolean | undefined = false;
+  BlnShowDescForExceptions: boolean | undefined = false;
 
-  BlnShowGroupForExceptions?: boolean | undefined = false;
+  BlnShowDescForGlobalExceptions: boolean | undefined = false;
 
-  BlnShowGroupForGlobalExceptions?: boolean | undefined = false;
+  BlnShowGroupForExceptions: boolean | undefined = false;
 
-  BlnShowIdForExceptions?: boolean | undefined = false;
+  BlnShowGroupForGlobalExceptions: boolean | undefined = false;
 
-  BlnShowIdForGlobalExceptions?: boolean | undefined = false;
+  BlnShowIdForExceptions: boolean | undefined = false;
 
-  BlnShowType?: boolean | undefined = false;
+  BlnShowIdForGlobalExceptions: boolean | undefined = false;
 
-  ObjFilterDataExceptions?: FilterDataImpl | undefined = undefined;
+  BlnShowType: boolean | undefined = false;
 
-  ObjFilterDataGlobalExceptions?: FilterDataImpl | undefined = undefined;
+  ObjFilterDataExceptions: FilterDataImpl | undefined = undefined;
 
-  StrDescription?: string | undefined = '';
+  ObjFilterDataGlobalExceptions: FilterDataImpl | undefined = undefined;
 
-  StrExceptionsTitle?: string | undefined = '';
+  StrDescription: string | undefined = '';
 
-  StrGlobalExceptionsTitle?: string | undefined = '';
+  StrExceptionsTitle: string | undefined = '';
 
-  StrGroup?: string | undefined = '';
+  StrGlobalExceptionsTitle: string | undefined = '';
 
-  StrHelpText?: string | undefined = '';
+  StrGroup: string | undefined = '';
 
-  StrId?: string | undefined = '';
+  StrHelpText: string | undefined = '';
 
-  StrTitle?: string | undefined = '';
+  StrId: string | undefined = '';
 
-  updateFilterData?: () => void;
+  StrTitle: string | undefined = '';
 
-  init(data?: ExceptionListContext) {
+  updateFilterData: () => void;
+
+  init(data: ExceptionListContext) {
     if (!data) {
       return;
     }

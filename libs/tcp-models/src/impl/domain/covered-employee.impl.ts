@@ -1,20 +1,20 @@
-import { CoveredEmployeeModel } from '../../declarations/global';
-import SelectItemImpl from './select-item.impl';
+import { CoveredEmployeeModel } from '../../declaration';
+import { SelectItemImpl } from './select-item.impl';
 
-export default class CoveredEmployeeImpl extends SelectItemImpl implements CoveredEmployeeModel {
-  LngEmployeeId?: number | undefined = 0;
+export class CoveredEmployeeImpl extends SelectItemImpl implements CoveredEmployeeModel {
+  LngEmployeeId: number | undefined = 0;
 
-  LngRecordId?: number | undefined = 0;
+  LngRecordId: number | undefined = 0;
 
-  StrEmployeeType?: string | undefined = '';
+  StrEmployeeType: string | undefined = '';
 
-  StrFirstName?: string | undefined = '';
+  StrFirstName: string | undefined = '';
 
-  StrFullName?: string | undefined = '';
+  StrFullName: string | undefined = '';
 
-  StrLastName?: string | undefined = '';
+  StrLastName: string | undefined = '';
 
-  StrLocationName?: string | undefined = '';
+  StrLocationName: string | undefined = '';
 
   getKey() {
     return this.LngEmployeeId;

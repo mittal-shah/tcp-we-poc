@@ -1,30 +1,30 @@
-import FilterDataImpl from '../data/filter.data.impl';
-import { LaborStandardAssignmentContext } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
-import LaborStandardAssignmentImpl from '../domain/labor-standard-assignment.impl';
+import { LaborStandardAssignmentContext } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { LaborStandardAssignmentImpl } from '../domain';
+import { FilterDataImpl } from '../data';
 
-export default class LaborStandardAssignmentContextImpl extends AbstractImpl implements LaborStandardAssignmentContext {
-  ArrLaborStandardAssignments?: LaborStandardAssignmentImpl[] | undefined = [];
+export class LaborStandardAssignmentContextImpl extends AbstractImpl implements LaborStandardAssignmentContext {
+  ArrLaborStandardAssignments: LaborStandardAssignmentImpl[] | undefined = [];
 
-  BlnCanAssign?: boolean | undefined = false;
+  BlnCanAssign: boolean | undefined = false;
 
-  BlnCanEdit?: boolean | undefined = false;
+  BlnCanEdit: boolean | undefined = false;
 
-  BlnCanUnassign?: boolean | undefined = false;
+  BlnCanUnassign: boolean | undefined = false;
 
-  ObjFilterData?: FilterDataImpl | undefined;
+  ObjFilterData: FilterDataImpl | undefined;
 
-  StrCommand?: string | undefined = '';
+  StrCommand: string | undefined = '';
 
-  StrExpectedAmount?: string | undefined = '';
+  StrExpectedAmount: string | undefined = '';
 
-  StrHelp?: string | undefined = '';
+  StrHelp: string | undefined = '';
 
-  StrInheritedFrom?: string | undefined = '';
+  StrInheritedFrom: string | undefined = '';
 
-  StrTitle?: string | undefined = '';
+  StrTitle: string | undefined = '';
 
-  init(data?: LaborStandardAssignmentContext) {
+  init(data: LaborStandardAssignmentContext) {
     if (!data) {
       return;
     }

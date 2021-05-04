@@ -1,64 +1,66 @@
-import { WorkTimesheetSegmentModel } from '../../declarations/global';
-import LegendItemImpl from './legend-item.impl';
-import TextInput from './input/text.input';
-import AbstractImpl from '../abstract.impl';
+import { WorkTimesheetSegmentModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { LegendItemImpl } from './legend-item.impl';
+import { TextInput } from './input';
 
-export default class WorkTimesheetSegmentImpl extends AbstractImpl implements WorkTimesheetSegmentModel {
-  BlnCanApproveEmployee?: boolean | undefined = false;
+export class WorkTimesheetSegmentImpl extends AbstractImpl implements WorkTimesheetSegmentModel {
+  BlnCanApproveEmployee: boolean | undefined = false;
 
-  BlnCanCopySegment?: boolean | undefined = false;
+  BlnHasNote: boolean | undefined = false;
 
-  BlnCanDeleteSegment?: boolean | undefined = false;
+  BlnCanCopySegment: boolean | undefined = false;
 
-  BlnCanEditSegment?: boolean | undefined = false;
+  BlnCanDeleteSegment: boolean | undefined = false;
 
-  BlnIsApprovedByEmployee?: boolean | undefined = false;
+  BlnCanEditSegment: boolean | undefined = false;
 
-  BlnIsClockedIn?: boolean | undefined = false;
+  BlnIsApprovedByEmployee: boolean | undefined = false;
 
-  BlnIsConflicting?: boolean | undefined = false;
+  BlnIsClockedIn: boolean | undefined = false;
 
-  BlnIsLeaveCode?: boolean | undefined = false;
+  BlnIsConflicting: boolean | undefined = false;
 
-  BlnIsMissedIn?: boolean | undefined = false;
+  BlnIsLeaveCode: boolean | undefined = false;
 
-  BlnIsMissedOut?: boolean | undefined = false;
+  BlnIsMissedIn: boolean | undefined = false;
 
-  BlnIsTimesheet?: boolean | undefined = false;
+  BlnIsMissedOut: boolean | undefined = false;
 
-  BlnShouldShowNoteRequired?: boolean | undefined = false;
+  BlnIsTimesheet: boolean | undefined = false;
 
-  HrmTimeSheetMinutes?: string | undefined = '';
+  BlnShouldShowNoteRequired: boolean | undefined = false;
 
-  ObjLegendItem?: LegendItemImpl | undefined = undefined;
+  HrmTimeSheetMinutes: string | undefined = '';
 
-  ObjTextInputNotes?: TextInput | undefined = undefined;
+  ObjLegendItem: LegendItemImpl | undefined = undefined;
 
-  StrCostCodeDescription?: string | undefined = '';
+  ObjTextInputNotes: TextInput | undefined = undefined;
 
-  StrFormattedDateIn?: string | undefined = '';
+  StrCostCodeDescription: string | undefined = '';
 
-  StrFormattedHours?: string | undefined = '';
+  StrFormattedDateIn: string | undefined = '';
 
-  StrFormattedTimeIn?: string | undefined = '';
+  StrFormattedHours: string | undefined = '';
 
-  StrFormattedTimeOut?: string | undefined = '';
+  StrFormattedTimeIn: string | undefined = '';
 
-  StrJobCodeDescription?: string | undefined = '';
+  StrFormattedTimeOut: string | undefined = '';
 
-  StrRequestedSub?: string | undefined = '';
+  StrJobCodeDescription: string | undefined = '';
 
-  StrUniqueId?: string | undefined = '';
+  StrRequestedSub: string | undefined = '';
 
-  TimTimeIn?: string | undefined = '';
+  StrUniqueId: string | undefined = '';
 
-  TimTimeOut?: string | undefined = '';
+  TimTimeIn: string | undefined = '';
+
+  TimTimeOut: string | undefined = '';
 
   getKey() {
     return this.StrUniqueId;
   }
 
-  init(data?: WorkTimesheetSegmentModel) {
+  init(data: WorkTimesheetSegmentModel) {
     if (!data) {
       return;
     }

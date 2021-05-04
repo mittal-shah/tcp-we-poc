@@ -1,13 +1,13 @@
-import ExceptionType from '../../../../tcp-core/src/constants/exception-type.constant';
-import { PresentationExceptionModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import ExceptionType from '../../constants/exception-type.constant';
+import { PresentationExceptionModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class PresentationExceptionImpl extends AbstractImpl implements PresentationExceptionModel {
-  IntType?: number | undefined = 0;
+export class PresentationExceptionImpl extends AbstractImpl implements PresentationExceptionModel {
+  IntType: number | undefined = 0;
 
-  StrMessage?: string | undefined = '';
+  StrMessage: string | undefined = '';
 
-  StrTitle?: string | undefined = '';
+  StrTitle: string | undefined = '';
 
   static getPasswordEntryExceptions() {
     return [ExceptionType.Confirmation, ExceptionType.EmployeePassword, ExceptionType.EmployeePasswordAndPin];

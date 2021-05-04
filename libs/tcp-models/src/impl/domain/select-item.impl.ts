@@ -1,28 +1,27 @@
-import { SelectItemModel } from '../../declarations/global';
-import HeaderValueImpl from './header-value.impl';
-import AbstractImpl from '../abstract.impl';
-import { AnyType } from '../../declarations/types';
+import { AnyType, SelectItemModel } from '../../declaration';
+import { HeaderValueImpl } from './header-value.impl';
+import { AbstractImpl } from '../abstract.impl';
 
-export default class SelectItemImpl extends AbstractImpl implements SelectItemModel {
-  BlnClearsSelection?: boolean | undefined;
+export class SelectItemImpl extends AbstractImpl implements SelectItemModel {
+  BlnClearsSelection: boolean | undefined;
 
-  BlnIsInvalid?: boolean | undefined = false;
+  BlnIsInvalid: boolean | undefined = false;
 
-  IntMaxLength?: number | undefined;
+  IntMaxLength: number | undefined;
 
-  StrCategory?: string | undefined;
+  StrCategory: string | undefined;
 
-  StrHighlightColor?: string | undefined;
+  StrHighlightColor: string | undefined;
 
-  _ArrColumnValues?: string[] | undefined;
+  _ArrColumnValues: string[] | undefined;
 
-  _ArrHeaderValues?: HeaderValueImpl[] | undefined;
+  _ArrHeaderValues: HeaderValueImpl[] | undefined;
 
-  _LngValue?: number | undefined;
+  _LngValue: number | undefined;
 
-  _StrSubText?: string | undefined;
+  _StrSubText: string | undefined;
 
-  _StrText?: string | undefined;
+  _StrText: string | undefined;
 
   constructor(value?: string | undefined, text?: string | undefined) {
     super();
@@ -30,7 +29,7 @@ export default class SelectItemImpl extends AbstractImpl implements SelectItemMo
     this.setText(text);
   }
 
-  init(data?: SelectItemModel) {
+  init(data: AnyType) {
     if (!data) {
       return;
     }

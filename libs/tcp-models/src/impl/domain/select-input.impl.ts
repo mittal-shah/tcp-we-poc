@@ -1,31 +1,31 @@
-import { SelectInputModel } from '../../declarations/global';
-import StringSelectItemImpl from './string-select-item.impl';
-import SelectItemImpl from './select-item.impl';
+import { SelectInputModel } from '../../declaration';
+import { StringSelectItemImpl } from './string-select-item.impl';
+import { SelectItemImpl } from './select-item.impl';
 
-export default class SelectInputImpl extends SelectItemImpl implements SelectInputModel {
-  ArrSelectItemOptions?: SelectItemImpl[] | undefined = [];
+export class SelectInputImpl extends SelectItemImpl implements SelectInputModel {
+  ArrSelectItemOptions: SelectItemImpl[] | undefined = [];
 
-  ArrStringSelectItemOptions?: StringSelectItemImpl[] | undefined = [];
+  ArrStringSelectItemOptions: StringSelectItemImpl[] | undefined = [];
 
-  BlnIsDisabled?: boolean | undefined = false;
+  BlnIsDisabled: boolean | undefined = false;
 
-  BlnIsTextInput?: boolean | undefined = false;
+  BlnIsTextInput: boolean | undefined = false;
 
-  IntMaxLength?: number | undefined = 0;
+  IntMaxLength: number | undefined = 0;
 
-  LngValue?: number | undefined = 0;
+  LngValue: number | undefined = 0;
 
-  StrId?: string | undefined = '';
+  StrId: string | undefined = '';
 
-  StrLabel?: string | undefined = '';
+  StrLabel: string | undefined = '';
 
-  StrSuffix?: string | undefined = '';
+  StrSuffix: string | undefined = '';
 
-  StrText?: string | undefined = '';
+  StrText: string | undefined = '';
 
-  StrValue?: string | undefined = '';
+  StrValue: string | undefined = '';
 
-  init(data?: SelectInputModel) {
+  init(data: SelectInputModel) {
     if (!data) {
       return;
     }

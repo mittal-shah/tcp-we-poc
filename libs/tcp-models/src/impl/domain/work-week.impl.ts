@@ -1,25 +1,25 @@
-import { WorkDayModel, WorkWeekModel } from '../../declarations/global';
-import PeriodBreakdownContextImpl from '../context/period.breakdown.context.impl';
-import MenuImpl from './menu.impl';
-import WorkDayImpl from './work-day.impl';
-import AbstractImpl from '../abstract.impl';
+import { WorkDayModel, WorkWeekModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
+import { PeriodBreakdownContextImpl } from '../context';
+import { MenuImpl } from './menu.impl';
+import { WorkDayImpl } from './work-day.impl';
 
-export default class WorkWeekImpl extends AbstractImpl implements WorkWeekModel {
-  ArrWorkDays?: WorkDayModel[] | undefined = [];
+export class WorkWeekImpl extends AbstractImpl implements WorkWeekModel {
+  ArrWorkDays: WorkDayModel[] | undefined = [];
 
-  BlnAreAllSegmentsApproved?: boolean | undefined = false;
+  BlnAreAllSegmentsApproved: boolean | undefined = false;
 
-  BlnCanApprove?: boolean | undefined = false;
+  BlnCanApprove: boolean | undefined = false;
 
-  BlnCanAutoFill?: boolean | undefined = false;
+  BlnCanAutoFill: boolean | undefined = false;
 
-  ObjAutoFillMenu?: MenuImpl | undefined = undefined;
+  ObjAutoFillMenu: MenuImpl | undefined = undefined;
 
-  ObjPeriodBreakdownContext?: PeriodBreakdownContextImpl | undefined = undefined;
+  ObjPeriodBreakdownContext: PeriodBreakdownContextImpl | undefined = undefined;
 
-  StrFormattedWeekTitle?: string | undefined = '';
+  StrFormattedWeekTitle: string | undefined = '';
 
-  init(data?: WorkWeekModel) {
+  init(data: WorkWeekModel) {
     if (!data) {
       return;
     }

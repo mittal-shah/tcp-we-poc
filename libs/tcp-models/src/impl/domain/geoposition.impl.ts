@@ -1,5 +1,5 @@
-import { GeopositionModel } from '../../declarations/global';
-import AbstractImpl from '../abstract.impl';
+import { GeopositionModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
 export interface GeoCoordinates {
   latitude: number;
@@ -14,17 +14,17 @@ export interface GeoCoordinates {
 export interface GeoPosition {
   coords: GeoCoordinates;
   timestamp: number;
-  mocked?: boolean;
+  mocked: boolean;
 }
 
-export default class GeopositionImpl extends AbstractImpl implements GeopositionModel {
-  DblLatitude?: number | undefined = 0;
+export class GeopositionImpl extends AbstractImpl implements GeopositionModel {
+  DblLatitude: number | undefined = 0;
 
-  DblLongitude?: number | undefined = 0;
+  DblLongitude: number | undefined = 0;
 
-  IntAccuracy?: number | undefined = 0;
+  IntAccuracy: number | undefined = 0;
 
-  StrTimestamp?: string | undefined = '';
+  StrTimestamp: string | undefined = '';
 
   copyDeviceGeoPosition(deviceGeolocation: GeoPosition) {
     this.DblLatitude = deviceGeolocation.coords.latitude;

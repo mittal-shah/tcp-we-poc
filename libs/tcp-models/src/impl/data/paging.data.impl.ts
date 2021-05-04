@@ -1,22 +1,22 @@
-import AbstractImpl from '../abstract.impl';
-import { PagingData } from '../../declarations/global';
+import { AbstractImpl } from '../abstract.impl';
+import { PagingData } from '../../declaration';
 
-export default class PagingDataImpl extends AbstractImpl implements PagingData {
-  BlnDeselectAll?: boolean | undefined = false;
+export class PagingDataImpl extends AbstractImpl implements PagingData {
+  BlnDeselectAll: boolean | undefined = false;
 
-  BlnSelectAll?: boolean | undefined = false;
+  BlnSelectAll: boolean | undefined = false;
 
-  BlnShouldHideText?: boolean | undefined = false;
+  BlnShouldHideText: boolean | undefined = false;
 
-  IntCurrentPage?: number | undefined = 0;
+  IntCurrentPage: number | undefined = 0;
 
-  IntEntitiesPerPage?: number | undefined = 0;
+  IntEntitiesPerPage: number | undefined = 0;
 
-  IntSelectedEntitiesOutOfPage?: number | undefined = 0;
+  IntSelectedEntitiesOutOfPage: number | undefined = 0;
 
-  IntTotalEntities?: number | undefined = 0;
+  IntTotalEntities: number | undefined = 0;
 
-  IntTotalPages?: number | undefined = 0;
+  IntTotalPages: number | undefined = 0;
 
   canDecreasePage() {
     return !(this.IntTotalPages === 1 || this.IntCurrentPage === 1);

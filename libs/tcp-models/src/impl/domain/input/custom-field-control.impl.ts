@@ -1,59 +1,58 @@
-import AppConfigImpl from '../../config/app.config.impl';
-import SearchDropdownInput from './search-dropdown.input';
-import DateSelectItemImpl from '../date-select-item.impl';
-import NumberInput from './number.input';
-import KeyTextItemImpl from '../key-text-item.impl';
 import AbstractEditableInput from './abstract-editable.input';
-import TimeInput from './time.input';
-import TimeSelectItemImpl from '../time-select-item.impl';
-import DateInput from './date.input';
-import DecimalInput from './decimal.input';
-import TextInput from './text.input';
-import { CustomFieldControlModel } from '../../../declarations/global';
-import { AnyType, ListItemContext } from '../../../declarations/types';
-import AbstractImpl from '../../abstract.impl';
-import Util from '../../../../../tcp-util/src/util';
-import CustomFieldDataType from '../../../../../tcp-core/src/constants/custom-field-data-type.constant';
-import CustomFieldInputMethod from '../../../../../tcp-core/src/constants/custom-field-input-method.constant';
-import { GlobalConstant } from '../../../../../tcp-core/src/constants/global.constant';
-import { EditableInputModel } from '../../../declarations/editable-input';
-import MaskedInputComponentBuilder from '../../../../../tcp-core/src/builder/masked-input-component.builder';
-import DropdownInput from './dropdown.input';
+import { CustomFieldControlModel } from '../../../declaration';
+import { AnyType, ListItemContext } from '../../../declaration/types.declaration';
+import CustomFieldDataType from '../../../constants/custom-field-data-type.constant';
+import CustomFieldInputMethod from '../../../constants/custom-field-input-method.constant';
+import { EditableInputModel } from '../../../declaration/editable-input.declaration';
+import { GlobalConstant } from '../../../constants';
+import { DateSelectItemImpl, KeyTextItemImpl, TimeSelectItemImpl } from '..';
+import {
+  AbstractImpl,
+  AppConfigImpl,
+  DateInput,
+  DecimalInput,
+  DropdownInput,
+  NumberInput,
+  SearchDropdownInput,
+  TextInput,
+  TimeInput,
+} from '../..';
+import { CommonUtil, MaskedInputComponentBuilder } from '@tcp/tcp-models';
 
-export default class CustomFieldControlImpl extends AbstractEditableInput implements CustomFieldControlModel {
-  ArrDateOptions?: DateSelectItemImpl[] | undefined = [];
+export class CustomFieldControlImpl extends AbstractEditableInput implements CustomFieldControlModel {
+  ArrDateOptions: DateSelectItemImpl[] | undefined = [];
 
-  ArrStringOptions?: string[] | undefined = [];
+  ArrStringOptions: string[] | undefined = [];
 
-  ArrTimeOptions?: TimeSelectItemImpl[] | undefined = [];
+  ArrTimeOptions: TimeSelectItemImpl[] | undefined = [];
 
-  BlnForceLowercase?: boolean | undefined = false;
+  BlnForceLowercase: boolean | undefined = false;
 
-  BlnForceUppercase?: boolean | undefined = false;
+  BlnForceUppercase: boolean | undefined = false;
 
-  BlnIsMaskedValue?: boolean | undefined = false;
+  BlnIsMaskedValue: boolean | undefined = false;
 
-  BlnIsSelected?: boolean | undefined = false;
+  BlnIsSelected: boolean | undefined = false;
 
-  DatMaxDate?: string | undefined = '';
+  DatMaxDate: string | undefined = '';
 
-  DatMinDate?: string | undefined = '';
+  DatMinDate: string | undefined = '';
 
-  IntDataType?: number | undefined = 0;
+  IntDataType: number | undefined = 0;
 
-  IntInputMethod?: number | undefined = 0;
+  IntInputMethod: number | undefined = 0;
 
-  IntValue?: number | undefined;
+  IntValue: number | undefined;
 
-  LngRecordId?: number | undefined = 0;
+  LngRecordId: number | undefined = 0;
 
-  StrCharWhitelist?: string | undefined = '';
+  StrCharWhitelist: string | undefined = '';
 
-  StrCustomFormat?: string | undefined = '';
+  StrCustomFormat: string | undefined = '';
 
-  private inputControl?: EditableInputModel | undefined;
+  private inputControl: EditableInputModel | undefined;
 
-  private KeyTextItems?: KeyTextItemImpl[] | undefined = [];
+  private KeyTextItems: KeyTextItemImpl[] | undefined = [];
 
   getNumberValue() {
     if (this.IntValue) {
@@ -65,7 +64,7 @@ export default class CustomFieldControlImpl extends AbstractEditableInput implem
     return undefined;
   }
 
-  init(data?: CustomFieldControlImpl) {
+  init(data: CustomFieldControlImpl) {
     if (!data) {
       return;
     }
@@ -79,7 +78,7 @@ export default class CustomFieldControlImpl extends AbstractEditableInput implem
   }
 
   createSubmissionData() {
-    const data = Util.cloneClassInstance<CustomFieldControlImpl>(this, CustomFieldControlImpl);
+    const data = AbstractImpl.clone<CustomFieldControlImpl>(this, CustomFieldControlImpl);
 
     delete data.ArrDateOptions;
     delete data.ArrStringOptions;
@@ -119,7 +118,7 @@ export default class CustomFieldControlImpl extends AbstractEditableInput implem
     return Boolean(this.inputControl && this.inputControl.isValidInput());
   }
 
-  isValidValue(appConfig?: AppConfigImpl | undefined) {
+  isValidValue(appConfig: AppConfigImpl | undefined) {
     return Boolean(this.inputControl && this.inputControl.isValidValue(appConfig));
   }
 
@@ -248,7 +247,7 @@ export default class CustomFieldControlImpl extends AbstractEditableInput implem
       customInput.BlnIsDisabled = !(listItems && listItems.length > 0);
       customInput.ObjListContext = {
         listItems,
-        selectedItem: Util.findMatchingValue(listItems, this.StrValue || '') || firstItem,
+        selectedItem: CommonUtil.findMatchingValue(listItems, this.StrValue || '') || firstItem,
       } as ListItemContext;
 
       return customInput;

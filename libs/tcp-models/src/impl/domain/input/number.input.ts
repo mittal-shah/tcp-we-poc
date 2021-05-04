@@ -1,17 +1,17 @@
 import AbstractEditableInput from './abstract-editable.input';
-import AppConfigImpl from '../../config/app.config.impl';
-import { EditableNumberInputModel } from '../../../declarations/editable-input';
-import RegExpValidator from '../../../../../tcp-core/src/constants/reg-exp-validators.constant';
-import Util from '../../../../../tcp-util/src/util';
+import RegExpValidator from '../../../constants/reg-exp-validators.constant';
+import { EditableNumberInputModel } from '../../../declaration';
+import { CommonUtil } from '../../../util';
+import { AppConfigImpl } from '../../config';
 
-export default class NumberInput extends AbstractEditableInput implements EditableNumberInputModel {
-  BlnIsMaskedValue?: boolean | undefined = false;
+export class NumberInput extends AbstractEditableInput implements EditableNumberInputModel {
+  BlnIsMaskedValue: boolean | undefined = false;
 
-  IntMaxValue?: number | undefined;
+  IntMaxValue: number | undefined;
 
-  IntMinValue?: number | undefined = 0;
+  IntMinValue: number | undefined = 0;
 
-  IntValue?: number | undefined;
+  IntValue: number | undefined;
 
   private LeadingZerosCount: number | undefined = 0;
 
@@ -74,7 +74,7 @@ export default class NumberInput extends AbstractEditableInput implements Editab
   }
 
   setValue(value: number | undefined) {
-    if (Util.isNullOrUndefined(value) || Util.isEmptyOrSpaces(String(value))) {
+    if (CommonUtil.isNullOrUndefined(value) || CommonUtil.isEmptyOrSpaces(String(value))) {
       this.IntValue = undefined;
     } else {
       const isValidRegEx = RegExpValidator.NUMBER.test(String(value));
