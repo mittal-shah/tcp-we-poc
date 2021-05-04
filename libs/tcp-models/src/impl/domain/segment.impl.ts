@@ -5,7 +5,7 @@ import { SegmentCompTimeContextImpl, TrackedFieldContextImpl } from '../context'
 import { CoveredEmployeeImpl } from './covered-employee.impl';
 import { IntStringItemImpl } from './int-string-item.impl';
 import { LongStringItemImpl } from './long-string-item.impl';
-import { DateTimeFormatter } from '../../formatter';
+import { DateTimeFormatter } from '@tcp/tcp-core';
 
 export class SegmentImpl extends AbstractImpl implements SegmentModel {
   BlnDisableAutoDeduct: boolean | undefined = false;

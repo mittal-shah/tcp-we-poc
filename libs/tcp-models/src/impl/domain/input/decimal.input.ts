@@ -2,7 +2,7 @@ import AbstractEditableInput from './abstract-editable.input';
 import { EditableDecimalInputModel } from '../../../declaration';
 import RegExpValidator from '../../../constants/reg-exp-validators.constant';
 import { AppConfigImpl } from '../../config';
-import { DateTimeFormatter } from '../../../formatter';
+import { DateTimeFormatter } from '@tcp/tcp-core';
 import { CommonUtil } from '@tcp/tcp-util';
 
 export class DecimalInput extends AbstractEditableInput implements EditableDecimalInputModel {

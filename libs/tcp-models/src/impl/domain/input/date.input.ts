@@ -1,7 +1,7 @@
 import { EditableDateInputModel, InputSuffixIcon } from '../../../declaration';
 import AbstractEditableInput from './abstract-editable.input';
 import { AppConfigImpl } from '../../config';
-import { DateTimeConstants, DateTimeFormatter } from '../../../formatter';
+import { DateTimeConstants, DateTimeFormatter } from '@tcp/tcp-core';
 import { CommonUtil } from '@tcp/tcp-util';
 
 export class DateInput extends AbstractEditableInput implements EditableDateInputModel {

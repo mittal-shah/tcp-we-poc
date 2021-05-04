@@ -1,6 +1,6 @@
 import { DateTimeFormatConfig } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { DateTimeFormatter } from '../../formatter';
+import { DateTimeFormatter } from '@tcp/tcp-core';
 
 export class DateTimeFormatConfigImpl extends AbstractImpl implements DateTimeFormatConfig {
   BlnFormatHoursAsDecimals: boolean | undefined = false;

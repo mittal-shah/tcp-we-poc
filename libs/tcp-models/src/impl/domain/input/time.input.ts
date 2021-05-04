@@ -1,6 +1,6 @@
 import { EditableTimeInputModel, InputSuffixIcon } from '../../../declaration';
 import AbstractEditableInput from './abstract-editable.input';
-import { DateTimeConstants, DateTimeFormatter } from '../../../formatter';
+import { DateTimeConstants, DateTimeFormatter } from '@tcp/tcp-core';
 import { AppConfigImpl } from '../../config';
 
 export class TimeInput extends AbstractEditableInput implements EditableTimeInputModel {

@@ -4,7 +4,7 @@ import { DateTimeFormatConfigImpl } from './date-time-format.config.impl';
 import { ApprovalStatusConfigImpl } from './approval-status.config.impl';
 import { ClockResourceImpl, DatePeriodImpl } from '../domain';
 import { AppConfigImpl } from './app.config.impl';
-import { DateTimeConstants, DateTimeFormatter } from '../../formatter';
+import { DateTimeConstants, DateTimeFormatter } from '@tcp/tcp-core';
 import { AbstractImpl } from '../abstract.impl';
 
 export class CompanyConfigImpl extends AbstractImpl implements CompanyConfig {

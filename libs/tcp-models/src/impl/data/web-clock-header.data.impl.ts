@@ -2,7 +2,7 @@ import { AbstractImpl } from '../abstract.impl';
 import { WebClockHeaderData } from '../../declaration';
 import { MenuImpl, MenuItemImpl } from '../domain';
 import { CompanyConfigImpl, WebClockMenuCommandConfigImpl } from '../config';
-import { DateTimeFormatter } from '../../formatter';
+import { DateTimeFormatter } from '@tcp/tcp-core';
 import { CommonUtil } from '@tcp/tcp-util';
 
 export class WebClockHeaderDataImpl extends AbstractImpl implements WebClockHeaderData {

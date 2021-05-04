@@ -1,6 +1,6 @@
 import AbstractEditableInput from './abstract-editable.input';
 import { EditableHourMinuteInputModel } from '../../../declaration';
-import { DateTimeFormatter } from '../../../formatter';
+import { DateTimeFormatter } from '@tcp/tcp-core';
 import { AppConfigImpl } from '../../config';
 
 export class HourMinuteInput extends AbstractEditableInput implements EditableHourMinuteInputModel {
