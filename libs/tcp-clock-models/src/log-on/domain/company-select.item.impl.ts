@@ -1,4 +1,4 @@
-import BadgeParseSpecImpl from './badge-parse-spec.impl';
+import { BadgeParseSpecImpl } from './badge-parse-spec.impl';
 import {
   AbstractImpl,
   ApplicationModel,
@@ -7,7 +7,7 @@ import {
   SelectItemImpl,
 } from '@tcp/tcp-models';
 
-export default class CompanySelectItemImpl extends SelectItemImpl implements CompanySelectItemModel {
+export class CompanySelectItemImpl extends SelectItemImpl implements CompanySelectItemModel {
   ArrApplications: ApplicationModel[] | undefined = [];
 
   BlnCanAccessKiosk: boolean | undefined = false;

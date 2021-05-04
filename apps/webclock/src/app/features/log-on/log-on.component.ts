@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LogOnService } from './log-on.service';
-import EmployeeLogOnConfigImpl from './config/employee-log-on.config.impl';
-import LogOnDataImpl from './data/log-on-data.impl';
 import { AnyType, AppConfigImpl, CompanyConfigImpl, GlobalConstant, PresentationExceptionImpl } from '@tcp/tcp-models';
-import EmployeeLogOnContextImpl from './context/employee-log-on-context.impl';
+import { EmployeeLogOnConfigImpl, EmployeeLogOnContextImpl, LogOnDataImpl } from '@tcp/tcp-clock-models';
 
 @Component({
   selector: 'tcp-log-on',

@@ -29,6 +29,9 @@
       ],
       "@tcp/tcp-util": [
         "libs/tcp-util/src/index.ts"
+      ],
+      "@tcp/tcp-clock-models": [
+        "libs/tcp-clock-models/src/index.ts"
       ]
     }
   },

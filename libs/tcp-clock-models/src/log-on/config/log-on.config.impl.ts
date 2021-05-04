@@ -6,7 +6,7 @@ import {
   WebClockMenuCommandConfigImpl,
 } from '@tcp/tcp-models';
 
-export default class LogOnConfigImpl extends AbstractImpl implements LogOnConfig {
+export class LogOnConfigImpl extends AbstractImpl implements LogOnConfig {
   ArrCompanyNamespaces: string[] | undefined = [];
 
   BlnRequireUserToEnterCompanyId: boolean | undefined = false;

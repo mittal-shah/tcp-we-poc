@@ -254,6 +254,31 @@
           }
         }
       }
+    },
+    "tcp-clock-models": {
+      "root": "libs/tcp-clock-models",
+      "sourceRoot": "libs/tcp-clock-models/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tcp-clock-models/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/tcp-clock-models"
+          ],
+          "options": {
+            "jestConfig": "libs/tcp-clock-models/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

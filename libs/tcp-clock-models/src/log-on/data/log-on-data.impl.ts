@@ -8,10 +8,10 @@ import {
   SelectItemImpl,
   VersionInfoImpl,
 } from '@tcp/tcp-models';
-import CompanySelectItemImpl from '../domain/company-select.item.impl';
 import { CommonUtil } from '@tcp/tcp-util';
+import { CompanySelectItemImpl } from '../domain';
 
-export default class LogOnDataImpl extends AbstractImpl implements LogOnData {
+export class LogOnDataImpl extends AbstractImpl implements LogOnData {
   ArrCompanies: CompanySelectItemImpl[] | undefined = [];
 
   BlnBadgeCommunication: boolean | undefined = false;

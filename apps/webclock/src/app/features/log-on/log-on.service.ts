@@ -12,8 +12,8 @@ import {
   LogOnData,
 } from '@tcp/tcp-models';
 import { AbstractService } from '@tcp/tcp-ui';
-import EmployeeLogOnContextImpl from './context/employee-log-on-context.impl';
 import { CommonUtil } from '@tcp/tcp-util';
+import { EmployeeLogOnContextImpl } from '@tcp/tcp-clock-models';
 
 @Injectable({ providedIn: 'root' })
 export class LogOnService extends AbstractService {

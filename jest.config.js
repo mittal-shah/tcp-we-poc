@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/libs/tcp-models',
     '<rootDir>/libs/tcp-core',
     '<rootDir>/libs/tcp-util',
+    '<rootDir>/libs/tcp-clock-models',
   ],
 };
