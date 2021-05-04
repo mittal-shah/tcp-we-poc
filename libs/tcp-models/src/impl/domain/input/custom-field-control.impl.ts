@@ -17,7 +17,7 @@ import {
   TextInput,
   TimeInput,
 } from '../..';
-import { MaskedInputComponentBuilder } from '@tcp/tcp-models';
+import { MaskedInputFormatter } from '@tcp/tcp-models';
 import { CommonUtil } from '@tcp/tcp-util';
 
 export class CustomFieldControlImpl extends AbstractEditableInput implements CustomFieldControlModel {
@@ -212,7 +212,7 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Cus
 
     if (customInput.StrCustomFormat) {
       customInput.IntMaxLength = customInput.StrCustomFormat.length;
-      customInput.StrRegExp = MaskedInputComponentBuilder.getMaskFromCustomFormat(customInput.StrCustomFormat);
+      customInput.StrRegExp = MaskedInputFormatter.getMaskFromCustomFormat(customInput.StrCustomFormat);
     }
 
     return customInput;
