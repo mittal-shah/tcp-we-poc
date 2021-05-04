@@ -1,6 +1,5 @@
 import { MenuItemModel } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import ModelConstant from '../../constants/model.constant';
 
 export class MenuItemImpl extends AbstractImpl implements MenuItemModel {
   ArrMenuItems: MenuItemImpl[] | undefined = [];
@@ -90,11 +89,11 @@ export class MenuItemImpl extends AbstractImpl implements MenuItemModel {
     return objItem;
   }
 
-  containsMenuItemInPath(routePath: string): boolean {
+  containsMenuItemInPath(routePath: string, routeSeparator: string): boolean {
     if (!routePath) {
       return false;
     }
-    const routeSplit = routePath.split(ModelConstant.routeSeparator);
+    const routeSplit = routePath.split(routeSeparator);
     if (routeSplit.length <= 1) {
       return this.findMenuItem(routePath) !== undefined;
     }

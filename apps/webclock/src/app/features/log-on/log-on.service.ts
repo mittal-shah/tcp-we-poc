@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import EmployeeLogOnConfigImpl from './config/employee-log-on.config.impl';
-import LogOnDataImpl from './data/log-on-data.impl';
 import WebclockConstants from '../../../constant/webclock.constant';
 import {
   AbstractImpl,
@@ -10,7 +8,7 @@ import {
   ApiOptions,
   AppConfig,
   AppConfigImpl,
-  CompanyConfigImpl,
+  EmployeeLogOnContext,
   LogOnData,
 } from '@tcp/tcp-models';
 import { AbstractService } from '@tcp/tcp-ui';
@@ -47,7 +45,7 @@ export class LogOnService extends AbstractService {
     return this.get(formattedUrl).pipe(map((result) => this.handleEmployeeLogOnContext(result)));
   }
 
-  private handleAppConfig(result: AnyType) {
+  private handleAppConfig(result: AppConfig) {
     if (!result) {
       throw result;
     }
@@ -59,10 +57,13 @@ export class LogOnService extends AbstractService {
       throw result;
     }
 
-    return {
-      ObjEmployeeLogOnConfig: AbstractImpl.fromJSON(result[0], EmployeeLogOnConfigImpl),
-      ObjCompanyConfig: AbstractImpl.fromJSON(result[1], CompanyConfigImpl),
-      ObjLogOnData: AbstractImpl.fromJSON(result[2], LogOnDataImpl),
-    } as EmployeeLogOnContextImpl;
+    return AbstractImpl.fromJSON(
+      {
+        ObjEmployeeLogOnConfig: result[0],
+        ObjCompanyConfig: result[1],
+        ObjLogOnData: result[2],
+      } as EmployeeLogOnContext,
+      EmployeeLogOnContextImpl,
+    );
   }
 }
