@@ -23,7 +23,7 @@ import {
   RequestLoadingComponent,
   RequestLoadingService,
   TimeoutHttpInterceptor,
-} from '@tcp/tcp-ui';
+} from '@tcp/tcp-ng-ui';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({

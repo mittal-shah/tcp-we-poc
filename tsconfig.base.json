@@ -18,9 +18,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tcp/tcp-ui": [
-        "libs/tcp-ui/src/index.ts"
-      ],
       "@tcp/tcp-models": [
         "libs/tcp-models/src/index.ts"
       ],
@@ -32,6 +29,9 @@
       ],
       "@tcp/tcp-clock-models": [
         "libs/tcp-clock-models/src/index.ts"
+      ],
+      "@tcp/tcp-ng-ui": [
+        "libs/tcp-ng-ui/src/index.ts"
       ]
     }
   },

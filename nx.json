@@ -36,9 +36,6 @@
         "webclock"
       ]
     },
-    "tcp-ui": {
-      "tags": []
-    },
     "tcp-models": {
       "tags": []
     },
@@ -61,6 +58,9 @@
       ]
     },
     "mobile-clock": {
+      "tags": []
+    },
+    "tcp-ng-ui": {
       "tags": []
     }
   }

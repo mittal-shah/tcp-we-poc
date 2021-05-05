@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>{{ context.title }}</h1>
+<div mat-dialog-content>{{ context.message }}</div>
+<mat-dialog-actions align='end' *ngIf='context.options?.length'>
+  <span *ngFor='let option of context.options'>
+    <button [mat-dialog-close]='option.isCancel' [ngClass]='option.getStyle()' mat-button>{{ option.text }}</button>
+  </span>
+</mat-dialog-actions>

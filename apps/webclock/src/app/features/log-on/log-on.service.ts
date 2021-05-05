@@ -11,7 +11,7 @@ import {
   EmployeeLogOnContext,
   LogOnData,
 } from '@tcp/tcp-models';
-import { AbstractService } from '@tcp/tcp-ui';
+import { AbstractService } from '@tcp/tcp-ng-ui';
 import { CommonUtil } from '@tcp/tcp-util';
 import { EmployeeLogOnContextImpl } from '@tcp/tcp-clock-models';
 

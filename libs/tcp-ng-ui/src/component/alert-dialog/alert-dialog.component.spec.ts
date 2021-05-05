@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlertDialogComponent } from '@tcp/tcp-ui';
+import { AlertDialogComponent } from '@tcp/tcp-ng-ui';
 
 describe('AlertDialogComponent', () => {
   let component: AlertDialogComponent;

@@ -1,4 +1,4 @@
-@import "Variables";
+@import 'Variables';
 
 //region CORE COLORS - GRAY SCALE
 
@@ -6,23 +6,23 @@ $black10PercentAlpha: rgba(0, 0, 0, 0.1);
 $black30PercentAlpha: rgba(0, 0, 0, 0.3);
 $black40PercentAlpha: rgba(0, 0, 0, 0.4);
 $black50PercentAlpha: rgba(0, 0, 0, 0.5);
-$dayHeaderForeground: #4D4D4D;
-$disabledBG: #EBEBE4;
+$dayHeaderForeground: #4d4d4d;
+$disabledBG: #ebebe4;
 $dividerOutlineColor: #000000;
-$featureButtonBg: #E8EAE8;
-$featureButtonForeground: #484C45;
-$featureButtonShadow: #CCCCCC;
-$gray0: #F9F9F9;
-$gray1: #F2F2F2;
-$gray2: #E2E2E2;
-$gray3: #CDCCCC;
-$gray4: #484C45;
-$gray5: #4D4D4D;
-$gray6: #6A6A6A;
-$gray7: #B3B3b3;
-$groupHeaderBG: #FFFFFF;
-$lightBorderColor: #D3D3D3;
-$white: #FFFFFF;
+$featureButtonBg: #e8eae8;
+$featureButtonForeground: #484c45;
+$featureButtonShadow: #cccccc;
+$gray0: #f9f9f9;
+$gray1: #f2f2f2;
+$gray2: #e2e2e2;
+$gray3: #cdcccc;
+$gray4: #484c45;
+$gray5: #4d4d4d;
+$gray6: #6a6a6a;
+$gray7: #b3b3b3;
+$groupHeaderBG: #ffffff;
+$lightBorderColor: #d3d3d3;
+$white: #ffffff;
 $white30PercentAlpha: rgba(255, 255, 255, 0.3);
 $white40PercentAlpha: rgba(255, 255, 255, 0.4);
 $white80PercentAlpha: rgba(255, 255, 255, 0.8);
@@ -33,21 +33,21 @@ $white95PercentAlpha: rgba(255, 255, 255, 0.95);
 //region CORE COLORS - OTHER
 
 $error: #ff3300;
-$exportNewlineCharacter: #FFFFE0;
+$exportNewlineCharacter: #ffffe0;
 $logoRed: #ff3300;
 $logoYellow: #ffc600;
-$onBreakKeyframeColor: #FFA500;
-$red10PercentLighter: lighten(#F00F00, 10);
+$onBreakKeyframeColor: #ffa500;
+$red10PercentLighter: lighten(#f00f00, 10);
 
 //endregion
 
 //region CORE COLORS - MISC
 
 $approvedStatus: #008000;
-$changedValueForeground: #4B0082;
-$deniedStatus: #F2765F;
-$hotpink: #FF69B4;
-$leaveJobCode: #652C90;
+$changedValueForeground: #4b0082;
+$deniedStatus: #f2765f;
+$hotpink: #ff69b4;
+$leaveJobCode: #652c90;
 $pendingStatus: $logoBlue;
 
 //endregion

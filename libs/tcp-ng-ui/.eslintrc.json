@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "../../.eslintrc.json"
-  ],
+  "extends": "../../.eslintrc.json",
   "ignorePatterns": [
     "!**/*"
   ],
@@ -16,7 +14,7 @@
       ],
       "parserOptions": {
         "project": [
-          "libs/tcp-ui/tsconfig.*?.json"
+          "libs/tcp-ng-ui/tsconfig.*?.json"
         ]
       },
       "rules": {

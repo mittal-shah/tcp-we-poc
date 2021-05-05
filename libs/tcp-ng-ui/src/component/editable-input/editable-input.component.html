@@ -1,0 +1,37 @@
+<mat-form-field *ngIf='!!editableInput' class='width-100'>
+  <mat-label>{{ editableInput.StrText }}</mat-label>
+  <input
+    #inputElement='matInput'
+    (change)='(editableInput.onChange)'
+    (ngModelChange)='setValue($event)'
+    *ngIf='!editableInput.isMultiline()'
+    [(ngModel)]='editableInput.StrValue'
+    [autocapitalize]='editableInput.getAutoCapitalize()'
+    [autocomplete]='editableInput.getAutoCompleteType()'
+    [disabled]='!!editableInput.BlnIsDisabled'
+    [maxLength]='editableInput.IntMaxLength'
+    [name]="editableInput.StrId || 'editableInput'"
+    [readonly]='!editableInput.BlnIsEditable'
+    [required]='!!editableInput.BlnIsRequired'
+    [spellcheck]='editableInput.shouldAutoCorrect()'
+    [type]='editableInput.getType()'
+    matInput
+  />
+  <textarea
+    #inputElement='matInput'
+    (change)='(editableInput.onChange)'
+    (ngModelChange)='setValue($event)'
+    *ngIf='editableInput.isMultiline()'
+    [(ngModel)]='editableInput.StrValue'
+    [disabled]='!!editableInput.BlnIsDisabled'
+    [maxLength]='editableInput.IntMaxLength'
+    [name]="editableInput.StrId || 'editableInput'"
+    [readonly]='!!editableInput.BlnIsEditable'
+    [required]='!!editableInput.BlnIsRequired'
+    [rows]='editableInput.getNumberOfLines()'
+    cdkTextareaAutosize
+    matInput
+  ></textarea>
+  <mat-hint>{{ editableInput.getHintText(appConfig) }}</mat-hint>
+  <mat-error>{{ editableInput.getErrorMessage(appConfig) }}</mat-error>
+</mat-form-field>

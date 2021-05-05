@@ -153,33 +153,6 @@
         }
       }
     },
-    "tcp-ui": {
-      "projectType": "library",
-      "root": "libs/tcp-ui",
-      "sourceRoot": "libs/tcp-ui/src",
-      "prefix": "tcp",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/tcp-ui/src/**/*.ts",
-              "libs/tcp-ui/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/tcp-ui"
-          ],
-          "options": {
-            "jestConfig": "libs/tcp-ui/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "tcp-models": {
       "root": "libs/tcp-models",
       "sourceRoot": "libs/tcp-models/src",
@@ -473,6 +446,33 @@
           ],
           "options": {
             "jestConfig": "apps/mobile-clock/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "tcp-ng-ui": {
+      "projectType": "library",
+      "root": "libs/tcp-ng-ui",
+      "sourceRoot": "libs/tcp-ng-ui/src",
+      "prefix": "tcp",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tcp-ng-ui/src/**/*.ts",
+              "libs/tcp-ng-ui/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/tcp-ng-ui"
+          ],
+          "options": {
+            "jestConfig": "libs/tcp-ng-ui/jest.config.js",
             "passWithNoTests": true
           }
         }

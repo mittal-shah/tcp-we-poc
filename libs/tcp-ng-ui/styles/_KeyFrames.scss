@@ -1,5 +1,5 @@
-@import "Colors";
-@import "Mixins";
+@import 'Colors';
+@import 'Mixins';
 
 // Key Frames
 @include keyFrames(animateClockIn) {
@@ -77,7 +77,6 @@
     @include transform(rotate(0deg));
   }
   50% {
-
     @include transform(rotate(360deg));
   }
   100% {
