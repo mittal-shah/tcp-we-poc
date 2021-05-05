@@ -59,6 +59,9 @@
       "implicitDependencies": [
         "clock-status"
       ]
+    },
+    "mobile-clock": {
+      "tags": []
     }
   }
 }
