@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
-import { Colors, DebugInstructions, ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
+import { SafeAreaView, ScrollView, StatusBar, StyleSheet, View } from 'react-native';
+import { Button, Input, Label, Text } from 'native-base';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 // @ts-ignore
 import openURLInBrowser from 'react-native/Libraries/Core/Devtools/openURLInBrowser';
 
@@ -11,41 +11,14 @@ const App = () => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
-          <View style={styles.header}>
-            <Image style={styles.logo} source={require('./logo.png')} />
-            <Text style={styles.heading} testID="heading">
-              Welcome to React Native
-            </Text>
-          </View>
           <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>apps/mobile-clock/App.tsx</Text> to change this screen and then come
-                back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions /> Alternatively, press <Text style={styles.highlight}>R</Text> in the bundler
-                terminal window.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <TouchableOpacity accessibilityRole="button" onPress={() => openURLInBrowser('https://nx.dev')}>
-                <Text style={styles.sectionDescription}>
-                  Visit <Text style={styles.link}>nx.dev</Text> for more info about Nx.
-                </Text>
-              </TouchableOpacity>
-            </View>
+            <Label>
+              <Text>Employee Id</Text>
+            </Label>
+            <Input style={styles.input} />
+            <Button>
+              <Text>LogOn</Text>
+            </Button>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -54,6 +27,7 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  input: { borderColor: Colors.black, borderWidth: 1 },
   scrollView: {
     backgroundColor: Colors.lighter,
   },

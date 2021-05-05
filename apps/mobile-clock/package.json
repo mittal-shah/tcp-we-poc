@@ -5,7 +5,26 @@
   "dependencies": {
     "react-native": "*",
     "react": "*",
+    "native-base": "*"
+  },
+  "devDependencies": {
+    "@nrwl/react": "*",
+    "@nrwl/react-native": "*",
+    "@react-native-community/cli": "*",
+    "@react-native-community/cli-platform-android": "*",
+    "@react-native-community/cli-platform-ios": "*",
+    "@testing-library/jest-native": "*",
     "@testing-library/react-native": "*",
-    "@testing-library/jest-native": "*"
+    "@types/react": "*",
+    "@types/react-native": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-jsx-a11y": "*",
+    "eslint-plugin-react": "*",
+    "eslint-plugin-react-hooks": "*",
+    "jest-react-native": "*",
+    "metro": "*",
+    "metro-react-native-babel-preset": "*",
+    "metro-resolver": "*",
+    "react-test-renderer": "*"
   }
 }
