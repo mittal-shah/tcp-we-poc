@@ -49,4 +49,6 @@ export * from './work-segment.impl';
 export * from './work-timesheet-segment.impl';
 export * from './work-week.impl';
 export * from './workflow-step.impl';
+export * from './badge-parse-spec.impl';
+export * from './company-select.item.impl';
 export * from './input';

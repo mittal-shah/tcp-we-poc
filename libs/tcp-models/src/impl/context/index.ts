@@ -12,3 +12,4 @@ export * from './segment-comp-time.context.impl';
 export * from './tracked-field.context.impl';
 export * from './unscheduled-work-exception.context.impl';
 export * from './web-clock-header.context.impl';
+export * from './log-on.context';

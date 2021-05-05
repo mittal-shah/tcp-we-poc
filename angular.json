@@ -279,6 +279,127 @@
           }
         }
       }
+    },
+    "clock-status": {
+      "projectType": "application",
+      "root": "apps/clock-status",
+      "sourceRoot": "apps/clock-status/src",
+      "prefix": "tcp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/clock-status",
+            "index": "apps/clock-status/src/index.html",
+            "main": "apps/clock-status/src/main.ts",
+            "polyfills": "apps/clock-status/src/polyfills.ts",
+            "tsConfig": "apps/clock-status/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/clock-status/src/favicon.ico",
+              "apps/clock-status/src/assets"
+            ],
+            "styles": [
+              "apps/clock-status/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/clock-status/src/environments/environment.ts",
+                  "with": "apps/clock-status/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "clock-status:build",
+            "proxyConfig": "apps/clock-status/src/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "clock-status:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "clock-status:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/clock-status/src/**/*.ts",
+              "apps/clock-status/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/clock-status"
+          ],
+          "options": {
+            "jestConfig": "apps/clock-status/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "clock-status-e2e": {
+      "root": "apps/clock-status-e2e",
+      "sourceRoot": "apps/clock-status-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/clock-status-e2e/cypress.json",
+            "tsConfig": "apps/clock-status-e2e/tsconfig.e2e.json",
+            "devServerTarget": "clock-status:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "clock-status:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/clock-status-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
     }
   }
 }

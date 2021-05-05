@@ -1,15 +1,7 @@
-import {
-  AbstractImpl,
-  DeviceInfoImpl,
-  DropdownInput,
-  ListItemContext,
-  LogOnData,
-  MenuItemModel,
-  SelectItemImpl,
-  VersionInfoImpl,
-} from '@tcp/tcp-models';
 import { CommonUtil } from '@tcp/tcp-util';
-import { CompanySelectItemImpl } from '../domain';
+import { ListItemContext, LogOnData, MenuItemModel } from '../../declaration';
+import { CompanySelectItemImpl, DeviceInfoImpl, DropdownInput, SelectItemImpl, VersionInfoImpl } from '../domain';
+import { AbstractImpl } from '../abstract.impl';
 
 export class LogOnDataImpl extends AbstractImpl implements LogOnData {
   ArrCompanies: CompanySelectItemImpl[] | undefined = [];
@@ -105,7 +97,7 @@ export class LogOnDataImpl extends AbstractImpl implements LogOnData {
       this.ObjVersionInfo !== undefined ? AbstractImpl.fromJSON(data.ObjVersionInfo, VersionInfoImpl) : undefined;
   }
 
-  createCompanyDropdownInput(label: string | undefined, onSelect: (selectItem: SelectItemImpl) => void) {
+  createCompanyDropdownInput(label: string | undefined, onSelect?: (selectItem: SelectItemImpl) => void) {
     if (!this.ArrCompanies) {
       return undefined;
     }

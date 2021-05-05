@@ -1,4 +1,5 @@
-import { AbstractImpl, BadgeParseSpecModel } from '@tcp/tcp-models';
+import { BadgeParseSpecModel } from '../../declaration';
+import { AbstractImpl } from '../abstract.impl';
 
 export class BadgeParseSpecImpl extends AbstractImpl implements BadgeParseSpecModel {
   IntBadgeParseInformationType: number | undefined = 0;

@@ -1,11 +1,8 @@
 import { BadgeParseSpecImpl } from './badge-parse-spec.impl';
-import {
-  AbstractImpl,
-  ApplicationModel,
-  CompanySelectItemModel,
-  CustomFieldControlImpl,
-  SelectItemImpl,
-} from '@tcp/tcp-models';
+import { ApplicationModel, CompanySelectItemModel } from '../../declaration';
+import { SelectItemImpl } from './select-item.impl';
+import { CustomFieldControlImpl } from './input';
+import { AbstractImpl } from '../abstract.impl';
 
 export class CompanySelectItemImpl extends SelectItemImpl implements CompanySelectItemModel {
   ArrApplications: ApplicationModel[] | undefined = [];

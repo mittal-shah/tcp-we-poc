@@ -6,3 +6,4 @@ export * from './select-cost-code.data.impl';
 export * from './select-employees.data.impl';
 export * from './view-messages-data.impl';
 export * from './web-clock-header.data.impl';
+export * from './log-on-data.impl';

@@ -7,3 +7,4 @@ export * from './edit-segment.config.impl';
 export * from './edit-timesheet-segment.config.impl';
 export * from './web-clock-header.config.impl';
 export * from './web-clock-menu-command.config.impl';
+export * from './log-on.config.impl';

@@ -1,6 +1,5 @@
-import { AbstractImpl, CompanyConfigImpl, EmployeeLogOnContext } from '@tcp/tcp-models';
+import { AbstractImpl, CompanyConfigImpl, EmployeeLogOnContext, LogOnDataImpl } from '@tcp/tcp-models';
 import { EmployeeLogOnConfigImpl } from '../config';
-import { LogOnDataImpl } from '../data';
 
 export class EmployeeLogOnContextImpl extends AbstractImpl implements EmployeeLogOnContext {
   ObjCompanyConfig: CompanyConfigImpl | undefined;

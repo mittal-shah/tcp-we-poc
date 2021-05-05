@@ -1,5 +1,4 @@
-import { LogOnConfigImpl } from './log-on.config.impl';
-import { EmployeeLogOnConfig } from '@tcp/tcp-models';
+import { EmployeeLogOnConfig, LogOnConfigImpl } from '@tcp/tcp-models';
 
 export class EmployeeLogOnConfigImpl extends LogOnConfigImpl implements EmployeeLogOnConfig {
   StrMenuCommandQrScanner: string | undefined = '';

@@ -50,6 +50,15 @@
     },
     "tcp-clock-models": {
       "tags": []
+    },
+    "clock-status": {
+      "tags": []
+    },
+    "clock-status-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "clock-status"
+      ]
     }
   }
 }

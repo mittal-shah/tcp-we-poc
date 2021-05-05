@@ -1,0 +1,22 @@
+<div class='text-center'>
+  <div class='logo'></div>
+  <mat-divider class='padding-bottom-20'></mat-divider>
+  <form #logonForm='ngForm' *ngIf='!!data && !!config' class='logon-form'>
+    <div>
+      <tcp-dropdown-input
+        [dropdownInput]='data.createCompanyDropdownInput(config.StrSelectCompany)'></tcp-dropdown-input>
+    </div>
+    <div *ngIf='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'>
+      <tcp-editable-input
+        [editableInput]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'></tcp-editable-input>
+    </div>
+    <div *ngIf='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnPassword'>
+      <tcp-editable-input
+        [editableInput]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnPassword'></tcp-editable-input>
+    </div>
+    <div class='padding-bottom-20 padding-top-20'>
+      <button (click)='authenticate()' color='primary' mat-flat-button>{{config?.StrLogOn}}</button>
+    </div>
+    isFormValid:  {{logonForm.form.valid}}
+  </form>
+</div>
