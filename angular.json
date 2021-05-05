@@ -49,7 +49,12 @@
             "aot": true,
             "assets": [
               "apps/webclock/src/favicon.ico",
-              "apps/webclock/src/assets"
+              "apps/webclock/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./libs/tcp-ng-ui/src/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "apps/webclock/src/styles.scss"
@@ -270,7 +275,12 @@
             "aot": true,
             "assets": [
               "apps/clock-status/src/favicon.ico",
-              "apps/clock-status/src/assets"
+              "apps/clock-status/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./libs/tcp-ng-ui/src/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "apps/clock-status/src/styles.scss"
