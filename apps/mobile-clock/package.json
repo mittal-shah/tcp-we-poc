@@ -5,7 +5,12 @@
   "dependencies": {
     "react-native": "*",
     "react": "*",
-    "native-base": "*"
+    "native-base": "*",
+    "moment": "*",
+    "rxjs": "*",
+    "zone.js": "*",
+    "@testing-library/react-native": "*",
+    "@testing-library/jest-native": "*"
   },
   "devDependencies": {
     "@nrwl/react": "*",

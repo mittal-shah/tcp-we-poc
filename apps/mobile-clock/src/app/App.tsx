@@ -1,85 +1,54 @@
-import React from 'react';
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, View } from 'react-native';
-import { Button, Input, Label, Text } from 'native-base';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-// @ts-ignore
-import openURLInBrowser from 'react-native/Libraries/Core/Devtools/openURLInBrowser';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
+import { Text } from 'native-base';
+import { CommonUtil } from '@tcp/tcp-util';
+import { EmployeeLogOnContextImpl } from '@tcp/tcp-clock-models';
+import { AbstractImpl, EmployeeLogOnContext } from '@tcp/tcp-models';
 
 const App = () => {
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState<EmployeeLogOnContextImpl>(undefined);
+
+  useEffect(() => {
+    const url =
+      'http://172.16.1.2:8181/api/v0000/employeeLoginValues/{0}/GetInfo?companyNamespace={1}&applicationId={2}';
+    const formattedUrl = CommonUtil.stringFormat(url, '0', '', '47');
+
+    fetch(formattedUrl, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) =>
+        setData(
+          AbstractImpl.fromJSON(
+            {
+              ObjEmployeeLogOnConfig: json[0],
+              ObjCompanyConfig: json[1],
+              ObjLogOnData: json[2],
+            } as EmployeeLogOnContext,
+            EmployeeLogOnContextImpl,
+          ),
+        ),
+      )
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
-          <View style={styles.body}>
-            <Label>
-              <Text>Employee Id</Text>
-            </Label>
-            <Input style={styles.input} />
-            <Button>
-              <Text>LogOn</Text>
-            </Button>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <View style={{ flex: 1, padding: 24 }}>
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <View>
+          <Text>{data?.ObjLogOnData?.StrDatabaseInfoVersion}</Text>
+        </View>
+      )}
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  input: { borderColor: Colors.black, borderWidth: 1 },
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  header: {
-    backgroundColor: '#143055',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 24,
-  },
-  logo: {
-    width: 200,
-    height: 180,
-    resizeMode: 'contain',
-  },
-  heading: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.lighter,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-  link: {
-    color: '#45bc98',
-  },
-});
 
 export default App;
