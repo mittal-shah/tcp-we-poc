@@ -1,4 +1,4 @@
-﻿@import 'Variables';
+﻿@import 'variables';
 
 @function createCommonStyleUrl($fileName, $prefix: '/img') {
   @return '#{$baseCommonPrefix}/assets#{$prefix}/#{$fileName}?v=#{$clientVersion}&ns=#{$namespace}&cid=#{$companyId}';
