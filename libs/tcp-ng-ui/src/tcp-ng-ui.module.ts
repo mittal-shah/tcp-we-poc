@@ -7,7 +7,6 @@ import {
   DropdownInputComponent,
   EditableInputComponent,
   RequestLoadingComponent,
-  RequestLoadingService,
 } from './component';
 import { DEFAULT_TIMEOUT, LoadingHttpInterceptor, TimeoutHttpInterceptor } from './interceptor';
 import { BrowserModule } from '@angular/platform-browser';
@@ -54,7 +53,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     RequestLoadingComponent,
   ],
   providers: [
-    RequestLoadingService,
     { provide: HTTP_INTERCEPTORS, useClass: TimeoutHttpInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingHttpInterceptor, multi: true },
     { provide: DEFAULT_TIMEOUT, useValue: 30000 },

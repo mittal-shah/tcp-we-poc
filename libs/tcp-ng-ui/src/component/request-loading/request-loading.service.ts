@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpRequest } from '@angular/common/http';
 import { AnyType } from '@tcp/tcp-models';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RequestLoadingService {
   loading$: BehaviorSubject<boolean>;
   private requests: Array<HttpRequest<AnyType>>;
