@@ -2,7 +2,6 @@ import { SelectEmployeesData } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
 import { FilterDataImpl } from './filter.data.impl';
 import { EmployeeImpl, SelectItemImpl } from '../domain';
-import { CommonUtil } from '@tcp/tcp-util';
 
 export class SelectEmployeesDataImpl extends AbstractImpl implements SelectEmployeesData {
   ArrEmployeeIds: number[] | undefined = undefined;
@@ -47,7 +46,7 @@ export class SelectEmployeesDataImpl extends AbstractImpl implements SelectEmplo
       return undefined;
     }
 
-    return CommonUtil.findMatchingKey<SelectItemImpl>(this.ArrEmployees, this.ArrEmployeeIds[0]);
+    return this.ArrEmployees.findMatchingKey<SelectItemImpl>(this.ArrEmployeeIds[0]);
   }
 
   createSubmissionData() {

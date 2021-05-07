@@ -21,51 +21,7 @@ export class CommonUtil {
     return strLocationToSlashApp.slice(intAppPrefixIndex);
   }
 
-  public static stringFormat(str?: string, ...args: string[]): string {
-    return str ? str.replace(/{(\d+)}/g, (match, index) => args[index] || '').replace(/\|/g, '\n') : '';
-  }
-
-  public static padNumber(value: number, length: number) {
-    let str = `${value}`;
-    while (str.length < length) {
-      str = `0${str}`;
-    }
-    return str;
-  }
-
-  public static findMatchingKey<T>(items, value) {
-    return items && items ? (items.find((item) => item.getKey() === value) as T) : undefined;
-  }
-
-  public static containsParam(str: string) {
-    return /{(\d+)}/g.test(str);
-  }
-
-  public static isNewLineOrTab(str: string) {
-    return str === '\n' || str === '\t';
-  }
-
   public static isNullOrUndefined(value) {
     return value === undefined || value === null;
-  }
-
-  public static isDefinedOrExist(value: string | undefined | number) {
-    return !CommonUtil.isNullOrUndefined(value) && value !== '';
-  }
-
-  public static isEmptyOrSpaces(str: string | undefined) {
-    if (!CommonUtil.isDefinedOrExist(str)) {
-      return true;
-    }
-
-    return !!str && str.trim().length === 0 && !this.isNewLineOrTab(str);
-  }
-
-  public static findMatchingValue<T>(items, value: string) {
-    return items ? (items.find((item) => item.getValue() === value) as T) : undefined;
-  }
-
-  public static getAdjustedComponentId(id: string | undefined) {
-    return id ? id.replace(' ', '-').toLowerCase() : '';
   }
 }

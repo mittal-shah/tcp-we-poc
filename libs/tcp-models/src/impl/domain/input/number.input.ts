@@ -74,7 +74,7 @@ export class NumberInput extends AbstractEditableInput implements EditableNumber
   }
 
   setValue(value: number | undefined) {
-    if (CommonUtil.isNullOrUndefined(value) || CommonUtil.isEmptyOrSpaces(String(value))) {
+    if (CommonUtil.isNullOrUndefined(value) || String(value).isEmptyOrSpaces()) {
       this.IntValue = undefined;
     } else {
       const isValidRegEx = RegExpValidator.NUMBER.test(String(value));
@@ -109,6 +109,6 @@ export class NumberInput extends AbstractEditableInput implements EditableNumber
       return value !== undefined ? Number(value) : undefined;
     }
 
-    return '0'.repeat(this.LeadingZerosCount) + Number(value);
+    return value.pad(this.LeadingZerosCount);
   }
 }

@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { CommonUtil } from '@tcp/tcp-util';
+import '@tcp/tcp-util';
 
 export interface HourMin {
   intHour: number;
@@ -272,7 +272,7 @@ export class DateTimeFormatter {
     minutes %= 60;
     seconds %= 60;
 
-    return `${minutes}:${CommonUtil.padNumber(seconds, 2)}`;
+    return `${minutes}:${seconds.pad(2)}`;
   }
 
   static getCalculatedTimeDifference(dateStart: string, dateEnd: string) {
@@ -295,7 +295,7 @@ export class DateTimeFormatter {
     }
 
     const formatModel = keepHundredths ? '{0}.{1}' : '{0}:{1}';
-    return CommonUtil.stringFormat(formatModel, CommonUtil.padNumber(intHour, 2), CommonUtil.padNumber(intMin, 2));
+    return formatModel.format(intHour.pad(2), intMin.pad(2));
   }
 
   private static getHourMin(strValue: string | undefined) {

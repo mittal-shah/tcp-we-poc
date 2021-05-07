@@ -7,7 +7,6 @@ import {
 } from '../../../declaration';
 import { AppConfigImpl } from '../../config';
 import { AbstractImpl } from '../../abstract.impl';
-import { CommonUtil } from '@tcp/tcp-util';
 
 export default abstract class AbstractEditableInput extends AbstractImpl implements EditableInputModel {
   DefaultNumberOfLines = 1;
@@ -68,7 +67,7 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
 
   initializeControl(): void {
     if (!this.StrId) {
-      this.StrId = CommonUtil.getAdjustedComponentId(this.StrText) || 'editableInput';
+      this.StrId = this.StrText?.getAdjustedComponentId() || 'editableInput';
     }
   }
 
@@ -122,7 +121,7 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
       return true;
     }
 
-    return !CommonUtil.isEmptyOrSpaces(this.toString());
+    return !this.toString()?.isEmptyOrSpaces();
   }
 
   getHintText(appConfig: AppConfigImpl | undefined): string | undefined {

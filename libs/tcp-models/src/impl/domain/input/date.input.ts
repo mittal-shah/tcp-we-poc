@@ -2,7 +2,6 @@ import { EditableDateInputModel, InputSuffixIcon } from '../../../declaration';
 import AbstractEditableInput from './abstract-editable.input';
 import { AppConfigImpl } from '../../config';
 import { DateTimeConstants, DateTimeFormatter } from '@tcp/tcp-core';
-import { CommonUtil } from '@tcp/tcp-util';
 
 export class DateInput extends AbstractEditableInput implements EditableDateInputModel {
   IsPartial = false;
@@ -115,12 +114,12 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
 
       if (!this.isValidMinValue()) {
         const message = appConfig && appConfig.StrDateUnderMinMessage;
-        return CommonUtil.stringFormat(message, this.toString(), this.DatMinDate || '');
+        return message.format(this.toString(), this.DatMinDate || '');
       }
 
       if (!this.isValidMaxValue()) {
         const message = appConfig && appConfig.StrDateOverMaxMessage;
-        return CommonUtil.stringFormat(message, this.toString(), this.DatMaxDate || '');
+        return message.format(this.toString(), this.DatMaxDate || '');
       }
 
       return appConfig && appConfig.StrEnterValidDate;

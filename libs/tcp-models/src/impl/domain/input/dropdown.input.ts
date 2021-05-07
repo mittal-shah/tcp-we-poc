@@ -7,7 +7,6 @@ import { IntStringItemImpl } from '../int-string-item.impl';
 import { LongStringItemImpl } from '../long-string-item.impl';
 import { SelectItemImpl } from '../select-item.impl';
 import { CustomFieldControlImpl } from './custom-field-control.impl';
-import { CommonUtil } from '@tcp/tcp-util';
 
 export class DropdownInput extends AbstractEditableInput implements EditableTextInputModel {
   BlnAllowNoneSelection: boolean | undefined = true;
@@ -150,7 +149,7 @@ export class DropdownInput extends AbstractEditableInput implements EditableText
       return this.getNoneText();
     }
 
-    return CommonUtil.stringFormat(appConfig?.StrSelectedEntityMessage, String(selectedItemsLength));
+    return appConfig?.StrSelectedEntityMessage.format(String(selectedItemsLength));
   }
 
   setModelValue(item: SelectItemImpl | undefined) {

@@ -3,7 +3,6 @@ import { WebClockHeaderData } from '../../declaration';
 import { MenuImpl, MenuItemImpl } from '../domain';
 import { CompanyConfigImpl, WebClockMenuCommandConfigImpl } from '../config';
 import { DateTimeFormatter } from '@tcp/tcp-core';
-import { CommonUtil } from '@tcp/tcp-util';
 
 export class WebClockHeaderDataImpl extends AbstractImpl implements WebClockHeaderData {
   BlnHasAttestations: boolean | undefined = false;
@@ -51,11 +50,11 @@ export class WebClockHeaderDataImpl extends AbstractImpl implements WebClockHead
       return '';
     }
 
-    if (!companyConfig || !this.StrBreakStartDateTime || !CommonUtil.containsParam(this.StrClockStatus)) {
+    if (!companyConfig || !this.StrBreakStartDateTime || !this.StrClockStatus.containsParam()) {
       return this.StrClockStatus;
     }
 
-    return CommonUtil.stringFormat(this.StrClockStatus, String(this.getBreakMinutes()));
+    return this.StrClockStatus.format(String(this.getBreakMinutes()));
   }
 
   getBreakMinutes() {

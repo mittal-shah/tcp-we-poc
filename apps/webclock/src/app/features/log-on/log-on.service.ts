@@ -12,7 +12,6 @@ import {
   LogOnData,
 } from '@tcp/tcp-models';
 import { AbstractService } from '@tcp/tcp-ng-ui';
-import { CommonUtil } from '@tcp/tcp-util';
 import { EmployeeLogOnContextImpl } from '@tcp/tcp-clock-models';
 
 @Injectable({ providedIn: 'root' })
@@ -24,24 +23,20 @@ export class LogOnService extends AbstractService {
 
   getAppConfig(): Observable<AppConfigImpl> {
     const url = '/appConfig/0/WebClock';
-    return this.get<AppConfig>(url, { timeout: 10000 }).pipe(map((result) => this.handleAppConfig(result)));
+    const options = { timeout: 10000 } as ApiOptions;
+    return this.get<AppConfig>(url, options).pipe(map((result) => this.handleAppConfig(result)));
   }
 
   getInfo(): Observable<EmployeeLogOnContextImpl> {
     const url = '/employeeLoginValues/{0}/GetInfo?companyNamespace={1}&applicationId={2}';
     // TODO:MSS - Read from cookie
-    const formattedUrl = CommonUtil.stringFormat(url, '0', '', WebclockConstants.applicationId.toString());
+    const formattedUrl = url.format('0', '', WebclockConstants.applicationId.toString());
     return this.get(formattedUrl).pipe(map((result) => this.handleEmployeeLogOnContext(result)));
   }
 
   getInfoForCompany(companyId: number, companyNamespace: string = ''): Observable<EmployeeLogOnContextImpl> {
     const url = '/employeeLoginValues/{0}/GetInfoForCompany?companyNamespace={1}&applicationId={2}';
-    const formattedUrl = CommonUtil.stringFormat(
-      url,
-      companyId.toString(),
-      companyNamespace,
-      WebclockConstants.applicationId.toString(),
-    );
+    const formattedUrl = url.format(companyId.toString(), companyNamespace, WebclockConstants.applicationId.toString());
     return this.get(formattedUrl).pipe(map((result) => this.handleEmployeeLogOnContext(result)));
   }
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { Text } from 'native-base';
-import { CommonUtil } from '@tcp/tcp-util';
 import { EmployeeLogOnContextImpl } from '@tcp/tcp-clock-models';
 import { AbstractImpl, EmployeeLogOnContext } from '@tcp/tcp-models';
 
@@ -12,7 +11,7 @@ const App = () => {
   useEffect(() => {
     const url =
       'http://172.16.1.2:8181/api/v0000/employeeLoginValues/{0}/GetInfo?companyNamespace={1}&applicationId={2}';
-    const formattedUrl = CommonUtil.stringFormat(url, '0', '', '47');
+    const formattedUrl = url.format('0', '', '47');
 
     fetch(formattedUrl, {
       method: 'GET',

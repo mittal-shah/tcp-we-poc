@@ -12,7 +12,6 @@ import {
   LogOnData,
 } from '@tcp/tcp-models';
 import { AbstractService } from '@tcp/tcp-ng-ui';
-import { CommonUtil } from '@tcp/tcp-util';
 
 @Injectable({ providedIn: 'root' })
 export class LogOnService extends AbstractService {
@@ -29,7 +28,7 @@ export class LogOnService extends AbstractService {
   getInfo(): Observable<LogOnContextImpl> {
     const url = '/terminalsLoginValues/{0}/GetInfo?initialCompanyNamespace={1}';
     // TODO:MSS - Read from cookie
-    const formattedUrl = CommonUtil.stringFormat(url, '0', '');
+    const formattedUrl = url.format('0', '');
     return this.get(formattedUrl).pipe(map((result) => this.handleLogOnContext(result)));
   }
 

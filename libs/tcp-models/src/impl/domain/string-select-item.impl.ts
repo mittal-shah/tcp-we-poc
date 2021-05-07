@@ -1,6 +1,5 @@
 import { AnyType, StringSelectItemModel } from '../../declaration';
 import { SelectItemImpl } from './select-item.impl';
-import { CommonUtil } from '@tcp/tcp-util';
 
 export class StringSelectItemImpl extends SelectItemImpl implements StringSelectItemModel {
   StrText: string | undefined = '';
@@ -26,7 +25,7 @@ export class StringSelectItemImpl extends SelectItemImpl implements StringSelect
   }
 
   getKey() {
-    return CommonUtil.getAdjustedComponentId(this.getText());
+    return this.getText()?.getAdjustedComponentId();
   }
 
   getValue() {

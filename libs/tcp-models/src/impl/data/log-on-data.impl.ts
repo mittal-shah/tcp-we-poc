@@ -1,4 +1,3 @@
-import { CommonUtil } from '@tcp/tcp-util';
 import { ListItemContext, LogOnData, MenuItemModel } from '../../declaration';
 import { CompanySelectItemImpl, DeviceInfoImpl, DropdownInput, SelectItemImpl, VersionInfoImpl } from '../domain';
 import { AbstractImpl } from '../abstract.impl';
@@ -108,8 +107,7 @@ export class LogOnDataImpl extends AbstractImpl implements LogOnData {
     input.StrText = label;
     input.ObjListContext = {
       listItems: this.ArrCompanies,
-      selectedItem:
-        CommonUtil.findMatchingValue(this.ArrCompanies, String(this.IntCompany) || '') || this.ArrCompanies[0],
+      selectedItem: this.ArrCompanies?.findMatchingValue(String(this.IntCompany) || '') || this.ArrCompanies[0],
     } as ListItemContext;
 
     return input;

@@ -17,7 +17,6 @@ import {
   TextInput,
   TimeInput,
 } from '../..';
-import { CommonUtil } from '@tcp/tcp-util';
 import { MaskedInputFormatter } from '@tcp/tcp-core';
 
 export class CustomFieldControlImpl extends AbstractEditableInput implements CustomFieldControlModel {
@@ -248,7 +247,7 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Cus
       customInput.BlnIsDisabled = !(listItems && listItems.length > 0);
       customInput.ObjListContext = {
         listItems,
-        selectedItem: CommonUtil.findMatchingValue(listItems, this.StrValue || '') || firstItem,
+        selectedItem: listItems?.findMatchingValue(this.StrValue || '') || firstItem,
       } as ListItemContext;
 
       return customInput;
