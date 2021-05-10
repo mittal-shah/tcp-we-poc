@@ -1,6 +1,6 @@
 import { CustomFieldSectionModel } from '../../declaration';
 import { SelectItemImpl } from './select-item.impl';
-import { CustomFieldControlImpl } from './input';
+import { CustomFieldControlImpl } from './input/custom-field-control.impl';
 
 export class CustomFieldSectionImpl extends SelectItemImpl implements CustomFieldSectionModel {
   ArrCustomFieldControls: CustomFieldControlImpl[] | undefined = [];

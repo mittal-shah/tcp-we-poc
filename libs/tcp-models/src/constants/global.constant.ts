@@ -1,4 +1,4 @@
-import { AppConfigImpl, CompanyConfigImpl } from '../impl';
+import { AppConfigImpl, CompanyConfigImpl } from '../impl/config';
 
 export class GlobalConstant {
   public static sessionId: string | undefined = '';

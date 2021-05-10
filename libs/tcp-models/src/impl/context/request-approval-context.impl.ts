@@ -1,6 +1,6 @@
 import { BooleanInputModel, RequestApprovalContext } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { BooleanInputImpl } from '../domain';
+import { BooleanInputImpl } from '../domain/input';
 
 export class RequestApprovalContextImpl extends AbstractImpl implements RequestApprovalContext {
   ArrBooleanInputApprovalLevels: BooleanInputModel[] | undefined = [];

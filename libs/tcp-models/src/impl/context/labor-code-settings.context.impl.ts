@@ -1,6 +1,7 @@
 import { LaborCodeSettingsContext } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { BooleanInputImpl, IntStringItemImpl } from '../domain';
+import { IntStringItemImpl } from '../domain';
+import { BooleanInputImpl } from '../domain/input';
 
 export class LaborCodeSettingsContextImpl extends AbstractImpl implements LaborCodeSettingsContext {
   BlnCanEdit: boolean | undefined = false;

@@ -1,7 +1,7 @@
 import { WorkTimesheetSegmentModel } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
 import { LegendItemImpl } from './legend-item.impl';
-import { TextInput } from './input';
+import { TextInput } from './input/text.input';
 
 export class WorkTimesheetSegmentImpl extends AbstractImpl implements WorkTimesheetSegmentModel {
   BlnCanApproveEmployee: boolean | undefined = false;

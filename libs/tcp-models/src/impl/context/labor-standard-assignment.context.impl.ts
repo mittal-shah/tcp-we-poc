@@ -1,7 +1,7 @@
 import { LaborStandardAssignmentContext } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { LaborStandardAssignmentImpl } from '../domain';
-import { FilterDataImpl } from '../data';
+import { LaborStandardAssignmentImpl } from '../domain/labor-standard-assignment.impl';
+import { FilterDataImpl } from '../data/filter.data.impl';
 
 export class LaborStandardAssignmentContextImpl extends AbstractImpl implements LaborStandardAssignmentContext {
   ArrLaborStandardAssignments: LaborStandardAssignmentImpl[] | undefined = [];

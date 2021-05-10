@@ -1,7 +1,7 @@
 import { ViewMessagesData } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
 import { FilterDataImpl } from './filter.data.impl';
-import { EmployeeMessageImpl } from '../domain';
+import { EmployeeMessageImpl } from '../domain/employee-message.impl';
 
 export class ViewMessagesDataImpl extends AbstractImpl implements ViewMessagesData {
   ArrEmployeeMessages: EmployeeMessageImpl[] | undefined = [];

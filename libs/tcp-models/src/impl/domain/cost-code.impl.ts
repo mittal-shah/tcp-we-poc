@@ -1,9 +1,9 @@
 import { CostCodeModel } from '../../declaration';
 import { CustomFieldSectionImpl } from './custom-field-section.impl';
-import { LaborStandardAssignmentContextImpl } from '../context';
+import { LaborStandardAssignmentContextImpl } from '../context/labor-standard-assignment.context.impl';
 import { SelectItemImpl } from './select-item.impl';
 import { AbstractImpl } from '../abstract.impl';
-import { AssignedCostCodeOptionsDataImpl } from '../data';
+import { AssignedCostCodeOptionsDataImpl } from '../data/assigned-cost-code-options.data.impl';
 
 export class CostCodeImpl extends SelectItemImpl implements CostCodeModel {
   ArrCustomFieldSections: CustomFieldSectionImpl[] | undefined = [];

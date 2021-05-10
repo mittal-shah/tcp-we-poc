@@ -1,8 +1,11 @@
-import { CostCodeInputImpl, LongStringItemImpl, SegmentImpl, SelectItemImpl } from '../domain';
-import { EditSegmentAccessContextImpl } from '../context';
+import { EditSegmentAccessContextImpl } from '../context/edit-segment-access.context.impl';
 import { SelectCostCodeDataImpl } from './select-cost-code.data.impl';
 import { EditSegmentData } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
+import { SelectItemImpl } from '../domain/select-item.impl';
+import { SegmentImpl } from '../domain/segment.impl';
+import { LongStringItemImpl } from '../domain/long-string-item.impl';
+import { CostCodeInputImpl } from '../domain/cost-code-input.impl';
 
 export class EditSegmentDataImpl extends AbstractImpl implements EditSegmentData {
   ArrSelectItemBreakTypes: SelectItemImpl[] | undefined = [];

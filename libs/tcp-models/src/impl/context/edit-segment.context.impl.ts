@@ -1,6 +1,6 @@
 import { AbstractImpl } from '../abstract.impl';
-import { EditTimesheetSegmentConfigImpl } from '../config';
-import { EditSegmentDataImpl } from '../data';
+import { EditTimesheetSegmentConfigImpl } from '../config/edit-timesheet-segment.config.impl';
+import { EditSegmentDataImpl } from '../data/edit-segment.data.impl';
 
 export interface EditSegmentContext {
   editTimesheetSegmentConfig: EditTimesheetSegmentConfigImpl | undefined;

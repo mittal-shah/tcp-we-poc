@@ -1,6 +1,6 @@
 import { TrackedFieldContext } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { BooleanInputImpl, DecimalInput, TextInput } from '../domain';
+import { BooleanInputImpl, DecimalInput, TextInput } from '../domain/input';
 
 export type TrackInputsContext = {
   track1Input: DecimalInput;

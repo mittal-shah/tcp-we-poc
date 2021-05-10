@@ -1,6 +1,6 @@
 import { WorkDayModel, WorkWeekModel } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { PeriodBreakdownContextImpl } from '../context';
+import { PeriodBreakdownContextImpl } from '../context/period.breakdown.context.impl';
 import { MenuImpl } from './menu.impl';
 import { WorkDayImpl } from './work-day.impl';
 

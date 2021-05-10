@@ -1,6 +1,7 @@
 import { ListItemContext, LogOnData, MenuItemModel } from '../../declaration';
-import { CompanySelectItemImpl, DeviceInfoImpl, DropdownInput, SelectItemImpl, VersionInfoImpl } from '../domain';
+import { CompanySelectItemImpl, DeviceInfoImpl, SelectItemImpl, VersionInfoImpl } from '../domain';
 import { AbstractImpl } from '../abstract.impl';
+import { DropdownInput } from '../domain/input';
 
 export class LogOnDataImpl extends AbstractImpl implements LogOnData {
   ArrCompanies: CompanySelectItemImpl[] | undefined = [];

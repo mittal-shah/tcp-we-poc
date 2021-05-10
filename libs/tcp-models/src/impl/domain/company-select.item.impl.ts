@@ -1,7 +1,7 @@
 import { BadgeParseSpecImpl } from './badge-parse-spec.impl';
 import { ApplicationModel, CompanySelectItemModel } from '../../declaration';
 import { SelectItemImpl } from './select-item.impl';
-import { CustomFieldControlImpl } from './input';
+import { CustomFieldControlImpl } from './input/custom-field-control.impl';
 import { AbstractImpl } from '../abstract.impl';
 
 export class CompanySelectItemImpl extends SelectItemImpl implements CompanySelectItemModel {

@@ -1,6 +1,6 @@
 import { AbstractImpl } from '../abstract.impl';
 import { SegmentCompTimeContext } from '../../declaration';
-import { IntStringItemImpl } from '../domain';
+import { IntStringItemImpl } from '../domain/int-string-item.impl';
 
 export class SegmentCompTimeContextImpl extends AbstractImpl implements SegmentCompTimeContext {
   BlnCanEdit: boolean | undefined = false;

@@ -1,7 +1,8 @@
 import { SegmentModel } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { BooleanInputImpl } from './input';
-import { SegmentCompTimeContextImpl, TrackedFieldContextImpl } from '../context';
+import { BooleanInputImpl } from './input/boolean.input.impl';
+import { SegmentCompTimeContextImpl } from '../context/segment-comp-time.context.impl';
+import { TrackedFieldContextImpl } from '../context/tracked-field.context.impl';
 import { CoveredEmployeeImpl } from './covered-employee.impl';
 import { IntStringItemImpl } from './int-string-item.impl';
 import { LongStringItemImpl } from './long-string-item.impl';

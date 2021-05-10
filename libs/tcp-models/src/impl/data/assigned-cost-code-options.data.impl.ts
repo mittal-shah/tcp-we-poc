@@ -1,6 +1,6 @@
 import { FilterDataImpl } from './filter.data.impl';
 import { AssignedCostCodeOptionsData } from '../../declaration';
-import { OrderedCostCodeOptionImpl } from '../domain';
+import { OrderedCostCodeOptionImpl } from '../domain/ordered-cost-code-option.impl';
 import { AbstractImpl } from '../abstract.impl';
 
 export class AssignedCostCodeOptionsDataImpl extends AbstractImpl implements AssignedCostCodeOptionsData {

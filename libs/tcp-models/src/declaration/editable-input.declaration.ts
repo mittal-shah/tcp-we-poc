@@ -6,7 +6,7 @@ import {
   TimeInputModel,
 } from './global.declaration';
 import { AnyType } from './types.declaration';
-import { AppConfigImpl } from '../impl';
+import { AppConfigImpl } from '../impl/config';
 
 export type AutoCapitalizeOptions = 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
 

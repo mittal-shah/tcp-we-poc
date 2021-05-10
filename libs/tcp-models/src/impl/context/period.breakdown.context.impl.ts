@@ -1,6 +1,6 @@
 import { PeriodBreakdownContext } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { PeriodSummaryImpl } from '../domain';
+import { PeriodSummaryImpl } from '../domain/period-summary.impl';
 
 export class PeriodBreakdownContextImpl extends AbstractImpl implements PeriodBreakdownContext {
   BlnCompTimeBreakdownEnabled: boolean | undefined = false;

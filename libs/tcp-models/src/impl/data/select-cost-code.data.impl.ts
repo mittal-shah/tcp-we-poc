@@ -1,6 +1,6 @@
 import { AbstractImpl } from '../abstract.impl';
 import { SelectCostCodeData } from '../../declaration';
-import { CostCodeInputImpl } from '../domain';
+import { CostCodeInputImpl } from '../domain/cost-code-input.impl';
 import { FilterDataImpl } from './filter.data.impl';
 
 export type CostCodeSearchDropdownContext = {

@@ -66,14 +66,14 @@ import {
 import { CompanyLocationPreviewImpl } from './company-location-preview.impl';
 import { CustomFieldSectionImpl } from './custom-field-section.impl';
 import { JobCodeBreakdownImpl } from './job-code-breakdown.impl';
-import { RequestApprovalContextImpl } from '../context';
+import { RequestApprovalContextImpl } from '../context/request-approval-context.impl';
 import { LongStringItemImpl } from './long-string-item.impl';
 import { StringSelectInputImpl } from './string-select-input.impl';
 import { SelectItemImpl } from './select-item.impl';
 import { ExceptionOptionSetImpl } from './exception-option-set.impl';
 import { LegendItemImpl } from './legend-item.impl';
-import { TextInput } from './input';
-import { ViewMessagesDataImpl } from '../data';
+import { TextInput } from './input/text.input';
+import { ViewMessagesDataImpl } from '../data/view-messages-data.impl';
 import { AbstractImpl } from '../abstract.impl';
 
 export class EmployeeImpl extends SelectItemImpl implements EmployeeModel {

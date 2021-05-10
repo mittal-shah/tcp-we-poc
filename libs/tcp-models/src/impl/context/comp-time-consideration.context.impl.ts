@@ -1,6 +1,7 @@
-import { BooleanInputImpl, IntStringItemImpl } from '../domain';
+import { IntStringItemImpl } from '../domain/int-string-item.impl';
 import { AbstractImpl } from '../abstract.impl';
 import { CompTimeConsiderationContext } from '../../declaration';
+import { BooleanInputImpl } from '../domain/input';
 
 export class CompTimeConsiderationContextImpl extends AbstractImpl implements CompTimeConsiderationContext {
   BlnCanEdit: boolean | undefined = false;

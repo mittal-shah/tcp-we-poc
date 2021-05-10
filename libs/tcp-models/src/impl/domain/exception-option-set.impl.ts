@@ -1,6 +1,6 @@
 import { ExceptionOptionSetModel } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { ExceptionOptionContextImpl } from '../context';
+import { ExceptionOptionContextImpl } from '../context/exception-option.context.impl';
 
 export class ExceptionOptionSetImpl extends AbstractImpl implements ExceptionOptionSetModel {
   ObjApprovalExceptionOptionContext: ExceptionOptionContextImpl | undefined;
