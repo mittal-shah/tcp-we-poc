@@ -15,6 +15,7 @@
     [required]='!!editableInput.BlnIsRequired'
     [spellcheck]='editableInput.shouldAutoCorrect()'
     [type]='editableInput.getType()'
+    [ngClass]='{"to-upper-case": editableInput.BlnForceUppercase}'
     matInput
   />
   <textarea
