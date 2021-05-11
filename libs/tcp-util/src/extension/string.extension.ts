@@ -27,7 +27,7 @@ String.prototype.containsParam = function () {
 };
 
 String.prototype.isEmptyOrSpaces = function () {
-  return !!this && this.trim().length === 0 && !this.isNewLineOrTab();
+  return !this && this.trim().length === 0 && !this.isNewLineOrTab();
 };
 
 String.prototype.isDefinedOrExist = function () {
