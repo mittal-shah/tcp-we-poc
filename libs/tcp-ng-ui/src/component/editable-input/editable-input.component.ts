@@ -1,11 +1,13 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatInput } from '@angular/material/input';
 import { AnyType, AppConfigImpl, EditableInputModel, GlobalConstant } from '@tcp/tcp-models';
+import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'tcp-editable-input',
   templateUrl: './editable-input.component.html',
   styleUrls: ['./editable-input.component.scss'],
+  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
 export class EditableInputComponent implements OnInit, AfterViewInit {
   @ViewChild('inputElement', { static: false }) inputElement: MatInput | undefined;

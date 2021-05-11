@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LogOnService } from './log-on.service';
 import { AppConfigImpl, GlobalConstant, LogOnConfigImpl, LogOnContextImpl, LogOnDataImpl } from '@tcp/tcp-models';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'tcp-log-on',
@@ -8,6 +9,8 @@ import { AppConfigImpl, GlobalConstant, LogOnConfigImpl, LogOnContextImpl, LogOn
   styleUrls: ['./log-on.component.scss'],
 })
 export class LogOnComponent implements OnInit {
+  @ViewChild(NgForm) logOnForm!: NgForm;
+
   appConfig: AppConfigImpl | undefined = undefined;
   config: LogOnConfigImpl | undefined = undefined;
   data: LogOnDataImpl | undefined = undefined;
@@ -21,7 +24,7 @@ export class LogOnComponent implements OnInit {
   }
 
   authenticate() {
-    if (!this.data) {
+    if (!this.data || !this.logOnForm.valid) {
       return;
     }
 

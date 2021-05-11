@@ -10,7 +10,7 @@
     [autocomplete]='editableInput.getAutoCompleteType()'
     [disabled]='!!editableInput.BlnIsDisabled'
     [maxLength]='editableInput.IntMaxLength'
-    [name]="editableInput.StrId || 'editableInput'"
+    [name]='editableInput.StrId'
     [readonly]='!editableInput.BlnIsEditable'
     [required]='!!editableInput.BlnIsRequired'
     [spellcheck]='editableInput.shouldAutoCorrect()'
@@ -25,7 +25,7 @@
     [(ngModel)]='editableInput.StrValue'
     [disabled]='!!editableInput.BlnIsDisabled'
     [maxLength]='editableInput.IntMaxLength'
-    [name]="editableInput.StrId || 'editableInput'"
+    [name]='editableInput.StrId'
     [readonly]='!!editableInput.BlnIsEditable'
     [required]='!!editableInput.BlnIsRequired'
     [rows]='editableInput.getNumberOfLines()'

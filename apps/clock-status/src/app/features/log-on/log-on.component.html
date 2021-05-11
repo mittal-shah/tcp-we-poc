@@ -15,8 +15,8 @@
         [editableInput]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnPassword'></tcp-editable-input>
     </div>
     <div class='padding-bottom-20 padding-top-20'>
-      <button (click)='authenticate()' color='primary' mat-flat-button>{{config?.StrLogOn}}</button>
+      <button (click)='authenticate()' [disabled]='!logonForm.valid' color='primary'
+              mat-flat-button>{{config?.StrLogOn}}</button>
     </div>
-    isFormValid:  {{logonForm.form.valid}}
   </form>
 </div>
