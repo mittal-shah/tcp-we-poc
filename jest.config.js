@@ -8,5 +8,6 @@ module.exports = {
     '<rootDir>/libs/tcp-clock-models',
     '<rootDir>/apps/clock-status',
     '<rootDir>/apps/mobile-clock',
+    '<rootDir>/apps/playground',
   ],
 };

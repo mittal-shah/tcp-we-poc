@@ -62,6 +62,15 @@
     },
     "tcp-ng-ui": {
       "tags": []
+    },
+    "playground": {
+      "tags": []
+    },
+    "playground-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "playground"
+      ]
     }
   }
 }
