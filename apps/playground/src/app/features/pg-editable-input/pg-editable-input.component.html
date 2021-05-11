@@ -1,1 +1,16 @@
 <h2>editable-input demo</h2>
+<form #inputForm='ngForm' (ngSubmit)='submitForm()' class='padding-20'>
+  <div class='padding-20'>
+    <tcp-editable-input [editableInput]='mocksTextInputs.basic'
+                        class='inline-block margin-right-20'></tcp-editable-input>
+    <button (click)='showDetail(mocksTextInputs.basic)' class='inline-block' color='accent' mat-flat-button>...</button>
+  </div>
+  <div class='padding-20'>
+    <tcp-editable-input [editableInput]='mocksTextInputs.required'
+                        class='inline-block margin-right-20'></tcp-editable-input>
+    <button (click)='showDetail(mocksTextInputs.required)' class='inline-block' color='accent' mat-flat-button>...
+    </button>
+  </div>
+  <div class='padding-20'>Form valid: {{inputForm.valid}}</div>
+  <button [disabled]='!inputForm.valid' color='primary' mat-flat-button>Submit</button>
+</form>

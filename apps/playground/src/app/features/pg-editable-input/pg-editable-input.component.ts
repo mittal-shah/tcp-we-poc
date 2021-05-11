@@ -1,12 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MocksTextInputs } from '../../../../../../libs/tcp-models/src/impl/domain/input/__mocks__';
+import { NgForm } from '@angular/forms';
+import { EditableInputModel } from '@tcp/tcp-models';
 
 @Component({
   selector: 'tcp-pg-editable-input',
   templateUrl: './pg-editable-input.component.html',
-  styleUrls: ['./pg-editable-input.component.scss'],
 })
-export class PgEditableInputComponent implements OnInit {
-  constructor() {}
+export class PgEditableInputComponent {
+  @ViewChild(NgForm) inputForm!: NgForm;
 
-  ngOnInit(): void {}
+  mocksTextInputs = new MocksTextInputs();
+
+  showDetail(input: EditableInputModel) {
+    return console.log(input);
+  }
+
+  submitForm() {
+    if (!this.inputForm.valid) {
+      alert('invalid form');
+    } else {
+      alert('valid form');
+    }
+  }
 }

@@ -505,7 +505,12 @@
             "aot": true,
             "assets": [
               "apps/playground/src/favicon.ico",
-              "apps/playground/src/assets"
+              "apps/playground/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./libs/tcp-ng-ui/src/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "apps/playground/src/styles.scss"
