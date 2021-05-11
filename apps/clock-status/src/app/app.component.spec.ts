@@ -1,10 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { TcpNgUiModule } from '@tcp/tcp-ng-ui';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LogOnComponent } from './features/log-on/log-on.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppComponent],
+      declarations: [AppComponent, LogOnComponent],
+      imports: [RouterTestingModule, TcpNgUiModule],
     }).compileComponents();
   });
 
@@ -24,6 +28,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to clock-status!');
+    expect(compiled.querySelector('.content')).not.toBeUndefined();
   });
 });
