@@ -3,33 +3,34 @@
   <input
     #inputElement='matInput'
     (change)='(editableInput.onChange)'
-    (ngModelChange)='setValue($event)'
     *ngIf='!editableInput.isMultiline()'
     [(ngModel)]='editableInput.StrValue'
+    (ngModelChange)='setValue($event)'
     [autocapitalize]='editableInput.getAutoCapitalize()'
     [autocomplete]='editableInput.getAutoCompleteType()'
     [disabled]='!!editableInput.BlnIsDisabled'
     [maxlength]='editableInput.IntMaxLength'
-    [name]='editableInput.StrId'
     [readonly]='!editableInput.BlnIsEditable'
     [required]='!!editableInput.BlnIsRequired'
     [spellcheck]='editableInput.shouldAutoCorrect()'
     [type]='editableInput.getType()'
     [ngClass]='{"to-upper-case": editableInput.BlnForceUppercase}'
+    [name]='editableInput.StrId'
     matInput
   />
   <textarea
     #inputElement='matInput'
     (change)='(editableInput.onChange)'
-    (ngModelChange)='setValue($event)'
     *ngIf='editableInput.isMultiline()'
     [(ngModel)]='editableInput.StrValue'
+    (ngModelChange)='setValue($event)'
     [disabled]='!!editableInput.BlnIsDisabled'
     [maxlength]='editableInput.IntMaxLength'
     [name]='editableInput.StrId'
-    [readonly]='!!editableInput.BlnIsEditable'
     [required]='!!editableInput.BlnIsRequired'
+    [readonly]='!editableInput.BlnIsEditable'
     [rows]='editableInput.getNumberOfLines()'
+    [spellcheck]='editableInput.shouldAutoCorrect()'
     cdkTextareaAutosize
     matInput
   ></textarea>

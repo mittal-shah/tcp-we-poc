@@ -15,8 +15,6 @@ export type AutoCompleteOptions = 'on' | 'off';
 export type InputSuffixIcon = 'calendar' | 'clock' | 'search' | 'chevron-down' | 'list' | undefined;
 
 export interface EditableInputModel {
-  DefaultNumberOfLines: number;
-
   ShouldBlurOnSubmit: boolean | undefined;
 
   ShouldFocus: boolean | undefined;
@@ -102,7 +100,9 @@ export interface EditableInputModel {
   setValue(value: AnyType): AnyType;
 }
 
-export interface EditableTextInputModel extends EditableInputModel, TextInputModel {}
+export interface EditableTextInputModel extends EditableInputModel, TextInputModel {
+  IntNumberOfLines: number | undefined;
+}
 
 export interface EditableDecimalInputModel extends EditableInputModel, DecimalInputModel {}
 

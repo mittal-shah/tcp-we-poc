@@ -17,6 +17,8 @@ export class DropdownInput extends AbstractEditableInput implements EditableText
 
   BlnIsExplicitSave: boolean | undefined = false;
 
+  IntNumberOfLines: number | undefined = 0;
+
   IntMaxValue: number | undefined = 0;
 
   IntMinValue: number | undefined = 0;
