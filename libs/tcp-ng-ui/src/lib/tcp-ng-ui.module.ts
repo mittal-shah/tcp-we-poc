@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [AlertDialogComponent, EditableInputComponent, DropdownInputComponent, RequestLoadingComponent],
@@ -35,6 +36,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatDividerModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatIconModule,
   ],
   exports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatDividerModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatIconModule,
 
     AlertDialogComponent,
     EditableInputComponent,

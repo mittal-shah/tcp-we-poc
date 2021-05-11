@@ -7,6 +7,7 @@ import { MocksAppConfigs } from '../../../../../../libs/tcp-models/src/impl/conf
 @Component({
   selector: 'tcp-pg-editable-input',
   templateUrl: './pg-editable-input.component.html',
+  styleUrls: ['./pg-editable-input.component.scss'],
 })
 export class PgEditableInputComponent implements OnInit {
   @ViewChild(NgForm) inputForm!: NgForm;
