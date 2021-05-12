@@ -1,29 +1,8 @@
 <h2>text-input</h2>
 <form #inputForm='ngForm' (ngSubmit)='submitForm()'>
-  <div>
-    <tcp-editable-input [editableInput]='mocksTextInputs.basic' class='input-common'></tcp-editable-input>
-    <button (click)='showDetail(mocksTextInputs.basic)' mat-icon-button type='button'>
-      <mat-icon>info</mat-icon>
-    </button>
-  </div>
-
-  <div>
-    <tcp-editable-input [editableInput]='mocksTextInputs.required' class='input-common'></tcp-editable-input>
-    <button (click)='showDetail(mocksTextInputs.required)' mat-icon-button type='button'>
-      <mat-icon>info</mat-icon>
-    </button>
-  </div>
-
-  <div>
-    <tcp-editable-input [editableInput]='mocksTextInputs.maxLength' class='input-common'></tcp-editable-input>
-    <button (click)='showDetail(mocksTextInputs.maxLength)' mat-icon-button type='button'>
-      <mat-icon>info</mat-icon>
-    </button>
-  </div>
-
-  <div>
-    <tcp-editable-input [editableInput]='mocksTextInputs.textArea' class='input-common'></tcp-editable-input>
-    <button (click)='showDetail(mocksTextInputs.textArea)' mat-icon-button type='button'>
+  <div *ngFor='let input of mocksTextInputs | keyvalue'>
+    <tcp-editable-input [editableInput]='input.value' class='input-common'></tcp-editable-input>
+    <button (click)='showDetail(input.value)' mat-icon-button type='button'>
       <mat-icon>info</mat-icon>
     </button>
   </div>

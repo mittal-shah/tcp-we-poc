@@ -11,8 +11,6 @@ import { AbstractImpl } from '../../abstract.impl';
 export default abstract class AbstractEditableInput extends AbstractImpl implements EditableInputModel {
   DefaultNumberOfLines = 1;
 
-  ShouldBlurOnSubmit: boolean | undefined = false;
-
   ShouldFocus: boolean | undefined = false;
 
   BlnForceUppercase: boolean | undefined = false;
@@ -23,11 +21,9 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
 
   BlnIsRequired: boolean | undefined = false;
 
-  BlnIsVisible: boolean | undefined = false;
+  BlnIsVisible: boolean | undefined = true;
 
   IntMaxLength: number | undefined;
-
-  StrCustomFormat: string | undefined = '';
 
   StrId = '';
 
@@ -96,7 +92,7 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
   }
 
   isValidInput(): boolean {
-    return this.isValidRequired() && this.isValidMaxLength() && this.isValidValue();
+    return this.isValidRequired() && this.isValidMaxLength() && this.isValidRegEx() && this.isValidValue();
   }
 
   isValidMaxLength(): boolean {
@@ -110,6 +106,19 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     }
 
     return this.toString().length <= maxLength;
+  }
+
+  isValidRegEx() {
+    const shouldValidate = !this.BlnIsRequired || (this.toString() && this.BlnIsRequired);
+    if (!this.isInputAccessible() || !shouldValidate) {
+      return true;
+    }
+
+    if (this.StrRegExp) {
+      const validator = new RegExp(this.StrRegExp);
+      return validator.test(this.toString());
+    }
+    return true;
   }
 
   isValidRequired(): boolean {
@@ -133,10 +142,6 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
   }
 
   getPlaceholderText(): string {
-    if (this.StrCustomFormat) {
-      return this.StrCustomFormat;
-    }
-
     return this.StrText || '';
   }
 
@@ -147,6 +152,10 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
 
     if (!this.isValidRequired()) {
       return appConfig && appConfig.StrEnterRequiredFields;
+    }
+
+    if (!this.isValidRegEx()) {
+      return appConfig && appConfig.StrEnterValidAlphaNumeric;
     }
 
     return '';

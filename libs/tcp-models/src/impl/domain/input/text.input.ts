@@ -22,21 +22,8 @@ export class TextInput extends AbstractEditableInput implements EditableTextInpu
     return !!this.BlnIsMaskedValue;
   }
 
-  isValidRegEx() {
-    const shouldValidate = !this.BlnIsRequired || (this.toString() && this.BlnIsRequired);
-    if (!this.isInputAccessible() || !shouldValidate) {
-      return true;
-    }
-
-    if (this.StrRegExp) {
-      const validator = new RegExp(this.StrRegExp);
-      return validator.test(this.toString());
-    }
-    return true;
-  }
-
   isValidValue() {
-    return this.isValidRegEx();
+    return true;
   }
 
   getNumberOfLines() {

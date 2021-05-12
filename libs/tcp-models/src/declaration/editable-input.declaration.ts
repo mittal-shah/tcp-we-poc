@@ -15,8 +15,6 @@ export type AutoCompleteOptions = 'on' | 'off';
 export type InputSuffixIcon = 'calendar' | 'clock' | 'search' | 'chevron-down' | 'list' | undefined;
 
 export interface EditableInputModel {
-  ShouldBlurOnSubmit: boolean | undefined;
-
   ShouldFocus: boolean | undefined;
 
   BlnForceUppercase: boolean | undefined;
@@ -30,8 +28,6 @@ export interface EditableInputModel {
   BlnIsVisible: boolean | undefined;
 
   IntMaxLength: number | undefined;
-
-  StrCustomFormat: string | undefined;
 
   StrId: string | undefined;
 
@@ -101,6 +97,7 @@ export interface EditableInputModel {
 }
 
 export interface EditableTextInputModel extends EditableInputModel, TextInputModel {
+  BlnIsMaskedValue: boolean | undefined;
   IntNumberOfLines: number | undefined;
 }
 

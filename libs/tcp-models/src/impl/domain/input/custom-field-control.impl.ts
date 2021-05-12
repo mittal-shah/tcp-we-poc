@@ -152,6 +152,10 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Cus
     return searchDropdownInput;
   }
 
+  getPlaceholderText(): string {
+    return this.StrCustomFormat ? this.StrCustomFormat : super.getPlaceholderText();
+  }
+
   createNewEntryInput() {
     return AbstractImpl.fromJSON(
       {

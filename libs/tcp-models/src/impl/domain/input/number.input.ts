@@ -57,12 +57,8 @@ export class NumberInput extends AbstractEditableInput implements EditableNumber
     return this.IntValue !== undefined && this.IntValue >= this.IntMinValue;
   }
 
-  isValidRegEx() {
-    return RegExpValidator.NUMBER.test(this.toString());
-  }
-
   isValidValue() {
-    return this.isValidRegEx() && this.isValidMinValue() && this.isValidMaxValue();
+    return this.isValidMinValue() && this.isValidMaxValue();
   }
 
   getPlaceholderText(): string {
@@ -93,7 +89,7 @@ export class NumberInput extends AbstractEditableInput implements EditableNumber
   }
 
   getErrorMessage(appConfig: AppConfigImpl | undefined) {
-    if (!this.isValidValue()) {
+    if (!this.isValidValue() || !this.isValidRegEx()) {
       return appConfig && appConfig.StrEnterValidNumeric;
     }
     return super.getErrorMessage(appConfig);

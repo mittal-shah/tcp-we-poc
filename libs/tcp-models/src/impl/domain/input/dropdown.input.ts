@@ -11,6 +11,8 @@ import { CustomFieldControlImpl } from './custom-field-control.impl';
 export class DropdownInput extends AbstractEditableInput implements EditableTextInputModel {
   BlnAllowNoneSelection: boolean | undefined = true;
 
+  BlnIsMaskedValue: boolean | undefined = false;
+
   BlnIsMultiSelect: boolean | undefined = false;
 
   BlnIsEditable: boolean | undefined = false;

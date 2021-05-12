@@ -63,19 +63,6 @@ export class DecimalInput extends AbstractEditableInput implements EditableDecim
     return 'number';
   }
 
-  isValidRegEx() {
-    if (!this.getValue()) {
-      return true;
-    }
-
-    if (this.StrRegExp) {
-      const validator = new RegExp(this.StrRegExp);
-      return validator.test(this.toString());
-    }
-
-    return RegExpValidator.DECIMAL.test(this.toString());
-  }
-
   isValidMaxValue() {
     if (!this.isInputAccessible()) {
       return true;
@@ -103,7 +90,7 @@ export class DecimalInput extends AbstractEditableInput implements EditableDecim
   }
 
   isValidValue() {
-    return this.isValidMinValue() && this.isValidMaxValue() && this.isValidRegEx();
+    return this.isValidMinValue() && this.isValidMaxValue();
   }
 
   setValue(value: string) {
@@ -116,7 +103,7 @@ export class DecimalInput extends AbstractEditableInput implements EditableDecim
   }
 
   getErrorMessage(appConfig: AppConfigImpl | undefined): string | undefined {
-    if (!this.isValidValue()) {
+    if (!this.isValidValue() || !this.isValidRegEx()) {
       return appConfig && appConfig.StrEnterValidDecimal;
     }
     return super.getErrorMessage(appConfig);
