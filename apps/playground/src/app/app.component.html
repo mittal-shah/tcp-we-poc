@@ -1,6 +1,10 @@
 <header class='padding-20' role='banner'>
   <h1>Playground for testing purpose only</h1>
-  <div>TODO: navigation links</div>
+  <button [matMenuTriggerFor]='inputs' color='primary' mat-flat-button>Editable Inputs</button>
+  <mat-menu #inputs='matMenu'>
+    <button mat-menu-item>TextInput</button>
+    <button mat-menu-item>NumberInput</button>
+  </mat-menu>
 </header>
 <main class='content padding-20' role='main'>
   <router-outlet></router-outlet>
