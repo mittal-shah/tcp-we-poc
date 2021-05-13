@@ -17,6 +17,7 @@
       [required]='!!editableInput.BlnIsRequired'
       [spellcheck]='editableInput.shouldAutoCorrect()'
       [type]='editableInput.getType()'
+      [pattern]='editableInput.StrRegExp'
       matInput
     />
     <textarea
@@ -28,7 +29,6 @@
       [disabled]='!!editableInput.BlnIsDisabled'
       [maxlength]='editableInput.IntMaxLength'
       [name]='editableInput.StrId'
-      [pattern]='editableInput.StrRegExp'
       [readonly]='!editableInput.BlnIsEditable'
       [required]='!!editableInput.BlnIsRequired'
       [rows]='editableInput.getNumberOfLines()'

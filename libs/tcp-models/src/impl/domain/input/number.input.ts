@@ -1,5 +1,5 @@
 import AbstractEditableInput from './abstract-editable.input';
-import RegExpValidator from '../../../constants/reg-exp-validators.constant';
+import RegExPattern from '../../../constants/reg-ex-pattern.constant';
 import { EditableNumberInputModel } from '../../../declaration';
 import { AppConfigImpl } from '../../config';
 import { CommonUtil } from '@tcp/tcp-util';
@@ -12,6 +12,8 @@ export class NumberInput extends AbstractEditableInput implements EditableNumber
   IntMinValue: number | undefined = 0;
 
   IntValue: number | undefined;
+
+  StrRegExp = RegExPattern.NUMBER;
 
   private LeadingZerosCount: number | undefined = 0;
 
@@ -73,9 +75,8 @@ export class NumberInput extends AbstractEditableInput implements EditableNumber
     if (CommonUtil.isNullOrUndefined(value) || String(value).isEmptyOrSpaces()) {
       this.IntValue = undefined;
     } else {
-      const isValidRegEx = RegExpValidator.NUMBER.test(String(value));
       this.updateLeadingZerosCount(String(value));
-      this.IntValue = !isValidRegEx || isNaN(Number(value)) ? value : Number(value);
+      this.IntValue = !this.isValidRegEx(String(value)) || isNaN(Number(value)) ? value : Number(value);
     }
   }
 

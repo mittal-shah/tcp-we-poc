@@ -1,4 +1,4 @@
-export * from './reg-exp-validators.constant';
+export * from './reg-ex-pattern.constant';
 export * from './exception-type.constant';
 export * from './data-type-map.constant';
 export * from './custom-field-input-method.constant';

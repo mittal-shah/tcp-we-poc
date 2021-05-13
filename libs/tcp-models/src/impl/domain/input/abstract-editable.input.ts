@@ -92,7 +92,7 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
   }
 
   isValidInput(): boolean {
-    return this.isValidRequired() && this.isValidMaxLength() && this.isValidRegEx() && this.isValidValue();
+    return this.isValidRequired() && this.isValidMaxLength() && this.isValidValue() && this.isValidRegEx();
   }
 
   isValidMaxLength(): boolean {
@@ -108,15 +108,15 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return this.toString().length <= maxLength;
   }
 
-  isValidRegEx() {
-    const shouldValidate = !this.BlnIsRequired || (this.toString() && this.BlnIsRequired);
+  isValidRegEx(value = this.toString()) {
+    const shouldValidate = !this.BlnIsRequired || (value && this.BlnIsRequired);
     if (!this.isInputAccessible() || !shouldValidate) {
       return true;
     }
 
     if (this.StrRegExp) {
       const validator = new RegExp(this.StrRegExp);
-      return validator.test(this.toString());
+      return validator.test(value);
     }
     return true;
   }

@@ -1,4 +1,5 @@
 import { AbstractImpl, EditableTextInputModel, TextInput } from '@tcp/tcp-models';
+import RegExPattern from '../../../../constants/reg-ex-pattern.constant';
 
 export class MocksTextInputs {
   basic: TextInput = AbstractImpl.fromJSON(
@@ -85,6 +86,15 @@ export class MocksTextInputs {
       StrText: 'label text with suffix',
       StrSuffix: 'suffix text',
       StrId: 'suffix-input',
+    } as EditableTextInputModel,
+    TextInput,
+  );
+
+  regEx: TextInput = AbstractImpl.fromJSON(
+    {
+      StrText: 'regEx: SSN',
+      StrId: 'regEx-input',
+      StrRegExp: RegExPattern.SSN,
     } as EditableTextInputModel,
     TextInput,
   );

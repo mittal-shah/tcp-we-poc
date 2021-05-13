@@ -1,6 +1,6 @@
 import AbstractEditableInput from './abstract-editable.input';
 import { EditableDecimalInputModel } from '../../../declaration';
-import RegExpValidator from '../../../constants/reg-exp-validators.constant';
+import RegExPattern from '../../../constants/reg-ex-pattern.constant';
 import { AppConfigImpl } from '../../config';
 import { DateTimeFormatter } from '@tcp/tcp-core';
 
@@ -12,6 +12,8 @@ export class DecimalInput extends AbstractEditableInput implements EditableDecim
   StrMaxValue: string | undefined = '';
 
   StrMinValue: string | undefined = '';
+
+  StrRegExp = RegExPattern.DECIMAL;
 
   getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
     return this.StrMinValue || this.StrMaxValue
@@ -34,8 +36,7 @@ export class DecimalInput extends AbstractEditableInput implements EditableDecim
       return '';
     }
 
-    const isValidValue = RegExpValidator.DECIMAL.test(value);
-    if (!isValidValue) {
+    if (!this.isValidRegEx(value)) {
       return value;
     }
 
@@ -134,8 +135,7 @@ export class DecimalInput extends AbstractEditableInput implements EditableDecim
     if (!value.isDefinedOrExist() || isNaN(Number(value))) {
       return String(value);
     }
-    const isValidRegEx = RegExpValidator.DECIMAL.test(String(value));
-    return isValidRegEx ? Number(value) : String(value);
+    return this.isValidRegEx(String(value)) ? Number(value) : String(value);
   }
 
   private getStandardHourMinuteValue(value: string) {
