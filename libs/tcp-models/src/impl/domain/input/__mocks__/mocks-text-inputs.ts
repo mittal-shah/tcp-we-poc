@@ -98,4 +98,13 @@ export class MocksTextInputs {
     } as EditableTextInputModel,
     TextInput,
   );
+
+  changeEvent: TextInput = AbstractImpl.fromJSON(
+    {
+      StrText: 'log changes on change event',
+      StrId: 'on-change-input',
+      onChange: (value) => console.log(`i am changed: ${value}`),
+    } as EditableTextInputModel,
+    TextInput,
+  );
 }
