@@ -2,6 +2,8 @@ import AbstractEditableInput from './abstract-editable.input';
 import { EditableTextInputModel } from '../../../declaration';
 import { DecimalInput } from './decimal.input';
 import { AppConfigImpl } from '../../config';
+import { NumberInput } from './number.input';
+import { AbstractImpl } from '../../abstract.impl';
 
 export class TextInput extends AbstractEditableInput implements EditableTextInputModel {
   BlnIsMaskedValue: boolean | undefined = false;
@@ -39,18 +41,14 @@ export class TextInput extends AbstractEditableInput implements EditableTextInpu
   }
 
   toDecimalInput() {
-    const input = new DecimalInput();
-
-    input.BlnIsDisabled = this.BlnIsDisabled;
-    input.BlnIsEditable = this.BlnIsEditable;
-    input.BlnIsVisible = this.BlnIsVisible;
-    input.StrText = this.StrText;
-    input.StrValue = this.StrValue;
+    const input = AbstractImpl.fromJSON(JSON.stringify(this), DecimalInput);
     input.StrMaxValue = this.StrMaxDecimalValue;
     input.StrMinValue = this.StrMinDecimalValue;
-    input.StrId = this.StrId;
-
     return input;
+  }
+
+  toNumberInput() {
+    return AbstractImpl.fromJSON(JSON.stringify(this), NumberInput);
   }
 
   getMaxLength(): number | undefined {
