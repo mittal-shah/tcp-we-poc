@@ -9,6 +9,6 @@ export class TcpMaxValidatorDirective implements Validator {
   @Input() tcpMax: number;
 
   validate(input) {
-    return input.value > this.tcpMax ? { tcpMax: true } : null;
+    return input.value >= this.tcpMax ? { tcpMax: true } : null;
   }
 }

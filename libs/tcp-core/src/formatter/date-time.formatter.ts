@@ -13,6 +13,12 @@ export const DateTimeConstants = {
 };
 
 export class DateTimeFormatter {
+  static addDays(date, days) {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
   static createAdjustedDate(timeOffset = 0): Date {
     return new Date(+Date.now() + timeOffset);
   }

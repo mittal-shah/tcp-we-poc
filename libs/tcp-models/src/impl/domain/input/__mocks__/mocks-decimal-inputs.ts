@@ -15,6 +15,7 @@ export class MocksDecimalInputs {
       StrId: 'min1-max99.999-decimal-input',
       StrText: 'min 1 - max 99.999',
       IntPrecision: 3,
+      StrValue: '1.000',
       StrMinValue: '1.000',
       StrMaxValue: '99.999',
     } as EditableDecimalInputModel,

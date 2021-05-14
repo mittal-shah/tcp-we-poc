@@ -2,11 +2,11 @@
   <mat-form-field *ngIf='!!editableInput'>
     <mat-label>{{ editableInput.StrText }}</mat-label>
     <input
-      [ngClass]='{"to-upper-case": editableInput.BlnForceUppercase}'
       #inputElement='matInput'
+      *ngIf='!editableInput.isMultiline() && !isDateInput()'
+      [ngClass]='{"to-upper-case": editableInput.BlnForceUppercase}'
       (change)='onChange($event.currentTarget)'
       (ngModelChange)='setValue($event)'
-      *ngIf='!editableInput.isMultiline()'
       [(ngModel)]='editableInput.StrValue'
       [autocapitalize]='editableInput.getAutoCapitalize()'
       [autocomplete]='editableInput.getAutoCompleteType()'
@@ -27,7 +27,6 @@
       #inputElement='matInput'
       (change)='onChange($event.currentTarget)'
       (ngModelChange)='setValue($event)'
-      *ngIf='editableInput.isMultiline()'
       [(ngModel)]='editableInput.StrValue'
       [disabled]='!!editableInput.BlnIsDisabled'
       [maxlength]='editableInput.IntMaxLength'
@@ -36,8 +35,26 @@
       [required]='!!editableInput.BlnIsRequired'
       [rows]='editableInput.getNumberOfLines()'
       [spellcheck]='editableInput.shouldAutoCorrect()'
+      *ngIf='editableInput.isMultiline() && !isDateInput()'
       cdkTextareaAutosize
     ></textarea>
+    <input
+      #inputElement='matInput'
+      (change)='onChange($event.currentTarget)'
+      (ngModelChange)='setValue($event)'
+      *ngIf='isDateInput()'
+      [(ngModel)]='editableInput.StrValue'
+      [disabled]='!!editableInput.BlnIsDisabled'
+      [matDatepicker]='picker'
+      [name]='editableInput.StrId'
+      [readonly]='!editableInput.BlnIsEditable'
+      [required]='!!editableInput.BlnIsRequired'
+      [tcpMax]='editableInput.getMaxValue()'
+      [tcpMin]='editableInput.getMinValue()'
+      matInput
+    >
+    <mat-datepicker-toggle *ngIf='isDateInput()' [for]='picker' matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
     <mat-icon *ngIf='editableInput.getInputSuffixIcon()' matSuffix>{{editableInput.getInputSuffixIcon()}}</mat-icon>
     <mat-hint>{{ editableInput.getHintText(appConfig) }}</mat-hint>
     <mat-error>{{ editableInput.getErrorMessage(appConfig) }}</mat-error>

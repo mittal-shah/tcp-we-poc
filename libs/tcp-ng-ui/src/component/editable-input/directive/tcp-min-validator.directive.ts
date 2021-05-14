@@ -9,6 +9,6 @@ export class TcpMinValidatorDirective implements Validator {
   @Input() tcpMin: number;
 
   validate(input) {
-    return input.value < this.tcpMin ? { tcpMin: true } : null;
+    return input.value <= this.tcpMin ? { tcpMin: true } : null;
   }
 }

@@ -182,7 +182,7 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Cus
       case CustomFieldDataType.PartialDate:
         customInput = AbstractImpl.fromJSON(this, DateInput) as DateInput;
         customInput.BlnIsEditable = false;
-        customInput.IsPartial = dataType === CustomFieldDataType.PartialDate;
+        customInput.BlnMonthDayOnly = dataType === CustomFieldDataType.PartialDate;
         customInput.DatDate = this.StrValue;
         if (companyConfig) {
           customInput.StrFormat = companyConfig.getDateFormat();

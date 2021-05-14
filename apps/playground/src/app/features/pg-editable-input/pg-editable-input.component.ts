@@ -4,6 +4,7 @@ import {
   EditableInputModel,
   GlobalConstant,
   MocksAppConfigs,
+  MocksDateInputs,
   MocksDecimalInputs,
   MocksNumberInputs,
   MocksTextInputs,
@@ -21,6 +22,7 @@ export class PgEditableInputComponent implements OnInit {
   mocksTextInputs = new MocksTextInputs();
   mocksNumberInputs = new MocksNumberInputs();
   mocksDecimalInputs = new MocksDecimalInputs();
+  mocksDateInputs = new MocksDateInputs();
   type: string;
 
   constructor(private route: ActivatedRoute) {}

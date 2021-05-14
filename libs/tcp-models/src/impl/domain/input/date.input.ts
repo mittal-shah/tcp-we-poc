@@ -1,10 +1,12 @@
-import { EditableDateInputModel, InputSuffixIcon } from '../../../declaration';
+import { EditableDateInputModel } from '../../../declaration';
 import AbstractEditableInput from './abstract-editable.input';
 import { AppConfigImpl } from '../../config';
 import { DateTimeConstants, DateTimeFormatter } from '@tcp/tcp-core';
 
 export class DateInput extends AbstractEditableInput implements EditableDateInputModel {
-  IsPartial = false;
+  BlnMonthDayOnly: boolean | undefined = false;
+
+  BlnTrackDate: boolean | undefined; // TODO: MSS - not integrated yet
 
   StrFormat: string = DateTimeConstants.IsoDateFormat;
 
@@ -22,10 +24,6 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
       : appConfig?.StrEnterValidDate;
   }
 
-  getInputSuffixIcon(): InputSuffixIcon {
-    return 'calendar';
-  }
-
   getModelValue() {
     return this.DatDate;
   }
@@ -36,10 +34,6 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
 
   getMinValue() {
     return this.DatMinDate ? DateTimeFormatter.getDate(this.DatMinDate) : undefined;
-  }
-
-  getType() {
-    return 'date';
   }
 
   isValidMaxValue() {
@@ -84,7 +78,7 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
       return;
     }
 
-    if (this.IsPartial && value.length === this.StrMonthDayFormat.length) {
+    if (this.BlnMonthDayOnly && value.length === this.StrMonthDayFormat.length) {
       return;
     }
 
@@ -102,7 +96,8 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
 
   getValue() {
     return (
-      DateTimeFormatter.toDateString(this.getDate(), this.IsPartial ? this.StrMonthDayFormat : this.StrFormat) || ''
+      DateTimeFormatter.toDateString(this.getDate(), this.BlnMonthDayOnly ? this.StrMonthDayFormat : this.StrFormat) ||
+      ''
     );
   }
 

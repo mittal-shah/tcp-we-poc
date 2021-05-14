@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatInput } from '@angular/material/input';
-import { AnyType, AppConfigImpl, EditableInputModel, GlobalConstant } from '@tcp/tcp-models';
+import { AnyType, AppConfigImpl, DateInput, EditableInputModel, GlobalConstant } from '@tcp/tcp-models';
 import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({
@@ -13,6 +13,10 @@ export class EditableInputComponent implements OnInit, AfterViewInit {
   @ViewChild('inputElement', { static: false }) inputElement: MatInput | undefined;
   @Input() editableInput: EditableInputModel | undefined;
   appConfig: AppConfigImpl | undefined;
+
+  isDateInput() {
+    return this.editableInput instanceof DateInput;
+  }
 
   ngOnInit(): void {
     this.appConfig = GlobalConstant.appConfig;

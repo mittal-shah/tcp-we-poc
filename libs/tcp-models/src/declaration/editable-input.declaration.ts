@@ -1,4 +1,5 @@
 import {
+  DateTimeInputModel,
   DecimalInputModel,
   HourMinuteInputModel,
   NumberInputModel,
@@ -113,7 +114,11 @@ export interface EditableNumberInputModel extends EditableInputModel, NumberInpu
 
 export interface EditableHourMinuteInputModel extends EditableInputModel, HourMinuteInputModel {}
 
+export interface EditableDateTimeInputModel extends EditableInputModel, DateTimeInputModel {}
+
 export interface EditableDateInputModel extends EditableInputModel {
+  BlnMonthDayOnly: boolean | undefined;
+  BlnTrackDate: boolean | undefined;
   DatDate: string | undefined;
   DatMaxDate: string | undefined;
   DatMinDate: string | undefined;

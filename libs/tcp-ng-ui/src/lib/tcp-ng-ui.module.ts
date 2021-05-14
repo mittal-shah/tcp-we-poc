@@ -23,6 +23,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { TcpMaxValidatorDirective } from '../component/editable-input/directive/tcp-max-validator.directive';
 import { TcpMinValidatorDirective } from '../component/editable-input/directive/tcp-min-validator.directive';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { TcpMinValidatorDirective } from '../component/editable-input/directive/
     MatProgressSpinnerModule,
     MatIconModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
   ],
   exports: [
     BrowserModule,
@@ -63,6 +67,8 @@ import { TcpMinValidatorDirective } from '../component/editable-input/directive/
     MatProgressSpinnerModule,
     MatIconModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
 
     AlertDialogComponent,
     EditableInputComponent,
