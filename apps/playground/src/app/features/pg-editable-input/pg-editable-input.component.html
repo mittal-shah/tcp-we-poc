@@ -19,6 +19,16 @@
     </div>
   </section>
 
+  <section id='decimal'>
+    <h2>Decimal Input</h2>
+    <div *ngFor='let input of mocksDecimalInputs | keyvalue'>
+      <tcp-editable-input [editableInput]='input.value' class='input-common'></tcp-editable-input>
+      <button (click)='showDetail(input.value)' mat-icon-button type='button'>
+        <mat-icon>info</mat-icon>
+      </button>
+    </div>
+  </section>
+
   <div class='padding-20'>Form valid: {{inputForm.valid}}</div>
   <button [disabled]='!inputForm.valid' color='primary' mat-flat-button>Submit</button>
 </form>

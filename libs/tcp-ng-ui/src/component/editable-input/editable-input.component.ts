@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatInput } from '@angular/material/input';
 import { AnyType, AppConfigImpl, EditableInputModel, GlobalConstant } from '@tcp/tcp-models';
 import { ControlContainer, NgForm } from '@angular/forms';
@@ -11,9 +11,7 @@ import { ControlContainer, NgForm } from '@angular/forms';
 })
 export class EditableInputComponent implements OnInit, AfterViewInit {
   @ViewChild('inputElement', { static: false }) inputElement: MatInput | undefined;
-
   @Input() editableInput: EditableInputModel | undefined;
-  @Output() inputModelChange = new EventEmitter<string>();
   appConfig: AppConfigImpl | undefined;
 
   ngOnInit(): void {
@@ -28,11 +26,14 @@ export class EditableInputComponent implements OnInit, AfterViewInit {
     setTimeout(() => this.inputElement?.focus(), 0);
   }
 
+  onChange(target) {
+    this.setValue(target.value);
+    if (this.editableInput.onChange) {
+      this.editableInput.onChange(this.editableInput.getValue());
+    }
+  }
+
   setValue(value: AnyType): void {
     this.editableInput?.setValue(value);
-    this.inputModelChange.emit(value);
-    if (this.editableInput?.onChange) {
-      this.editableInput.onChange(value);
-    }
   }
 }

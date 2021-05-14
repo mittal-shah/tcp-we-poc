@@ -4,7 +4,7 @@
     <input
       [ngClass]='{"to-upper-case": editableInput.BlnForceUppercase}'
       #inputElement='matInput'
-      (change)='(editableInput.onChange)'
+      (change)='onChange($event.currentTarget)'
       (ngModelChange)='setValue($event)'
       *ngIf='!editableInput.isMultiline()'
       [(ngModel)]='editableInput.StrValue'
@@ -25,7 +25,7 @@
     <textarea
       matInput
       #inputElement='matInput'
-      (change)='(editableInput.onChange)'
+      (change)='onChange($event.currentTarget)'
       (ngModelChange)='setValue($event)'
       *ngIf='editableInput.isMultiline()'
       [(ngModel)]='editableInput.StrValue'
