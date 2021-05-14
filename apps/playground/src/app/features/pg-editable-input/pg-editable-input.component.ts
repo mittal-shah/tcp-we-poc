@@ -1,8 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MocksTextInputs } from '../../../../../../libs/tcp-models/src/impl/domain/input/__mocks__';
 import { NgForm } from '@angular/forms';
-import { EditableInputModel, GlobalConstant } from '@tcp/tcp-models';
-import { MocksAppConfigs } from '../../../../../../libs/tcp-models/src/impl/config/__mocks__/mocks-app-configs';
+import {
+  EditableInputModel,
+  GlobalConstant,
+  MocksAppConfigs,
+  MocksNumberInputs,
+  MocksTextInputs,
+} from '@tcp/tcp-models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'tcp-pg-editable-input',
@@ -13,8 +18,13 @@ export class PgEditableInputComponent implements OnInit {
   @ViewChild(NgForm) inputForm!: NgForm;
 
   mocksTextInputs = new MocksTextInputs();
+  mocksNumberInputs = new MocksNumberInputs();
+  type: string;
+
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.type = this.route.snapshot.paramMap.get('type');
     const mocksAppConfig = new MocksAppConfigs();
     GlobalConstant.appConfig = mocksAppConfig.managerAppConfig;
   }

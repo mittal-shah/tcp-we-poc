@@ -1,5 +1,7 @@
-import { AbstractImpl, EditableTextInputModel, TextInput } from '@tcp/tcp-models';
 import RegExPattern from '../../../../constants/reg-ex-pattern.constant';
+import { TextInput } from '../text.input';
+import { AbstractImpl } from '../../../abstract.impl';
+import { EditableTextInputModel } from '../../../../declaration';
 
 export class MocksTextInputs {
   basic: TextInput = AbstractImpl.fromJSON(

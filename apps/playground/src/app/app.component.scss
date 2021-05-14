@@ -1,0 +1,10 @@
+@import "../../../../libs/tcp-ng-ui/src/styles/colors";
+
+.active-link {
+  color: $white;
+  background-color: $logoGreen;
+
+  &:hover {
+    color: black;
+  }
+}

@@ -1,4 +1,6 @@
-import { AbstractImpl, AppConfig, AppConfigImpl } from '@tcp/tcp-models';
+import { AppConfigImpl } from '../app.config.impl';
+import { AbstractImpl } from '../../abstract.impl';
+import { AppConfig } from '../../../declaration';
 
 export class MocksAppConfigs {
   managerAppConfig: AppConfigImpl = AbstractImpl.fromJSON(

@@ -2,8 +2,24 @@
   <h1>Playground for testing purpose only</h1>
   <button [matMenuTriggerFor]='inputs' color='primary' mat-flat-button>Editable Inputs</button>
   <mat-menu #inputs='matMenu'>
-    <button mat-menu-item>TextInput</button>
-    <button mat-menu-item>NumberInput</button>
+    <button fragment='text' mat-menu-item routerLink='editable-input/text' routerLinkActive='active-link'>TextInput
+    </button>
+    <button fragment='number' mat-menu-item routerLink='editable-input/number' routerLinkActive='active-link'>
+      NumberInput
+    </button>
+    <button fragment='date' mat-menu-item routerLink='editable-input/date' routerLinkActive='active-link'>DateInput
+    </button>
+    <button fragment='time' mat-menu-item routerLink='editable-input/time' routerLinkActive='active-link'>TimeInput
+    </button>
+    <button fragment='date-time' mat-menu-item routerLink='editable-input/date-time' routerLinkActive='active-link'>
+      DateTimeInput
+    </button>
+    <button fragment='decimal' mat-menu-item routerLink='editable-input/decimal' routerLinkActive='active-link'>
+      DecimalInput
+    </button>
+    <button fragment='hour-min' mat-menu-item routerLink='editable-input/hour-min' routerLinkActive='active-link'>
+      HourMinInput
+    </button>
   </mat-menu>
 </header>
 <main class='content padding-20' role='main'>
