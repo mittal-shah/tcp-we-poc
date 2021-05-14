@@ -30,11 +30,11 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
     return this.DatDate;
   }
 
-  getMaxDate() {
+  getMaxValue() {
     return this.DatMaxDate ? DateTimeFormatter.getDate(this.DatMaxDate) : undefined;
   }
 
-  getMinDate() {
+  getMinValue() {
     return this.DatMinDate ? DateTimeFormatter.getDate(this.DatMinDate) : undefined;
   }
 
@@ -52,7 +52,7 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
     }
 
     const date = this.getDate();
-    const maxDate = this.getMaxDate();
+    const maxDate = this.getMaxValue();
     return !!date && !!maxDate && date <= maxDate;
   }
 
@@ -66,7 +66,7 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
     }
 
     const date = this.getDate();
-    const minDate = this.getMinDate();
+    const minDate = this.getMinValue();
     return !!date && !!minDate && date >= minDate;
   }
 

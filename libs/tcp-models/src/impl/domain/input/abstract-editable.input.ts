@@ -61,6 +61,14 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return undefined;
   }
 
+  getMaxValue() {
+    return undefined;
+  }
+
+  getMinValue() {
+    return undefined;
+  }
+
   initializeControl(): void {
     if (!this.StrId) {
       this.StrId = this.StrText?.getAdjustedComponentId() || 'editableInput';

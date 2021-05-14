@@ -27,6 +27,14 @@ export class DecimalInput extends AbstractEditableInput implements EditableDecim
       : this.getParsedValue(this.StrValue);
   }
 
+  getMaxValue() {
+    return this.StrMaxValue;
+  }
+
+  getMinValue() {
+    return this.StrMinValue;
+  }
+
   getValue() {
     return this.StrValue || '';
   }

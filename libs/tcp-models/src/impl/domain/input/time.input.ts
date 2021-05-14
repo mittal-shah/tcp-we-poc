@@ -26,11 +26,11 @@ export class TimeInput extends AbstractEditableInput implements EditableTimeInpu
     return this.TimValue;
   }
 
-  getMaxTime() {
+  getMaxValue() {
     return this.TimMaxValue ? DateTimeFormatter.getTime(this.TimMaxValue) : undefined;
   }
 
-  getMinTime() {
+  getMinValue() {
     return this.TimMinValue ? DateTimeFormatter.getTime(this.TimMinValue) : undefined;
   }
 
@@ -48,7 +48,7 @@ export class TimeInput extends AbstractEditableInput implements EditableTimeInpu
     }
 
     const date = this.getTime();
-    const maxTime = this.getMaxTime();
+    const maxTime = this.getMaxValue();
     return !!date && !!maxTime && date <= maxTime;
   }
 
@@ -62,7 +62,7 @@ export class TimeInput extends AbstractEditableInput implements EditableTimeInpu
     }
 
     const date = this.getTime();
-    const minTime = this.getMinTime();
+    const minTime = this.getMinValue();
     return !!date && !!minTime && date >= minTime;
   }
 

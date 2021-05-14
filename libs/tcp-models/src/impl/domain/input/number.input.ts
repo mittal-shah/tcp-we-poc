@@ -28,7 +28,7 @@ export class NumberInput extends AbstractEditableInput implements EditableNumber
   }
 
   getType() {
-    return 'number';
+    return this.BlnIsMaskedValue ? 'password' : 'number';
   }
 
   isSecuredField() {
@@ -65,6 +65,14 @@ export class NumberInput extends AbstractEditableInput implements EditableNumber
 
   getPlaceholderText(): string {
     return this.IntMaxValue ? String(this.IntMaxValue) : super.getPlaceholderText();
+  }
+
+  getMaxValue() {
+    return this.IntMaxValue ? Number(this.IntMaxValue) : undefined;
+  }
+
+  getMinValue() {
+    return this.IntMinValue ? Number(this.IntMinValue) : undefined;
   }
 
   getValue() {

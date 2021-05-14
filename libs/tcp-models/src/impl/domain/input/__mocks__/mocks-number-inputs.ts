@@ -9,4 +9,23 @@ export class MocksNumberInputs {
     } as EditableNumberInputModel,
     NumberInput,
   );
+
+  password: NumberInput = AbstractImpl.fromJSON(
+    {
+      StrId: 'password-number-input',
+      StrText: 'password number',
+      BlnIsMaskedValue: true,
+    } as EditableNumberInputModel,
+    NumberInput,
+  );
+
+  minMax: NumberInput = AbstractImpl.fromJSON(
+    {
+      StrId: 'min1-max10-number-input',
+      StrText: 'min 1 - max 10',
+      IntMinValue: 1,
+      IntMaxValue: 10,
+    } as EditableNumberInputModel,
+    NumberInput,
+  );
 }

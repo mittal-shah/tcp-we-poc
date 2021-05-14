@@ -91,6 +91,10 @@ export interface EditableInputModel {
 
   isValidValue(appConfig: AppConfigImpl | undefined): boolean;
 
+  getMaxValue();
+
+  getMinValue();
+
   getValue(): AnyType;
 
   setValue(value: AnyType): AnyType;
@@ -103,7 +107,9 @@ export interface EditableTextInputModel extends EditableInputModel, TextInputMod
 
 export interface EditableDecimalInputModel extends EditableInputModel, DecimalInputModel {}
 
-export interface EditableNumberInputModel extends EditableInputModel, NumberInputModel {}
+export interface EditableNumberInputModel extends EditableInputModel, NumberInputModel {
+  BlnIsMaskedValue: boolean | undefined;
+}
 
 export interface EditableHourMinuteInputModel extends EditableInputModel, HourMinuteInputModel {}
 

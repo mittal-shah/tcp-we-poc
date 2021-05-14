@@ -21,9 +21,18 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { TcpMaxValidatorDirective } from '../component/editable-input/directive/tcp-max-validator.directive';
+import { TcpMinValidatorDirective } from '../component/editable-input/directive/tcp-min-validator.directive';
 
 @NgModule({
-  declarations: [AlertDialogComponent, EditableInputComponent, DropdownInputComponent, RequestLoadingComponent],
+  declarations: [
+    AlertDialogComponent,
+    EditableInputComponent,
+    DropdownInputComponent,
+    RequestLoadingComponent,
+    TcpMaxValidatorDirective,
+    TcpMinValidatorDirective,
+  ],
   imports: [
     CommonModule,
     BrowserModule,
@@ -59,6 +68,8 @@ import { MatMenuModule } from '@angular/material/menu';
     EditableInputComponent,
     DropdownInputComponent,
     RequestLoadingComponent,
+    TcpMaxValidatorDirective,
+    TcpMinValidatorDirective,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TimeoutHttpInterceptor, multi: true },

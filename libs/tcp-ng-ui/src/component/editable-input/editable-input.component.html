@@ -2,6 +2,7 @@
   <mat-form-field *ngIf='!!editableInput'>
     <mat-label>{{ editableInput.StrText }}</mat-label>
     <input
+      [ngClass]='{"to-upper-case": editableInput.BlnForceUppercase}'
       #inputElement='matInput'
       (change)='(editableInput.onChange)'
       (ngModelChange)='setValue($event)'
@@ -11,8 +12,9 @@
       [autocomplete]='editableInput.getAutoCompleteType()'
       [disabled]='!!editableInput.BlnIsDisabled'
       [maxlength]='editableInput.IntMaxLength'
+      [tcpMax]='editableInput.getMaxValue()'
+      [tcpMin]='editableInput.getMinValue()'
       [name]='editableInput.StrId'
-      [ngClass]='{"to-upper-case": editableInput.BlnForceUppercase}'
       [readonly]='!editableInput.BlnIsEditable'
       [required]='!!editableInput.BlnIsRequired'
       [spellcheck]='editableInput.shouldAutoCorrect()'
@@ -21,6 +23,7 @@
       matInput
     />
     <textarea
+      matInput
       #inputElement='matInput'
       (change)='(editableInput.onChange)'
       (ngModelChange)='setValue($event)'
@@ -34,7 +37,6 @@
       [rows]='editableInput.getNumberOfLines()'
       [spellcheck]='editableInput.shouldAutoCorrect()'
       cdkTextareaAutosize
-      matInput
     ></textarea>
     <mat-icon *ngIf='editableInput.getInputSuffixIcon()' matSuffix>{{editableInput.getInputSuffixIcon()}}</mat-icon>
     <mat-hint>{{ editableInput.getHintText(appConfig) }}</mat-hint>

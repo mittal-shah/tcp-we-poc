@@ -31,6 +31,14 @@ export class HourMinuteInput extends AbstractEditableInput implements EditableHo
     return DateTimeFormatter.formatDecimalHoursToColonFormat(value);
   }
 
+  getMaxValue() {
+    return this.IntMaxMinutes;
+  }
+
+  getMinValue() {
+    return this.IntMinMinutes;
+  }
+
   getValue() {
     return this.HrmValue;
   }
