@@ -1,7 +1,7 @@
 import { EditableDateInputModel } from '../../../declaration';
 import AbstractEditableInput from './abstract-editable.input';
-import { AppConfigImpl } from '../../config';
 import { DateTimeConstants, DateTimeFormatter } from '@tcp/tcp-core';
+import { AppConfigImpl, CompanyConfigImpl } from '../../config';
 
 export class DateInput extends AbstractEditableInput implements EditableDateInputModel {
   BlnMonthDayOnly: boolean | undefined = false;
@@ -18,10 +18,10 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
 
   DatMinDate: string | undefined = '';
 
-  getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
+  getHintText(): string | undefined {
     return this.DatMinDate && this.DatMaxDate
-      ? this.DatMinDate + ' - ' + this.DatMaxDate
-      : appConfig?.StrEnterValidDate;
+      ? this.getFormattedMinDate() + ' - ' + this.getFormattedMaxDate()
+      : this.appConfig?.StrEnterValidDate;
   }
 
   getModelValue() {
@@ -34,6 +34,14 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
 
   getMinValue() {
     return this.DatMinDate ? DateTimeFormatter.getDate(this.DatMinDate) : undefined;
+  }
+
+  initializeInput(appConfig: AppConfigImpl, companyConfig: CompanyConfigImpl) {
+    super.initializeInput(appConfig, companyConfig);
+    if (this.companyConfig) {
+      this.StrFormat = this.companyConfig.getDateFormat();
+      this.StrMonthDayFormat = this.companyConfig.getPartialDateFormat();
+    }
   }
 
   isValidMaxValue() {
@@ -101,25 +109,37 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
     );
   }
 
-  getErrorMessage(appConfig: AppConfigImpl | undefined): string | undefined {
+  getErrorMessage(): string | undefined {
     if (!this.isValidValue()) {
       if (!DateTimeFormatter.isValidISODateString(this.DatDate)) {
-        return appConfig && appConfig.StrEnterValidDate;
+        return this.appConfig && this.appConfig.StrEnterValidDate;
       }
 
       if (!this.isValidMinValue()) {
-        const message = appConfig && appConfig.StrDateUnderMinMessage;
-        return message.format(this.toString(), this.DatMinDate || '');
+        const message = this.appConfig && this.appConfig.StrDateUnderMinMessage;
+        return message.format(this.toString(), this.getFormattedMinDate() || '');
       }
 
       if (!this.isValidMaxValue()) {
-        const message = appConfig && appConfig.StrDateOverMaxMessage;
-        return message.format(this.toString(), this.DatMaxDate || '');
+        const message = this.appConfig && this.appConfig.StrDateOverMaxMessage;
+        return message.format(this.toString(), this.getFormattedMaxDate() || '');
       }
 
-      return appConfig && appConfig.StrEnterValidDate;
+      return this.appConfig && this.appConfig.StrEnterValidDate;
     }
 
-    return super.getErrorMessage(appConfig);
+    return super.getErrorMessage();
+  }
+
+  private getFormattedMaxDate() {
+    return this.DatMaxDate
+      ? DateTimeFormatter.toDateString(DateTimeFormatter.getDate(this.DatMaxDate), this.StrFormat)
+      : undefined;
+  }
+
+  private getFormattedMinDate() {
+    return this.DatMinDate
+      ? DateTimeFormatter.toDateString(DateTimeFormatter.getDate(this.DatMinDate), this.StrFormat)
+      : undefined;
   }
 }

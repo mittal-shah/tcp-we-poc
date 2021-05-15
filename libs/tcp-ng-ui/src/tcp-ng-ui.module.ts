@@ -5,11 +5,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import {
   AlertDialogComponent,
+  DateInputComponent,
+  DecimalInputComponent,
   DropdownInputComponent,
-  EditableInputComponent,
+  NumberInputComponent,
   RequestLoadingComponent,
-} from '../component';
-import { DEFAULT_TIMEOUT, LoadingHttpInterceptor, TimeoutHttpInterceptor } from '../interceptor';
+  TextInputComponent,
+} from './component';
+import { DEFAULT_TIMEOUT, LoadingHttpInterceptor, TimeoutHttpInterceptor } from './interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -21,19 +24,24 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { TcpMaxValidatorDirective } from '../component/editable-input/directive/tcp-max-validator.directive';
-import { TcpMinValidatorDirective } from '../component/editable-input/directive/tcp-min-validator.directive';
+import { TcpMaxValidatorDirective } from './component/editable-input/directive/tcp-max-validator.directive';
+import { TcpMinValidatorDirective } from './component/editable-input/directive/tcp-min-validator.directive';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { AbstractEditableInputComponent } from './component/editable-input/abstract-editable-input.component';
 
 @NgModule({
   declarations: [
     AlertDialogComponent,
-    EditableInputComponent,
     DropdownInputComponent,
     RequestLoadingComponent,
     TcpMaxValidatorDirective,
     TcpMinValidatorDirective,
+    AbstractEditableInputComponent,
+    NumberInputComponent,
+    DecimalInputComponent,
+    DateInputComponent,
+    TextInputComponent,
   ],
   imports: [
     CommonModule,
@@ -71,7 +79,10 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatMomentDateModule,
 
     AlertDialogComponent,
-    EditableInputComponent,
+    TextInputComponent,
+    NumberInputComponent,
+    DecimalInputComponent,
+    DateInputComponent,
     DropdownInputComponent,
     RequestLoadingComponent,
     TcpMaxValidatorDirective,

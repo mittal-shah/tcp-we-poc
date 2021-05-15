@@ -7,7 +7,7 @@ import {
   TimeInputModel,
 } from './global.declaration';
 import { AnyType } from './types.declaration';
-import { AppConfigImpl } from '../impl/config';
+import { AppConfigImpl, CompanyConfigImpl } from '../impl/config';
 
 export type AutoCapitalizeOptions = 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
 
@@ -36,8 +36,6 @@ export interface EditableInputModel {
 
   StrText: string | undefined;
 
-  StrValue: string | undefined;
-
   StrRegExp: string | undefined;
 
   onChange: (value: string | undefined) => void | undefined;
@@ -56,7 +54,7 @@ export interface EditableInputModel {
 
   getType(): string;
 
-  initializeControl(): void;
+  initializeInput(appConfig: AppConfigImpl, companyConfig: CompanyConfigImpl): void;
 
   isInputEditable(): boolean;
 
@@ -72,13 +70,13 @@ export interface EditableInputModel {
 
   isValidRequired(): boolean;
 
-  getHintText(appConfig: AppConfigImpl | undefined): string | undefined;
+  getHintText(): string | undefined;
 
   getMaxLength(): number | undefined;
 
   getPlaceholderText(): string;
 
-  getErrorMessage(appConfig: AppConfigImpl | undefined): string | undefined;
+  getErrorMessage(): string | undefined;
 
   shouldAutoCorrect(): boolean;
 
@@ -90,7 +88,7 @@ export interface EditableInputModel {
 
   setModelValue(value: AnyType): void;
 
-  isValidValue(appConfig: AppConfigImpl | undefined): boolean;
+  isValidValue(): boolean;
 
   getMaxValue();
 
@@ -122,6 +120,8 @@ export interface EditableDateInputModel extends EditableInputModel {
   DatDate: string | undefined;
   DatMaxDate: string | undefined;
   DatMinDate: string | undefined;
+  StrFormat: string | undefined;
+  StrMonthDayFormat: string | undefined;
 }
 
 export interface EditableTimeInputModel extends EditableInputModel, TimeInputModel {}

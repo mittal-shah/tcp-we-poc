@@ -6,9 +6,9 @@ import { NG_VALIDATORS, Validator } from '@angular/forms';
   providers: [{ provide: NG_VALIDATORS, useExisting: TcpMinValidatorDirective, multi: true }],
 })
 export class TcpMinValidatorDirective implements Validator {
-  @Input() tcpMin: number;
+  @Input() tcpMin;
 
   validate(input) {
-    return input.value <= this.tcpMin ? { tcpMin: true } : null;
+    return !this.tcpMin || input.value >= this.tcpMin ? null : { tcpMin: true };
   }
 }

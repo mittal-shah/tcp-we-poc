@@ -1,0 +1,25 @@
+<div class='flex editable-input width-full margin-bottom-5'>
+  <mat-form-field *ngIf='!!editableInput'>
+    <mat-label>{{ editableInput.StrText }}</mat-label>
+    <input
+      #inputElement='matInput'
+      (change)='onChange($event.currentTarget)'
+      (ngModelChange)='setValue($event)'
+      [(ngModel)]='editableInput.DatDate'
+      [disabled]='!!editableInput.BlnIsDisabled'
+      [matDatepicker]='picker'
+      [name]='editableInput.StrId'
+      [readonly]='!editableInput.BlnIsEditable'
+      [required]='!!editableInput.BlnIsRequired'
+      [tcpMax]='editableInput.getMaxValue()'
+      [tcpMin]='editableInput.getMinValue()'
+      matInput
+    >
+    <mat-datepicker-toggle [for]='picker' matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-icon *ngIf='editableInput.getInputSuffixIcon()' matSuffix>{{editableInput.getInputSuffixIcon()}}</mat-icon>
+    <mat-hint>{{ editableInput.getHintText() }}</mat-hint>
+    <mat-error>{{ editableInput.getErrorMessage() }}</mat-error>
+  </mat-form-field>
+  <div *ngIf='editableInput.StrSuffix' class='suffix-text'>{{editableInput.StrSuffix}}</div>
+</div>

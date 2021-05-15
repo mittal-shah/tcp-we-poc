@@ -4,6 +4,7 @@ import {
   EditableInputModel,
   GlobalConstant,
   MocksAppConfigs,
+  MocksCompanyConfigs,
   MocksDateInputs,
   MocksDecimalInputs,
   MocksNumberInputs,
@@ -29,8 +30,10 @@ export class PgEditableInputComponent implements OnInit {
 
   ngOnInit() {
     this.type = this.route.snapshot.paramMap.get('type');
-    const mocksAppConfig = new MocksAppConfigs();
-    GlobalConstant.appConfig = mocksAppConfig.managerAppConfig;
+    const mocksAppConfigs = new MocksAppConfigs();
+    const mocksCompanyConfigs = new MocksCompanyConfigs();
+    GlobalConstant.appConfig = mocksAppConfigs.managerAppConfig;
+    GlobalConstant.companyConfig = mocksCompanyConfigs.webClockCompanyConfig;
   }
 
   showDetail(input: EditableInputModel) {

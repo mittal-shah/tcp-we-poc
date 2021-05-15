@@ -2,7 +2,7 @@
   <section id='text'>
     <h2>Text Input</h2>
     <div *ngFor='let input of mocksTextInputs | keyvalue'>
-      <tcp-editable-input [editableInput]='input.value' class='input-common'></tcp-editable-input>
+      <tcp-text-input [editableInput]='input.value' class='input-common'></tcp-text-input>
       <button (click)='showDetail(input.value)' mat-icon-button type='button'>
         <mat-icon>info</mat-icon>
       </button>
@@ -12,7 +12,7 @@
   <section id='number'>
     <h2>Number Input</h2>
     <div *ngFor='let input of mocksNumberInputs | keyvalue'>
-      <tcp-editable-input [editableInput]='input.value' class='input-common'></tcp-editable-input>
+      <tcp-number-input [editableInput]='input.value' class='input-common'></tcp-number-input>
       <button (click)='showDetail(input.value)' mat-icon-button type='button'>
         <mat-icon>info</mat-icon>
       </button>
@@ -22,7 +22,7 @@
   <section id='decimal'>
     <h2>Decimal Input</h2>
     <div *ngFor='let input of mocksDecimalInputs | keyvalue'>
-      <tcp-editable-input [editableInput]='input.value' class='input-common'></tcp-editable-input>
+      <tcp-decimal-input [editableInput]='input.value' class='input-common'></tcp-decimal-input>
       <button (click)='showDetail(input.value)' mat-icon-button type='button'>
         <mat-icon>info</mat-icon>
       </button>
@@ -32,7 +32,7 @@
   <section id='date'>
     <h2>Date Input</h2>
     <div *ngFor='let input of mocksDateInputs | keyvalue'>
-      <tcp-editable-input [editableInput]='input.value' class='input-common'></tcp-editable-input>
+      <tcp-date-input [editableInput]='input.value' class='input-common'></tcp-date-input>
       <button (click)='showDetail(input.value)' mat-icon-button type='button'>
         <mat-icon>info</mat-icon>
       </button>

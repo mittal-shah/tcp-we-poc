@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSelect } from '@angular/material/select';
-import { AnyType, AppConfigImpl, DropdownInput, GlobalConstant } from '@tcp/tcp-models';
+import { AnyType, AppConfigImpl, CompanyConfigImpl, DropdownInput, GlobalConstant } from '@tcp/tcp-models';
 
 @Component({
   selector: 'tcp-dropdown-input',
@@ -12,10 +12,12 @@ export class DropdownInputComponent implements OnInit, AfterViewInit {
 
   @Input() dropdownInput: DropdownInput | undefined;
   appConfig: AppConfigImpl | undefined;
+  companyConfig: CompanyConfigImpl | undefined;
 
   ngOnInit(): void {
     this.appConfig = GlobalConstant.appConfig;
-    this.dropdownInput?.initializeControl();
+    this.companyConfig = GlobalConstant.companyConfig;
+    this.dropdownInput?.initializeInput(this.appConfig, this.companyConfig);
   }
 
   ngAfterViewInit() {

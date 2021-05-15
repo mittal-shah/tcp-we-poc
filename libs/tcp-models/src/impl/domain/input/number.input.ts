@@ -1,7 +1,6 @@
 import AbstractEditableInput from './abstract-editable.input';
 import RegExPattern from '../../../constants/reg-ex-pattern.constant';
 import { EditableNumberInputModel } from '../../../declaration';
-import { AppConfigImpl } from '../../config';
 import { CommonUtil } from '@tcp/tcp-util';
 
 export class NumberInput extends AbstractEditableInput implements EditableNumberInputModel {
@@ -21,10 +20,10 @@ export class NumberInput extends AbstractEditableInput implements EditableNumber
     return value;
   }
 
-  getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
+  getHintText(): string | undefined {
     return this.IntMinValue || this.IntMaxValue
       ? Number(this.IntMinValue) + ' - ' + Number(this.IntMaxValue)
-      : super.getHintText(appConfig);
+      : super.getHintText();
   }
 
   getType() {
@@ -97,11 +96,11 @@ export class NumberInput extends AbstractEditableInput implements EditableNumber
     return maxLength || undefined;
   }
 
-  getErrorMessage(appConfig: AppConfigImpl | undefined) {
+  getErrorMessage() {
     if (!this.isValidValue() || !this.isValidRegEx()) {
-      return appConfig && appConfig.StrEnterValidNumeric;
+      return this.appConfig && this.appConfig.StrEnterValidNumeric;
     }
-    return super.getErrorMessage(appConfig);
+    return super.getErrorMessage();
   }
 
   private updateLeadingZerosCount(value: string) {

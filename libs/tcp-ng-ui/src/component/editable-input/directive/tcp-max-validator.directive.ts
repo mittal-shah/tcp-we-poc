@@ -6,9 +6,9 @@ import { NG_VALIDATORS, Validator } from '@angular/forms';
   providers: [{ provide: NG_VALIDATORS, useExisting: TcpMaxValidatorDirective, multi: true }],
 })
 export class TcpMaxValidatorDirective implements Validator {
-  @Input() tcpMax: number;
+  @Input() tcpMax;
 
   validate(input) {
-    return input.value >= this.tcpMax ? { tcpMax: true } : null;
+    return !this.tcpMax || input.value <= this.tcpMax ? null : { tcpMax: true };
   }
 }

@@ -4,12 +4,11 @@ import { AnyType, ListItemContext } from '../../../declaration/types.declaration
 import CustomFieldDataType from '../../../constants/custom-field-data-type.constant';
 import CustomFieldInputMethod from '../../../constants/custom-field-input-method.constant';
 import { EditableInputModel } from '../../../declaration/editable-input.declaration';
-import { GlobalConstant } from '../../../constants';
 import { KeyTextItemImpl } from '../key-text-item.impl';
 import { DateSelectItemImpl } from '../date-select-item.impl';
 import { TimeSelectItemImpl } from '../time-select-item.impl';
 import { MaskedInputFormatter } from '@tcp/tcp-core';
-import { AppConfigImpl } from '../../config';
+import { AppConfigImpl, CompanyConfigImpl } from '../../config';
 import { AbstractImpl } from '../../abstract.impl';
 import { SearchDropdownInput } from './search-dropdown.input';
 import { DateInput } from './date.input';
@@ -118,8 +117,8 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Cus
     return Boolean(this.inputControl && this.inputControl.isValidInput());
   }
 
-  isValidValue(appConfig: AppConfigImpl | undefined) {
-    return Boolean(this.inputControl && this.inputControl.isValidValue(appConfig));
+  isValidValue() {
+    return Boolean(this.inputControl && this.inputControl.isValidValue());
   }
 
   setValue(value: AnyType) {
@@ -138,7 +137,8 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Cus
     }
   }
 
-  initializeControl(): void {
+  initializeInput(appConfig: AppConfigImpl, companyConfig: CompanyConfigImpl): void {
+    super.initializeInput(appConfig, companyConfig);
     this.inputControl = this.createComponent();
   }
 
@@ -171,9 +171,8 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Cus
 
   private createInput(dataType: number | undefined) {
     let customInput;
-    const companyConfig = GlobalConstant.companyConfig;
     const isDecimal = this.StrCharWhitelist?.indexOf('.') !== -1;
-    if (!companyConfig) {
+    if (!this.companyConfig) {
       return undefined;
     }
 
@@ -184,17 +183,17 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Cus
         customInput.BlnIsEditable = false;
         customInput.BlnMonthDayOnly = dataType === CustomFieldDataType.PartialDate;
         customInput.DatDate = this.StrValue;
-        if (companyConfig) {
-          customInput.StrFormat = companyConfig.getDateFormat();
-          customInput.StrMonthDayFormat = companyConfig.getPartialDateFormat();
+        if (this.companyConfig) {
+          customInput.StrFormat = this.companyConfig.getDateFormat();
+          customInput.StrMonthDayFormat = this.companyConfig.getPartialDateFormat();
         }
         break;
       case CustomFieldDataType.Time:
         customInput = AbstractImpl.fromJSON(this, TimeInput) as TimeInput;
         customInput.BlnIsEditable = false;
         customInput.TimValue = this.StrValue;
-        if (companyConfig) {
-          customInput.StrFormat = companyConfig.getTimeFormat();
+        if (this.companyConfig) {
+          customInput.StrFormat = this.companyConfig.getTimeFormat();
         }
         break;
       case CustomFieldDataType.Numeric:

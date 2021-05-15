@@ -1,7 +1,6 @@
 import { EditableTimeInputModel, InputSuffixIcon } from '../../../declaration';
 import AbstractEditableInput from './abstract-editable.input';
 import { DateTimeConstants, DateTimeFormatter } from '@tcp/tcp-core';
-import { AppConfigImpl } from '../../config';
 
 export class TimeInput extends AbstractEditableInput implements EditableTimeInputModel {
   StrFormat: string = DateTimeConstants.IsoTimeFormat;
@@ -12,10 +11,10 @@ export class TimeInput extends AbstractEditableInput implements EditableTimeInpu
 
   TimValue: string | undefined = '';
 
-  getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
+  getHintText(): string | undefined {
     return this.TimMinValue && this.TimMaxValue
       ? this.TimMinValue + ' - ' + this.TimMaxValue
-      : appConfig?.StrEnterValidTime;
+      : this.appConfig?.StrEnterValidTime;
   }
 
   getInputSuffixIcon(): InputSuffixIcon {
@@ -94,10 +93,10 @@ export class TimeInput extends AbstractEditableInput implements EditableTimeInpu
     this.TimValue = time ? DateTimeFormatter.toTimeString(time) : value;
   }
 
-  getErrorMessage(appConfig: AppConfigImpl | undefined): string | undefined {
+  getErrorMessage(): string | undefined {
     if (!this.isValidValue()) {
-      return appConfig && appConfig.StrEnterValidTime;
+      return this.appConfig && this.appConfig.StrEnterValidTime;
     }
-    return super.getErrorMessage(appConfig);
+    return super.getErrorMessage();
   }
 }

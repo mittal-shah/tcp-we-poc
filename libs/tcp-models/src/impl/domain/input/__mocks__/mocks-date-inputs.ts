@@ -15,7 +15,7 @@ export class MocksDateInputs {
     {
       StrId: 'min-today-max-today-plus-2-input',
       StrText: 'min today - max today plus 2',
-      DatDate: DateTimeFormatter.toDateString(new Date()),
+      DatDate: DateTimeFormatter.toDateString(DateTimeFormatter.addDays(new Date(), 2)),
       DatMinDate: DateTimeFormatter.toDateString(new Date()),
       DatMaxDate: DateTimeFormatter.toDateString(DateTimeFormatter.addDays(new Date(), 2)),
     } as EditableDateInputModel,

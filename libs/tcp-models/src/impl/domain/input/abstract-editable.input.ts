@@ -5,7 +5,7 @@ import {
   EditableInputModel,
   InputSuffixIcon,
 } from '../../../declaration';
-import { AppConfigImpl } from '../../config';
+import { AppConfigImpl, CompanyConfigImpl } from '../../config';
 import { AbstractImpl } from '../../abstract.impl';
 
 export default abstract class AbstractEditableInput extends AbstractImpl implements EditableInputModel {
@@ -36,6 +36,10 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
   StrValue: string | undefined = '';
 
   onChange: (value: string | undefined) => void | undefined = undefined;
+
+  appConfig: AppConfigImpl | undefined = undefined;
+
+  companyConfig: CompanyConfigImpl | undefined = undefined;
 
   getAutoCapitalize(): AutoCapitalizeOptions {
     return this.BlnForceUppercase ? 'characters' : 'none';
@@ -69,7 +73,10 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return undefined;
   }
 
-  initializeControl(): void {
+  initializeInput(appConfig: AppConfigImpl, companyConfig: CompanyConfigImpl): void {
+    this.appConfig = appConfig;
+    this.companyConfig = companyConfig;
+
     if (!this.StrId) {
       this.StrId = this.StrText?.getAdjustedComponentId() || 'editableInput';
     }
@@ -141,8 +148,8 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return !this.toString()?.isEmptyOrSpaces();
   }
 
-  getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
-    return appConfig ? appConfig.StrEnterValidAlphaNumeric : undefined;
+  getHintText(): string | undefined {
+    return this.appConfig ? this.appConfig.StrEnterValidAlphaNumeric : undefined;
   }
 
   getMaxLength(): number | undefined {
@@ -153,17 +160,17 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return this.StrText || '';
   }
 
-  getErrorMessage(appConfig: AppConfigImpl | undefined): string | undefined {
+  getErrorMessage(): string | undefined {
     if (!this.isValidMaxLength()) {
-      return appConfig && appConfig.StrTextExceedsMaxLength;
+      return this.appConfig && this.appConfig.StrTextExceedsMaxLength;
     }
 
     if (!this.isValidRequired()) {
-      return appConfig && appConfig.StrEnterRequiredFields;
+      return this.appConfig && this.appConfig.StrEnterRequiredFields;
     }
 
     if (!this.isValidRegEx()) {
-      return appConfig && appConfig.StrEnterValidAlphaNumeric;
+      return this.appConfig && this.appConfig.StrEnterValidAlphaNumeric;
     }
 
     return '';
@@ -189,7 +196,7 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     this.setValue(value);
   }
 
-  abstract isValidValue(appConfig?: AppConfigImpl | undefined): boolean;
+  abstract isValidValue(): boolean;
 
   abstract getValue(): AnyType;
 

@@ -23,7 +23,7 @@ export class DateTimeFormatter {
     return new Date(+Date.now() + timeOffset);
   }
 
-  static getDateFromTimestamp(date: string) {
+  static getDateFromTimestamp(date: string): Date | undefined {
     if (!date) {
       return undefined;
     }
@@ -31,7 +31,7 @@ export class DateTimeFormatter {
     return this.getDate(date, DateTimeConstants.IsoTimestamp);
   }
 
-  static getCurrentTimeOffset(timestamp: string | number) {
+  static getCurrentTimeOffset(timestamp: string | number): number {
     if (!timestamp) {
       return 0;
     }

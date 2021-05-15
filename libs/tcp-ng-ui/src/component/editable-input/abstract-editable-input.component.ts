@@ -1,26 +1,19 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatInput } from '@angular/material/input';
-import { AnyType, AppConfigImpl, DateInput, EditableInputModel, GlobalConstant } from '@tcp/tcp-models';
+import { AnyType, AppConfigImpl, CompanyConfigImpl, EditableInputModel, GlobalConstant } from '@tcp/tcp-models';
 import { ControlContainer, NgForm } from '@angular/forms';
 
-@Component({
-  selector: 'tcp-editable-input',
-  templateUrl: './editable-input.component.html',
-  styleUrls: ['./editable-input.component.scss'],
-  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
-})
-export class EditableInputComponent implements OnInit, AfterViewInit {
+@Component({ template: '', viewProviders: [{ provide: ControlContainer, useExisting: NgForm }] })
+export class AbstractEditableInputComponent implements OnInit, AfterViewInit {
   @ViewChild('inputElement', { static: false }) inputElement: MatInput | undefined;
   @Input() editableInput: EditableInputModel | undefined;
   appConfig: AppConfigImpl | undefined;
-
-  isDateInput() {
-    return this.editableInput instanceof DateInput;
-  }
+  companyConfig: CompanyConfigImpl | undefined;
 
   ngOnInit(): void {
     this.appConfig = GlobalConstant.appConfig;
-    this.editableInput?.initializeControl();
+    this.companyConfig = GlobalConstant.companyConfig;
+    this.editableInput?.initializeInput(this.appConfig, this.companyConfig);
   }
 
   ngAfterViewInit() {

@@ -1,7 +1,6 @@
 import AbstractEditableInput from './abstract-editable.input';
 import { EditableHourMinuteInputModel } from '../../../declaration';
 import { DateTimeFormatter } from '@tcp/tcp-core';
-import { AppConfigImpl } from '../../config';
 
 export class HourMinuteInput extends AbstractEditableInput implements EditableHourMinuteInputModel {
   HrmValue: string | undefined = '';
@@ -78,10 +77,10 @@ export class HourMinuteInput extends AbstractEditableInput implements EditableHo
     this.HrmValue = this.getFormattedValue(value);
   }
 
-  getErrorMessage(appConfig: AppConfigImpl | undefined): string | undefined {
+  getErrorMessage(): string | undefined {
     if (!this.isValidValue()) {
-      return appConfig && appConfig.StrEnterValidHours;
+      return this.appConfig && this.appConfig.StrEnterValidHours;
     }
-    return super.getErrorMessage(appConfig);
+    return super.getErrorMessage();
   }
 }

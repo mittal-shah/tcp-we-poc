@@ -1,7 +1,6 @@
 import AbstractEditableInput from './abstract-editable.input';
 import { EditableTextInputModel } from '../../../declaration';
 import { DecimalInput } from './decimal.input';
-import { AppConfigImpl } from '../../config';
 import { NumberInput } from './number.input';
 import { AbstractImpl } from '../../abstract.impl';
 
@@ -56,11 +55,11 @@ export class TextInput extends AbstractEditableInput implements EditableTextInpu
     return maxLength || undefined;
   }
 
-  getErrorMessage(appConfig: AppConfigImpl | undefined) {
+  getErrorMessage() {
     if (!this.isValidValue()) {
-      return appConfig && appConfig.StrEnterValidAlphaNumeric;
+      return this.appConfig && this.appConfig.StrEnterValidAlphaNumeric;
     }
 
-    return super.getErrorMessage(appConfig);
+    return super.getErrorMessage();
   }
 }

@@ -1,7 +1,6 @@
 import AbstractEditableInput from './abstract-editable.input';
 import { EditableDecimalInputModel } from '../../../declaration';
 import RegExPattern from '../../../constants/reg-ex-pattern.constant';
-import { AppConfigImpl } from '../../config';
 import { DateTimeFormatter } from '@tcp/tcp-core';
 
 export class DecimalInput extends AbstractEditableInput implements EditableDecimalInputModel {
@@ -15,10 +14,10 @@ export class DecimalInput extends AbstractEditableInput implements EditableDecim
 
   StrRegExp = RegExPattern.DECIMAL;
 
-  getHintText(appConfig: AppConfigImpl | undefined): string | undefined {
+  getHintText(): string | undefined {
     return this.StrMinValue || this.StrMaxValue
       ? Number(this.StrMinValue) + ' - ' + Number(this.StrMaxValue)
-      : appConfig?.StrEnterValidDecimal;
+      : this.appConfig?.StrEnterValidDecimal;
   }
 
   getModelValue() {
@@ -111,11 +110,11 @@ export class DecimalInput extends AbstractEditableInput implements EditableDecim
     return maxLength || undefined;
   }
 
-  getErrorMessage(appConfig: AppConfigImpl | undefined): string | undefined {
+  getErrorMessage(): string | undefined {
     if (!this.isValidValue() || !this.isValidRegEx()) {
-      return appConfig && appConfig.StrEnterValidDecimal;
+      return this.appConfig && this.appConfig.StrEnterValidDecimal;
     }
-    return super.getErrorMessage(appConfig);
+    return super.getErrorMessage();
   }
 
   private getFullValueLength() {

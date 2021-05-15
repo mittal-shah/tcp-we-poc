@@ -2,7 +2,6 @@ import { AnyType, EditableTextInputModel, InputSuffixIcon, ListItemContext } fro
 import ModelConstant from '../../../constants/model.constant';
 import { CoveredEmployeeImpl } from '../covered-employee.impl';
 import AbstractEditableInput from './abstract-editable.input';
-import { AppConfigImpl } from '../../config';
 import { IntStringItemImpl } from '../int-string-item.impl';
 import { LongStringItemImpl } from '../long-string-item.impl';
 import { SelectItemImpl } from '../select-item.impl';
@@ -47,7 +46,7 @@ export class DropdownInput extends AbstractEditableInput implements EditableText
     return 'chevron-down';
   }
 
-  isValidValue(appConfig: AppConfigImpl | undefined) {
+  isValidValue() {
     if (!this.isInputAccessible()) {
       return true;
     }
@@ -57,7 +56,7 @@ export class DropdownInput extends AbstractEditableInput implements EditableText
     }
 
     const key = this.ObjListContext.selectedItem.getKey();
-    const isNoneItem = appConfig ? appConfig.isNoneItem(key) : ModelConstant.intNoneItemValue === key;
+    const isNoneItem = this.appConfig ? this.appConfig.isNoneItem(key) : ModelConstant.intNoneItemValue === key;
     if (this.BlnIsRequired && isNoneItem) {
       return false;
     }
@@ -65,12 +64,12 @@ export class DropdownInput extends AbstractEditableInput implements EditableText
     return !this.ObjListContext.selectedItem.BlnIsInvalid;
   }
 
-  getErrorMessage(appConfig: AppConfigImpl | undefined): string | undefined {
-    if (!this.isValidValue(appConfig)) {
-      return appConfig && appConfig.StrInvalidSelection;
+  getErrorMessage(): string | undefined {
+    if (!this.isValidValue()) {
+      return this.appConfig && this.appConfig.StrInvalidSelection;
     }
 
-    return super.getErrorMessage(appConfig);
+    return super.getErrorMessage();
   }
 
   getValue() {
