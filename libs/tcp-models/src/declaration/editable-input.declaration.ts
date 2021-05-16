@@ -118,10 +118,13 @@ export interface EditableDateInputModel extends EditableInputModel {
   BlnMonthDayOnly: boolean | undefined;
   BlnTrackDate: boolean | undefined;
   DatDate: string | undefined;
+  DateValue: Date | undefined;
   DatMaxDate: string | undefined;
   DatMinDate: string | undefined;
   StrFormat: string | undefined;
   StrMonthDayFormat: string | undefined;
+
+  setDate(date: Date);
 }
 
 export interface EditableTimeInputModel extends EditableInputModel, TimeInputModel {}

@@ -5,7 +5,7 @@
       #inputElement='matInput'
       (change)='onChange($event.currentTarget)'
       (ngModelChange)='setValue($event)'
-      [(ngModel)]='editableInput.DatDate'
+      [(ngModel)]='editableInput.DateValue'
       [disabled]='!!editableInput.BlnIsDisabled'
       [matDatepicker]='picker'
       [name]='editableInput.StrId'
@@ -13,6 +13,7 @@
       [required]='!!editableInput.BlnIsRequired'
       [tcpMax]='editableInput.getMaxValue()'
       [tcpMin]='editableInput.getMinValue()'
+      [matDatepickerFilter]='dateFilter'
       matInput
     >
     <mat-datepicker-toggle [for]='picker' matSuffix></mat-datepicker-toggle>

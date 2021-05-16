@@ -13,7 +13,7 @@ export class MocksDateInputs {
 
   minMax: DateInput = AbstractImpl.fromJSON(
     {
-      StrId: 'min-today-max-today-plus-2-input',
+      StrId: 'min-today-max-today-plus-2-date-input',
       StrText: 'min today - max today plus 2',
       DatDate: DateTimeFormatter.toDateString(DateTimeFormatter.addDays(new Date(), 2)),
       DatMinDate: DateTimeFormatter.toDateString(new Date()),
