@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LogOnService } from './log-on.service';
-import { AppConfigImpl, GlobalConstant, LogOnConfigImpl, LogOnContextImpl, LogOnDataImpl } from '@tcp/tcp-models';
+import { AppConfigImpl, LogOnConfigImpl, LogOnContextImpl, LogOnDataImpl } from '@tcp/tcp-models';
 import { NgForm } from '@angular/forms';
+import { ConfigService } from '@tcp/tcp-ng-ui';
 
 @Component({
   selector: 'tcp-log-on',
@@ -15,10 +16,10 @@ export class LogOnComponent implements OnInit {
   config: LogOnConfigImpl | undefined = undefined;
   data: LogOnDataImpl | undefined = undefined;
 
-  constructor(private service: LogOnService) {}
+  constructor(private service: LogOnService, private configService: ConfigService) {}
 
   ngOnInit(): void {
-    GlobalConstant.sessionId = '';
+    this.configService.clearSessionId();
 
     this.service.getAppConfig().subscribe((config: AppConfigImpl) => this.handleAppConfig(config));
   }
@@ -32,15 +33,15 @@ export class LogOnComponent implements OnInit {
   }
 
   private handleAppConfig(appConfig: AppConfigImpl) {
-    GlobalConstant.appConfig = appConfig;
+    this.configService.setAppConfig(appConfig);
     this.appConfig = appConfig;
 
     this.service.getInfo().subscribe((context: LogOnContextImpl) => this.handleInfo(context));
   }
 
   private handleAuthentication(sessionId: string | undefined) {
-    GlobalConstant.sessionId = sessionId;
-    console.log(GlobalConstant.sessionId);
+    this.configService.setSessionId(sessionId);
+    console.log(sessionId);
   }
 
   private handleInfo(context: LogOnContextImpl) {

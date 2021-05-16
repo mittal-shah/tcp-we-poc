@@ -4,4 +4,3 @@ export * from './data-type-map.constant';
 export * from './custom-field-input-method.constant';
 export * from './custom-field-data-type.constant';
 export * from './model.constant';
-export * from './global.constant';

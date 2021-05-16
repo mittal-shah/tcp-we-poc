@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatInput } from '@angular/material/input';
-import { AnyType, AppConfigImpl, CompanyConfigImpl, EditableInputModel, GlobalConstant } from '@tcp/tcp-models';
+import { AnyType, AppConfigImpl, CompanyConfigImpl, EditableInputModel } from '@tcp/tcp-models';
 import { ControlContainer, NgForm } from '@angular/forms';
+import { ConfigService } from '../../service/config.service';
 
 @Component({ template: '', viewProviders: [{ provide: ControlContainer, useExisting: NgForm }] })
 export class AbstractEditableInputComponent implements OnInit, AfterViewInit {
@@ -10,9 +11,11 @@ export class AbstractEditableInputComponent implements OnInit, AfterViewInit {
   appConfig: AppConfigImpl | undefined;
   companyConfig: CompanyConfigImpl | undefined;
 
+  constructor(private configService: ConfigService) {}
+
   ngOnInit(): void {
-    this.appConfig = GlobalConstant.appConfig;
-    this.companyConfig = GlobalConstant.companyConfig;
+    this.appConfig = this.configService.getAppConfig();
+    this.companyConfig = this.configService.getCompanyConfig();
     this.editableInput?.initializeInput(this.appConfig, this.companyConfig);
   }
 

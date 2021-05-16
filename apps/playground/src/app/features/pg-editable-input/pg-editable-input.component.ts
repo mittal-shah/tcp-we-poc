@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {
   EditableInputModel,
-  GlobalConstant,
   MocksAppConfigs,
   MocksCompanyConfigs,
   MocksDateInputs,
@@ -11,6 +10,7 @@ import {
   MocksTextInputs,
 } from '@tcp/tcp-models';
 import { ActivatedRoute } from '@angular/router';
+import { ConfigService } from '@tcp/tcp-ng-ui';
 
 @Component({
   selector: 'tcp-pg-editable-input',
@@ -26,14 +26,14 @@ export class PgEditableInputComponent implements OnInit {
   mocksDateInputs = new MocksDateInputs();
   type: string;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private configService: ConfigService) {}
 
   ngOnInit() {
     this.type = this.route.snapshot.paramMap.get('type');
     const mocksAppConfigs = new MocksAppConfigs();
     const mocksCompanyConfigs = new MocksCompanyConfigs();
-    GlobalConstant.appConfig = mocksAppConfigs.managerAppConfig;
-    GlobalConstant.companyConfig = mocksCompanyConfigs.webClockCompanyConfig;
+    this.configService.setAppConfig(mocksAppConfigs.webclockAppConfig);
+    this.configService.setCompanyConfig(mocksCompanyConfigs.webClockCompanyConfig);
   }
 
   showDetail(input: EditableInputModel) {
