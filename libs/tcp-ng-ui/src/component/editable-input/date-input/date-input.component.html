@@ -1,21 +1,38 @@
 <div class='flex editable-input width-full margin-bottom-5'>
   <mat-form-field *ngIf='!!editableInput'>
     <mat-label>{{ editableInput.StrText }}</mat-label>
+
+    <!--shadow input for dynamic date formats-->
     <input
-      #inputElement='matInput'
-      (change)='onChange($event.currentTarget)'
+      (focus)='delegateFocusToViewElement()'
+      [disabled]='!!editableInput.BlnIsDisabled'
+
+      [name]='editableInput.StrId'
       (ngModelChange)='setValue($event)'
       [(ngModel)]='editableInput.DateValue'
-      [disabled]='!!editableInput.BlnIsDisabled'
       [matDatepicker]='picker'
-      [name]='editableInput.StrId'
+
+      class='shadow-dateInput'
       [readonly]='!editableInput.BlnIsEditable'
       [required]='!!editableInput.BlnIsRequired'
+
       [tcpMax]='editableInput.getMaxValue()'
       [tcpMin]='editableInput.getMinValue()'
       [matDatepickerFilter]='dateFilter'
       matInput
     >
+
+    <input
+      #inputElement='matInput'
+      (change)='onChange($event.currentTarget)'
+
+      [disabled]='!!editableInput.BlnIsDisabled'
+      [readonly]='!editableInput.BlnIsEditable'
+
+      [required]='!!editableInput.BlnIsRequired'
+      [value]='editableInput.getValue()'
+      matInput
+    />
     <mat-datepicker-toggle [for]='picker' matSuffix></mat-datepicker-toggle>
     <mat-datepicker #picker [startAt]='editableInput.getMinValue()'></mat-datepicker>
     <mat-icon *ngIf='editableInput.getInputSuffixIcon()' matSuffix>{{editableInput.getInputSuffixIcon()}}</mat-icon>

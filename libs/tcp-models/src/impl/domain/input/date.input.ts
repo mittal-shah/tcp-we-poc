@@ -1,6 +1,6 @@
 import { EditableDateInputModel } from '../../../declaration';
 import AbstractEditableInput from './abstract-editable.input';
-import { DateTimeConstants, DateTimeFormatter } from '@tcp/tcp-core';
+import { DateTimeFormatter } from '@tcp/tcp-core';
 import { AppConfigImpl, CompanyConfigImpl } from '../../config';
 
 export class DateInput extends AbstractEditableInput implements EditableDateInputModel {
@@ -8,9 +8,9 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
 
   BlnTrackDate: boolean | undefined; // TODO: MSS - not integrated yet
 
-  StrFormat: string = DateTimeConstants.IsoDateFormat;
+  StrFormat: string | undefined = undefined;
 
-  StrMonthDayFormat: string = DateTimeConstants.IsoDateFormat;
+  StrMonthDayFormat: string | undefined = undefined;
 
   DatDate: string | undefined = '';
 
@@ -40,20 +40,20 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
 
   initializeInput(appConfig: AppConfigImpl, companyConfig: CompanyConfigImpl) {
     super.initializeInput(appConfig, companyConfig);
-    if (this.companyConfig) {
-      this.StrFormat = this.companyConfig.getDateFormat();
-      this.StrMonthDayFormat = this.companyConfig.getPartialDateFormat();
-    }
-    if (this.DatDate) {
-      this.DateValue = DateTimeFormatter.getDate(this.DatDate);
-    }
+
+    this.StrFormat = this.StrFormat
+      ? DateTimeFormatter.getAdjustedDateFormat(this.StrFormat)
+      : this.companyConfig.getDateFormat();
+
+    this.StrMonthDayFormat = this.StrMonthDayFormat
+      ? DateTimeFormatter.getAdjustedDateFormat(this.StrMonthDayFormat)
+      : this.companyConfig.getPartialDateFormat();
+
+    this.DateValue = this.DatDate ? DateTimeFormatter.getDate(this.DatDate) : null;
+
     if (this.BlnMonthDayOnly) {
-      if (!this.DatMinDate) {
-        this.DatMinDate = '2000-01-01';
-      }
-      if (!this.DatMaxDate) {
-        this.DatMaxDate = '2000-12-31';
-      }
+      this.DatMinDate = this.DatMinDate ? this.DatMinDate : '2000-01-01';
+      this.DatMaxDate = this.DatMaxDate ? this.DatMaxDate : '2000-12-31';
     }
   }
 
@@ -151,7 +151,7 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
   }
 
   private getFormattedMaxDate() {
-    return this.DatMaxDate ? DateTimeFormatter.toDateString(this.getMinValue(), this.getDateFormat()) : undefined;
+    return this.DatMaxDate ? DateTimeFormatter.toDateString(this.getMaxValue(), this.getDateFormat()) : undefined;
   }
 
   private getFormattedMinDate() {

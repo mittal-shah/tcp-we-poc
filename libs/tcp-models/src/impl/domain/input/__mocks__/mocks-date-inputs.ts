@@ -37,7 +37,17 @@ export class MocksDateInputs {
       StrId: 'month-day-date-input',
       StrText: 'month day only',
       BlnMonthDayOnly: true,
-      DatDate: '2000-01-01',
+      DatDate: '2000-01-15',
+    } as EditableDateInputModel,
+    DateInput,
+  );
+
+  dMYYYYFormat: DateInput = AbstractImpl.fromJSON(
+    {
+      StrId: 'day-month-format-date-input',
+      StrText: 'day month year format',
+      StrFormat: 'd/M/yyyy',
+      DatDate: '2000-01-15',
     } as EditableDateInputModel,
     DateInput,
   );
