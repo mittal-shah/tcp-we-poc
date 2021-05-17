@@ -104,7 +104,7 @@ export class DateTimeFormatter {
   }
 
   static isValidISODateString(date?: string) {
-    if (date === undefined) {
+    if (!date) {
       return true;
     }
 
