@@ -27,7 +27,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TcpMaxValidatorDirective } from './component/editable-input/directive/tcp-max-validator.directive';
 import { TcpMinValidatorDirective } from './component/editable-input/directive/tcp-min-validator.directive';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatNativeDateModule } from '@angular/material/core';
 import { AbstractEditableInputComponent } from './component/editable-input/abstract-editable-input.component';
 
 @NgModule({
@@ -59,7 +59,7 @@ import { AbstractEditableInputComponent } from './component/editable-input/abstr
     MatIconModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatMomentDateModule,
+    MatNativeDateModule,
   ],
   exports: [
     BrowserModule,
@@ -76,7 +76,7 @@ import { AbstractEditableInputComponent } from './component/editable-input/abstr
     MatIconModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatMomentDateModule,
+    MatNativeDateModule,
 
     AlertDialogComponent,
     TextInputComponent,

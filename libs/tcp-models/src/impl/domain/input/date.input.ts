@@ -47,6 +47,14 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
     if (this.DatDate) {
       this.DateValue = DateTimeFormatter.getDate(this.DatDate);
     }
+    if (this.BlnMonthDayOnly) {
+      if (!this.DatMinDate) {
+        this.DatMinDate = '2000-01-01';
+      }
+      if (!this.DatMaxDate) {
+        this.DatMaxDate = '2000-12-31';
+      }
+    }
   }
 
   isValidMaxValue() {
@@ -82,17 +90,18 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
   }
 
   setDate(date: Date) {
-    this.setValue(DateTimeFormatter.toDateString(date, this.StrFormat));
+    if (!(date instanceof Date)) {
+      this.resetDate();
+      return;
+    }
+
+    this.DateValue = date;
+    this.DatDate = DateTimeFormatter.toDateString(date);
   }
 
   setValue(value: string | undefined) {
     if (!value) {
-      this.DatDate = undefined;
-      this.DateValue = undefined;
-      return;
-    }
-
-    if (this.BlnMonthDayOnly && value.length === this.StrMonthDayFormat.length) {
+      this.resetDate();
       return;
     }
 
@@ -107,8 +116,7 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
   }
 
   getValue() {
-    const format = this.BlnMonthDayOnly ? this.StrMonthDayFormat : this.StrFormat;
-    return DateTimeFormatter.toDateString(this.getDate(), format) || '';
+    return DateTimeFormatter.toDateString(this.getDate(), this.getDateFormat()) || '';
   }
 
   getErrorMessage(): string | undefined {
@@ -133,11 +141,20 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
     return super.getErrorMessage();
   }
 
+  getDateFormat() {
+    return this.BlnMonthDayOnly ? this.StrMonthDayFormat : this.StrFormat;
+  }
+
+  private resetDate() {
+    this.DatDate = '';
+    this.DateValue = null;
+  }
+
   private getFormattedMaxDate() {
-    return this.DatMaxDate ? DateTimeFormatter.toDateString(this.getMinValue(), this.StrFormat) : undefined;
+    return this.DatMaxDate ? DateTimeFormatter.toDateString(this.getMinValue(), this.getDateFormat()) : undefined;
   }
 
   private getFormattedMinDate() {
-    return this.DatMinDate ? DateTimeFormatter.toDateString(this.getMinValue(), this.StrFormat) : undefined;
+    return this.DatMinDate ? DateTimeFormatter.toDateString(this.getMinValue(), this.getDateFormat()) : undefined;
   }
 }

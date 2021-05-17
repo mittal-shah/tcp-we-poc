@@ -17,7 +17,7 @@
       matInput
     >
     <mat-datepicker-toggle [for]='picker' matSuffix></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker #picker [startAt]='editableInput.getMinValue()'></mat-datepicker>
     <mat-icon *ngIf='editableInput.getInputSuffixIcon()' matSuffix>{{editableInput.getInputSuffixIcon()}}</mat-icon>
     <mat-hint>{{ editableInput.getHintText() }}</mat-hint>
     <mat-error>{{ editableInput.getErrorMessage() }}</mat-error>

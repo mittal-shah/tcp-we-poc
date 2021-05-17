@@ -45,12 +45,19 @@ export class DateTimeFormatter {
     return DateTimeFormatter.getTimeDiffInMS(newDate, currentDateTime);
   }
 
-  static getDate(date: string, dateFormat: string = DateTimeConstants.IsoDateFormat): Date | undefined {
+  static getDate(
+    date: string,
+    dateFormat: string = DateTimeConstants.IsoDateFormat,
+    isMonthDayOnly = false,
+  ): Date | undefined {
     if (!date) {
       return undefined;
     }
 
     const momentDate = moment(date, dateFormat, true);
+    if (isMonthDayOnly) {
+      momentDate.year(2000);
+    }
     const testMomentDate = momentDate.toDate();
     return momentDate.isValid() ? testMomentDate : undefined;
   }
@@ -119,10 +126,15 @@ export class DateTimeFormatter {
     dateFormat: string = DateTimeConstants.IsoDateFormat,
   ): string | undefined {
     if (!date) {
-      return undefined;
+      return '';
     }
 
-    return moment(date).format(DateTimeFormatter.getAdjustedDateFormat(dateFormat));
+    const momentDate = moment(date);
+    if (!momentDate.isValid()) {
+      return '';
+    }
+
+    return momentDate.format(DateTimeFormatter.getAdjustedDateFormat(dateFormat));
   }
 
   static toDateTimeString(date?: Date, dateFormat: string = DateTimeConstants.IsoTimestamp): string | undefined {
