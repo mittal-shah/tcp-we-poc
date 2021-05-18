@@ -13,7 +13,7 @@ export const DateTimeConstants = {
 };
 
 export class DateTimeFormatter {
-  static addDays(date, days) {
+  static addDays(date: Date, days: number) {
     const result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
@@ -23,9 +23,9 @@ export class DateTimeFormatter {
     return new Date(+Date.now() + timeOffset);
   }
 
-  static getDateFromTimestamp(date: string): Date | undefined {
+  static getDateFromTimestamp(date: string): Date | null {
     if (!date) {
-      return undefined;
+      return null;
     }
 
     return this.getDate(date, DateTimeConstants.IsoTimestamp);
@@ -49,9 +49,9 @@ export class DateTimeFormatter {
     date: string,
     dateFormat: string = DateTimeConstants.IsoDateFormat,
     isMonthDayOnly = false,
-  ): Date | undefined {
+  ): Date | null {
     if (!date) {
-      return undefined;
+      return null;
     }
 
     const momentDate = moment(date, dateFormat, true);
@@ -59,7 +59,7 @@ export class DateTimeFormatter {
       momentDate.year(2000);
     }
     const testMomentDate = momentDate.toDate();
-    return momentDate.isValid() ? testMomentDate : undefined;
+    return momentDate.isValid() ? testMomentDate : null;
   }
 
   static getTime(time: string, timeFormat: string = DateTimeConstants.IsoTimeFormat): Date | undefined {
@@ -121,10 +121,7 @@ export class DateTimeFormatter {
     return moment(dateTime, adjustedTime, true).isValid();
   }
 
-  static toDateString(
-    date?: Date | undefined,
-    dateFormat: string = DateTimeConstants.IsoDateFormat,
-  ): string | undefined {
+  static toDateString(date?: Date | null, dateFormat: string = DateTimeConstants.IsoDateFormat): string | undefined {
     if (!date) {
       return '';
     }

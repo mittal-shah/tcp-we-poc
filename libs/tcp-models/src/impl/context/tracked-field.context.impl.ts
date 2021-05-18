@@ -3,21 +3,21 @@ import { AbstractImpl } from '../abstract.impl';
 import { BooleanInputImpl, DecimalInput, TextInput } from '../domain/input';
 
 export type TrackInputsContext = {
-  track1Input: DecimalInput;
-  track2Input: DecimalInput;
-  track3Input: DecimalInput;
+  track1Input?: DecimalInput;
+  track2Input?: DecimalInput;
+  track3Input?: DecimalInput;
 };
 
 export class TrackedFieldContextImpl extends AbstractImpl implements TrackedFieldContext {
-  ObjTextInputTrack1: TextInput | undefined;
+  ObjTextInputTrack1?: TextInput | undefined = undefined;
 
-  ObjTextInputTrack2: TextInput | undefined;
+  ObjTextInputTrack2?: TextInput | undefined = undefined;
 
-  ObjTextInputTrack3: TextInput | undefined;
+  ObjTextInputTrack3?: TextInput | undefined = undefined;
 
-  StrTitle: string | undefined = '';
+  StrTitle?: string | undefined = '';
 
-  IsClockIn: boolean | undefined = false; // Offline specific property
+  IsClockIn?: boolean | undefined = false; // Offline specific property
 
   init(data: TrackedFieldContext) {
     if (!data) {

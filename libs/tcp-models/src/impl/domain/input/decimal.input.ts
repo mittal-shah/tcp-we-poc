@@ -139,7 +139,7 @@ export class DecimalInput extends AbstractEditableInput implements EditableDecim
   }
 
   private getParsedValue(value: string | number | undefined) {
-    if (!value.isDefinedOrExist() || isNaN(Number(value))) {
+    if (!value?.isDefinedOrExist() || isNaN(Number(value))) {
       return String(value);
     }
     return this.isValidRegEx(String(value)) ? Number(value) : String(value);

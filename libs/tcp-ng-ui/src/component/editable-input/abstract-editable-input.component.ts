@@ -26,9 +26,9 @@ export class AbstractEditableInputComponent implements OnInit, AfterViewInit {
     setTimeout(() => this.inputElement?.focus(), 0);
   }
 
-  onChange(target) {
+  onChange(target: AnyType) {
     this.setValue(target.value);
-    if (this.editableInput.onChange) {
+    if (this.editableInput?.onChange) {
       this.editableInput.onChange(this.editableInput.getValue());
     }
   }

@@ -1,8 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { ExceptionType } from '../constants';
 import { AppConfigImpl } from '../impl/config';
 import { SelectItemImpl } from '../impl/domain';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyType = any;
 
 export interface ListItemContext {

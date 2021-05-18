@@ -1,24 +1,24 @@
 <div class='flex editable-input width-full margin-bottom-5'>
   <mat-form-field *ngIf='!!editableInput'>
-    <mat-label>{{ editableInput.StrText }}</mat-label>
+    <mat-label>{{ editableInput!.StrText }}</mat-label>
 
     <!--shadow input for dynamic date formats-->
     <input
-      [disabled]='!!editableInput.BlnIsDisabled'
+      [(ngModel)]='editableInput!.DateValue'
       class='shadow-dateInput'
       (focus)='delegateFocusToViewElement()'
 
-      [name]='editableInput.StrId'
+      [disabled]='!!editableInput!.BlnIsDisabled'
       (ngModelChange)='setValue($event)'
-      [(ngModel)]='editableInput.DateValue'
+      [name]='editableInput!.StrId!'
       [matDatepicker]='picker'
 
-      [readonly]='!editableInput.BlnIsEditable'
-      [required]='!!editableInput.BlnIsRequired'
+      [readonly]='!editableInput!.BlnIsEditable'
+      [required]='!!editableInput!.BlnIsRequired'
       matInput
 
-      [tcpMax]='editableInput.getMaxValue()'
-      [tcpMin]='editableInput.getMinValue()'
+      [tcpMax]='editableInput!.getMaxValue()'
+      [tcpMin]='editableInput!.getMinValue()'
       [matDatepickerFilter]='dateFilter'
     >
 
@@ -27,17 +27,17 @@
       matInput
       (change)='onChange($event.currentTarget)'
 
-      [disabled]='!!editableInput.BlnIsDisabled'
-      [readonly]='!editableInput.BlnIsEditable'
+      [disabled]='!!editableInput!.BlnIsDisabled'
+      [readonly]='!editableInput!.BlnIsEditable'
 
-      [required]='!!editableInput.BlnIsRequired'
-      [value]='editableInput.getValue()'
+      [required]='!!editableInput!.BlnIsRequired'
+      [value]='editableInput!.getValue()'
     />
     <mat-datepicker-toggle [for]='picker' matSuffix></mat-datepicker-toggle>
-    <mat-datepicker #picker [startAt]='editableInput.getMinValue()'></mat-datepicker>
-    <mat-icon *ngIf='editableInput.getInputSuffixIcon()' matSuffix>{{editableInput.getInputSuffixIcon()}}</mat-icon>
-    <mat-hint>{{ editableInput.getHintText() }}</mat-hint>
-    <mat-error>{{ editableInput.getErrorMessage() }}</mat-error>
+    <mat-datepicker #picker [startAt]='editableInput!.getMinValue()'></mat-datepicker>
+    <mat-icon *ngIf='editableInput!.getInputSuffixIcon()' matSuffix>{{editableInput!.getInputSuffixIcon()}}</mat-icon>
+    <mat-hint>{{ editableInput!.getHintText() }}</mat-hint>
+    <mat-error>{{ editableInput!.getErrorMessage() }}</mat-error>
   </mat-form-field>
-  <div *ngIf='editableInput.StrSuffix' class='suffix-text'>{{editableInput.StrSuffix}}</div>
+  <div *ngIf='editableInput?.StrSuffix' class='suffix-text'>{{editableInput?.StrSuffix}}</div>
 </div>

@@ -17,6 +17,7 @@
       }
     },
     "@nrwl/angular:application": {
+      "strict": true,
       "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "jest",
@@ -56,9 +57,7 @@
                 "output": "./assets"
               }
             ],
-            "styles": [
-              "apps/webclock/src/styles.scss"
-            ],
+            "styles": ["apps/webclock/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -112,17 +111,12 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/webclock/src/**/*.ts",
-              "apps/webclock/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/webclock/src/**/*.ts", "apps/webclock/src/**/*.html"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/webclock"
-          ],
+          "outputs": ["coverage/apps/webclock"],
           "options": {
             "jestConfig": "apps/webclock/jest.config.js",
             "passWithNoTests": true
@@ -151,9 +145,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/webclock-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/webclock-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -166,16 +158,12 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/tcp-models/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/tcp-models/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/tcp-models"
-          ],
+          "outputs": ["coverage/libs/tcp-models"],
           "options": {
             "jestConfig": "libs/tcp-models/jest.config.js",
             "passWithNoTests": true
@@ -191,16 +179,12 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/tcp-core/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/tcp-core/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/tcp-core"
-          ],
+          "outputs": ["coverage/libs/tcp-core"],
           "options": {
             "jestConfig": "libs/tcp-core/jest.config.js",
             "passWithNoTests": true
@@ -216,16 +200,12 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/tcp-util/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/tcp-util/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/tcp-util"
-          ],
+          "outputs": ["coverage/libs/tcp-util"],
           "options": {
             "jestConfig": "libs/tcp-util/jest.config.js",
             "passWithNoTests": true
@@ -241,16 +221,12 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/tcp-clock-models/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/tcp-clock-models/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/tcp-clock-models"
-          ],
+          "outputs": ["coverage/libs/tcp-clock-models"],
           "options": {
             "jestConfig": "libs/tcp-clock-models/jest.config.js",
             "passWithNoTests": true
@@ -282,9 +258,7 @@
                 "output": "./assets"
               }
             ],
-            "styles": [
-              "apps/clock-status/src/styles.scss"
-            ],
+            "styles": ["apps/clock-status/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -338,17 +312,12 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/clock-status/src/**/*.ts",
-              "apps/clock-status/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/clock-status/src/**/*.ts", "apps/clock-status/src/**/*.html"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/clock-status"
-          ],
+          "outputs": ["coverage/apps/clock-status"],
           "options": {
             "jestConfig": "apps/clock-status/jest.config.js",
             "passWithNoTests": true
@@ -377,9 +346,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/clock-status-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/clock-status-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -408,9 +375,7 @@
         },
         "bundle-ios": {
           "builder": "@nrwl/react-native:bundle",
-          "outputs": [
-            "apps/mobile-clock/build"
-          ],
+          "outputs": ["apps/mobile-clock/build"],
           "options": {
             "entryFile": "apps/mobile-clock/src/main.tsx",
             "platform": "ios",
@@ -440,9 +405,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/mobile-clock/**/*.{js,ts,tsx}"
-            ]
+            "lintFilePatterns": ["apps/mobile-clock/**/*.{js,ts,tsx}"]
           }
         },
         "sync-deps": {
@@ -451,9 +414,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/mobile-clock"
-          ],
+          "outputs": ["coverage/apps/mobile-clock"],
           "options": {
             "jestConfig": "apps/mobile-clock/jest.config.js",
             "passWithNoTests": true
@@ -470,17 +431,12 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/tcp-ng-ui/src/**/*.ts",
-              "libs/tcp-ng-ui/src/**/*.html"
-            ]
+            "lintFilePatterns": ["libs/tcp-ng-ui/src/**/*.ts", "libs/tcp-ng-ui/src/**/*.html"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/tcp-ng-ui"
-          ],
+          "outputs": ["coverage/libs/tcp-ng-ui"],
           "options": {
             "jestConfig": "libs/tcp-ng-ui/jest.config.js",
             "passWithNoTests": true
@@ -512,9 +468,7 @@
                 "output": "./assets"
               }
             ],
-            "styles": [
-              "apps/playground/src/styles.scss"
-            ],
+            "styles": ["apps/playground/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -567,17 +521,12 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/playground/src/**/*.ts",
-              "apps/playground/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/playground/src/**/*.ts", "apps/playground/src/**/*.html"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/playground"
-          ],
+          "outputs": ["coverage/apps/playground"],
           "options": {
             "jestConfig": "apps/playground/jest.config.js",
             "passWithNoTests": true
@@ -606,9 +555,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/playground-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/playground-e2e/**/*.{js,ts}"]
           }
         }
       }

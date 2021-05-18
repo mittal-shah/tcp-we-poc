@@ -16,29 +16,29 @@ export type AutoCompleteOptions = 'on' | 'off';
 export type InputSuffixIcon = 'calendar' | 'clock' | 'search' | 'chevron-down' | 'list' | undefined;
 
 export interface EditableInputModel {
-  ShouldFocus: boolean | undefined;
+  ShouldFocus?: boolean | undefined;
 
-  BlnForceUppercase: boolean | undefined;
+  BlnForceUppercase?: boolean | undefined;
 
-  BlnIsDisabled: boolean | undefined;
+  BlnIsDisabled?: boolean | undefined;
 
-  BlnIsEditable: boolean | undefined;
+  BlnIsEditable?: boolean | undefined;
 
-  BlnIsRequired: boolean | undefined;
+  BlnIsRequired?: boolean | undefined;
 
-  BlnIsVisible: boolean | undefined;
+  BlnIsVisible?: boolean | undefined;
 
-  IntMaxLength: number | undefined;
+  IntMaxLength?: number | undefined;
 
-  StrId: string | undefined;
+  StrId?: string | undefined;
 
-  StrSuffix: string | undefined;
+  StrSuffix?: string | undefined;
 
-  StrText: string | undefined;
+  StrText?: string | undefined;
 
-  StrRegExp: string | undefined;
+  StrRegExp?: string | undefined;
 
-  onChange: (value: string | undefined) => void | undefined;
+  onChange?: (value: string | undefined) => void | undefined;
 
   getAutoCapitalize(): AutoCapitalizeOptions;
 
@@ -54,7 +54,7 @@ export interface EditableInputModel {
 
   getType(): string;
 
-  initializeInput(appConfig: AppConfigImpl, companyConfig: CompanyConfigImpl): void;
+  initializeInput(appConfig: AppConfigImpl | undefined, companyConfig: CompanyConfigImpl | undefined): void;
 
   isInputEditable(): boolean;
 
@@ -90,9 +90,9 @@ export interface EditableInputModel {
 
   isValidValue(): boolean;
 
-  getMaxValue();
+  getMaxValue(): AnyType;
 
-  getMinValue();
+  getMinValue(): AnyType;
 
   getValue(): AnyType;
 
@@ -100,14 +100,14 @@ export interface EditableInputModel {
 }
 
 export interface EditableTextInputModel extends EditableInputModel, TextInputModel {
-  BlnIsMaskedValue: boolean | undefined;
-  IntNumberOfLines: number | undefined;
+  BlnIsMaskedValue?: boolean | undefined;
+  IntNumberOfLines?: number | undefined;
 }
 
 export interface EditableDecimalInputModel extends EditableInputModel, DecimalInputModel {}
 
 export interface EditableNumberInputModel extends EditableInputModel, NumberInputModel {
-  BlnIsMaskedValue: boolean | undefined;
+  BlnIsMaskedValue?: boolean | undefined;
 }
 
 export interface EditableHourMinuteInputModel extends EditableInputModel, HourMinuteInputModel {}
@@ -115,16 +115,16 @@ export interface EditableHourMinuteInputModel extends EditableInputModel, HourMi
 export interface EditableDateTimeInputModel extends EditableInputModel, DateTimeInputModel {}
 
 export interface EditableDateInputModel extends EditableInputModel {
-  BlnMonthDayOnly: boolean | undefined;
-  BlnTrackDate: boolean | undefined;
-  DatDate: string | undefined;
-  DateValue: Date | undefined;
-  DatMaxDate: string | undefined;
-  DatMinDate: string | undefined;
-  StrFormat: string | undefined;
-  StrMonthDayFormat: string | undefined;
+  BlnMonthDayOnly?: boolean | undefined;
+  BlnTrackDate?: boolean | undefined;
+  DatDate?: string | undefined;
+  DateValue?: Date | null;
+  DatMaxDate?: string | undefined;
+  DatMinDate?: string | undefined;
+  StrFormat?: string | undefined;
+  StrMonthDayFormat?: string | undefined;
 
-  setDate(date: Date);
+  setDate(date: Date | null): void;
 
   getDateFormat(): string;
 }

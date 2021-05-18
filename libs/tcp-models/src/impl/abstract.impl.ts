@@ -19,7 +19,7 @@ export abstract class AbstractImpl {
     return result;
   }
 
-  static clone<T>(classData, type?) {
+  static clone<T>(classData: AnyType, type?: AnyType) {
     if (!type) {
       return AbstractImpl.getObjectFromClass(classData) as T;
     }
@@ -27,7 +27,7 @@ export abstract class AbstractImpl {
     return AbstractImpl.fromJSON(AbstractImpl.getObjectFromClass(classData), type) as T;
   }
 
-  private static getObjectFromClass(implementationClass?) {
+  private static getObjectFromClass(implementationClass?: AnyType) {
     if (!implementationClass) {
       return {};
     }

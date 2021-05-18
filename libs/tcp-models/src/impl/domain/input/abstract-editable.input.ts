@@ -35,7 +35,7 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
 
   StrValue: string | undefined = '';
 
-  onChange: (value: string | undefined) => void | undefined = undefined;
+  onChange?: (value: string | undefined) => void | undefined = undefined;
 
   appConfig: AppConfigImpl | undefined = undefined;
 
@@ -65,15 +65,15 @@ export default abstract class AbstractEditableInput extends AbstractImpl impleme
     return undefined;
   }
 
-  getMaxValue() {
+  getMaxValue(): AnyType {
     return undefined;
   }
 
-  getMinValue() {
+  getMinValue(): AnyType {
     return undefined;
   }
 
-  initializeInput(appConfig: AppConfigImpl, companyConfig: CompanyConfigImpl): void {
+  initializeInput(appConfig: AppConfigImpl | undefined, companyConfig: CompanyConfigImpl | undefined): void {
     this.appConfig = appConfig;
     this.companyConfig = companyConfig;
 

@@ -1,46 +1,44 @@
 <div class='flex editable-input width-full margin-bottom-5'>
   <mat-form-field *ngIf='!!editableInput'>
-    <mat-label>{{ editableInput.StrText }}</mat-label>
+    <mat-label>{{ editableInput!.StrText }}</mat-label>
     <input
       #inputElement='matInput'
       (change)='onChange($event.currentTarget)'
       (ngModelChange)='setValue($event)'
-      *ngIf='!editableInput.isMultiline()'
-      [(ngModel)]='editableInput.StrValue'
-      [autocapitalize]='editableInput.getAutoCapitalize()'
-      [autocomplete]='editableInput.getAutoCompleteType()'
-      [disabled]='!!editableInput.BlnIsDisabled'
-      [maxlength]='editableInput.IntMaxLength'
-      [name]='editableInput.StrId'
-      [ngClass]='{"to-upper-case": editableInput.BlnForceUppercase}'
-      [pattern]='editableInput.StrRegExp'
-      [readonly]='!editableInput.BlnIsEditable'
-      [required]='!!editableInput.BlnIsRequired'
-      [spellcheck]='editableInput.shouldAutoCorrect()'
-      [tcpMax]='editableInput.getMaxValue()'
-      [tcpMin]='editableInput.getMinValue()'
-      [type]='editableInput.getType()'
+      *ngIf='!editableInput!.isMultiline()'
+      [(ngModel)]='editableInput!.StrValue'
+      [autocapitalize]='editableInput!.getAutoCapitalize()'
+      [autocomplete]='editableInput!.getAutoCompleteType()'
+      [disabled]='!!editableInput!.BlnIsDisabled'
+      [maxlength]='editableInput!.IntMaxLength!'
+      [name]='editableInput!.StrId!'
+      [ngClass]='{"to-upper-case": editableInput!.BlnForceUppercase}'
+      [pattern]='editableInput!.StrRegExp!'
+      [readonly]='!editableInput!.BlnIsEditable'
+      [required]='!!editableInput!.BlnIsRequired'
+      [spellcheck]='editableInput!.shouldAutoCorrect()'
+      [type]='editableInput!.getType()'
       matInput
     />
     <textarea
       #inputElement='matInput'
       (change)='onChange($event.currentTarget)'
       (ngModelChange)='setValue($event)'
-      *ngIf='editableInput.isMultiline()'
-      [(ngModel)]='editableInput.StrValue'
-      [disabled]='!!editableInput.BlnIsDisabled'
-      [maxlength]='editableInput.IntMaxLength'
-      [name]='editableInput.StrId'
-      [readonly]='!editableInput.BlnIsEditable'
-      [required]='!!editableInput.BlnIsRequired'
-      [rows]='editableInput.getNumberOfLines()'
-      [spellcheck]='editableInput.shouldAutoCorrect()'
+      *ngIf='editableInput!.isMultiline()'
+      [(ngModel)]='editableInput!.StrValue'
+      [disabled]='!!editableInput!.BlnIsDisabled'
+      [maxlength]='editableInput!.IntMaxLength!'
+      [name]='editableInput!.StrId!'
+      [readonly]='!editableInput!.BlnIsEditable'
+      [required]='!!editableInput!.BlnIsRequired'
+      [rows]='editableInput!.getNumberOfLines()'
+      [spellcheck]='editableInput!.shouldAutoCorrect()'
       cdkTextareaAutosize
       matInput
     ></textarea>
-    <mat-icon *ngIf='editableInput.getInputSuffixIcon()' matSuffix>{{editableInput.getInputSuffixIcon()}}</mat-icon>
-    <mat-hint>{{ editableInput.getHintText() }}</mat-hint>
-    <mat-error>{{ editableInput.getErrorMessage() }}</mat-error>
+    <mat-icon *ngIf='editableInput!.getInputSuffixIcon()' matSuffix>{{editableInput!.getInputSuffixIcon()}}</mat-icon>
+    <mat-hint>{{ editableInput!.getHintText() }}</mat-hint>
+    <mat-error>{{ editableInput!.getErrorMessage() }}</mat-error>
   </mat-form-field>
-  <div *ngIf='editableInput.StrSuffix' class='suffix-text'>{{editableInput.StrSuffix}}</div>
+  <div *ngIf='editableInput?.StrSuffix' class='suffix-text'>{{editableInput?.StrSuffix}}</div>
 </div>

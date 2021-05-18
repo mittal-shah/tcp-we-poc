@@ -44,7 +44,7 @@ export class ExceptionListContextImpl extends AbstractImpl implements ExceptionL
 
   StrTitle: string | undefined = '';
 
-  updateFilterData: () => void;
+  updateFilterData?: () => void;
 
   init(data: ExceptionListContext) {
     if (!data) {

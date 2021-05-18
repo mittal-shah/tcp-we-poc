@@ -104,7 +104,7 @@ export class MocksTextInputs {
   regEx: TextInput = AbstractImpl.fromJSON(
     {
       StrText: 'regEx: SSN',
-      StrValue: 'mock value',
+      StrValue: '600-10-1000',
       StrId: 'regEx-input',
       StrRegExp: RegExPattern.SSN,
     } as EditableTextInputModel,

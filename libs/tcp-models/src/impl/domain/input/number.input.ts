@@ -113,6 +113,6 @@ export class NumberInput extends AbstractEditableInput implements EditableNumber
       return value !== undefined ? Number(value) : undefined;
     }
 
-    return value.pad(this.LeadingZerosCount);
+    return value?.pad(this.LeadingZerosCount);
   }
 }

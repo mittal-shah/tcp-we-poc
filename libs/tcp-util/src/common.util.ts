@@ -21,7 +21,7 @@ export class CommonUtil {
     return strLocationToSlashApp.slice(intAppPrefixIndex);
   }
 
-  public static isNullOrUndefined(value) {
+  public static isNullOrUndefined(value: any) {
     return value === undefined || value === null;
   }
 }

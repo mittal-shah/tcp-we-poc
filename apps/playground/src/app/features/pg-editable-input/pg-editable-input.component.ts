@@ -24,12 +24,12 @@ export class PgEditableInputComponent implements OnInit {
   mocksNumberInputs = new MocksNumberInputs();
   mocksDecimalInputs = new MocksDecimalInputs();
   mocksDateInputs = new MocksDateInputs();
-  type: string;
+  type: string | undefined;
 
   constructor(private route: ActivatedRoute, private configService: ConfigService) {}
 
   ngOnInit() {
-    this.type = this.route.snapshot.paramMap.get('type');
+    this.type = String(this.route.snapshot.paramMap.get('type'));
     const mocksAppConfigs = new MocksAppConfigs();
     const mocksCompanyConfigs = new MocksCompanyConfigs();
     this.configService.setAppConfig(mocksAppConfigs.webclockAppConfig);

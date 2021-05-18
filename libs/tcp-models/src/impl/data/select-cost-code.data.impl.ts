@@ -27,20 +27,6 @@ export class SelectCostCodeDataImpl extends AbstractImpl implements SelectCostCo
       this.ObjFilterData !== undefined ? AbstractImpl.fromJSON(data.ObjFilterData, FilterDataImpl) : undefined;
   }
 
-  getCostCodeData(): CostCodeSearchDropdownContext {
-    if (!this.ObjFilterData || !this.ObjFilterData.hasValidPagingData()) {
-      return {
-        ObjFilterData: undefined,
-        ArrCostCodeInputs: undefined,
-      };
-    }
-
-    return {
-      ArrCostCodeInputs: this.ArrCostCodeInputs,
-      ObjFilterData: this.ObjFilterData,
-    } as CostCodeSearchDropdownContext;
-  }
-
   createSubmissionData() {
     const data = AbstractImpl.clone<SelectCostCodeDataImpl>(this, SelectCostCodeDataImpl);
 

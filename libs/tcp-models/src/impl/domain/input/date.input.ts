@@ -1,6 +1,6 @@
 import { EditableDateInputModel } from '../../../declaration';
 import AbstractEditableInput from './abstract-editable.input';
-import { DateTimeFormatter } from '@tcp/tcp-core';
+import { DateTimeConstants, DateTimeFormatter } from '@tcp/tcp-core';
 import { AppConfigImpl, CompanyConfigImpl } from '../../config';
 
 export class DateInput extends AbstractEditableInput implements EditableDateInputModel {
@@ -18,7 +18,7 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
 
   DatMinDate: string | undefined = '';
 
-  DateValue: Date | undefined = undefined;
+  DateValue: Date | null = null;
 
   getHintText(): string | undefined {
     return this.DatMinDate && this.DatMaxDate
@@ -41,13 +41,15 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
   initializeInput(appConfig: AppConfigImpl, companyConfig: CompanyConfigImpl) {
     super.initializeInput(appConfig, companyConfig);
 
-    this.StrFormat = this.StrFormat
-      ? DateTimeFormatter.getAdjustedDateFormat(this.StrFormat)
-      : this.companyConfig.getDateFormat();
+    this.StrFormat =
+      (this.StrFormat
+        ? DateTimeFormatter.getAdjustedDateFormat(this.StrFormat)
+        : this.companyConfig?.getDateFormat()) || DateTimeConstants.IsoDateFormat;
 
-    this.StrMonthDayFormat = this.StrMonthDayFormat
-      ? DateTimeFormatter.getAdjustedDateFormat(this.StrMonthDayFormat)
-      : this.companyConfig.getPartialDateFormat();
+    this.StrMonthDayFormat =
+      (this.StrMonthDayFormat
+        ? DateTimeFormatter.getAdjustedDateFormat(this.StrMonthDayFormat)
+        : this.companyConfig?.getPartialDateFormat()) || DateTimeConstants.IsoDateFormat;
 
     this.DateValue = this.DatDate ? DateTimeFormatter.getDate(this.DatDate) : null;
 
@@ -89,7 +91,7 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
     return DateTimeFormatter.isValidISODateString(this.DatDate) && this.isValidMinValue() && this.isValidMaxValue();
   }
 
-  setDate(date: Date) {
+  setDate(date: Date | null) {
     if (!(date instanceof Date)) {
       this.resetDate();
       return;
@@ -111,7 +113,7 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
     this.DateValue = date;
   }
 
-  getDate(): Date | undefined {
+  getDate(): Date | null {
     return this.DateValue;
   }
 
@@ -127,12 +129,12 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
 
       if (!this.isValidMinValue()) {
         const message = this.appConfig && this.appConfig.StrDateUnderMinMessage;
-        return message.format(this.toString(), this.getFormattedMinDate() || '');
+        return message?.format(this.toString(), this.getFormattedMinDate() || '');
       }
 
       if (!this.isValidMaxValue()) {
         const message = this.appConfig && this.appConfig.StrDateOverMaxMessage;
-        return message.format(this.toString(), this.getFormattedMaxDate() || '');
+        return message?.format(this.toString(), this.getFormattedMaxDate() || '');
       }
 
       return this.appConfig && this.appConfig.StrEnterValidDate;
@@ -142,7 +144,7 @@ export class DateInput extends AbstractEditableInput implements EditableDateInpu
   }
 
   getDateFormat() {
-    return this.BlnMonthDayOnly ? this.StrMonthDayFormat : this.StrFormat;
+    return (this.BlnMonthDayOnly ? this.StrMonthDayFormat : this.StrFormat) || DateTimeConstants.IsoDateFormat;
   }
 
   private resetDate() {

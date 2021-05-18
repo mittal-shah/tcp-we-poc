@@ -1,26 +1,26 @@
 <div class='flex editable-input width-full margin-bottom-5'>
   <mat-form-field *ngIf='!!editableInput'>
-    <mat-label>{{ editableInput.StrText }}</mat-label>
+    <mat-label>{{ editableInput!.StrText }}</mat-label>
     <input
       #inputElement='matInput'
       (change)='onChange($event.currentTarget)'
       (ngModelChange)='setValue($event)'
-      [(ngModel)]='editableInput.StrValue'
-      [autocomplete]='editableInput.getAutoCompleteType()'
-      [disabled]='!!editableInput.BlnIsDisabled'
-      [maxlength]='editableInput.IntMaxLength'
-      [name]='editableInput.StrId'
-      [pattern]='editableInput.StrRegExp'
-      [readonly]='!editableInput.BlnIsEditable'
-      [required]='!!editableInput.BlnIsRequired'
-      [tcpMax]='editableInput.getMaxValue()'
-      [tcpMin]='editableInput.getMinValue()'
-      [type]='editableInput.getType()'
+      [(ngModel)]='editableInput!.StrValue'
+      [autocomplete]='editableInput!.getAutoCompleteType()'
+      [disabled]='!!editableInput!.BlnIsDisabled'
+      [maxlength]='editableInput!.IntMaxLength!'
+      [name]='editableInput!.StrId!'
+      [pattern]='editableInput!.StrRegExp!'
+      [readonly]='!editableInput!.BlnIsEditable'
+      [required]='!!editableInput!.BlnIsRequired'
+      [tcpMax]='editableInput!.getMaxValue()'
+      [tcpMin]='editableInput!.getMinValue()'
+      [type]='editableInput!.getType()'
       matInput
     />
-    <mat-icon *ngIf='editableInput.getInputSuffixIcon()' matSuffix>{{editableInput.getInputSuffixIcon()}}</mat-icon>
-    <mat-hint>{{ editableInput.getHintText() }}</mat-hint>
-    <mat-error>{{ editableInput.getErrorMessage() }}</mat-error>
+    <mat-icon *ngIf='editableInput!.getInputSuffixIcon()' matSuffix>{{editableInput!.getInputSuffixIcon()}}</mat-icon>
+    <mat-hint>{{ editableInput!.getHintText() }}</mat-hint>
+    <mat-error>{{ editableInput!.getErrorMessage() }}</mat-error>
   </mat-form-field>
-  <div *ngIf='editableInput.StrSuffix' class='suffix-text'>{{editableInput.StrSuffix}}</div>
+  <div *ngIf='editableInput?.StrSuffix' class='suffix-text'>{{editableInput?.StrSuffix}}</div>
 </div>

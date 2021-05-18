@@ -3,13 +3,13 @@ import { InputSuffixIcon } from '../../../declaration';
 import { DropdownInput } from './dropdown.input';
 
 export class SearchDropdownInput extends DropdownInput {
-  BlnUseInternalFilter: boolean | undefined = false;
+  BlnUseInternalFilter?: boolean | undefined = false;
 
-  ObjFilterData: FilterDataImpl | undefined = undefined;
+  ObjFilterData?: FilterDataImpl | undefined = undefined;
 
-  updateFilterFunction: (filterData: FilterDataImpl) => void;
+  updateFilterFunction?: (filterData: FilterDataImpl) => void | undefined = undefined;
 
-  loadInfoFunction: () => void;
+  loadInfoFunction?: () => void | undefined = undefined;
 
   initialMultiSelectValue: string | undefined = '';
 

@@ -212,9 +212,9 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Cus
         break;
     }
 
-    if (customInput.StrCustomFormat) {
-      customInput.IntMaxLength = customInput.StrCustomFormat.length;
-      customInput.StrRegExp = MaskedInputFormatter.getMaskFromCustomFormat(customInput.StrCustomFormat);
+    if (this.StrCustomFormat) {
+      customInput.IntMaxLength = this.StrCustomFormat.length;
+      customInput.StrRegExp = MaskedInputFormatter.getMaskFromCustomFormat(this.StrCustomFormat);
     }
 
     return customInput;

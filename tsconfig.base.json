@@ -2,6 +2,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "downlevelIteration": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -10,33 +15,23 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tcp/tcp-models": [
-        "libs/tcp-models/src/index.ts"
-      ],
-      "@tcp/tcp-core": [
-        "libs/tcp-core/src/index.ts"
-      ],
-      "@tcp/tcp-util": [
-        "libs/tcp-util/src/index.ts"
-      ],
-      "@tcp/tcp-clock-models": [
-        "libs/tcp-clock-models/src/index.ts"
-      ],
-      "@tcp/tcp-ng-ui": [
-        "libs/tcp-ng-ui/src/index.ts"
-      ]
+      "@tcp/tcp-models": ["libs/tcp-models/src/index.ts"],
+      "@tcp/tcp-core": ["libs/tcp-core/src/index.ts"],
+      "@tcp/tcp-util": ["libs/tcp-util/src/index.ts"],
+      "@tcp/tcp-clock-models": ["libs/tcp-clock-models/src/index.ts"],
+      "@tcp/tcp-ng-ui": ["libs/tcp-ng-ui/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+  "exclude": ["node_modules", "tmp"]
 }

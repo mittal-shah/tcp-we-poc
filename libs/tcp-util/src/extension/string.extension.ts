@@ -23,11 +23,11 @@ String.prototype.isNewLineOrTab = function () {
 };
 
 String.prototype.containsParam = function () {
-  return /{(\d+)}/g.test(this);
+  return /{(\d+)}/g.test(String(this));
 };
 
 String.prototype.isEmptyOrSpaces = function () {
-  return !this && this.trim().length === 0 && !this.isNewLineOrTab();
+  return !this && String(this).trim().length === 0 && !String(this).isNewLineOrTab();
 };
 
 String.prototype.isDefinedOrExist = function () {

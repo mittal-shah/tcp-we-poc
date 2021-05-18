@@ -1,5 +1,6 @@
 import { AbstractImpl } from '../../abstract.impl';
 import { CompanyConfigImpl } from '../company.config.impl';
+import { CompanyConfig } from '../../../declaration';
 
 export class MocksCompanyConfigs {
   webClockCompanyConfig: CompanyConfigImpl = AbstractImpl.fromJSON(
@@ -670,7 +671,7 @@ export class MocksCompanyConfigs {
         },
       ],
       _StrTickerTimeFormat: 'hh:mm:ss tt',
-    },
+    } as CompanyConfig,
     CompanyConfigImpl,
   );
 }

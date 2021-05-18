@@ -32,13 +32,13 @@ export class DropdownInput extends AbstractEditableInput implements EditableText
 
   StrMinDecimalValue: string | undefined = '';
 
-  handleOnSelectItem: (value: AnyType) => void | undefined;
+  handleOnSelectItem?: (value: AnyType) => void;
 
-  onExplicitSave: (item: SelectItemImpl) => void;
+  onExplicitSave?: (item: SelectItemImpl) => void;
 
-  onMultiSelectSave: (items: SelectItemImpl[]) => void;
+  onMultiSelectSave?: (items: SelectItemImpl[]) => void;
 
-  onCancel: () => void;
+  onCancel?: () => void;
 
   addDropdownEntryInput: CustomFieldControlImpl | undefined = undefined;
 
@@ -152,7 +152,7 @@ export class DropdownInput extends AbstractEditableInput implements EditableText
       return this.getNoneText();
     }
 
-    return appConfig?.StrSelectedEntityMessage.format(String(selectedItemsLength));
+    return appConfig?.StrSelectedEntityMessage?.format(String(selectedItemsLength));
   }
 
   setModelValue(item: SelectItemImpl | undefined) {
