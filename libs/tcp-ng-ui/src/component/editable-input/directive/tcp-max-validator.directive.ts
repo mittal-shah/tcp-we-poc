@@ -2,7 +2,7 @@ import { Directive, Input } from '@angular/core';
 import { NG_VALIDATORS, Validator } from '@angular/forms';
 
 @Directive({
-  selector: '[tcpMax]',
+  selector: '[tcpMax][ngModel]',
   providers: [{ provide: NG_VALIDATORS, useExisting: TcpMaxValidatorDirective, multi: true }],
 })
 export class TcpMaxValidatorDirective implements Validator {

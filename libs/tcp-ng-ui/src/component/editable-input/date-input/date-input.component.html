@@ -4,26 +4,27 @@
 
     <!--shadow input for dynamic date formats-->
     <input
-      (focus)='delegateFocusToViewElement()'
       [disabled]='!!editableInput.BlnIsDisabled'
+      class='shadow-dateInput'
+      (focus)='delegateFocusToViewElement()'
 
       [name]='editableInput.StrId'
       (ngModelChange)='setValue($event)'
       [(ngModel)]='editableInput.DateValue'
       [matDatepicker]='picker'
 
-      class='shadow-dateInput'
       [readonly]='!editableInput.BlnIsEditable'
       [required]='!!editableInput.BlnIsRequired'
+      matInput
 
       [tcpMax]='editableInput.getMaxValue()'
       [tcpMin]='editableInput.getMinValue()'
       [matDatepickerFilter]='dateFilter'
-      matInput
     >
 
     <input
       #inputElement='matInput'
+      matInput
       (change)='onChange($event.currentTarget)'
 
       [disabled]='!!editableInput.BlnIsDisabled'
@@ -31,7 +32,6 @@
 
       [required]='!!editableInput.BlnIsRequired'
       [value]='editableInput.getValue()'
-      matInput
     />
     <mat-datepicker-toggle [for]='picker' matSuffix></mat-datepicker-toggle>
     <mat-datepicker #picker [startAt]='editableInput.getMinValue()'></mat-datepicker>
