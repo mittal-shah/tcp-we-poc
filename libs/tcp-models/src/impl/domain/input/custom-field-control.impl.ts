@@ -20,37 +20,22 @@ import { DropdownInput } from './dropdown.input';
 
 export class CustomFieldControlImpl extends AbstractEditableInput implements EditableCustomFieldInputModel {
   ArrDateOptions: DateSelectItemImpl[] | undefined = [];
-
   ArrStringOptions: string[] | undefined = [];
-
   ArrTimeOptions: TimeSelectItemImpl[] | undefined = [];
-
   BlnForceLowercase: boolean | undefined = false;
-
   BlnForceUppercase: boolean | undefined = false;
-
   BlnIsMaskedValue: boolean | undefined = false;
-
   BlnIsSelected: boolean | undefined = false;
-
   DatMaxDate: string | undefined = '';
-
   DatMinDate: string | undefined = '';
-
   IntDataType: number | undefined = 0;
-
   IntInputMethod: number | undefined = 0;
-
   IntValue: number | undefined;
-
   LngRecordId: number | undefined = 0;
-
   StrCharWhitelist: string | undefined = '';
-
   StrCustomFormat: string | undefined = '';
 
   private inputControl: EditableInputModel | undefined;
-
   private KeyTextItems: KeyTextItemImpl[] | undefined = [];
 
   getNumberValue() {

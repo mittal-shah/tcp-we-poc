@@ -4,6 +4,7 @@ import {
   EditableInputModel,
   MocksAppConfigs,
   MocksCompanyConfigs,
+  MocksCustomFieldInputs,
   MocksDateInputs,
   MocksDecimalInputs,
   MocksNumberInputs,
@@ -24,6 +25,7 @@ export class PgEditableInputComponent implements OnInit {
   mocksNumberInputs = new MocksNumberInputs();
   mocksDecimalInputs = new MocksDecimalInputs();
   mocksDateInputs = new MocksDateInputs();
+  mocksCustomFieldInputs = new MocksCustomFieldInputs();
   type: string | undefined;
 
   constructor(private route: ActivatedRoute, private configService: ConfigService) {}

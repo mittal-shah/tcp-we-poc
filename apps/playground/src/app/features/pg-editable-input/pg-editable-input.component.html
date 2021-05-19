@@ -39,6 +39,16 @@
     </div>
   </section>
 
+  <section id='custom-field'>
+    <h2>Custom Field Input</h2>
+    <div *ngFor='let input of mocksCustomFieldInputs | keyvalue'>
+      <tcp-custom-field-input [editableInput]='input.value' class='input-common'></tcp-custom-field-input>
+      <button (click)='showDetail(input.value)' mat-icon-button type='button'>
+        <mat-icon>info</mat-icon>
+      </button>
+    </div>
+  </section>
+
   <div class='padding-20'>Form valid: {{inputForm.valid}}</div>
   <button [disabled]='!inputForm.valid' color='primary' mat-flat-button>Submit</button>
 </form>
