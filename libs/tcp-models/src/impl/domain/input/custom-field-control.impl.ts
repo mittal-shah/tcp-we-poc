@@ -1,5 +1,5 @@
 import AbstractEditableInput from './abstract-editable.input';
-import { CustomFieldControlModel } from '../../../declaration';
+import { CustomFieldControlModel, EditableCustomFieldInputModel } from '../../../declaration';
 import { AnyType, ListItemContext } from '../../../declaration/types.declaration';
 import CustomFieldDataType from '../../../constants/custom-field-data-type.constant';
 import CustomFieldInputMethod from '../../../constants/custom-field-input-method.constant';
@@ -18,7 +18,7 @@ import { NumberInput } from './number.input';
 import { TextInput } from './text.input';
 import { DropdownInput } from './dropdown.input';
 
-export class CustomFieldControlImpl extends AbstractEditableInput implements CustomFieldControlModel {
+export class CustomFieldControlImpl extends AbstractEditableInput implements EditableCustomFieldInputModel {
   ArrDateOptions: DateSelectItemImpl[] | undefined = [];
 
   ArrStringOptions: string[] | undefined = [];
@@ -172,10 +172,6 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Cus
   private createInput(dataType: number | undefined) {
     let customInput;
     const isDecimal = this.StrCharWhitelist?.indexOf('.') !== -1;
-    if (!this.companyConfig) {
-      return undefined;
-    }
-
     switch (dataType) {
       case CustomFieldDataType.FullDate:
       case CustomFieldDataType.PartialDate:

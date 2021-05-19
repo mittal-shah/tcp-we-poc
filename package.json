@@ -108,7 +108,8 @@
   },
   "lint-staged": {
     "*.{js,json,scss,ts,tsx,html}": [
-      "yarn format --uncommitted"
+      "yarn format --uncommitted",
+      "yarn affected:lint --uncommitted"
     ]
   }
 }

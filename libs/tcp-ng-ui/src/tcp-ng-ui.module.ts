@@ -5,6 +5,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import {
   AlertDialogComponent,
+  CustomFieldInputComponent,
   DateInputComponent,
   DecimalInputComponent,
   DropdownInputComponent,
@@ -42,6 +43,7 @@ import { AbstractEditableInputComponent } from './component/editable-input/abstr
     DecimalInputComponent,
     DateInputComponent,
     TextInputComponent,
+    CustomFieldInputComponent,
   ],
   imports: [
     CommonModule,
@@ -80,6 +82,7 @@ import { AbstractEditableInputComponent } from './component/editable-input/abstr
 
     AlertDialogComponent,
     TextInputComponent,
+    CustomFieldInputComponent,
     NumberInputComponent,
     DecimalInputComponent,
     DateInputComponent,

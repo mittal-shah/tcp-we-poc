@@ -7,12 +7,12 @@
         [dropdownInput]='data.createCompanyDropdownInput(config.StrSelectCompany, selectChangeHandler.bind(this))'></tcp-dropdown-input>
     </div>
     <div *ngIf='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'>
-      <tcp-editable-input
-        [editableInput]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'></tcp-editable-input>
+      <tcp-custom-field-input
+        [editableInput]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'></tcp-custom-field-input>
     </div>
     <div *ngIf='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin && shouldShowPIN'>
-      <tcp-editable-input
-        [editableInput]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin'></tcp-editable-input>
+      <tcp-custom-field-input
+        [editableInput]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin'></tcp-custom-field-input>
     </div>
     <div class='padding-bottom-20 padding-top-20'>
       <button (click)='authenticate()' [disabled]='!logonForm.valid' color='primary'

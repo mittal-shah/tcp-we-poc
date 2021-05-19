@@ -1,4 +1,5 @@
 import {
+  CustomFieldControlModel,
   DateTimeInputModel,
   DecimalInputModel,
   HourMinuteInputModel,
@@ -17,27 +18,16 @@ export type InputSuffixIcon = 'calendar' | 'clock' | 'search' | 'chevron-down' |
 
 export interface EditableInputModel {
   ShouldFocus?: boolean | undefined;
-
   BlnForceUppercase?: boolean | undefined;
-
   BlnIsDisabled?: boolean | undefined;
-
   BlnIsEditable?: boolean | undefined;
-
   BlnIsRequired?: boolean | undefined;
-
   BlnIsVisible?: boolean | undefined;
-
   IntMaxLength?: number | undefined;
-
   StrId?: string | undefined;
-
   StrSuffix?: string | undefined;
-
   StrText?: string | undefined;
-
   StrRegExp?: string | undefined;
-
   onChange?: (value: string | undefined) => void | undefined;
 
   getAutoCapitalize(): AutoCapitalizeOptions;
@@ -97,6 +87,10 @@ export interface EditableInputModel {
   getValue(): AnyType;
 
   setValue(value: AnyType): AnyType;
+}
+
+export interface EditableCustomFieldInputModel extends EditableInputModel, CustomFieldControlModel {
+  getComponent(): AnyType;
 }
 
 export interface EditableTextInputModel extends EditableInputModel, TextInputModel {
