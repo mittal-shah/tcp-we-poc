@@ -1,9 +1,9 @@
-import AbstractEditableInput from './abstract-editable.input';
+import AbstractEditableInputImpl from './abstract-editable.input.impl';
 import RegExPattern from '../../../constants/reg-ex-pattern.constant';
 import { EditableNumberInputModel } from '../../../declaration';
 import { CommonUtil } from '@tcp/tcp-util';
 
-export class NumberInput extends AbstractEditableInput implements EditableNumberInputModel {
+export class NumberInputImpl extends AbstractEditableInputImpl implements EditableNumberInputModel {
   BlnIsMaskedValue: boolean | undefined = false;
 
   IntMaxValue: number | undefined;

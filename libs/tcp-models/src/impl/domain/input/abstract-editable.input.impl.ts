@@ -8,7 +8,7 @@ import {
 import { AppConfigImpl, CompanyConfigImpl } from '../../config';
 import { AbstractImpl } from '../../abstract.impl';
 
-export default abstract class AbstractEditableInput extends AbstractImpl implements EditableInputModel {
+export default abstract class AbstractEditableInputImpl extends AbstractImpl implements EditableInputModel {
   DefaultNumberOfLines = 1;
 
   ShouldFocus: boolean | undefined = false;

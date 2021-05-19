@@ -1,7 +1,7 @@
 import { ListItemContext, LogOnData, MenuItemModel } from '../../declaration';
 import { CompanySelectItemImpl, DeviceInfoImpl, SelectItemImpl, VersionInfoImpl } from '../domain';
 import { AbstractImpl } from '../abstract.impl';
-import { DropdownInput } from '../domain/input';
+import { DropdownInputImpl } from '../domain/input';
 
 export class LogOnDataImpl extends AbstractImpl implements LogOnData {
   ArrCompanies: CompanySelectItemImpl[] | undefined = [];
@@ -102,7 +102,7 @@ export class LogOnDataImpl extends AbstractImpl implements LogOnData {
       return undefined;
     }
 
-    const input = new DropdownInput();
+    const input = new DropdownInputImpl();
 
     input.handleOnSelectItem = onSelect;
     input.StrText = label;

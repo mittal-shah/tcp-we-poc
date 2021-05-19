@@ -1,8 +1,8 @@
-import AbstractEditableInput from './abstract-editable.input';
+import AbstractEditableInputImpl from './abstract-editable.input.impl';
 import { EditableHourMinuteInputModel } from '../../../declaration';
 import { DateTimeFormatter } from '@tcp/tcp-core';
 
-export class HourMinuteInput extends AbstractEditableInput implements EditableHourMinuteInputModel {
+export class HourMinuteInputImpl extends AbstractEditableInputImpl implements EditableHourMinuteInputModel {
   HrmValue: string | undefined = '';
 
   IntMaxMinutes: number | undefined = 0;

@@ -1,16 +1,16 @@
-import { DecimalInput } from '../decimal.input';
+import { DecimalInputImpl } from '../decimal.input.impl';
 import { AbstractImpl } from '../../../abstract.impl';
 import { EditableDecimalInputModel } from '../../../../declaration';
 
 export class MocksDecimalInputs {
-  basic: DecimalInput = AbstractImpl.fromJSON(
+  basic: DecimalInputImpl = AbstractImpl.fromJSON(
     {
       StrId: 'basic-decimal-input',
     } as EditableDecimalInputModel,
-    DecimalInput,
+    DecimalInputImpl,
   );
 
-  minMax: DecimalInput = AbstractImpl.fromJSON(
+  minMax: DecimalInputImpl = AbstractImpl.fromJSON(
     {
       StrId: 'min1-max99.999-decimal-input',
       StrText: 'min 1 - max 99.999',
@@ -19,6 +19,6 @@ export class MocksDecimalInputs {
       StrMinValue: '1.000',
       StrMaxValue: '99.999',
     } as EditableDecimalInputModel,
-    DecimalInput,
+    DecimalInputImpl,
   );
 }

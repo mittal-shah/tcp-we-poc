@@ -1,8 +1,8 @@
 import { FilterDataImpl } from '../../data';
 import { InputSuffixIcon } from '../../../declaration';
-import { DropdownInput } from './dropdown.input';
+import { DropdownInputImpl } from './dropdown.input.impl';
 
-export class SearchDropdownInput extends DropdownInput {
+export class SearchDropdownInputImpl extends DropdownInputImpl {
   BlnUseInternalFilter?: boolean | undefined = false;
 
   ObjFilterData?: FilterDataImpl | undefined = undefined;

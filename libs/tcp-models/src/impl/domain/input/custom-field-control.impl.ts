@@ -1,4 +1,4 @@
-import AbstractEditableInput from './abstract-editable.input';
+import AbstractEditableInputImpl from './abstract-editable.input.impl';
 import { CustomFieldControlModel, EditableCustomFieldInputModel } from '../../../declaration';
 import { AnyType, ListItemContext } from '../../../declaration/types.declaration';
 import CustomFieldDataType from '../../../constants/custom-field-data-type.constant';
@@ -10,15 +10,15 @@ import { TimeSelectItemImpl } from '../time-select-item.impl';
 import { MaskedInputFormatter } from '@tcp/tcp-core';
 import { AppConfigImpl, CompanyConfigImpl } from '../../config';
 import { AbstractImpl } from '../../abstract.impl';
-import { SearchDropdownInput } from './search-dropdown.input';
-import { DateInput } from './date.input';
-import { TimeInput } from './time.input';
-import { DecimalInput } from './decimal.input';
-import { NumberInput } from './number.input';
-import { TextInput } from './text.input';
-import { DropdownInput } from './dropdown.input';
+import { SearchDropdownInputImpl } from './search-dropdown.input.impl';
+import { DateInputImpl } from './date.input.impl';
+import { TimeInputImpl } from './time.input.impl';
+import { DecimalInputImpl } from './decimal.input.impl';
+import { NumberInputImpl } from './number.input.impl';
+import { TextInputImpl } from './text.input.impl';
+import { DropdownInputImpl } from './dropdown.input.impl';
 
-export class CustomFieldControlImpl extends AbstractEditableInput implements EditableCustomFieldInputModel {
+export class CustomFieldControlImpl extends AbstractEditableInputImpl implements EditableCustomFieldInputModel {
   ArrDateOptions: DateSelectItemImpl[] | undefined = [];
   ArrStringOptions: string[] | undefined = [];
   ArrTimeOptions: TimeSelectItemImpl[] | undefined = [];
@@ -132,7 +132,10 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Edi
       return this.inputControl;
     }
 
-    const searchDropdownInput = AbstractImpl.fromJSON(this.inputControl, SearchDropdownInput) as SearchDropdownInput;
+    const searchDropdownInput = AbstractImpl.fromJSON(
+      this.inputControl,
+      SearchDropdownInputImpl,
+    ) as SearchDropdownInputImpl;
     searchDropdownInput.addDropdownEntryInput = this;
     return searchDropdownInput;
   }
@@ -160,7 +163,7 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Edi
     switch (dataType) {
       case CustomFieldDataType.FullDate:
       case CustomFieldDataType.PartialDate:
-        customInput = AbstractImpl.fromJSON(this, DateInput) as DateInput;
+        customInput = AbstractImpl.fromJSON(this, DateInputImpl) as DateInputImpl;
         customInput.BlnIsEditable = false;
         customInput.BlnMonthDayOnly = dataType === CustomFieldDataType.PartialDate;
         customInput.DatDate = this.StrValue;
@@ -170,7 +173,7 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Edi
         }
         break;
       case CustomFieldDataType.Time:
-        customInput = AbstractImpl.fromJSON(this, TimeInput) as TimeInput;
+        customInput = AbstractImpl.fromJSON(this, TimeInputImpl) as TimeInputImpl;
         customInput.BlnIsEditable = false;
         customInput.TimValue = this.StrValue;
         if (this.companyConfig) {
@@ -179,16 +182,14 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Edi
         break;
       case CustomFieldDataType.Numeric:
         if (isDecimal) {
-          customInput = AbstractImpl.fromJSON(this, DecimalInput) as DecimalInput;
-          // TODO: MSS/MO - Remove the skip formatting once core ticket V7-19004 is done
-          customInput.BlnShouldSkipFixedFormatting = true;
+          customInput = AbstractImpl.fromJSON(this, DecimalInputImpl) as DecimalInputImpl;
         } else {
-          customInput = AbstractImpl.fromJSON(this, NumberInput) as NumberInput;
+          customInput = AbstractImpl.fromJSON(this, NumberInputImpl) as NumberInputImpl;
           customInput.IntValue = this.getNumberValue();
         }
         break;
       default:
-        customInput = AbstractImpl.fromJSON(this, TextInput) as TextInput;
+        customInput = AbstractImpl.fromJSON(this, TextInputImpl) as TextInputImpl;
         customInput.StrRegExp = this.StrCharWhitelist ? `^${this.StrCharWhitelist}$` : undefined;
         break;
     }
@@ -223,7 +224,7 @@ export class CustomFieldControlImpl extends AbstractEditableInput implements Edi
     if (this.isDropdown(this.IntInputMethod)) {
       const listItems = this.getListItems();
       const firstItem = listItems ? listItems[0] : undefined;
-      const customInput = AbstractImpl.fromJSON(this, DropdownInput) as DropdownInput;
+      const customInput = AbstractImpl.fromJSON(this, DropdownInputImpl) as DropdownInputImpl;
       customInput.addDropdownEntryInput = this.isDropdownEditable(this.IntInputMethod)
         ? new CustomFieldControlImpl()
         : undefined;

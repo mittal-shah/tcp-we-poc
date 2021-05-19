@@ -1,13 +1,13 @@
 import { AnyType, EditableTextInputModel, InputSuffixIcon, ListItemContext } from '../../../declaration';
 import ModelConstant from '../../../constants/model.constant';
 import { CoveredEmployeeImpl } from '../covered-employee.impl';
-import AbstractEditableInput from './abstract-editable.input';
+import AbstractEditableInputImpl from './abstract-editable.input.impl';
 import { IntStringItemImpl } from '../int-string-item.impl';
 import { LongStringItemImpl } from '../long-string-item.impl';
 import { SelectItemImpl } from '../select-item.impl';
 import { CustomFieldControlImpl } from './custom-field-control.impl';
 
-export class DropdownInput extends AbstractEditableInput implements EditableTextInputModel {
+export class DropdownInputImpl extends AbstractEditableInputImpl implements EditableTextInputModel {
   BlnAllowNoneSelection: boolean | undefined = true;
 
   BlnIsMaskedValue: boolean | undefined = false;

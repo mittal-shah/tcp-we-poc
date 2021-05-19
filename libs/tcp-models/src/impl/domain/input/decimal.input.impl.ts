@@ -1,9 +1,9 @@
-import AbstractEditableInput from './abstract-editable.input';
+import AbstractEditableInputImpl from './abstract-editable.input.impl';
 import { EditableDecimalInputModel } from '../../../declaration';
 import RegExPattern from '../../../constants/reg-ex-pattern.constant';
 import { DateTimeFormatter } from '@tcp/tcp-core';
 
-export class DecimalInput extends AbstractEditableInput implements EditableDecimalInputModel {
+export class DecimalInputImpl extends AbstractEditableInputImpl implements EditableDecimalInputModel {
   BlnShouldSkipFixedFormatting: boolean | undefined = false;
 
   IntPrecision: number | undefined = 0;

@@ -1,8 +1,8 @@
 import { EditableTimeInputModel, InputSuffixIcon } from '../../../declaration';
-import AbstractEditableInput from './abstract-editable.input';
+import AbstractEditableInputImpl from './abstract-editable.input.impl';
 import { DateTimeConstants, DateTimeFormatter } from '@tcp/tcp-core';
 
-export class TimeInput extends AbstractEditableInput implements EditableTimeInputModel {
+export class TimeInputImpl extends AbstractEditableInputImpl implements EditableTimeInputModel {
   StrFormat: string = DateTimeConstants.IsoTimeFormat;
 
   TimMaxValue: string | undefined = '';

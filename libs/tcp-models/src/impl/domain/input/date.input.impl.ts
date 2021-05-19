@@ -1,9 +1,9 @@
 import { EditableDateInputModel } from '../../../declaration';
-import AbstractEditableInput from './abstract-editable.input';
+import AbstractEditableInputImpl from './abstract-editable.input.impl';
 import { DateTimeConstants, DateTimeFormatter } from '@tcp/tcp-core';
 import { AppConfigImpl, CompanyConfigImpl } from '../../config';
 
-export class DateInput extends AbstractEditableInput implements EditableDateInputModel {
+export class DateInputImpl extends AbstractEditableInputImpl implements EditableDateInputModel {
   BlnMonthDayOnly: boolean | undefined = false;
 
   BlnTrackDate: boolean | undefined; // TODO: MSS - not integrated yet

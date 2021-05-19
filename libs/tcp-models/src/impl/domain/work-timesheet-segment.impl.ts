@@ -1,7 +1,7 @@
 import { WorkTimesheetSegmentModel } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
 import { LegendItemImpl } from './legend-item.impl';
-import { TextInput } from './input/text.input';
+import { TextInputImpl } from './input/text.input.impl';
 
 export class WorkTimesheetSegmentImpl extends AbstractImpl implements WorkTimesheetSegmentModel {
   BlnCanApproveEmployee: boolean | undefined = false;
@@ -34,7 +34,7 @@ export class WorkTimesheetSegmentImpl extends AbstractImpl implements WorkTimesh
 
   ObjLegendItem: LegendItemImpl | undefined = undefined;
 
-  ObjTextInputNotes: TextInput | undefined = undefined;
+  ObjTextInputNotes: TextInputImpl | undefined = undefined;
 
   StrCostCodeDescription: string | undefined = '';
 
@@ -68,6 +68,6 @@ export class WorkTimesheetSegmentImpl extends AbstractImpl implements WorkTimesh
     this.ObjLegendItem =
       this.ObjLegendItem !== undefined ? AbstractImpl.fromJSON(data.ObjLegendItem, LegendItemImpl) : undefined;
     this.ObjTextInputNotes =
-      this.ObjTextInputNotes !== undefined ? AbstractImpl.fromJSON(data.ObjTextInputNotes, TextInput) : undefined;
+      this.ObjTextInputNotes !== undefined ? AbstractImpl.fromJSON(data.ObjTextInputNotes, TextInputImpl) : undefined;
   }
 }

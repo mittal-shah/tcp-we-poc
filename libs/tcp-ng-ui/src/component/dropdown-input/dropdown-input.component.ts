@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSelect } from '@angular/material/select';
-import { AnyType, AppConfigImpl, CompanyConfigImpl, DropdownInput } from '@tcp/tcp-models';
+import { AnyType, AppConfigImpl, CompanyConfigImpl, DropdownInputImpl } from '@tcp/tcp-models';
 import { ConfigService } from '../../service/config.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ConfigService } from '../../service/config.service';
 export class DropdownInputComponent implements OnInit, AfterViewInit {
   @ViewChild('inputElement', { static: false }) inputElement: MatSelect | undefined;
 
-  @Input() dropdownInput: DropdownInput | undefined;
+  @Input() dropdownInput: DropdownInputImpl | undefined;
   appConfig: AppConfigImpl | undefined;
   companyConfig: CompanyConfigImpl | undefined;
 

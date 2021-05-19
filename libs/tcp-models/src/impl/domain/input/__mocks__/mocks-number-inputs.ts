@@ -1,26 +1,26 @@
-import { NumberInput } from '../number.input';
+import { NumberInputImpl } from '../number.input.impl';
 import { AbstractImpl } from '../../../abstract.impl';
 import { EditableNumberInputModel } from '../../../../declaration';
 
 export class MocksNumberInputs {
-  basic: NumberInput = AbstractImpl.fromJSON(
+  basic: NumberInputImpl = AbstractImpl.fromJSON(
     {
       StrId: 'basic-number-input',
     } as EditableNumberInputModel,
-    NumberInput,
+    NumberInputImpl,
   );
 
-  password: NumberInput = AbstractImpl.fromJSON(
+  password: NumberInputImpl = AbstractImpl.fromJSON(
     {
       StrId: 'password-number-input',
       StrText: 'password number',
       IntValue: 1,
       BlnIsMaskedValue: true,
     } as EditableNumberInputModel,
-    NumberInput,
+    NumberInputImpl,
   );
 
-  minMax: NumberInput = AbstractImpl.fromJSON(
+  minMax: NumberInputImpl = AbstractImpl.fromJSON(
     {
       StrId: 'min1-max10-number-input',
       StrText: 'min 1 - max 10',
@@ -28,6 +28,6 @@ export class MocksNumberInputs {
       IntMinValue: 1,
       IntMaxValue: 10,
     } as EditableNumberInputModel,
-    NumberInput,
+    NumberInputImpl,
   );
 }

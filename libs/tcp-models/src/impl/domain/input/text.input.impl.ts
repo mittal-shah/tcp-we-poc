@@ -1,10 +1,10 @@
-import AbstractEditableInput from './abstract-editable.input';
+import AbstractEditableInputImpl from './abstract-editable.input.impl';
 import { EditableTextInputModel } from '../../../declaration';
-import { DecimalInput } from './decimal.input';
-import { NumberInput } from './number.input';
+import { DecimalInputImpl } from './decimal.input.impl';
+import { NumberInputImpl } from './number.input.impl';
 import { AbstractImpl } from '../../abstract.impl';
 
-export class TextInput extends AbstractEditableInput implements EditableTextInputModel {
+export class TextInputImpl extends AbstractEditableInputImpl implements EditableTextInputModel {
   BlnIsMaskedValue: boolean | undefined = false;
 
   IntNumberOfLines: number | undefined = 0;
@@ -40,14 +40,14 @@ export class TextInput extends AbstractEditableInput implements EditableTextInpu
   }
 
   toDecimalInput() {
-    const input = AbstractImpl.fromJSON(JSON.stringify(this), DecimalInput);
+    const input = AbstractImpl.fromJSON(JSON.stringify(this), DecimalInputImpl);
     input.StrMaxValue = this.StrMaxDecimalValue;
     input.StrMinValue = this.StrMinDecimalValue;
     return input;
   }
 
   toNumberInput() {
-    return AbstractImpl.fromJSON(JSON.stringify(this), NumberInput);
+    return AbstractImpl.fromJSON(JSON.stringify(this), NumberInputImpl);
   }
 
   getMaxLength(): number | undefined {

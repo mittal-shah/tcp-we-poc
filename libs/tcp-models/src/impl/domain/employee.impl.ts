@@ -72,7 +72,7 @@ import { StringSelectInputImpl } from './string-select-input.impl';
 import { SelectItemImpl } from './select-item.impl';
 import { ExceptionOptionSetImpl } from './exception-option-set.impl';
 import { LegendItemImpl } from './legend-item.impl';
-import { TextInput } from './input/text.input';
+import { TextInputImpl } from './input/text.input.impl';
 import { ViewMessagesDataImpl } from '../data/view-messages-data.impl';
 import { AbstractImpl } from '../abstract.impl';
 
@@ -259,7 +259,7 @@ export class EmployeeImpl extends SelectItemImpl implements EmployeeModel {
 
   ObjSubSearchPlusStatusContext: SubSearchPlusStatusContext | undefined = undefined;
 
-  ObjTextInputLdapLogInId: TextInput | undefined = undefined;
+  ObjTextInputLdapLogInId: TextInputImpl | undefined = undefined;
 
   ObjViewMessagesData: ViewMessagesDataImpl | undefined = undefined;
 
@@ -369,7 +369,7 @@ export class EmployeeImpl extends SelectItemImpl implements EmployeeModel {
 
     this.ObjTextInputLdapLogInId =
       this.ObjTextInputLdapLogInId !== undefined
-        ? AbstractImpl.fromJSON(data.ObjTextInputLdapLogInId, TextInput)
+        ? AbstractImpl.fromJSON(data.ObjTextInputLdapLogInId, TextInputImpl)
         : undefined;
 
     this.ObjViewMessagesData =

@@ -1,6 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
-import { DateInput, DecimalInput, EditableCustomFieldInputModel, NumberInput, TextInput } from '@tcp/tcp-models';
+import {
+  DateInputImpl,
+  DecimalInputImpl,
+  EditableCustomFieldInputModel,
+  NumberInputImpl,
+  TextInputImpl,
+} from '@tcp/tcp-models';
 import { AbstractEditableInputComponent } from '../abstract-editable-input.component';
 
 @Component({
@@ -13,18 +19,18 @@ export class CustomFieldInputComponent extends AbstractEditableInputComponent {
   @Input() editableInput: EditableCustomFieldInputModel | undefined;
 
   isNumberInput() {
-    return this.editableInput?.getComponent() instanceof NumberInput;
+    return this.editableInput?.getComponent() instanceof NumberInputImpl;
   }
 
   isTextInput() {
-    return this.editableInput?.getComponent() instanceof TextInput;
+    return this.editableInput?.getComponent() instanceof TextInputImpl;
   }
 
   isDateInput() {
-    return this.editableInput?.getComponent() instanceof DateInput;
+    return this.editableInput?.getComponent() instanceof DateInputImpl;
   }
 
   isDecimalInput() {
-    return this.editableInput?.getComponent() instanceof DecimalInput;
+    return this.editableInput?.getComponent() instanceof DecimalInputImpl;
   }
 }

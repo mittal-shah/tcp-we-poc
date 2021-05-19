@@ -1,19 +1,19 @@
 import { TrackedFieldContext } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { BooleanInputImpl, DecimalInput, TextInput } from '../domain/input';
+import { BooleanInputImpl, DecimalInputImpl, TextInputImpl } from '../domain/input';
 
 export type TrackInputsContext = {
-  track1Input?: DecimalInput;
-  track2Input?: DecimalInput;
-  track3Input?: DecimalInput;
+  track1Input?: DecimalInputImpl;
+  track2Input?: DecimalInputImpl;
+  track3Input?: DecimalInputImpl;
 };
 
 export class TrackedFieldContextImpl extends AbstractImpl implements TrackedFieldContext {
-  ObjTextInputTrack1?: TextInput | undefined = undefined;
+  ObjTextInputTrack1?: TextInputImpl | undefined = undefined;
 
-  ObjTextInputTrack2?: TextInput | undefined = undefined;
+  ObjTextInputTrack2?: TextInputImpl | undefined = undefined;
 
-  ObjTextInputTrack3?: TextInput | undefined = undefined;
+  ObjTextInputTrack3?: TextInputImpl | undefined = undefined;
 
   StrTitle?: string | undefined = '';
 
@@ -27,13 +27,13 @@ export class TrackedFieldContextImpl extends AbstractImpl implements TrackedFiel
     this.copyTypedArray(data, 'ArrBooleanInputApprovalLevels', BooleanInputImpl);
 
     this.ObjTextInputTrack1 =
-      this.ObjTextInputTrack1 !== undefined ? AbstractImpl.fromJSON(data.ObjTextInputTrack1, TextInput) : undefined;
+      this.ObjTextInputTrack1 !== undefined ? AbstractImpl.fromJSON(data.ObjTextInputTrack1, TextInputImpl) : undefined;
 
     this.ObjTextInputTrack2 =
-      this.ObjTextInputTrack2 !== undefined ? AbstractImpl.fromJSON(data.ObjTextInputTrack2, TextInput) : undefined;
+      this.ObjTextInputTrack2 !== undefined ? AbstractImpl.fromJSON(data.ObjTextInputTrack2, TextInputImpl) : undefined;
 
     this.ObjTextInputTrack3 =
-      this.ObjTextInputTrack3 !== undefined ? AbstractImpl.fromJSON(data.ObjTextInputTrack3, TextInput) : undefined;
+      this.ObjTextInputTrack3 !== undefined ? AbstractImpl.fromJSON(data.ObjTextInputTrack3, TextInputImpl) : undefined;
   }
 
   copyDataFromInputs(addEditTimesheetInputs: TrackInputsContext) {
@@ -54,8 +54,8 @@ export class TrackedFieldContextImpl extends AbstractImpl implements TrackedFiel
     }
   }
 
-  copyTextInputToDecimal(textInputTrack: TextInput) {
-    const decimalInput = new DecimalInput();
+  copyTextInputToDecimal(textInputTrack: TextInputImpl) {
+    const decimalInput = new DecimalInputImpl();
 
     decimalInput.BlnIsDisabled = textInputTrack.BlnIsDisabled;
     decimalInput.BlnIsEditable = textInputTrack.BlnIsEditable;

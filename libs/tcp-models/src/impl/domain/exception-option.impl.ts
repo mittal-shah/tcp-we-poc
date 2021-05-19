@@ -1,6 +1,6 @@
 import { ExceptionOptionModel } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
-import { BooleanInputImpl, HourMinuteInput } from './input';
+import { BooleanInputImpl, HourMinuteInputImpl } from './input';
 
 export class ExceptionOptionImpl extends AbstractImpl implements ExceptionOptionModel {
   ArrBooleanInputExceptionSettings: BooleanInputImpl[] | undefined = [];
@@ -11,13 +11,13 @@ export class ExceptionOptionImpl extends AbstractImpl implements ExceptionOption
 
   LngId: number | undefined = 0;
 
-  ObjHourMinuteInput1: HourMinuteInput | undefined;
+  ObjHourMinuteInput1: HourMinuteInputImpl | undefined;
 
-  ObjHourMinuteInput2: HourMinuteInput | undefined;
+  ObjHourMinuteInput2: HourMinuteInputImpl | undefined;
 
-  ObjHourMinuteInput3: HourMinuteInput | undefined;
+  ObjHourMinuteInput3: HourMinuteInputImpl | undefined;
 
-  ObjHourMinuteInput4: HourMinuteInput | undefined;
+  ObjHourMinuteInput4: HourMinuteInputImpl | undefined;
 
   StrText: string | undefined = '';
 
@@ -30,22 +30,22 @@ export class ExceptionOptionImpl extends AbstractImpl implements ExceptionOption
 
     this.ObjHourMinuteInput1 =
       this.ObjHourMinuteInput1 !== undefined
-        ? AbstractImpl.fromJSON(data.ObjHourMinuteInput1, HourMinuteInput)
+        ? AbstractImpl.fromJSON(data.ObjHourMinuteInput1, HourMinuteInputImpl)
         : undefined;
 
     this.ObjHourMinuteInput2 =
       this.ObjHourMinuteInput2 !== undefined
-        ? AbstractImpl.fromJSON(data.ObjHourMinuteInput2, HourMinuteInput)
+        ? AbstractImpl.fromJSON(data.ObjHourMinuteInput2, HourMinuteInputImpl)
         : undefined;
 
     this.ObjHourMinuteInput3 =
       this.ObjHourMinuteInput3 !== undefined
-        ? AbstractImpl.fromJSON(data.ObjHourMinuteInput3, HourMinuteInput)
+        ? AbstractImpl.fromJSON(data.ObjHourMinuteInput3, HourMinuteInputImpl)
         : undefined;
 
     this.ObjHourMinuteInput4 =
       this.ObjHourMinuteInput4 !== undefined
-        ? AbstractImpl.fromJSON(data.ObjHourMinuteInput4, HourMinuteInput)
+        ? AbstractImpl.fromJSON(data.ObjHourMinuteInput4, HourMinuteInputImpl)
         : undefined;
   }
 }
