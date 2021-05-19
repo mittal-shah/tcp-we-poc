@@ -107,9 +107,10 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,scss,ts,tsx,html}": [
-      "yarn format --uncommitted",
-      "yarn affected:lint --uncommitted"
+    "{apps,libs}/**/*.{js,json,scss,ts,tsx,html}": [
+      "yarn affected:lint  -- --uncommitted --parallel -- --fix",
+      "yarn format:write -- --uncommitted",
+      "git add"
     ]
   }
 }
