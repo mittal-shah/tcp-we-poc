@@ -15,8 +15,8 @@ import { ConfigService } from '@tcp/tcp-ng-ui';
 
 @Component({
   selector: 'tcp-pg-editable-input',
-  templateUrl: './pg-editable-input.component.html',
   styleUrls: ['./pg-editable-input.component.scss'],
+  templateUrl: './pg-editable-input.component.html',
 })
 export class PgEditableInputComponent implements OnInit {
   @ViewChild(NgForm) inputForm!: NgForm;

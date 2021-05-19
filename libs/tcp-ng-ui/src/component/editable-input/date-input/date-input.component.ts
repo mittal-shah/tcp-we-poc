@@ -6,8 +6,8 @@ import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'tcp-date-input',
-  templateUrl: './date-input.component.html',
   styleUrls: ['./date-input.component.scss'],
+  templateUrl: './date-input.component.html',
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
 export class DateInputComponent extends AbstractEditableInputComponent {

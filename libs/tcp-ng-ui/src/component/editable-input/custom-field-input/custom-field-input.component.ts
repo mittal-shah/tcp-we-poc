@@ -11,8 +11,8 @@ import { AbstractEditableInputComponent } from '../abstract-editable-input.compo
 
 @Component({
   selector: 'tcp-custom-field-input',
-  templateUrl: './custom-field-input.component.html',
   styleUrls: ['./custom-field-input.component.scss'],
+  templateUrl: './custom-field-input.component.html',
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
 export class CustomFieldInputComponent extends AbstractEditableInputComponent {

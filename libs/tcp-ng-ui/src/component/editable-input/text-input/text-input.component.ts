@@ -5,8 +5,8 @@ import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'tcp-text-input',
-  templateUrl: './text-input.component.html',
   styleUrls: ['./text-input.component.scss'],
+  templateUrl: './text-input.component.html',
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
 export class TextInputComponent extends AbstractEditableInputComponent {

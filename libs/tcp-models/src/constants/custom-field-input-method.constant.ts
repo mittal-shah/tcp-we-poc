@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 const CustomFieldInputMethod = {
   IntEdit: 1,
   IntComboList: 2,

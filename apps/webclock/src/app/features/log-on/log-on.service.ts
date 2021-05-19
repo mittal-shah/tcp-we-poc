@@ -54,8 +54,8 @@ export class LogOnService extends AbstractService {
 
     return AbstractImpl.fromJSON(
       {
-        ObjEmployeeLogOnConfig: result[0],
         ObjCompanyConfig: result[1],
+        ObjEmployeeLogOnConfig: result[0],
         ObjLogOnData: result[2],
       } as EmployeeLogOnContext,
       EmployeeLogOnContextImpl,

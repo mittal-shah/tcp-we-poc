@@ -5,8 +5,8 @@ import { ConfigService } from '../../service/config.service';
 
 @Component({
   selector: 'tcp-dropdown-input',
-  templateUrl: './dropdown-input.component.html',
   styleUrls: ['./dropdown-input.component.scss'],
+  templateUrl: './dropdown-input.component.html',
 })
 export class DropdownInputComponent implements OnInit, AfterViewInit {
   @ViewChild('inputElement', { static: false }) inputElement: MatSelect | undefined;

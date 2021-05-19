@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 const CustomFieldDataType = {
   AlphaNumeric: 1,
   Alpha: 2,

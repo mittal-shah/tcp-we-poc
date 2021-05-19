@@ -7,8 +7,8 @@ import { ConfigService } from '@tcp/tcp-ng-ui';
 
 @Component({
   selector: 'tcp-log-on',
-  templateUrl: './log-on.component.html',
   styleUrls: ['./log-on.component.scss'],
+  templateUrl: './log-on.component.html',
 })
 export class LogOnComponent implements OnInit {
   @ViewChild(NgForm) logOnForm!: NgForm;

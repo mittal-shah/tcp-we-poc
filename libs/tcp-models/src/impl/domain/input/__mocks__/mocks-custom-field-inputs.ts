@@ -5,7 +5,6 @@ import { CustomFieldControlImpl } from '../custom-field-control.impl';
 export class MocksCustomFieldInputs {
   customFieldTextEditAlphaWithSymbolsInput: CustomFieldControlImpl = AbstractImpl.fromJSON(
     {
-      StrId: 'custom-field-text-edit-alpha-with-symbols-input',
       BlnForceLowercase: false,
       BlnForceUppercase: false,
       BlnIsDisabled: false,
@@ -17,6 +16,7 @@ export class MocksCustomFieldInputs {
       IntInputMethod: 1,
       IntMaxLength: 30,
       LngRecordId: 0,
+      StrId: 'custom-field-text-edit-alpha-with-symbols-input',
       StrText: 'text edit alpha-with-sym',
       StrValue: 'mock text',
     } as CustomFieldControlModel,

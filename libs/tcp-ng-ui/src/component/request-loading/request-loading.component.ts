@@ -3,8 +3,8 @@ import { RequestLoadingService } from './request-loading.service';
 
 @Component({
   selector: 'tcp-request-loading',
-  templateUrl: './request-loading.component.html',
   styleUrls: ['./request-loading.component.scss'],
+  templateUrl: './request-loading.component.html',
 })
 export class RequestLoadingComponent implements OnInit {
   isLoading = false;

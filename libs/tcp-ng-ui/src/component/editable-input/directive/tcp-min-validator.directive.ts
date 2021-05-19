@@ -3,8 +3,8 @@ import { NG_VALIDATORS, Validator } from '@angular/forms';
 import { AnyType } from '@tcp/tcp-models';
 
 @Directive({
+  providers: [{ multi: true, provide: NG_VALIDATORS, useExisting: TcpMinValidatorDirective }],
   selector: '[tcpMin][ngModel]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: TcpMinValidatorDirective, multi: true }],
 })
 export class TcpMinValidatorDirective implements Validator {
   @Input() tcpMin: AnyType;

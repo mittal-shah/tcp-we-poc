@@ -1,5 +1,5 @@
 import AbstractEditableInputImpl from './abstract-editable.input.impl';
-import { CustomFieldControlModel, EditableCustomFieldInputModel } from '../../../declaration';
+import { EditableCustomFieldInputModel } from '../../../declaration';
 import { AnyType, ListItemContext } from '../../../declaration/types.declaration';
 import CustomFieldDataType from '../../../constants/custom-field-data-type.constant';
 import CustomFieldInputMethod from '../../../constants/custom-field-input-method.constant';
@@ -36,6 +36,7 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
   StrCustomFormat: string | undefined = '';
 
   private inputControl: EditableInputModel | undefined;
+
   private KeyTextItems: KeyTextItemImpl[] | undefined = [];
 
   getNumberValue() {
@@ -148,9 +149,9 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
     return AbstractImpl.fromJSON(
       {
         ...this,
-        ArrTimeOptions: [],
         ArrDateOptions: [],
         ArrStringOptions: [],
+        ArrTimeOptions: [],
         IntInputMethod: CustomFieldInputMethod.IntEdit,
       },
       CustomFieldControlImpl,

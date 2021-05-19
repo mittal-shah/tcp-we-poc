@@ -12,12 +12,12 @@ export class MocksDecimalInputs {
 
   minMax: DecimalInputImpl = AbstractImpl.fromJSON(
     {
-      StrId: 'min1-max99.999-decimal-input',
-      StrText: 'min 1 - max 99.999',
       IntPrecision: 3,
-      StrValue: '1.000',
-      StrMinValue: '1.000',
+      StrId: 'min1-max99.999-decimal-input',
       StrMaxValue: '99.999',
+      StrMinValue: '1.000',
+      StrText: 'min 1 - max 99.999',
+      StrValue: '1.000',
     } as EditableDecimalInputModel,
     DecimalInputImpl,
   );

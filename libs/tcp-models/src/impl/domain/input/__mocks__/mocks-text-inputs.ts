@@ -14,9 +14,9 @@ export class MocksTextInputs {
   required: TextInputImpl = AbstractImpl.fromJSON(
     {
       BlnIsRequired: true,
+      StrId: 'required-text-input',
       StrText: 'required input',
       StrValue: 'mock value',
-      StrId: 'required-text-input',
     } as EditableTextInputModel,
     TextInputImpl,
   );
@@ -24,9 +24,9 @@ export class MocksTextInputs {
   maxLength: TextInputImpl = AbstractImpl.fromJSON(
     {
       IntMaxLength: 10,
+      StrId: 'max-length-10-text-input',
       StrText: 'max length 10',
       StrValue: 'mock value',
-      StrId: 'max-length-10-text-input',
     } as EditableTextInputModel,
     TextInputImpl,
   );
@@ -34,9 +34,9 @@ export class MocksTextInputs {
   textArea: TextInputImpl = AbstractImpl.fromJSON(
     {
       IntNumberOfLines: 3,
+      StrId: 'text-area-input',
       StrText: 'text area',
       StrValue: 'mock value',
-      StrId: 'text-area-input',
     } as EditableTextInputModel,
     TextInputImpl,
   );
@@ -44,9 +44,9 @@ export class MocksTextInputs {
   passwordEntry: TextInputImpl = AbstractImpl.fromJSON(
     {
       BlnIsMaskedValue: true,
+      StrId: 'password-input',
       StrText: 'password entry',
       StrValue: 'mock value',
-      StrId: 'password-input',
     } as EditableTextInputModel,
     TextInputImpl,
   );
@@ -54,9 +54,9 @@ export class MocksTextInputs {
   forceUpper: TextInputImpl = AbstractImpl.fromJSON(
     {
       BlnForceUppercase: true,
+      StrId: 'upper-case-input',
       StrText: 'upper case entry',
       StrValue: 'mock value',
-      StrId: 'upper-case-input',
     } as EditableTextInputModel,
     TextInputImpl,
   );
@@ -64,9 +64,9 @@ export class MocksTextInputs {
   disabled: TextInputImpl = AbstractImpl.fromJSON(
     {
       BlnIsDisabled: true,
+      StrId: 'disabled-input',
       StrText: 'disabled',
       StrValue: 'mock value',
-      StrId: 'disabled-input',
     } as EditableTextInputModel,
     TextInputImpl,
   );
@@ -74,9 +74,9 @@ export class MocksTextInputs {
   readonlyInput: TextInputImpl = AbstractImpl.fromJSON(
     {
       BlnIsEditable: false,
+      StrId: 'readonly-input',
       StrText: 'readonly',
       StrValue: 'mock value',
-      StrId: 'readonly-input',
     } as EditableTextInputModel,
     TextInputImpl,
   );
@@ -84,38 +84,38 @@ export class MocksTextInputs {
   focused: TextInputImpl = AbstractImpl.fromJSON(
     {
       ShouldFocus: true,
+      StrId: 'focused-input',
       StrText: 'focused',
       StrValue: 'mock value',
-      StrId: 'focused-input',
     } as EditableTextInputModel,
     TextInputImpl,
   );
 
   suffix: TextInputImpl = AbstractImpl.fromJSON(
     {
+      StrId: 'suffix-input',
+      StrSuffix: 'suffix text',
       StrText: 'label text with suffix',
       StrValue: 'mock value',
-      StrSuffix: 'suffix text',
-      StrId: 'suffix-input',
     } as EditableTextInputModel,
     TextInputImpl,
   );
 
   regEx: TextInputImpl = AbstractImpl.fromJSON(
     {
-      StrText: 'regEx: SSN',
-      StrValue: '600-10-1000',
       StrId: 'regEx-input',
       StrRegExp: RegExPattern.SSN,
+      StrText: 'regEx: SSN',
+      StrValue: '600-10-1000',
     } as EditableTextInputModel,
     TextInputImpl,
   );
 
   changeEvent: TextInputImpl = AbstractImpl.fromJSON(
     {
+      StrId: 'on-change-input',
       StrText: 'log changes on change event',
       StrValue: 'mock value',
-      StrId: 'on-change-input',
       onChange: (value) => console.log(`i am changed: ${value}`),
     } as EditableTextInputModel,
     TextInputImpl,

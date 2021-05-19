@@ -6,9 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { TcpNgUiModule } from '@tcp/tcp-ng-ui';
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [AppComponent, PgEditableInputComponent],
   imports: [AppRoutingModule, TcpNgUiModule],
   providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}

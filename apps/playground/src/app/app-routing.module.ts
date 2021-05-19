@@ -3,20 +3,20 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { PgEditableInputComponent } from './features/pg-editable-input/pg-editable-input.component';
 
 const routerOptions: ExtraOptions = {
-  initialNavigation: 'enabled',
-  scrollPositionRestoration: 'enabled',
   anchorScrolling: 'enabled',
-  scrollOffset: [0, 64],
+  initialNavigation: 'enabled',
   onSameUrlNavigation: 'reload',
+  scrollOffset: [0, 64],
+  scrollPositionRestoration: 'enabled',
 };
 
 const routes: Routes = [
-  { path: '', redirectTo: '/editable-input/text', pathMatch: 'full' },
-  { path: 'editable-input/:type', component: PgEditableInputComponent },
+  { path: '', pathMatch: 'full', redirectTo: '/editable-input/text' },
+  { component: PgEditableInputComponent, path: 'editable-input/:type' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
 })
 export class AppRoutingModule {}

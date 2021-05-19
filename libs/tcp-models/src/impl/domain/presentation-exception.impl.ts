@@ -3,15 +3,12 @@ import { PresentationExceptionModel } from '../../declaration';
 import { AbstractImpl } from '../abstract.impl';
 
 export class PresentationExceptionImpl extends AbstractImpl implements PresentationExceptionModel {
-  IntType: number | undefined = 0;
-
-  StrMessage: string | undefined = '';
-
-  StrTitle: string | undefined = '';
-
   static getPasswordEntryExceptions() {
     return [ExceptionType.Confirmation, ExceptionType.EmployeePassword, ExceptionType.EmployeePasswordAndPin];
   }
+  IntType: number | undefined = 0;
+  StrMessage: string | undefined = '';
+  StrTitle: string | undefined = '';
 
   isPresentationException() {
     return this.IntType === ExceptionType.Presentation;
