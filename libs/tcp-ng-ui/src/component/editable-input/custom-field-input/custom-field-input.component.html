@@ -1,8 +1,8 @@
-<div *ngIf='!!editableInput' class='flex width-full'>
-  <tcp-text-input *ngIf='isTextInput()' [editableInput]='editableInput.getComponent()'></tcp-text-input>
-  <tcp-number-input *ngIf='isNumberInput()' [editableInput]='editableInput.getComponent()'
-                    (onInputModelChanged)='onModelChange($event)'></tcp-number-input>
-  <tcp-date-input *ngIf='isDateInput()' [editableInput]='editableInput.getComponent()'
-                  (onInputModelChanged)='onModelChange($event)'></tcp-date-input>
-  <tcp-decimal-input *ngIf='isDecimalInput()' [editableInput]='editableInput.getComponent()'></tcp-decimal-input>
+<div *ngIf='!!customFieldControl' class='flex width-full'>
+  <tcp-text-input *ngIf='isTextInput()' [editableInput]='customFieldControl.getComponent()'></tcp-text-input>
+  <tcp-number-input *ngIf='isNumberInput()' [editableInput]='customFieldControl.getComponent()'
+                    (inputModelChanged)='onModelChange($event)'></tcp-number-input>
+  <tcp-date-input *ngIf='isDateInput()' [editableInput]='getDateComponent()'
+                  (inputModelChanged)='onModelChange($event)'></tcp-date-input>
+  <tcp-decimal-input *ngIf='isDecimalInput()' [editableInput]='customFieldControl.getComponent()'></tcp-decimal-input>
 </div>

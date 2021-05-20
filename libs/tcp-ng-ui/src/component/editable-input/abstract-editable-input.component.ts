@@ -8,7 +8,7 @@ import { ConfigService } from '../../service/config.service';
 export class AbstractEditableInputComponent implements OnInit, AfterViewInit {
   @ViewChild('inputElement', { static: false }) inputElement: MatInput | undefined;
   @Input() editableInput: EditableInputModel | undefined;
-  @Output() onInputModelChanged = new EventEmitter<string>();
+  @Output() inputModelChanged = new EventEmitter<string>();
 
   appConfig: AppConfigImpl | undefined;
   companyConfig: CompanyConfigImpl | undefined;
@@ -37,6 +37,6 @@ export class AbstractEditableInputComponent implements OnInit, AfterViewInit {
 
   setValue(value: AnyType): void {
     this.editableInput?.setValue(value);
-    this.onInputModelChanged.emit(this.editableInput?.getValue());
+    this.inputModelChanged.emit(this.editableInput?.getValue());
   }
 }

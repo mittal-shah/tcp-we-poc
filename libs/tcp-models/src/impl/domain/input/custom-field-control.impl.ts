@@ -1,6 +1,5 @@
-import AbstractEditableInputImpl from './abstract-editable.input.impl';
-import { EditableCustomFieldInputModel } from '../../../declaration';
-import { AnyType, ListItemContext } from '../../../declaration/types.declaration';
+import { CustomFieldControlModel, DateSelectItemModel, TimeSelectItemModel } from '../../../declaration';
+import { ListItemContext } from '../../../declaration/types.declaration';
 import CustomFieldDataType from '../../../constants/custom-field-data-type.constant';
 import CustomFieldInputMethod from '../../../constants/custom-field-input-method.constant';
 import { EditableInputModel } from '../../../declaration/editable-input.declaration';
@@ -16,35 +15,35 @@ import { DecimalInputImpl } from './decimal.input.impl';
 import { TextInputImpl } from './text.input.impl';
 import { DropdownInputImpl } from './dropdown.input.impl';
 
-export class CustomFieldControlImpl extends AbstractEditableInputImpl implements EditableCustomFieldInputModel {
-  ArrDateOptions: DateSelectItemImpl[] | undefined = [];
-  ArrStringOptions: string[] | undefined = [];
-  ArrTimeOptions: TimeSelectItemImpl[] | undefined = [];
-  BlnForceLowercase: boolean | undefined = false;
-  BlnIsMaskedValue: boolean | undefined = false;
-  BlnIsSelected: boolean | undefined = false;
-  DatMaxDate: string | undefined = '';
-  DatMinDate: string | undefined = '';
-  IntDataType: number | undefined = 0;
-  IntInputMethod: number | undefined = 0;
-  IntValue: number | undefined;
-  LngRecordId: number | undefined = 0;
-  StrCharWhitelist: string | undefined = '';
-  StrCustomFormat: string | undefined = '';
+export class CustomFieldControlImpl extends AbstractImpl implements CustomFieldControlModel {
+  ArrDateOptions?: DateSelectItemModel[] | undefined;
+  ArrStringOptions?: string[] | undefined;
+  ArrTimeOptions?: TimeSelectItemModel[] | undefined;
+  BlnForceLowercase?: boolean | undefined;
+  BlnForceUppercase?: boolean | undefined;
+  BlnIsDisabled?: boolean | undefined;
+  BlnIsMaskedValue?: boolean | undefined;
+  BlnIsRequired?: boolean | undefined;
+  BlnIsSelected?: boolean | undefined;
+  BlnIsVisible?: boolean | undefined;
+  DatMaxDate?: string | undefined;
+  DatMinDate?: string | undefined;
+  IntDataType?: number | undefined;
+  IntInputMethod?: number | undefined;
+  IntMaxLength?: number | undefined;
+  IntValue?: number | undefined;
+  LngRecordId?: number | undefined;
+  StrCharWhitelist?: string | undefined;
+  StrCustomFormat?: string | undefined;
+  StrId?: string | undefined;
+  StrRegExp?: string | undefined;
+  StrText?: string | undefined;
+  StrValue?: string | undefined;
 
+  private appConfig: AppConfigImpl | undefined = undefined;
+  private companyConfig: CompanyConfigImpl | undefined = undefined;
   private inputControl: EditableInputModel | undefined;
-
-  private KeyTextItems: KeyTextItemImpl[] | undefined = [];
-
-  getNumberValue() {
-    if (this.IntValue) {
-      return this.IntValue;
-    }
-    if (this.StrValue) {
-      return Number(this.StrValue);
-    }
-    return undefined;
-  }
+  private keyTextItems: KeyTextItemImpl[] | undefined = [];
 
   init(data: CustomFieldControlImpl) {
     if (!data) {
@@ -55,7 +54,7 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
     this.copyTypedArray(data, 'ArrTimeOptions', TimeSelectItemImpl);
 
     if (this.ArrStringOptions && this.ArrStringOptions.length) {
-      this.KeyTextItems = this.ArrStringOptions.map((item) => new KeyTextItemImpl(item, item));
+      this.keyTextItems = this.ArrStringOptions.map((item) => new KeyTextItemImpl(item, item));
     }
   }
 
@@ -70,57 +69,21 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
       delete data.inputControl;
     }
 
-    if (data.KeyTextItems) {
-      delete data.KeyTextItems;
+    if (data.keyTextItems) {
+      delete data.keyTextItems;
     }
 
     return data;
   }
 
-  getValue() {
-    return (this.inputControl && this.inputControl.getValue()) || '';
-  }
-
-  getModelValue() {
-    return this.inputControl && this.inputControl.getModelValue();
-  }
-
-  getType(): string {
-    return this.inputControl ? this.inputControl.getType() : super.getType();
-  }
-
-  isValidInput(): boolean {
-    return Boolean(this.inputControl && this.inputControl.isValidInput());
-  }
-
-  isValidValue() {
-    return Boolean(this.inputControl && this.inputControl.isValidValue());
-  }
-
-  setValue(value: AnyType) {
-    if (!this.inputControl) {
-      return;
-    }
-
-    this.inputControl.setValue(value);
-
-    if (this.isDropdown(this.IntInputMethod)) {
-      const selectItem = this.inputControl.getModelValue();
-      this.StrValue = selectItem ? selectItem.getValue() : '';
-    }
-  }
-
-  initializeInput(appConfig: AppConfigImpl, companyConfig: CompanyConfigImpl): void {
-    super.initializeInput(appConfig, companyConfig);
+  initializeInput(appConfig: AppConfigImpl | undefined, companyConfig: CompanyConfigImpl | undefined): void {
+    this.appConfig = appConfig;
+    this.companyConfig = companyConfig;
     this.inputControl = this.createComponent();
   }
 
   getComponent() {
     return this.inputControl;
-  }
-
-  getPlaceholderText(): string {
-    return this.StrCustomFormat ? this.StrCustomFormat : super.getPlaceholderText();
   }
 
   createNewEntryInput() {
@@ -191,7 +154,7 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
     if (this.IntDataType === CustomFieldDataType.Time) {
       return this.ArrTimeOptions;
     }
-    return this.KeyTextItems;
+    return this.keyTextItems;
   }
 
   private createComponent() {

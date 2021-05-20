@@ -54,4 +54,8 @@ export abstract class AbstractImpl {
       }
     }
   }
+
+  protected createSubmissionData() {
+    // do nothing
+  }
 }

@@ -40,6 +40,6 @@ export class DateInputComponent extends AbstractEditableInputComponent {
 
   setValue(date: Date): void {
     this.editableInput?.setDate(date);
-    this.onInputModelChanged.emit(this.editableInput?.getModelValue());
+    this.inputModelChanged.emit(this.editableInput?.getModelValue());
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {
-  EditableInputModel,
+  AnyType,
   MocksAppConfigs,
   MocksCompanyConfigs,
   MocksCustomFieldInputs,
@@ -38,7 +38,7 @@ export class PgEditableInputComponent implements OnInit {
     this.configService.setCompanyConfig(mocksCompanyConfigs.webClockCompanyConfig);
   }
 
-  showDetail(input: EditableInputModel) {
+  showDetail(input: AnyType) {
     return console.log(input);
   }
 

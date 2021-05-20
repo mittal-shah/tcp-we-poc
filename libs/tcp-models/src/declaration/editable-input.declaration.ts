@@ -1,5 +1,5 @@
 import {
-  CustomFieldControlModel,
+  AbstractModel,
   DateTimeInputModel,
   DecimalInputModel,
   HourMinuteInputModel,
@@ -89,10 +89,6 @@ export interface EditableInputModel {
   setValue(value: AnyType): AnyType;
 }
 
-export interface EditableCustomFieldInputModel extends EditableInputModel, CustomFieldControlModel {
-  getComponent(): AnyType;
-}
-
 export interface EditableTextInputModel extends EditableInputModel, TextInputModel {
   BlnIsMaskedValue?: boolean | undefined;
   IntNumberOfLines?: number | undefined;
@@ -108,7 +104,7 @@ export interface EditableHourMinuteInputModel extends EditableInputModel, HourMi
 
 export interface EditableDateTimeInputModel extends EditableInputModel, DateTimeInputModel {}
 
-export interface EditableDateInputModel extends EditableInputModel {
+export interface EditableDateInputModel extends EditableInputModel, AbstractModel {
   BlnMonthDayOnly?: boolean | undefined;
   BlnTrackDate?: boolean | undefined;
   DatDate?: string | undefined;
@@ -119,6 +115,7 @@ export interface EditableDateInputModel extends EditableInputModel {
   StrMonthDayFormat?: string | undefined;
 
   getDateFormat(): string;
+
   setDate(date: Date | null): void;
 }
 
