@@ -42,7 +42,7 @@
   <section id='custom-field'>
     <h2>Custom Field Input</h2>
     <div *ngFor='let input of mocksCustomFieldInputs | keyvalue'>
-      <tcp-custom-field-input [editableInput]='input.value' class='input-common'></tcp-custom-field-input>
+      <tcp-custom-field-input [customFieldControl]='input.value' class='input-common'></tcp-custom-field-input>
       <button (click)='showDetail(input.value)' mat-icon-button type='button'>
         <mat-icon>info</mat-icon>
       </button>

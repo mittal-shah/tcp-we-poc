@@ -8,11 +8,11 @@
     </div>
     <div *ngIf='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'>
       <tcp-custom-field-input
-        [editableInput]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'></tcp-custom-field-input>
+        [customFieldControl]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'></tcp-custom-field-input>
     </div>
     <div *ngIf='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin && shouldShowPIN'>
       <tcp-custom-field-input
-        [editableInput]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin'></tcp-custom-field-input>
+        [customFieldControl]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin'></tcp-custom-field-input>
     </div>
     <div class='padding-bottom-20 padding-top-20'>
       <button (click)='authenticate()' [disabled]='!logonForm.valid' color='primary'
