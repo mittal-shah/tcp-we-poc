@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatInput } from '@angular/material/input';
 import { AnyType, AppConfigImpl, CompanyConfigImpl, EditableInputModel } from '@tcp/tcp-models';
 import { ControlContainer, NgForm } from '@angular/forms';
@@ -8,6 +8,8 @@ import { ConfigService } from '../../service/config.service';
 export class AbstractEditableInputComponent implements OnInit, AfterViewInit {
   @ViewChild('inputElement', { static: false }) inputElement: MatInput | undefined;
   @Input() editableInput: EditableInputModel | undefined;
+  @Output() onInputModelChanged = new EventEmitter<string>();
+
   appConfig: AppConfigImpl | undefined;
   companyConfig: CompanyConfigImpl | undefined;
 
@@ -35,5 +37,6 @@ export class AbstractEditableInputComponent implements OnInit, AfterViewInit {
 
   setValue(value: AnyType): void {
     this.editableInput?.setValue(value);
+    this.onInputModelChanged.emit(this.editableInput?.getValue());
   }
 }

@@ -33,4 +33,10 @@ export class CustomFieldInputComponent extends AbstractEditableInputComponent {
   isDecimalInput() {
     return this.editableInput?.getComponent() instanceof DecimalInputImpl;
   }
+
+  onModelChange(value: string) {
+    if (this.editableInput) {
+      this.editableInput.StrValue = value;
+    }
+  }
 }

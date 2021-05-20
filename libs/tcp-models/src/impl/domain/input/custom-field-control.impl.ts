@@ -10,11 +10,9 @@ import { TimeSelectItemImpl } from '../time-select-item.impl';
 import { MaskedInputFormatter } from '@tcp/tcp-core';
 import { AppConfigImpl, CompanyConfigImpl } from '../../config';
 import { AbstractImpl } from '../../abstract.impl';
-import { SearchDropdownInputImpl } from './search-dropdown.input.impl';
 import { DateInputImpl } from './date.input.impl';
 import { TimeInputImpl } from './time.input.impl';
 import { DecimalInputImpl } from './decimal.input.impl';
-import { NumberInputImpl } from './number.input.impl';
 import { TextInputImpl } from './text.input.impl';
 import { DropdownInputImpl } from './dropdown.input.impl';
 
@@ -23,7 +21,6 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
   ArrStringOptions: string[] | undefined = [];
   ArrTimeOptions: TimeSelectItemImpl[] | undefined = [];
   BlnForceLowercase: boolean | undefined = false;
-  BlnForceUppercase: boolean | undefined = false;
   BlnIsMaskedValue: boolean | undefined = false;
   BlnIsSelected: boolean | undefined = false;
   DatMaxDate: string | undefined = '';
@@ -77,13 +74,6 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
       delete data.KeyTextItems;
     }
 
-    if (!data.IntValue) {
-      data.IntValue = undefined;
-    }
-    if (!data.StrValue) {
-      data.StrValue = undefined;
-    }
-
     return data;
   }
 
@@ -114,10 +104,7 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
 
     this.inputControl.setValue(value);
 
-    if (this.IntInputMethod === CustomFieldInputMethod.IntEdit) {
-      this.IntValue = this.inputControl.getModelValue();
-      this.StrValue = this.inputControl.getModelValue();
-    } else if (this.isDropdown(this.IntInputMethod)) {
+    if (this.isDropdown(this.IntInputMethod)) {
       const selectItem = this.inputControl.getModelValue();
       this.StrValue = selectItem ? selectItem.getValue() : '';
     }
@@ -129,16 +116,7 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
   }
 
   getComponent() {
-    if (!this.inputControl || !this.isDropdownEditable(this.IntInputMethod)) {
-      return this.inputControl;
-    }
-
-    const searchDropdownInput = AbstractImpl.fromJSON(
-      this.inputControl,
-      SearchDropdownInputImpl,
-    ) as SearchDropdownInputImpl;
-    searchDropdownInput.addDropdownEntryInput = this;
-    return searchDropdownInput;
+    return this.inputControl;
   }
 
   getPlaceholderText(): string {
@@ -160,12 +138,10 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
 
   private createInput(dataType: number | undefined) {
     let customInput;
-    const isDecimal = this.StrCharWhitelist?.indexOf('.') !== -1;
     switch (dataType) {
       case CustomFieldDataType.FullDate:
       case CustomFieldDataType.PartialDate:
         customInput = AbstractImpl.fromJSON(this, DateInputImpl) as DateInputImpl;
-        customInput.BlnIsEditable = false;
         customInput.BlnMonthDayOnly = dataType === CustomFieldDataType.PartialDate;
         customInput.DatDate = this.StrValue;
         if (this.companyConfig) {
@@ -175,30 +151,27 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
         break;
       case CustomFieldDataType.Time:
         customInput = AbstractImpl.fromJSON(this, TimeInputImpl) as TimeInputImpl;
-        customInput.BlnIsEditable = false;
         customInput.TimValue = this.StrValue;
         if (this.companyConfig) {
           customInput.StrFormat = this.companyConfig.getTimeFormat();
         }
         break;
       case CustomFieldDataType.Numeric:
-        if (isDecimal) {
-          customInput = AbstractImpl.fromJSON(this, DecimalInputImpl) as DecimalInputImpl;
-        } else {
-          customInput = AbstractImpl.fromJSON(this, NumberInputImpl) as NumberInputImpl;
-          customInput.IntValue = this.getNumberValue();
-        }
+        customInput = AbstractImpl.fromJSON(this, DecimalInputImpl) as DecimalInputImpl;
+        customInput.BlnShouldSkipFixedFormatting = true;
         break;
       default:
         customInput = AbstractImpl.fromJSON(this, TextInputImpl) as TextInputImpl;
-        customInput.StrRegExp = this.StrCharWhitelist ? `^${this.StrCharWhitelist}$` : undefined;
         break;
     }
 
     if (this.StrCustomFormat) {
       customInput.IntMaxLength = this.StrCustomFormat.length;
-      customInput.StrRegExp = MaskedInputFormatter.getMaskFromCustomFormat(this.StrCustomFormat);
+      this.StrRegExp = MaskedInputFormatter.getMaskFromCustomFormat(this.StrCustomFormat);
+    } else {
+      this.StrRegExp = this.StrCharWhitelist ? `^${this.StrCharWhitelist}$` : undefined;
     }
+    customInput.StrRegExp = this.StrRegExp;
 
     return customInput;
   }
@@ -229,6 +202,7 @@ export class CustomFieldControlImpl extends AbstractEditableInputImpl implements
       customInput.addDropdownEntryInput = this.isDropdownEditable(this.IntInputMethod)
         ? new CustomFieldControlImpl()
         : undefined;
+
       customInput.BlnIsEditable = false;
       customInput.BlnIsDisabled = !(listItems && listItems.length > 0);
       customInput.ObjListContext = {

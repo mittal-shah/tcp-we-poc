@@ -1,6 +1,8 @@
 <div *ngIf='!!editableInput' class='flex width-full'>
-  <tcp-text-input *ngIf='isTextInput()' [editableInput]='editableInput'></tcp-text-input>
-  <tcp-number-input *ngIf='isNumberInput()' [editableInput]='editableInput'></tcp-number-input>
-  <tcp-date-input *ngIf='isDateInput()' [editableInput]='editableInput.getComponent()'></tcp-date-input>
-  <tcp-decimal-input *ngIf='isDecimalInput()' [editableInput]='editableInput'></tcp-decimal-input>
+  <tcp-text-input *ngIf='isTextInput()' [editableInput]='editableInput.getComponent()'></tcp-text-input>
+  <tcp-number-input *ngIf='isNumberInput()' [editableInput]='editableInput.getComponent()'
+                    (onInputModelChanged)='onModelChange($event)'></tcp-number-input>
+  <tcp-date-input *ngIf='isDateInput()' [editableInput]='editableInput.getComponent()'
+                  (onInputModelChanged)='onModelChange($event)'></tcp-date-input>
+  <tcp-decimal-input *ngIf='isDecimalInput()' [editableInput]='editableInput.getComponent()'></tcp-decimal-input>
 </div>

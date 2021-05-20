@@ -38,7 +38,8 @@ export class DateInputComponent extends AbstractEditableInputComponent {
     setTimeout(() => this.inputElement?.focus(), 0);
   }
 
-  setValue(value: AnyType): void {
-    this.editableInput?.setDate(value);
+  setValue(date: Date): void {
+    this.editableInput?.setDate(date);
+    this.onInputModelChanged.emit(this.editableInput?.getModelValue());
   }
 }

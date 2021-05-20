@@ -118,9 +118,8 @@ export interface EditableDateInputModel extends EditableInputModel {
   StrFormat?: string | undefined;
   StrMonthDayFormat?: string | undefined;
 
-  setDate(date: Date | null): void;
-
   getDateFormat(): string;
+  setDate(date: Date | null): void;
 }
 
 export interface EditableTimeInputModel extends EditableInputModel, TimeInputModel {}
