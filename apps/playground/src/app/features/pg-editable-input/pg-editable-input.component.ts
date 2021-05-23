@@ -7,6 +7,7 @@ import {
   MocksCustomFieldInputs,
   MocksDateInputs,
   MocksDecimalInputs,
+  MocksDropdownInputs,
   MocksNumberInputs,
   MocksTextInputs,
 } from '@tcp/tcp-models';
@@ -25,6 +26,7 @@ export class PgEditableInputComponent implements OnInit {
   mocksNumberInputs = new MocksNumberInputs();
   mocksDecimalInputs = new MocksDecimalInputs();
   mocksDateInputs = new MocksDateInputs();
+  mocksDropdownInputs = new MocksDropdownInputs();
   mocksCustomFieldInputs = new MocksCustomFieldInputs();
   type: string | undefined;
 

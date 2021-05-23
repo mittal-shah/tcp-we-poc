@@ -1,46 +1,19 @@
-import { AnyType, EditableTextInputModel, InputSuffixIcon, ListItemContext } from '../../../declaration';
+import { AnyType, EditableInputModel, InputSuffixIcon } from '../../../declaration';
 import ModelConstant from '../../../constants/model.constant';
-import { CoveredEmployeeImpl } from '../covered-employee.impl';
 import AbstractEditableInputImpl from './abstract-editable.input.impl';
 import { IntStringItemImpl } from '../int-string-item.impl';
 import { LongStringItemImpl } from '../long-string-item.impl';
 import { SelectItemImpl } from '../select-item.impl';
 import { CustomFieldControlImpl } from './custom-field-control.impl';
 
-export class DropdownInputImpl extends AbstractEditableInputImpl implements EditableTextInputModel {
-  BlnAllowNoneSelection: boolean | undefined = true;
-
-  BlnIsMaskedValue: boolean | undefined = false;
-
-  BlnIsMultiSelect: boolean | undefined = false;
-
-  BlnIsEditable: boolean | undefined = false;
-
-  BlnIsExplicitSave: boolean | undefined = false;
-
-  IntNumberOfLines: number | undefined = 0;
-
-  IntMaxValue: number | undefined = 0;
-
-  IntMinValue: number | undefined = 0;
-
-  IntValue: number | undefined = 0;
-
-  ObjListContext: ListItemContext | undefined = undefined;
-
-  StrMaxDecimalValue: string | undefined = '';
-
-  StrMinDecimalValue: string | undefined = '';
-
-  handleOnSelectItem?: (value: AnyType) => void;
-
-  onExplicitSave?: (item: SelectItemImpl) => void;
-
-  onMultiSelectSave?: (items: SelectItemImpl[]) => void;
-
-  onCancel?: () => void;
-
+export class DropdownInputImpl extends AbstractEditableInputImpl implements EditableInputModel {
   addDropdownEntryInput: CustomFieldControlImpl | undefined = undefined;
+  allowNoneSelection = false;
+  handleOnSelectItem?: (value: AnyType) => void;
+  isMultiSelect = false;
+  listItems?: SelectItemImpl[] = [];
+  onSelect?: (items: SelectItemImpl[]) => void;
+  selectedItems?: SelectItemImpl[] = [];
 
   getInputSuffixIcon(): InputSuffixIcon {
     return 'chevron-down';
@@ -51,22 +24,20 @@ export class DropdownInputImpl extends AbstractEditableInputImpl implements Edit
       return true;
     }
 
-    if (!this.ObjListContext || !this.ObjListContext.selectedItem) {
+    if (!this.selectedItems?.length) {
       return true;
     }
 
-    const key = this.ObjListContext.selectedItem.getKey();
-    const isNoneItem = this.appConfig ? this.appConfig.isNoneItem(key) : ModelConstant.intNoneItemValue === key;
-    if (this.BlnIsRequired && isNoneItem) {
+    if (this.BlnIsRequired && this.isNoneItemSelected()) {
       return false;
     }
 
-    return !this.ObjListContext.selectedItem.BlnIsInvalid;
+    return !this.selectedItems.every((item) => item.BlnIsInvalid);
   }
 
   getErrorMessage(): string | undefined {
-    if (!this.isValidValue()) {
-      return this.appConfig && this.appConfig.StrInvalidSelection;
+    if (!this.isValidValue() || !this.appConfig) {
+      return this.appConfig?.StrInvalidSelection;
     }
 
     return super.getErrorMessage();
@@ -74,18 +45,6 @@ export class DropdownInputImpl extends AbstractEditableInputImpl implements Edit
 
   getValue() {
     return this.getText();
-  }
-
-  createCoveredEmployee() {
-    const item = new CoveredEmployeeImpl();
-    const selectItem = this.getModelValue();
-    if (!selectItem) {
-      return item;
-    }
-
-    item.setText(selectItem.getText());
-    item.setValue(parseFloat(String(selectItem.getValue())));
-    return item;
   }
 
   createIntStringItem() {
@@ -114,70 +73,62 @@ export class DropdownInputImpl extends AbstractEditableInputImpl implements Edit
   }
 
   setValue(value: string | undefined) {
-    if (!this.ObjListContext || !this.ObjListContext.selectedItem) {
-      return;
-    }
-
     if (this.addDropdownEntryInput) {
       this.setModelValue(new SelectItemImpl(value, value));
       return;
     }
 
-    const listItem = this.ObjListContext.listItems.find((item: SelectItemImpl) => item.getText() === value);
+    const listItem = this.listItems?.find((item: SelectItemImpl) => item.getText() === value);
     if (listItem) {
       this.setModelValue(listItem);
     }
   }
 
   getModelValue(): SelectItemImpl | undefined {
-    return this.ObjListContext ? this.ObjListContext.selectedItem : undefined;
-  }
-
-  getMultiSelectedItems() {
-    if (!this.ObjListContext) {
-      return [];
-    }
-
-    return this.ObjListContext.selectedItems;
+    return this.selectedItems?.length ? this.selectedItems[0] : undefined;
   }
 
   getMultiSelectedText() {
-    if (!this.ObjListContext || !this.ObjListContext.selectedItems) {
+    if (!this.selectedItems?.length) {
       return this.getNoneText();
     }
 
-    const { appConfig } = this.ObjListContext;
-    const selectedItemsLength = this.ObjListContext.selectedItems.length;
-    if (selectedItemsLength === 0) {
-      return this.getNoneText();
-    }
-
-    return appConfig?.StrSelectedEntityMessage?.format(String(selectedItemsLength));
+    return this.appConfig?.StrSelectedEntityMessage?.format(String(this.selectedItems.length));
   }
 
-  setModelValue(item: SelectItemImpl | undefined) {
-    if (!this.ObjListContext) {
+  setModelValue(item: SelectItemImpl) {
+    if (this.selectedItems?.findMatchingKey(item.getKey())) {
       return;
     }
-
-    this.ObjListContext.selectedItem = item;
+    this.selectedItems?.push(item);
   }
 
   getText(): string {
-    return this.ObjListContext && this.ObjListContext.selectedItem && this.ObjListContext.selectedItem.getText()
-      ? String(this.ObjListContext.selectedItem.getText())
-      : this.getNoneText();
+    if (!this.selectedItems?.length) {
+      return this.getNoneText();
+    }
+
+    const firstItem = this.selectedItems?.firstOrDefault<SelectItemImpl>();
+    const text =
+      this.selectedItems?.length > 1
+        ? firstItem?.getText() + ' + ' + String(this.selectedItems?.length - 1)
+        : firstItem?.getText();
+
+    return text || '';
   }
 
   toString(): string {
-    return this.ObjListContext && this.ObjListContext.selectedItem && this.ObjListContext.selectedItem.getText()
-      ? this.ObjListContext.selectedItem.getText() || ''
-      : this.getNoneText();
+    return this.getText();
   }
 
   protected getNoneText() {
-    return this.ObjListContext && this.ObjListContext.appConfig && this.BlnAllowNoneSelection
-      ? this.ObjListContext.appConfig.StrNoneItem || ''
-      : '';
+    return this.appConfig && this.allowNoneSelection ? this.appConfig.StrNoneItem || '' : '';
+  }
+
+  private isNoneItemSelected() {
+    const noneItem = this.selectedItems?.find(
+      (item) => this.appConfig?.isNoneItem(item.getKey()) || ModelConstant.intNoneItemValue === item.getKey(),
+    );
+    return !!noneItem;
   }
 }

@@ -1,5 +1,4 @@
-import { CustomFieldControlModel, DateSelectItemModel, TimeSelectItemModel } from '../../../declaration';
-import { ListItemContext } from '../../../declaration/types.declaration';
+import { CustomFieldControlModel } from '../../../declaration';
 import CustomFieldDataType from '../../../constants/custom-field-data-type.constant';
 import CustomFieldInputMethod from '../../../constants/custom-field-input-method.constant';
 import { EditableInputModel } from '../../../declaration/editable-input.declaration';
@@ -14,11 +13,12 @@ import { TimeInputImpl } from './time.input.impl';
 import { DecimalInputImpl } from './decimal.input.impl';
 import { TextInputImpl } from './text.input.impl';
 import { DropdownInputImpl } from './dropdown.input.impl';
+import { SelectItemImpl } from '../select-item.impl';
 
 export class CustomFieldControlImpl extends AbstractImpl implements CustomFieldControlModel {
-  ArrDateOptions?: DateSelectItemModel[] | undefined;
+  ArrDateOptions?: DateSelectItemImpl[] | undefined;
   ArrStringOptions?: string[] | undefined;
-  ArrTimeOptions?: TimeSelectItemModel[] | undefined;
+  ArrTimeOptions?: TimeSelectItemImpl[] | undefined;
   BlnForceLowercase?: boolean | undefined;
   BlnForceUppercase?: boolean | undefined;
   BlnIsDisabled?: boolean | undefined;
@@ -33,6 +33,7 @@ export class CustomFieldControlImpl extends AbstractImpl implements CustomFieldC
   IntMaxLength?: number | undefined;
   IntValue?: number | undefined;
   LngRecordId?: number | undefined;
+  ShouldFocus = false;
   StrCharWhitelist?: string | undefined;
   StrCustomFormat?: string | undefined;
   StrId?: string | undefined;
@@ -166,12 +167,12 @@ export class CustomFieldControlImpl extends AbstractImpl implements CustomFieldC
         ? new CustomFieldControlImpl()
         : undefined;
 
+      const selectedItem = listItems?.findMatchingValue<SelectItemImpl>(this.StrValue || '') || firstItem;
+
       customInput.BlnIsEditable = false;
       customInput.BlnIsDisabled = !(listItems && listItems.length > 0);
-      customInput.ObjListContext = {
-        listItems,
-        selectedItem: listItems?.findMatchingValue(this.StrValue || '') || firstItem,
-      } as ListItemContext;
+      customInput.listItems = listItems;
+      customInput.selectedItems = selectedItem ? [selectedItem] : [];
 
       return customInput;
     }

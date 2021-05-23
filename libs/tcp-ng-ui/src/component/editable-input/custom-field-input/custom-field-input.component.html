@@ -1,8 +1,10 @@
 <div *ngIf='!!customFieldControl' class='flex width-full'>
-  <tcp-text-input *ngIf='isTextInput()' [editableInput]='customFieldControl.getComponent()'></tcp-text-input>
+  <tcp-text-input *ngIf='isTextInput()' [editableInput]='customFieldControl.getComponent()'
+                  (inputModelChanged)='onModelChange($event)'></tcp-text-input>
   <tcp-number-input *ngIf='isNumberInput()' [editableInput]='customFieldControl.getComponent()'
                     (inputModelChanged)='onModelChange($event)'></tcp-number-input>
   <tcp-date-input *ngIf='isDateInput()' [editableInput]='getDateComponent()'
                   (inputModelChanged)='onModelChange($event)'></tcp-date-input>
-  <tcp-decimal-input *ngIf='isDecimalInput()' [editableInput]='customFieldControl.getComponent()'></tcp-decimal-input>
+  <tcp-decimal-input *ngIf='isDecimalInput()' [editableInput]='customFieldControl.getComponent()'
+                     (inputModelChanged)='onModelChange($event)'></tcp-decimal-input>
 </div>

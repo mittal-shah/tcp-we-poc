@@ -4,36 +4,25 @@ import { DropdownInputImpl } from './dropdown.input.impl';
 
 export class SearchDropdownInputImpl extends DropdownInputImpl {
   BlnUseInternalFilter?: boolean | undefined = false;
-
   ObjFilterData?: FilterDataImpl | undefined = undefined;
-
+  initialMultiSelectValue: string | undefined = '';
+  loadInfoFunction?: () => void | undefined = undefined;
+  shouldBlockAutoMultiSelectTextUpdate: boolean | undefined = false;
   updateFilterFunction?: (filterData: FilterDataImpl) => void | undefined = undefined;
 
-  loadInfoFunction?: () => void | undefined = undefined;
-
-  initialMultiSelectValue: string | undefined = '';
-
-  shouldBlockAutoMultiSelectTextUpdate: boolean | undefined = false;
-
   getInputSuffixIcon(): InputSuffixIcon {
-    return this.BlnIsMultiSelect ? 'list' : 'search';
+    return this.isMultiSelect ? 'list' : 'search';
   }
 
   toString(): string {
-    if (!this.BlnIsMultiSelect) {
+    if (!this.isMultiSelect) {
       return super.toString();
-    }
-
-    if (!this.ObjListContext) {
-      return String(this.initialMultiSelectValue);
     }
 
     if (this.shouldBlockAutoMultiSelectTextUpdate) {
       return '';
     }
 
-    return this.ObjListContext && this.ObjListContext.selectedItems
-      ? String(this.getMultiSelectedText())
-      : this.getNoneText();
+    return this.selectedItems ? String(this.getMultiSelectedText()) : this.getNoneText();
   }
 }

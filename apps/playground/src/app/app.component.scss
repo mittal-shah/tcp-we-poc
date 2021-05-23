@@ -4,7 +4,40 @@
   color: $white;
   background-color: $logoGreen;
 
+  &:focus {
+    background-color: $logoGreen;
+  }
+
   &:hover {
     color: black;
   }
+}
+
+.primary-header {
+  background: $logoBlue;
+  color: $gray3;
+}
+
+.main-content {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.navigation-list-container {
+  background-color: #fafafa;
+  color: rgba(0, 0, 0, .87);
+}
+
+.navigation-list-container-content {
+  position: sticky;
+  top: 0;
+  width: 240px;
+  height: calc(100vh - 56px);
+  overflow: auto;
+  border-right: 1px solid rgba(0, 0, 0, .12);
+}
+
+.router-outlet-container {
+  width: calc(100% - 241px - 100px);
+  padding: 20px 50px;
 }

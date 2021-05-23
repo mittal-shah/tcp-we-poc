@@ -1,27 +1,34 @@
-<header class='padding-20' role='banner'>
+<header class='padding-20 primary-header' role='banner'>
   <h1>Playground for testing purpose only</h1>
-  <button [matMenuTriggerFor]='inputs' color='primary' mat-flat-button>Editable Inputs</button>
-  <mat-menu #inputs='matMenu'>
-    <button fragment='text' mat-menu-item routerLink='editable-input/text' routerLinkActive='active-link'>TextInput
-    </button>
-    <button fragment='number' mat-menu-item routerLink='editable-input/number' routerLinkActive='active-link'>
-      NumberInput
-    </button>
-    <button fragment='date' mat-menu-item routerLink='editable-input/date' routerLinkActive='active-link'>DateInput
-    </button>
-    <button fragment='time' mat-menu-item routerLink='editable-input/time' routerLinkActive='active-link'>TimeInput
-    </button>
-    <button fragment='date-time' mat-menu-item routerLink='editable-input/date-time' routerLinkActive='active-link'>
-      DateTimeInput
-    </button>
-    <button fragment='decimal' mat-menu-item routerLink='editable-input/decimal' routerLinkActive='active-link'>
-      DecimalInput
-    </button>
-    <button fragment='hour-min' mat-menu-item routerLink='editable-input/hour-min' routerLinkActive='active-link'>
-      HourMinInput
-    </button>
-  </mat-menu>
 </header>
-<main class='content padding-20' role='main'>
-  <router-outlet></router-outlet>
+<main class='content main-content' role='main'>
+  <div class='navigation-list-container'>
+    <div class='navigation-list-container-content'>
+      <mat-nav-list>
+        <a mat-list-item fragment='text' routerLink='/editable-input/text' routerLinkActive='active-link'>
+          <span matLine>Text Input</span>
+        </a>
+        <a mat-list-item fragment='number' routerLink='/editable-input/number' routerLinkActive='active-link'>
+          <span matLine>Number Input</span>
+        </a>
+        <a mat-list-item fragment='decimal' routerLink='/editable-input/decimal' routerLinkActive='active-link'>
+          <span matLine>Decimal Input</span>
+        </a>
+        <a mat-list-item fragment='date' routerLink='/editable-input/date' routerLinkActive='active-link'>
+          <span matLine>Date Input</span>
+        </a>
+        <a mat-list-item fragment='custom-field' routerLink='/editable-input/custom-field'
+           routerLinkActive='active-link'>
+          <span matLine>Custom Field Input</span>
+        </a>
+        <a mat-list-item fragment='dropdown' routerLink='/editable-input/dropdown'
+           routerLinkActive='active-link'>
+          <span matLine>Dropdown Input</span>
+        </a>
+      </mat-nav-list>
+    </div>
+  </div>
+  <div class='router-outlet-container'>
+    <router-outlet></router-outlet>
+  </div>
 </main>

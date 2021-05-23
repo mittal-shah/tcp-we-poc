@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
 import {
   AppConfigImpl,
@@ -18,38 +18,45 @@ import { ConfigService } from '../../../service';
   templateUrl: './custom-field-input.component.html',
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
-export class CustomFieldInputComponent implements OnInit {
+export class CustomFieldInputComponent implements OnChanges {
   @Input() customFieldControl: CustomFieldControlImpl | undefined;
 
   appConfig: AppConfigImpl | undefined;
   companyConfig: CompanyConfigImpl | undefined;
 
-  constructor(private configService: ConfigService) {}
-
-  ngOnInit(): void {
+  constructor(private configService: ConfigService) {
     this.appConfig = this.configService.getAppConfig();
     this.companyConfig = this.configService.getCompanyConfig();
-    this.customFieldControl?.initializeInput(this.appConfig, this.companyConfig);
+  }
+
+  ngOnChanges() {
+    if (!this.customFieldControl?.getComponent()) {
+      this.customFieldControl?.initializeInput(this.appConfig, this.companyConfig);
+    }
+  }
+
+  getComponent() {
+    return this.customFieldControl?.getComponent();
   }
 
   getDateComponent() {
-    return this.customFieldControl?.getComponent() as EditableDateInputModel;
+    return this.getComponent() as EditableDateInputModel;
   }
 
   isNumberInput() {
-    return this.customFieldControl?.getComponent() instanceof NumberInputImpl;
+    return this.getComponent() instanceof NumberInputImpl;
   }
 
   isTextInput() {
-    return this.customFieldControl?.getComponent() instanceof TextInputImpl;
+    return this.getComponent() instanceof TextInputImpl;
   }
 
   isDateInput() {
-    return this.customFieldControl?.getComponent() instanceof DateInputImpl;
+    return this.getComponent() instanceof DateInputImpl;
   }
 
   isDecimalInput() {
-    return this.customFieldControl?.getComponent() instanceof DecimalInputImpl;
+    return this.getComponent() instanceof DecimalInputImpl;
   }
 
   onModelChange(value: string) {

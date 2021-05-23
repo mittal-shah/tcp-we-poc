@@ -30,6 +30,7 @@ import { TcpMinValidatorDirective } from './component/editable-input/directive/t
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AbstractEditableInputComponent } from './component/editable-input/abstract-editable-input.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { AbstractEditableInputComponent } from './component/editable-input/abstr
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatListModule,
 
     AlertDialogComponent,
     TextInputComponent,
@@ -90,6 +92,7 @@ import { AbstractEditableInputComponent } from './component/editable-input/abstr
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatListModule,
   ],
   providers: [
     { multi: true, provide: HTTP_INTERCEPTORS, useClass: TimeoutHttpInterceptor },

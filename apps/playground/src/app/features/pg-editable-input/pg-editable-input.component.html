@@ -49,6 +49,16 @@
     </div>
   </section>
 
+  <section id='dropdown'>
+    <h2>Dropdown Input</h2>
+    <div *ngFor='let input of mocksDropdownInputs | keyvalue'>
+      <tcp-dropdown-input [dropdownInput]='input.value' class='input-common'></tcp-dropdown-input>
+      <button (click)='showDetail(input.value)' mat-icon-button type='button'>
+        <mat-icon>info</mat-icon>
+      </button>
+    </div>
+  </section>
+
   <div class='padding-20'>Form valid: {{inputForm.valid}}</div>
   <button [disabled]='!inputForm.valid' color='primary' mat-flat-button>Submit</button>
 </form>

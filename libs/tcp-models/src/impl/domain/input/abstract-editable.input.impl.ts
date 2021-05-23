@@ -10,35 +10,20 @@ import { AbstractImpl } from '../../abstract.impl';
 
 export default abstract class AbstractEditableInputImpl extends AbstractImpl implements EditableInputModel {
   DefaultNumberOfLines = 1;
-
   ShouldFocus: boolean | undefined = false;
-
   BlnForceUppercase: boolean | undefined = false;
-
   BlnIsDisabled: boolean | undefined = false;
-
   BlnIsEditable: boolean | undefined = true;
-
   BlnIsRequired: boolean | undefined = false;
-
   BlnIsVisible: boolean | undefined = true;
-
   IntMaxLength: number | undefined;
-
   StrId = '';
-
   StrRegExp: string | undefined = '';
-
   StrSuffix: string | undefined = '';
-
   StrText: string | undefined = '';
-
   StrValue: string | undefined = '';
-
   onChange?: (value: string | undefined) => void | undefined = undefined;
-
   appConfig: AppConfigImpl | undefined = undefined;
-
   companyConfig: CompanyConfigImpl | undefined = undefined;
 
   getAutoCapitalize(): AutoCapitalizeOptions {

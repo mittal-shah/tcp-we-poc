@@ -4,23 +4,14 @@ import { AbstractImpl } from '../abstract.impl';
 
 export class SelectItemImpl extends AbstractImpl implements SelectItemModel {
   BlnClearsSelection: boolean | undefined;
-
   BlnIsInvalid: boolean | undefined = false;
-
   IntMaxLength: number | undefined;
-
   StrCategory: string | undefined;
-
   StrHighlightColor: string | undefined;
-
   _ArrColumnValues: string[] | undefined;
-
   _ArrHeaderValues: HeaderValueImpl[] | undefined;
-
   _LngValue: number | undefined;
-
   _StrSubText: string | undefined;
-
   _StrText: string | undefined;
 
   constructor(value?: string | undefined, text?: string | undefined) {
