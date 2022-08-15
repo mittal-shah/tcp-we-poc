@@ -40,7 +40,7 @@ export class LogOnComponent implements OnInit {
       );
   }
 
-  selectChangeHandler(value: AnyType) {
+  selectCompanyChangeHandler(value: AnyType) {
     this.service
       .getInfoForCompany(Number(value))
       .subscribe((context: EmployeeLogOnContextImpl) => this.handleInfo(context));

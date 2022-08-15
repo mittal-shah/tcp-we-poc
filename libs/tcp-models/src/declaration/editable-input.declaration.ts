@@ -8,7 +8,7 @@ import {
   TimeInputModel,
 } from './global.declaration';
 import { AnyType } from './types.declaration';
-import { AppConfigImpl, CompanyConfigImpl } from '../impl/config';
+import { AppConfigImpl, CompanyConfigImpl } from '../impl';
 
 export type AutoCapitalizeOptions = 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
 
@@ -94,15 +94,18 @@ export interface EditableTextInputModel extends EditableInputModel, TextInputMod
   IntNumberOfLines?: number | undefined;
 }
 
-export interface EditableDecimalInputModel extends EditableInputModel, DecimalInputModel {}
+export interface EditableDecimalInputModel extends EditableInputModel, DecimalInputModel {
+}
 
 export interface EditableNumberInputModel extends EditableInputModel, NumberInputModel {
   BlnIsMaskedValue?: boolean | undefined;
 }
 
-export interface EditableHourMinuteInputModel extends EditableInputModel, HourMinuteInputModel {}
+export interface EditableHourMinuteInputModel extends EditableInputModel, HourMinuteInputModel {
+}
 
-export interface EditableDateTimeInputModel extends EditableInputModel, DateTimeInputModel {}
+export interface EditableDateTimeInputModel extends EditableInputModel, DateTimeInputModel {
+}
 
 export interface EditableDateInputModel extends EditableInputModel, AbstractModel {
   BlnMonthDayOnly?: boolean | undefined;
@@ -119,4 +122,5 @@ export interface EditableDateInputModel extends EditableInputModel, AbstractMode
   setDate(date: Date | null): void;
 }
 
-export interface EditableTimeInputModel extends EditableInputModel, TimeInputModel {}
+export interface EditableTimeInputModel extends EditableInputModel, TimeInputModel {
+}

@@ -12,6 +12,8 @@ export abstract class AbstractImpl {
     }
 
     const safeData = typeof data === 'object' ? data : {};
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const result = Object.assign(AbstractImpl.create(type), safeData);
     if (result.init !== undefined) {
       result.init(safeData);

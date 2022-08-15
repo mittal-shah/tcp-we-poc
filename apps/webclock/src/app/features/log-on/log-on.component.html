@@ -1,22 +1,23 @@
 <div class='text-center'>
   <div class='logo'></div>
   <mat-divider class='padding-bottom-20'></mat-divider>
+  <div class='mat-error'>{{data?.StrErrorMessage}}</div>
   <form #logonForm='ngForm' *ngIf='!!data && !!config' class='logon-form'>
     <div>
       <tcp-dropdown-input
-        [dropdownInput]='data.createCompanyDropdownInput(config.StrSelectCompany, selectChangeHandler.bind(this))'></tcp-dropdown-input>
+        [dropdownInput]='data.createCompanyDropdownInput(config.StrSelectCompany, selectCompanyChangeHandler.bind(this))'></tcp-dropdown-input>
     </div>
-    <div *ngIf='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'>
+    <div *ngIf='data.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'>
       <tcp-custom-field-input
-        [customFieldControl]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'></tcp-custom-field-input>
+        [customFieldControl]='data.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'></tcp-custom-field-input>
     </div>
     <div *ngIf='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin && shouldShowPIN'>
       <tcp-custom-field-input
-        [customFieldControl]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin'></tcp-custom-field-input>
+        [customFieldControl]='data.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnEmployeePin'></tcp-custom-field-input>
     </div>
     <div class='padding-bottom-20 padding-top-20'>
       <button (click)='authenticate()' [disabled]='!logonForm.valid' color='primary'
-              mat-flat-button>{{config?.StrLogOn}}</button>
+              mat-flat-button>{{config.StrLogOn}}</button>
     </div>
   </form>
 </div>

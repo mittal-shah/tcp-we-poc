@@ -25,52 +25,5 @@
         "showUsageWarnings": true
       }
     }
-  },
-  "projects": {
-    "webclock": {
-      "tags": []
-    },
-    "webclock-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "webclock"
-      ]
-    },
-    "tcp-models": {
-      "tags": []
-    },
-    "tcp-core": {
-      "tags": []
-    },
-    "tcp-util": {
-      "tags": []
-    },
-    "tcp-clock-models": {
-      "tags": []
-    },
-    "clock-status": {
-      "tags": []
-    },
-    "clock-status-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "clock-status"
-      ]
-    },
-    "mobile-clock": {
-      "tags": []
-    },
-    "tcp-ng-ui": {
-      "tags": []
-    },
-    "playground": {
-      "tags": []
-    },
-    "playground-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "playground"
-      ]
-    }
   }
 }

@@ -4,7 +4,6 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
   SimpleChanges,
   ViewChild,
@@ -12,7 +11,7 @@ import {
 import { MatInput } from '@angular/material/input';
 import { AnyType, AppConfigImpl, CompanyConfigImpl, EditableInputModel } from '@tcp/tcp-models';
 import { ControlContainer, NgForm } from '@angular/forms';
-import { ConfigService } from '../../service/config.service';
+import { ConfigService } from '@tcp/tcp-ng-ui';
 
 @Component({ template: '', viewProviders: [{ provide: ControlContainer, useExisting: NgForm }] })
 export class AbstractEditableInputComponent implements AfterViewInit, OnChanges {
