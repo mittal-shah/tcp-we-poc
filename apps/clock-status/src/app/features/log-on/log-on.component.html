@@ -6,17 +6,17 @@
       <tcp-dropdown-input
         [dropdownInput]='data.createCompanyDropdownInput(config.StrSelectCompany)'></tcp-dropdown-input>
     </div>
-    <div *ngIf='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'>
+    <div *ngIf='data.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'>
       <tcp-custom-field-input
-        [customFieldControl]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'></tcp-custom-field-input>
+        [customFieldControl]='data.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnId'></tcp-custom-field-input>
     </div>
-    <div *ngIf='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnPassword'>
+    <div *ngIf='data.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnPassword'>
       <tcp-custom-field-input
-        [customFieldControl]='data?.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnPassword'></tcp-custom-field-input>
+        [customFieldControl]='data.ObjSelectedCompany?.ObjCustomFieldControlModelLogOnPassword'></tcp-custom-field-input>
     </div>
     <div class='padding-bottom-20 padding-top-20'>
       <button (click)='authenticate()' [disabled]='!logonForm.valid' color='primary'
-              mat-flat-button>{{config?.StrLogOn}}</button>
+              mat-flat-button>{{config.StrLogOn}}</button>
     </div>
   </form>
 </div>

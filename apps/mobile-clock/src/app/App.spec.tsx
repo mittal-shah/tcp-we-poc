@@ -8,5 +8,5 @@ import App from './App.tsx';
 
 it('renders correctly', () => {
   const { getByTestId } = render(<App />);
-  expect(getByTestId('heading')).toHaveTextContent('Welcome');
+  expect(getByTestId('heading')).toContain('Welcome');
 });

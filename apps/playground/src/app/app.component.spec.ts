@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { RouterTestingModule } from '@angular/router/testing';
-import { TcpNgUiModule } from '@tcp/tcp-ng-ui';
 import { PgEditableInputComponent } from './features/pg-editable-input/pg-editable-input.component';
+import { TcpNgUiModule } from '@tcp/tcp-ng-ui';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {

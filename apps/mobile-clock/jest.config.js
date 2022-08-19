@@ -6,7 +6,11 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'html', 'tsx', 'jsx'],
   setupFilesAfterEnv: ['<rootDir>/test-setup.ts'],
   transform: {
-    '\\.(js|ts|tsx)$': require.resolve('react-native/jest/preprocessor.js'),
-    '^.+\\.(bmp|gif|jpg|jpeg|mp4|png|psd|svg|webp)$': require.resolve('react-native/jest/assetFileTransformer.js'),
+    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.(js|jsx)$": "babel-jest",
+    "node_modules/variables/.+\\.(j|t)sx?$": "babel-jest"
   },
+  transformIgnorePatterns: [
+    "node_modules/(?!(jest-)?react-native|react-(native|universal|navigation)-(.*)|@react-native-community/(.*)|@react-navigation/(.*)|bs-platform|@rootstrap/redux-tools)"
+  ],
 };
