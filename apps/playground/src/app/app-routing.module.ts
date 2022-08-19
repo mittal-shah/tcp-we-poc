@@ -4,7 +4,7 @@ import { PgEditableInputComponent } from './features/pg-editable-input/pg-editab
 
 const routerOptions: ExtraOptions = {
   anchorScrolling: 'enabled',
-  initialNavigation: 'enabled',
+  initialNavigation: 'enabledBlocking',
   onSameUrlNavigation: 'reload',
   scrollOffset: [0, 64],
   scrollPositionRestoration: 'enabled',
