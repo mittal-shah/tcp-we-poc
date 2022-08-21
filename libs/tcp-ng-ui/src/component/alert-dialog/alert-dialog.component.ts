@@ -8,5 +8,6 @@ import AlertContext from '../../ui-impl/context/alert.context';
   templateUrl: './alert-dialog.component.html',
 })
 export class AlertDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public context: AlertContext) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public context: AlertContext) {
+  }
 }

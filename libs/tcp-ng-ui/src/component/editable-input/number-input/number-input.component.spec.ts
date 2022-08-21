@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NumberInputComponent } from './number-input.component';
+import { NumberInputComponent } from '@tcp/tcp-ng-ui';
 
 describe('NumberInputComponent', () => {
   let component: NumberInputComponent;

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomFieldInputComponent } from './custom-field-input.component';
+import { CustomFieldInputComponent } from '@tcp/tcp-ng-ui';
 
 describe('CustomFieldInputComponent', () => {
   let component: CustomFieldInputComponent;

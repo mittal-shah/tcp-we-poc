@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
+import { AlertDialogComponent, TcpNgUiModule } from '@tcp/tcp-ng-ui';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 describe('AlertDialogComponent', () => {
   let component: AlertDialogComponent;
@@ -9,6 +10,11 @@ describe('AlertDialogComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AlertDialogComponent],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ],
+      imports: [TcpNgUiModule],
     }).compileComponents();
   });
 
